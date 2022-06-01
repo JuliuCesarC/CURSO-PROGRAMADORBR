@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+            font: normal 20pt Arial;
+        }
+        .quadrado{
+            border: 3px solid black;
+            width: 500px;
+            height: 300px;
+            text-align: center;
+            float: left;
+            position: relative;
+        }
+        .qbege{
+            background-color: bisque;
+            line-height: 300px;
+
+        }
+        .qverde{
+            background-color: greenyellow;
+            /* para o position absolute funcionar, o pai dele que no caso é a div 'quadrado', precisa ter algum position diferente do 'static' */
+            position: absolute;
+            top: 50%;
+            
+            left: 50%;
+            /* translate(x, y) */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quadrado">
+        <div class="qbege">Frente</div>
+    </div>
+    <div class="quadrado">
+        <div class="qverde">Atraz</div>
+    </div>
+
+</body>
+</html>
