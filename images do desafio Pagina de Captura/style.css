@@ -1,0 +1,117 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+.container{
+    width: 1000px;
+    margin: auto;
+    background-size: cover;
+}
+header{
+    background-color: #48C5CE;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+.cabecalho{
+    font-size: 26px;
+    
+}
+section{
+    background-image: url("people.jpg");
+    background-size: cover;
+    overflow: hidden;
+    padding: 20px;
+}
+.form{
+    background-color: rgb(255, 255, 255, 0.7);
+    width: 300px;
+    padding: 20px;
+    float: right;
+}
+h2{
+    font-size: 20px;
+}
+p.mb{
+    font-size: 19px;
+}
+input, select{
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+input[type="submit"]{
+    color: white;
+    background-color: #48C5CE;
+    font-size: 18px;
+    font-weight: 600;
+}
+select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("arrow.jpg");
+    background-repeat: no-repeat;
+
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+}
+
+
+
+footer{
+    clear: both;
+    background-color: #202121;
+    padding: 40px;
+    text-align: center;
+}
+.picture{
+    width: 150px;
+}
+.txfooter{
+    display: inline-block;
+    color: white;
+    max-width: 40%;
+    margin-left: 40px;
+}
+.txfooter p, .txfooter h3{
+    margin-bottom: 20px;
+    text-align: left;
+}
+.txfooter h3{
+    font-size: 20px;
+}
+.upper{
+    text-transform: uppercase;
+}
+.mb{
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .container{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .form{
+        float: none;
+        margin: auto;
+    }
+    .txfooter{
+        display: block;
+        margin: auto;
+        max-width: 80%;
+    }
+    .txfooter h3{
+        margin-top: 10px;
+    }
+    .picture{
+        margin: auto;
+    }
+}
