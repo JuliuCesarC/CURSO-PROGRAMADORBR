@@ -1,0 +1,12 @@
+body{
+    font: normal 18pt Arial;
+    background-color: gray;
+}
+div#corpo{
+    width: 1000px;
+    background-color: white;
+    margin: auto;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+}
