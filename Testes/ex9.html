@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="all" id="corpoprincipal">
+        <h1>Clique para ter uma cor aleatoria!!</h1>
+        <div id="cor" onclick="mudar()"></div>
+        <p>R <input type="text" id="Rcor"></p>
+        <p>G <input type="text" id="Gcor"></p>
+        <p>B <input type="text" id="Bcor"></p>
+        <input type="button" value="Enviar" onclick="enviar()" style="font-size: 15pt; margin-top: 15px;">
+        <div class="resultado">
+            <p id="resR">R:</p>
+            <p id="resG">G:</p>
+            <p id="resB">B:</p>
+            <p id="resHex" style="text-align: center; margin-top: 10px;">Hexa</p>
+        </div>
+    </div>
+    <script src="jsex09.js"></script>
+</body>
+</html>
