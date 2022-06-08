@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+            font: normal 17pt Arial;
+
+        }
+        table{
+            background-color: rgb(184, 184, 184);
+            padding: 10px;
+        }
+        td{
+            padding: 10px;
+            background-color: rgb(82, 82, 82);
+            width: 300px;
+        }
+        input{
+            font-size: 15pt;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="principal">
+        <table>
+            <tr>
+                <td>Dias</td>
+                <td>Tarefas</td>
+            </tr>
+            <tr>
+                <td>Segunda</td>
+                <td id="t1">...</td>
+            </tr>
+            <tr>
+                <td>Terça</td>
+                <td id="t2">...</td>
+            </tr>
+            <tr>
+                <td>Quarta</td>
+                <td id="t3">...</td>
+            </tr>
+            <tr>
+                <td>Quinta</td>
+                <td id="t4">...</td>
+            </tr>
+        </table>
+        <label for="tarefat">Adicione uma tarefa:</label> <input type="text" name="" id="tarefat" placeholder="tarefa aqui..."></br>
+        <label for="numt">Dia:</label> <input type="number" name="" id="numt" min="1" max="4"> </br>
+        <input type="button" value="Enviar" id="enviando" onclick="envia()">
+    </div>
+
+    <script>
+        var obj = [document.getElementById("t1"), document.getElementById("t2"), document.getElementById("t3"), document.getElementById("t4")]
+        var conteudo = []
+        function envia(){
+            let dia = document.getElementById("numt")
+            let tar = document.getElementById("tarefat")
+
+            if(dia.value >= 1 && dia.value <= 4){
+                atualiza(dia.value, String(tar.value))
+            }else{
+                window.alert("[ERRO]Dia não selecionado ou numero invalido.")
+            }
+        }
+        // Altera a tabela, e salva o conteudo no cache
+        function atualiza(num, cont){
+            let muda = obj[num - 1]
+            muda.innerHTML = cont
+            localStorage.setItem([num-1], cont)
+        }
+        // Sempre que a pagina é carregada, atualiza a tabela com as ultimas tarefas
+        window.onload = function (){
+            for(let i=1; i<=4; i++){
+                let text = localStorage.getItem([i-1])
+                atualiza(i, text)
+            }
+        }
+    </script>
+</body>
+</html>
