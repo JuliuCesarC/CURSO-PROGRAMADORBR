@@ -15,19 +15,41 @@
             padding: 10px;
             text-align: center;
         }
+        #rgb{
+            width: 500px;
+            height: 500px;
+            background-color: black;
+            border-radius: 20px;
+            transition: 3s;
+        }
     </style>
 </head>
 <body>
-    <h1 onclick="inserir()">Testes</h1>
+    <h1 onclick="iniciar()">Iniciar</h1>
+    <h1 onclick="parar()">Parar</h1>
+
+    <h2 id="t1">Testando</h2>
+    <h2 id="t2">Testando2</h2>
+
+<div id="rgb"></div>
 
     <script>
+        var intervalo;
+        function mudar(){
+            let muda = document.getElementById("rgb")
+            var a = 255 * Math.random()
+            var b = 255 * Math.random()
+            var c = 255 * Math.random()
+            muda.style.backgroundColor = `rgb(${a}, ${b}, ${c})`
+            refresh(parseInt(a), parseInt(b), parseInt(c))
+        }
+        function iniciar(){
+        intervalo = setInterval(mudar, 2500)
+        }
+        function parar(){
+            clearInterval(intervalo)
+        }
         
-        
-        
-        let t = localStorage.getItem([0])
-        console.log(t)
-
-
     </script>
 </body>
 </html>

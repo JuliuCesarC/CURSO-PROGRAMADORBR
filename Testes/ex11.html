@@ -56,8 +56,11 @@
     </div>
 
     <script>
-        var obj = [document.getElementById("t1"), document.getElementById("t2"), document.getElementById("t3"), document.getElementById("t4")]
         var conteudo = []
+        function pega(i){
+            return document.getElementById(`${"t"+i}`)
+        }
+        
         function envia(){
             let dia = document.getElementById("numt")
             let tar = document.getElementById("tarefat")
@@ -70,15 +73,17 @@
         }
         // Altera a tabela, e salva o conteudo no cache
         function atualiza(num, cont){
-            let muda = obj[num - 1]
+            let muda = pega(num)
             muda.innerHTML = cont
-            localStorage.setItem([num-1], cont)
+            conteudo[num-1]=cont
+            localStorage.setItem("arraycont", JSON.stringify(conteudo))
         }
         // Sempre que a pagina é carregada, atualiza a tabela com as ultimas tarefas
         window.onload = function (){
+            let a1 = localStorage.getItem("arraycont")
+            let a2 = JSON.parse(a1)
             for(let i=1; i<=4; i++){
-                let text = localStorage.getItem([i-1])
-                atualiza(i, text)
+                atualiza(i, a2[i-1])
             }
         }
     </script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churrascometro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="principal">
+        <h1>Churrascometro</h1>
+        <div id="form">
+            <p><label for="npess">Adultos: </label><input type="number" name="" id="npess" max="100" min="2" placeholder="nº de pessoas"></p>
+            <p><label for="ncria">Crianças: </label><input type="number" name="" id="ncria" max="100" min="0" placeholder="nº de crianças"></p>
+            <p><label for="nbebe">Não bebem: </label><input type="number" name="" id="nbebe" max="100" min="0" placeholder="nº que não bebem"></p>
+            <p><label for="ntem">Horas: </label><input type="number" name="" id="ntem" max="12" min="1" placeholder="tempo de duração"></p>
+        </div>
+        <p><input onclick="calcular()" type="button" value="Enviar" id="botao"></p>
+        <div id="res"></div>
+    </div>
+    
+    
+    
+    
+    <script src="churras.js"></script>
+</body>
+</html>
