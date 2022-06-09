@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        h1{
+            float: left;
+            margin-right: 20px;
+            padding: 5px;
+            text-transform: uppercase;
+            background-color: rgb(83, 83, 83);
+        }
+        h1:hover{
+            background-color: rgb(45, 45, 45);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 onclick="aumenta()">clique aqui</h1>
+    <canvas id="tela" width="500px" height="500px"></canvas>
+
+
+<script>
+    let tela = document.querySelector("#tela")
+    let tl = tela.getContext("2d")
+    let inter;
+
+    // DESENHANDO O PAC-MAN
+    var circle = {
+    x: 260,
+    y: 250,
+    raio: 100,
+    inicio: 0,
+    fim: 2*Math.PI
+}
+    function drawCircle(c) {
+
+    tl.beginPath()
+    tl.rect(0,0,500,500)
+    tl.fillStyle = "bisque"
+    tl.fill()
+
+
+    tl.beginPath()
+    tl.strokeStyle = "black"
+    tl.lineWidth = 5
+    tl.fillStyle = 'yellow'
+
+    tl.arc(c.x, c.y, c.raio, c.inicio, c.fim);
+    tl.lineTo(240,250)
+    tl.closePath()
+
+    tl.fill()
+    tl.stroke()
+    tl.beginPath()
+    tl.arc(250, 190, 10, 0, 2*Math.PI)
+    tl.fillStyle = "black"
+    tl.fill()
+    tl.stroke()
+}
+
+function aumenta(){
+inter = setInterval(function (){
+    if(circle.fim < 2*Math.PI){
+        circle.fim += 0.1
+        circle.inicio -=0.1
+        drawCircle(circle)
+    }else if(circle.fim >= 2*Math.PI){
+        clearInterval(inter)
+        diminui()
+    }
+    
+},50)
+}
+function diminui(){
+inter = setInterval(function (){
+
+    if(circle.fim > 1.7*Math.PI){
+        circle.fim -= 0.1
+        circle.inicio += 0.1
+        drawCircle(circle)
+    }else if(circle.fim < 1.7*Math.PI){
+        clearInterval(inter)
+        aumenta()
+    }
+},50)
+}
+
+    // DESENHANDO UM RAIO
+    // tl.beginPath()
+    // tl.moveTo(0,0)
+    // tl.lineTo(230, 220)
+    // tl.lineTo(100, 250)
+
+    // tl.lineTo(500, 500)
+    
+    // tl.lineTo(270, 280)
+    // tl.lineTo(400, 250)
+    
+    // tl.lineTo(0, 0)
+    // tl.lineWidth = 5
+    // tl.strokeStyle = "red";
+    // tl.fillStyle = "yellow";
+    // tl.fill()
+    // tl.stroke()
+
+
+    // DESENHANDO UM SEGUNDO OBJETO
+    // tl.beginPath()
+    // tl.strokeStyle = "blue"
+    // tl.moveTo(500, 0)
+    // tl.lineTo(400, 200)
+    // tl.lineTo(250, 100)
+    // tl.closePath()
+    // tl.fillStyle = "green"
+    // tl.fill()
+    // tl.stroke()
+    
+    
+</script>
+</body>
+</html>
