@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+            font-size: 16pt;
+            color: white;
+            
+        }
+        #container{
+            background-color: rgb(170, 170, 170);
+            width: 80%;
+            height: 600px;
+            margin: auto;
+            
+            display: flex;
+            /* flex-wrap: wrap; */
+            /* Com o flex flow é possivel utilizar os 2 comandos flex no mesmo comando. */
+            /* flex-flow: column wrap; */
+            flex-direction: row;
+            justify-content: space-between;
+            /* align-items: flex-end; */
+            align-content: center;
+        }
+        .geral{
+            width: 300px;
+            height: 200px;
+        }
+        .div1{
+            background-color: red;
+            /* align-self: center; */
+        }
+        .div2{
+            background-color: blue;
+            /* flex-shrink: 0; */
+            /* order: 1; */
+        }
+        .div3{
+            background-color: green;
+            /* flex-grow: 2; */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="geral div1">1</div>
+        <div class="geral div2">2</div>
+        <div class="geral div3">3</div>
+        
+        
+    </div>
+
+</body>
+</html>

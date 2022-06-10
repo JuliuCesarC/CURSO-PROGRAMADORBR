@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+            font-size: 16pt;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            width: 1000px;
+            margin: auto;
+        }
+
+        /* É preciso utilizar as duas '--' para poder declarar um variavel. */
+        :root{
+            --var-color: white;
+            --var-width: 80%;
+        }
+        #span1{
+            background-color: var(--var-color);
+        }
+        #span2{
+            background-color: var(--var-color);
+        }
+        #span3{
+            background-color: var(--var-color);
+        }
+        #span4{
+            background-color: var(--var-color);
+        }
+        h1{
+            width: var(--var-width);
+            background-color: #505050;
+        }
+        h2{
+            width: var(--var-width);
+            background-color: #505050;
+        }
+    </style>
+</head>
+<body>
+    <h1>Titulo</h1>
+    <h2>subtitulo</h2>
+
+    <p>Lorem <span id="span1">ipsum</span> dolor sit amet consectetur adipisicing elit. Maxime animi accusamus ratione veniam saepe. Iure fuga <span id="span2">nesciunt</span>, a vero deleniti excepturi quisquam deserunt quam rem ratione eos nihil accusamus suscipit?</p>
+    <p>Lorem <span id="span3">ipsum</span> dolor sit amet consectetur adipisicing elit. Blanditiis illo fuga <span id="span4">nesciunt</span> beatae exercitationem adipisci quisquam sint impedit est tempore porro tempora repudiandae reiciendis voluptatibus, amet deserunt qui repellendus officia?</p>
+    
+</body>
+</html>
