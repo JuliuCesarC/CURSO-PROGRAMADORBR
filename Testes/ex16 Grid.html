@@ -8,19 +8,70 @@
     <style>
         body{
             background-color: gray;
+            color: white;
             font-size: 16pt;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
         #container{
-            width: 90%;
+            /* width: 90%; */
             height: 600px;
-            margin: auto;
-            background-color: rgb(160, 160, 160);
+            /* margin: auto; */
+            padding: 10px;
+            background-color: rgb(68, 68, 68);
 
+            display: grid;
+            /* gap: 10px;define como se fosse um 'margim' entre os itens do grid */
+            /* grid-template-rows: auto auto;
+            grid-template-columns: 2fr 1fr 4fr; 
+            pode ser substituidos por grid tamplate. */
+            /* grid-template: auto auto / auto auto auto; Define um grid com 2 linhas e 3 colunas*/
+            
+            /* justify-items: center; controla as linhas horizontais*/
+            /* align-items: flex-start; controla as linhas verticais */
+
+            /* justify-content: flex-start; */
+            /* align-content: stretch; */
+
+            /* grid-template-areas: "a2 a2 a2 a2 a2 a2"
+                                 "a1 a1 a3 a3 a3 a3"
+                                 "a1 a1 a5 a4 a4 a4"
+                                 "a6 a6 a6 a4 a4 a4" */
+            
+            grid-template: auto auto auto auto / auto auto auto auto auto auto;
         }
         .geral{
-            width: 200px;
-            height: 100px;
+            /* width: 200px;
+            height: 100px; */
+            padding-left: 10px;
+        }
+        .item1{
+            /* grid-area: a1; */
+            grid-row-start: 2;
+            grid-column-end: span 2;
+            grid-row-end: span 2;
+        }
+        .item2{
+            /* grid-area: a2; */
+            grid-column-end: span 6;
+        }
+        .item3{
+            /* grid-area: a3; */
+            grid-column-end: span 4;
+        }
+        .item4{
+            /* grid-area: a4; */
+            grid-column-start: 4;
+            grid-column-end: span 3;
+            grid-row-end: span 2;
+        }
+        .item5{
+            /* grid-area: a5; */
+            grid-column-start: 3;
+            grid-row-start: 3;
+        }
+        .item6{
+            /* grid-area: a6; */
+            grid-column-end: span 3;
         }
         .div1{
             background-color: red;
@@ -35,14 +86,12 @@
 </head>
 <body>
     <div id="container">
-        <div class="geral div1">1</div>
-        <div class="geral div2">2</div>
-        <div class="geral div3">3</div>
-        <div class="geral div1">4</div>
-        <div class="geral div2">5</div>
-        <div class="geral div3">6</div>
-        
-        
+        <div class="geral div1 item1">1</div>
+        <div class="geral div2 item2">2</div>
+        <div class="geral div3 item3">3</div>
+        <div class="geral div1 item4">4</div>
+        <div class="geral div2 item5">5</div>
+        <div class="geral div3 item6">6</div>
     </div>
     
 </body>
