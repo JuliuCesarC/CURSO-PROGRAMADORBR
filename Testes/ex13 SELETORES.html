@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+        body{
+            background-color: gray;
+            font-size: 1.5rem;
+        }
+        /* div p : seleciona todos os 'p' que estão dentro de uma 'div' mesmo não sendo filhos diretos dessa 'div' */
+        /* div + p : seleciona o primeiro 'p' que sucedem diretamente uma 'div' */
+        /* div ~ p : seleciona todos os 'p' que sucedem uma 'div', mesmo que haja algum elemento entre eles. */
+        /* div > p : seleciona os 'p' que são filhos direto de uma 'div' */
+        /* [width] : seleciona todos os elementos que possuem um atributo 'width' */
+        /* [width="700px"] : apenas os que possuem um atributo com o parametro de '700px' */
+        /* [title~="titulo1"] : todos os que possuem especificamente o parametro 'titulo1' */
+        /* [title^="tit"] : todos que começam com o parametro 'tit' */
+        /* [title$="1"] : todos que terminam com o parametro '1' */
+        /* [title*="o"] : TODOS que tenham a letra 'o' em qualquer lugar do parametro, ou seja, o 'titulo1, texto1, pfooter...' serão selecionados */
+
+        [title*="o"]{
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p id="upper" title="t1">Texto fora da div principal</p>
+        <div id="principal">
+            <header>
+                <h1 title="titulo1" width="700px">Titulo principal dentro do header</h1>
+                <p title="texto1">Paragrafo principal do header</p>
+            </header>
+            <section>
+                <h1 title="titulo2">Titulo principal dentro da section</h1>
+                <p>Qualquer texto</p>
+                <p id="pH1Section">Qualquer texto</p>
+                <p class="upper">Qualquer texto</p>
+                <p>Qualquer texto</p>
+                <div>
+                    <p>Outro texto dentro de uma div</p>
+                    <p>Outro texto dentro de uma div</p>
+                    <p>Outro texto dentro de uma div</p>
+                </div>
+                <span><p>TEXTO EXTRA após uma div, porem dentro de um span</p></span>
+                <p>TEXTO EXTRA após uma div</p>
+                <h4 width="700px">Elemento entre os 'p' que estão após uma div.</h4>
+                <p>TEXTO EXTRA após uma div</p>
+                <h2 class="upper">Titulo EXTRA</h2>
+                <footer width="500px">
+                    <p title="pfooter">Texto do footer</p>
+                    <p>Texto do footer</p>
+                    <p>Texto do footer</p>
+                </footer>
+                <p>TEXTO EXTRA</p>
+                <h2 title="tituloExtra">Titulo EXTRA</h2>
+                <h2 aria-required="h2Extra">Titulo EXTRA</h2>
+            </section>
+            <p>TEXTO EXTRA fora da section</p>
+            <p>TEXTO EXTRA fora da section</p>
+            <p>TEXTO EXTRA fora da section</p>
+        </div>
+        <p>'p' que sucede diretamente uma 'div'</p>
+    </main>
+
+    <script>
+        /*É POSSIVEL UTILIZAR OS MESMOS SELETORES COM JAVASCRIPT*/
+        // seleciona apenas o primeiro "title"
+        let seletor = document.querySelector('[title]')
+        console.log(seletor)
+
+        // Retorna um Array com todos os elementos com o atributo "title"
+        let seletorAll = document.querySelectorAll('[title]')
+        console.log(seletorAll)
+    </script>
+</body>
+</html>
