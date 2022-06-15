@@ -7,8 +7,11 @@ console.log(todasNotas)
 
 var objSemFunction = {
     nome: "Jão",
-    idade: 25}
+    idade: 25
+}
 
-let objComFunction = {...objSemFunction, function(){this.idade*2}}
+    // O exemplo abaixo adiciona uma função a um objeto ja criado.
+let objComFunction = {...objSemFunction, funcao: ()=>{let x= objSemFunction.idade*2; console.log(x)}}
 
-objComFunction()
+console.log(objComFunction)  
+objComFunction.funcao();
