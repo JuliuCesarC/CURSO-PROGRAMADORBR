@@ -1,9 +1,6 @@
 function na(nome, idade){return {nome, idade}}
-let alunos = [na("jão", 45),
-              na("Marci", 25),
-              na("Rosdrigo", 42),
-              na("Lusca", 29),
-              na("Jhenfiner", 33)]
+let alunos=[na("jão",45),na("Marci",25),na("Rosdrigo",42),na("Lusca",29),na("Jhenfiner",33)]
+
 
 // Recriando o metodo Filter
 function menosde30(al){return al.idade<30}
@@ -29,6 +26,10 @@ console.log(mapeia(mudaDisposicao))
 // __________________________________________________
 
 // Recriando o metodo Reduce
-function reduce(al){
-    
+function reduce(){
+    for(let al of alunos){
+        t2 += al.nome}
+    return t2;
 }
+var t2 = "";
+console.log(reduce())
