@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-image: url("Images/galaxy-g7423d0216_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 16pt;
+}
+#corpo{
+    width: 700px;
+    height: 700px;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.5);
+}
+#corpo{
+    display: grid;
+    gap: 10px;
+    grid-template: auto auto auto / auto auto auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.tabuleiro{
+    background-color: gray;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.7);
+    border-radius: 5px;
+    width: 180px;
+    height: 180px;
+    text-align: center;
+
+    transition: all 0.3s;
+}
+.tabuleiro:hover{
+    background-color: #5b5b5b;
+}
+
+img{
+    margin-top: 11px;
+}
