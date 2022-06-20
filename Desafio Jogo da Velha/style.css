@@ -39,7 +39,28 @@ body{
 .tabuleiro:hover{
     background-color: #5b5b5b;
 }
+#botao{
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: gray;
+    position: absolute;
+    padding: 10px;
+    border-radius: 10px;
+    top: 365px;
+    left: 30px;
+    transition: background-color 0.4s;
+}
+#botao:hover{
+    background-color: white;
+}
 
-img{
-    margin-top: 11px;
+.x:after{
+    content: "\2B50";
+    font-size: 120px;
+    margin: auto;
+}
+.o:after{
+    content: "\1F30C";
+    font-size: 120px;
+    margin: auto;
 }

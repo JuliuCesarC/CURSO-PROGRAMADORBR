@@ -9,11 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function handleClick(event) {
-    
-    console.log(event)
 
     let square = event.target;
-    console.log(square)
     let postion = square.id;
 
     if (handleMove(postion)) {
@@ -27,22 +24,23 @@ function handleClick(event) {
 }
 
 function updateSquare(postion) {
+    console.log(postion)
     let square = document.getElementById(postion.toString());
     let symbol = board[postion];
     square.innerHTML = `<div class='${symbol}'></div>`
 }
 
-function updateSquares() {
+// function updateSquares() {
 
-    let squares = document.querySelectorAll(".square");
+//     let squares = document.querySelectorAll(".square");
 
-    squares.forEach((square) => {
-        let postion = square.id;
-        let symbol = board[postion];
+//     squares.forEach((square) => {
+//         let postion = square.id;
+//         let symbol = board[postion];
 
-        if (symbol != '') {
-            square.innerHTML = `<div class='${symbol}'></div>`
-        }
-    })
+//         if (symbol != '') {
+//             square.innerHTML = `<div class='${symbol}'></div>`
+//         }
+//     })
 
-}
+// }
