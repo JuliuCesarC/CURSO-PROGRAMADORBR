@@ -5,13 +5,12 @@
 body{
     background-color: rgb(175, 175, 175);
     font-size: 16pt;
-    font-family: 'Fredoka One', sans-serif;
+    font-family: 'dfpop1-w9', Arial, Helvetica, sans-serif;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .carta{
     width: 150px;
     height: 150px;
@@ -64,7 +63,19 @@ body{
     background-color: yellow;
     border-radius: 10px;
 }
-
+.botao{
+    position: absolute;
+    left: 50px;
+    top: 100px;
+    padding: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    transition: background-color 0.4s;
+    top: 30px;
+}
+.botao:hover{
+    background-color: #8390a2;
+}
 #tabuleiro{
     max-width: 700px;
     margin-top: 20px;
