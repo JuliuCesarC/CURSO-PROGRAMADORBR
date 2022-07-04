@@ -4,7 +4,9 @@ Dentro do desafio do Jogo da Memória, temos algumas funções novas, e algumas 
 ARQUIVO SCRIPT01.JS
 
 -ARRAY.forEach( (parâmetro) => { } )
-	A função forEach pega cada item do array e joga para o 'parâmetro', e dentro da arrow function podemos trabalhar esses itens. Só pode ser utilizada em um array.
+	O método forEach executa uma função para cada item do array. exemplo:
+array.forEach(numeros => console.log(numeros*2) )
+Isso ira mostrar no console todos os numeros de um array mutiplicado por 2.
 
 -ELEMENTO.classList.
 	A propriedade classList serve para acessar o atributo 'class' do elemento html, dessa forma podemos adicionar uma classe com o 'classList.add("novaClasse")' e remover uma classe com o 'classList.remove("novaClasse")'.
@@ -37,3 +39,14 @@ ARQUIVO GAME.JS
 	Primeiro colocamos o nome, para depois atribuir uma função para esse nome, e para utilizar alguma variavel ou chamar outra função dentro do objeto é preciso utilizar o 'this' e como é um objeto, cada indice é separado por uma virgula.
 -variavel01: null / 'Texto aqui' / True / 33.5 ,
 	Aqui não precisamos utilizar um 'let' ou 'var', apenas atribuimos uma informação para esse indice.
+
+-ARRAY.filter( parametro => )
+	O método filter como o nome sugere, é um filtro que cria um novo array de acordo com o que for setado dentro da arrow function.
+let array01 = ['Jão', 'Sofhia', 'Marco', 'Jhenfiner']
+array01.filter(nomes => nomes.length>5)[0]
+	O filtro acima ira pegar apenas o primeiro texto com mais de 5 letras. Ou seja, cada item dentro do array que retornar 'true' de acordo com a logica dentro do arrow function ira para dentro desse novo array, e oq retorna 'false' é ignorado.
+
+-ARRAY.flatMap( parametro => )
+	O método flatMap retorna um novo array aplicando um callback para cada item do array original. Diferente do 'filter' que só adiciona o item se o teste logico der 'true', no flatMap ele sempre adiciona o item no novo array, exemplo:
+array.flatMap( nomes => nomes + "Cardoso" )
+O resultado é um novo array em que todos os nomes foram concatenados com com o texto "Cardoso", ou seja todos os nomes ficaram com o Cardoso no final.

@@ -15,10 +15,10 @@ let game = {
         'node',
         'react'],
 
-    setaCarta: function(idSelecionado){
-            // Cria um filtro que retorna toda carta com o mesmo id que foi selecionado, como cada carta tem um id aleatorio, sómente a carta selecionado que retornara. O resultado é o objeto da carta selecionada.
-        let card = this.cartas.filter(card => card.id === idSelecionado)[0];
+        setaCarta: function(idSelecionado){
             // O 'idSelecionado' é o id que a função 'viraCarta' enviou para aqui.
+            let card = this.cartas.filter(card => card.id === idSelecionado)[0];
+            // Cria um filtro que retorna toda carta com o mesmo id que foi selecionado, como cada carta tem um id aleatorio, sómente a carta selecionado que retornara. O resultado é o objeto da carta selecionada.
         if(card.flipped || this.travaDoJogo){
                 //Retorna falso caso a carta selecionada ja esteja virada, impedindo de selecionador a mesma carta 2 vezes, ou de selecionar uma carta que ja tenha feito um par.
             return false;
@@ -58,12 +58,12 @@ let game = {
        
     criandoCartasComTecs:function(){
         this.cartas = [];
-        // Loop com cada elemento do array 'tecnologias'
+        // O método forEach executa uma função para cada elemento do array 'tecnologias'
         this.tecnologias.forEach((nomeTec)=>{
             this.cartas.push(this.criaPardeCartas(nomeTec))
         })
             // Até aqui recebemos um array com cada index dele sendo um outro array, porem precisamos de um array apenas com o conteudo que esta dentro desses arrays.
-            // Para isso temos a função 'flatMap' que da forma como foi feito abaixo ira retornar um novo array com o conteudo de dentro desses arrays.
+            // Para isso temos o método 'flatMap' que cria um novo array aplicando um callback para cada item do array original. Na forma como foi feito abaixo ira retornar um novo array com todos os conteudos de dentro desses arrays.
         this.cartas = this.cartas.flatMap(conteudo=>conteudo);
             // Como a função dentro do flatMap é uma arrow function, e apenas retornamos uma informação, então podemos omitir o 'return'.
         this.embaralha()

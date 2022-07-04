@@ -10,12 +10,13 @@ function mostraCartas(){
     let tabuleiro = document.getElementById('tabuleiro')
     tabuleiro.innerHTML = '';
 
-        // Loop com cada elemento do array 'cartas'. Cada elemento é o objeto contendo as informações de cada carta.
+        // O método 'forEach' executa uma função para cada item do array 'cartas'. Como cada item do array é um objeto, o parametro da arrow function é o objeto contendo as informações de cada carta.
         game.cartas.forEach( (ctObjeto) => {
             let criaCarta = document.createElement('div')
             criaCarta.id = ctObjeto.id  //A div que esta sendo criada, recebe o id que esta dentro do objeto com as informações das cartas.
             criaCarta.classList.add(CARD)
-            criaCarta.dataset.icon = ctObjeto.icon //O dataset ira criar um atributo dentro do elemento 'div' criado acima, com o nome desse atributo sendo 'data-icon' e com o parâmetro dentro desse atributo sendo o 'ctObjeto.icon'. Utilizando posteriormente o 'dataset' podemos verificar se as 2 cartas viradas são a mesma.
+                //O dataset abaixo não tem utilidade neste projeto.
+            criaCarta.dataset.icon = ctObjeto.icon //O dataset ira criar um atributo dentro do elemento 'div' criado acima, com o nome desse atributo sendo 'data-icon' e com a informação dentro desse atributo sendo o 'ctObjeto.icon'.
 
             criaConteudoCartas(ctObjeto, criaCarta) //Envia para a função o objeto com as informações da carta, e a div que foi criada.
 
