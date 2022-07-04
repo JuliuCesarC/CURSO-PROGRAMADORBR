@@ -6,22 +6,21 @@ comecaJogo()
 function comecaJogo(){
     mostraCartas(game.criandoCartasComTecs());
 }
-
 function mostraCartas(){
     let tabuleiro = document.getElementById('tabuleiro')
     tabuleiro.innerHTML = '';
 
         // Loop com cada elemento do array 'cartas'. Cada elemento é o objeto contendo as informações de cada carta.
-        game.cartas.forEach((ctObjeto)=>{
+        game.cartas.forEach( (ctObjeto) => {
             let criaCarta = document.createElement('div')
             criaCarta.id = ctObjeto.id  //A div que esta sendo criada, recebe o id que esta dentro do objeto com as informações das cartas.
             criaCarta.classList.add(CARD)
-            criaCarta.dataset.icon = ctObjeto.icon //O dataset ira colocar o icone do objeto dentro do parametro 'data-icon' da div. Com isso poderemos verificar se as 2 cartas viradas são a mesma.
+            criaCarta.dataset.icon = ctObjeto.icon //O dataset ira criar um atributo dentro do elemento 'div' criado acima, com o nome desse atributo sendo 'data-icon' e com o parâmetro dentro desse atributo sendo o 'ctObjeto.icon'. Utilizando posteriormente o 'dataset' podemos verificar se as 2 cartas viradas são a mesma.
 
             criaConteudoCartas(ctObjeto, criaCarta) //Envia para a função o objeto com as informações da carta, e a div que foi criada.
 
             criaCarta.addEventListener('click', viraCarta) //Adiciona um evento de clique, que ativa a função 'viraCarta', e o elemento 'div' selecionado é enviado para essa função.
-            tabuleiro.appendChild(criaCarta) //Adiciona a div ao tabuleiro. 
+            tabuleiro.appendChild(criaCarta) //Adiciona a div de cada carta ao tabuleiro. 
         })
 }
 function criaConteudoCartas(ctObjeto, elementoPai){
@@ -29,9 +28,9 @@ function criaConteudoCartas(ctObjeto, elementoPai){
     criaFace(BACK, ctObjeto, elementoPai);
 }
 function criaFace(FACE, ctObjeto, elementoPai){
-    let elementoFace = document.createElement('div') //Cria uma nova div dentro da div que foi criada acima.
+    let elementoFace = document.createElement('div') //Cria uma nova div que ira dentro da div que foi criada na função 'mostraCartas'.
     elementoFace.classList.add(FACE) //Adiciona a classe da carta, se é a frente ou a parte de traz.
-    if(FACE == FRONT){
+    if(FACE == FRONT){ //Caso seja a frente da carta, então adiciona a imagem.
         let elementoFilho = document.createElement('img')
         elementoFilho.src = "./images/"+ ctObjeto.icon +".png" //Adiciona a imagem da frente da carta.
         elementoFace.appendChild(elementoFilho) //Adiciona a imagem como filho da nova div criada.
@@ -47,7 +46,7 @@ function viraCarta(){
         if(game.segundaCarta){ //Somente executa os comandos abaixo caso seja a segunda carta selecionada, pois não adiante verificar o par com apenas uma carta selecionada.
             if(game.verificaMatch()){
                 // Caso o par seja formado, a função 'verificaMatch' retorna true, que executa o comando:
-                game.limpaCartas() //O comando 'limpaCartas' ira remover as informações das cartas selecionadas da 'primeiraCarta' e 'segundaCarta', desse forma as cartas que formaram um par não poderam ser desviradas.
+                game.limpaCartas() //O comando 'limpaCartas' ira remover as informações das cartas selecionadas da 'primeiraCarta' e 'segundaCarta', desse forma impede as cartas que formaram um par de serem desviradas.
                 if(game.verificaGameOver()){ //E por ultimo verifica se o par formado, foi o ultimo do jogo, dessa forma aparecendo a tela de final do jogo.
                     let gameOver = document.getElementById('gameOver')
                     gameOver.style.display = 'flex';
@@ -55,14 +54,14 @@ function viraCarta(){
             }else{
                 setTimeout(() => { //O 'setTimeout' é para dar um delay na animação de desvirar as cartas, para dar tempo do jogador ver qual foi a segunda carta selecionada.
                     let primeiraCartaVista = document.getElementById(game.primeiraCarta.id)
-                        // O 'game.primeiraCarta.id' ira retornar uma string com a informação do id da carta selecionada. Dessa forma o getElement ira buscar esta carta no html para poder trabalhar ela aqui dentro.
+                        // O 'game.primeiraCarta.id' ira retornar uma string com a informação do id da carta selecionada. Dessa forma o getElement ira buscar esta carta no html para poder trabalhar ela aqui dentro do 'script01'.
                     let segundaCartaVista = document.getElementById(game.segundaCarta.id)
                     
                     primeiraCartaVista.classList.remove('flip') //O 'classList' acessa a classe da carta selecionada, assim podendo removar o 'flip', que faz a animação de desvirar a carta.
                     segundaCartaVista.classList.remove('flip')
                     game.desviraCartas()
                     }, 1000);
-            };
+            }
         }
     }
 }

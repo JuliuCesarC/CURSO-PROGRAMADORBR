@@ -23,7 +23,6 @@ let game = {
                 //Retorna falso caso a carta selecionada ja esteja virada, impedindo de selecionador a mesma carta 2 vezes, ou de selecionar uma carta que ja tenha feito um par.
             return false;
         }
-
         if(!this.primeiraCarta){
                 // Caso seja a primeira carta selecionada, a 'primeiraCarta' recebe o objeto com as informações da carta, e a opção 'flipped' vira 'true', para que a carta faça a animação de virar.
             this.primeiraCarta = card;
@@ -35,7 +34,6 @@ let game = {
             this.travaDoJogo = true; //Para garantir que a animação de desvirar as cartas ocorra normalmente, a 'travaDoJogo' é ativada, dessa forma impedindo de selecionar qualquer carta durante a animação.
             return true;
         }
-
     },
     verificaMatch:function(){
         return this.primeiraCarta.icon === this.segundaCarta.icon //Compara o icone da primeira carta com o da segunda carta, caso verdadeiro retorna 'true' e assim o par esta formado. 
@@ -64,9 +62,10 @@ let game = {
         this.tecnologias.forEach((nomeTec)=>{
             this.cartas.push(this.criaPardeCartas(nomeTec))
         })
-            // Até aqui recebemos um array com cada index dele sendo um outro array, porem precisamos de um array com apenas o conteudo que esta dentro desses arrays.
-            // Para isso temos a função flatMap que vai retornar um novo array com o conteudo de dentro desses arrays.
-        this.cartas = this.cartas.flatMap(par=>par);
+            // Até aqui recebemos um array com cada index dele sendo um outro array, porem precisamos de um array apenas com o conteudo que esta dentro desses arrays.
+            // Para isso temos a função 'flatMap' que da forma como foi feito abaixo ira retornar um novo array com o conteudo de dentro desses arrays.
+        this.cartas = this.cartas.flatMap(conteudo=>conteudo);
+            // Como a função dentro do flatMap é uma arrow function, e apenas retornamos uma informação, então podemos omitir o 'return'.
         this.embaralha()
     },
 
