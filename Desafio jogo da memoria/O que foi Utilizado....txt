@@ -1,6 +1,8 @@
 Dentro do desafio do Jogo da Memória, temos algumas funções novas, e algumas funções que ja foi mostrado anteriormente, porém muito dessas funções são utilizadas de maneira muito diferente. 
 	Abaixo temos as funções utilizadas em ordem:
 
+ARQUIVO SCRIPT01.JS
+
 -ARRAY.forEach( (parâmetro) => { } )
 	A função forEach pega cada item do array e joga para o 'parâmetro', e dentro da arrow function podemos trabalhar esses itens. Só pode ser utilizada em um array.
 
@@ -13,9 +15,25 @@ ELEMENTO.dataset.Nome = "Jão";
 Agora dentro do elemento temos o atributo 'data-Nome="Jão"', que pode ser lido/alterado com o dataset. Ainda podemos ter outros 'data-set' dentro do mesmo elemento.
 
 -ELEMENTO.addEventListener('', function)
-	O método addEventListener já foi visto anteriormente, porém ele possui uma característica que foi explorada nesse Desafio. Quando adicionamos um evento que ativa uma função, as informações do elemento são enviadas para a função e podemos acessar essas informações com o 'this' mesmo que a função não tenha setado algum parametro, exemplo:
+	O método addEventListener já foi visto anteriormente, porém ele possui uma característica que foi explorada nesse Desafio. Quando adicionamos um evento que ativa uma função, as informações do elemento são enviadas para a função, e podemos acessar essas informações com o 'this' mesmo que a função não tenha setado algum parametro, exemplo:
 ELEMENTO.addEventListener('click', fazAlgo)
 function fazAlgo(){
    if(this.id == '123'){....}
 }
-Se o elemento possuir ID podemos acessar com o 'this.id', caso o elemento tenha outros atributos, também podemos acessar eles.
+Se o elemento possuir ID podemos acessar com o 'this.id', caso o elemento tenha outros atributos, também podemos acessar eles. Podemos acessar os filhos desse elemento
+this.children[1] : acessando o segundo filho.
+
+-ELEMENTO.style.
+	A propriedade style é uma maneira de modificar o CSS de um elemento html com javaScript. 
+----------/----------
+ARQUIVO GAME.JS
+	No arquivo game.js, foi criado todas as funções e variaveis dentro de um objeto, dessa maneira podemos chamar as funções e variaveis da seguinte maneira:
+-OBJETO.qualquerFunção()
+-OBJETO.variavel01
+	Porém temos algumas diferenças na hora de setar um função ou variavel, exemplo:
+-qualquerFunção: function(){
+    return this.variavel01 = true
+ },
+	Primeiro colocamos o nome, para depois atribuir uma função para esse nome, e para utilizar alguma variavel ou chamar outra função dentro do objeto é preciso utilizar o 'this' e como é um objeto, cada indice é separado por uma virgula.
+-variavel01: null / 'Texto aqui' / True / 33.5 ,
+	Aqui não precisamos utilizar um 'let' ou 'var', apenas atribuimos uma informação para esse indice.
