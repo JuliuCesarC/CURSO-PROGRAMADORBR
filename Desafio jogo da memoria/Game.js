@@ -32,13 +32,13 @@ let game = {
         }else{
             this.segundaCarta = card;
             this.segundaCarta.flipped = true;
-            this.travaDoJogo = true; //Para garantir que a animação de desvirar as cartas ocorra normalmente, e 'travaDoJogo' é ativada, dessa forma impedindo de selecionar qualquer carta durante a animação.
+            this.travaDoJogo = true; //Para garantir que a animação de desvirar as cartas ocorra normalmente, a 'travaDoJogo' é ativada, dessa forma impedindo de selecionar qualquer carta durante a animação.
             return true;
         }
 
     },
     verificaMatch:function(){
-        return this.primeiraCarta.icon === this.segundaCarta.icon //Compara o icone da primeira carta com o da segunda carta, caso verdadeiro retorna 'true' e o par esta formado. 
+        return this.primeiraCarta.icon === this.segundaCarta.icon //Compara o icone da primeira carta com o da segunda carta, caso verdadeiro retorna 'true' e assim o par esta formado. 
     },
 
     desviraCartas(){ //Esta função não ativa a animação de desvirar as cartas em si, porém ela atualiza a informação da carta.
@@ -57,44 +57,46 @@ let game = {
         return this.cartas.filter(cards=>!cards.flipped).length == 0; //Caso o array tenha o comprimento(length) de 0, ou seja todas as cartas formaram um par e estão viradas, então retorna 'true'. 
     },
 
-        criandoCartasComTecs:function(){
-            this.cartas = [];
-            // Loop com cada elemento do array 'tecnologias'
-            this.tecnologias.forEach((nomeTec)=>{
-                this.cartas.push(this.criaPardeCartas(nomeTec))
-            })
-                // Até aqui recebemos um array com cada index dele sendo um outro array, porem precisamos de um array com apenas o conteudo que esta dentro desses arrays.
-                // Para isso temos a função flatMap que vai retornar um novo array com o conteudo de dentro desses arrays.
-            this.cartas = this.cartas.flatMap(par=>par);
-            this.embaralha()
-        },
+       
+    criandoCartasComTecs:function(){
+        this.cartas = [];
+        // Loop com cada elemento do array 'tecnologias'
+        this.tecnologias.forEach((nomeTec)=>{
+            this.cartas.push(this.criaPardeCartas(nomeTec))
+        })
+            // Até aqui recebemos um array com cada index dele sendo um outro array, porem precisamos de um array com apenas o conteudo que esta dentro desses arrays.
+            // Para isso temos a função flatMap que vai retornar um novo array com o conteudo de dentro desses arrays.
+        this.cartas = this.cartas.flatMap(par=>par);
+        this.embaralha()
+    },
 
-        criaPardeCartas:function(nomeTec){
-                // Retorna um array com 2 objetos com id diferentes e aleatorio.
-            return [{
-                id: this.criaID(nomeTec),
-                icon: nomeTec,
-                flipped: false
-            },{
-                id: this.criaID(nomeTec),
-                icon: nomeTec,
-                flipped: false
-            }]
-        },
-        criaID:function(tec){
-            return tec + parseInt(Math.random()*1000);
-        },
-        embaralha:function(){
-            let indexAtual = this.cartas.length;
-            let randomIndex = 0;
-        
-            while(indexAtual != 0){
-                randomIndex = Math.floor(Math.random()*indexAtual)
-                indexAtual--;
-        
-                [this.cartas[randomIndex], this.cartas[indexAtual]] = [this.cartas[indexAtual], this.cartas[randomIndex]]
-            }
+    criaPardeCartas:function(nomeTec){
+            // Retorna um array com 2 objetos com id diferentes e aleatorio.
+        return [{
+            id: this.criaID(nomeTec),
+            icon: nomeTec,
+            flipped: false
+        },{
+            id: this.criaID(nomeTec),
+            icon: nomeTec,
+            flipped: false
+        }]
+    },
+    criaID:function(tec){
+            // Cria o ID aleatorio para a função acima.
+        return tec + parseInt(Math.random()*1000);
+    },
+    embaralha:function(){
+        let indexAtual = this.cartas.length;
+        let randomIndex = 0;
+            // Tem a função de embaralhar as cartas. Gera um index aleatorio entre 0 a 20, que é o numero de cartas, e assim troca a carta de index atual com a aleatoria, dessa forma substituindo cada carta uma vez temos o baralho embaralhado.
+        while(indexAtual != 0){
+            randomIndex = Math.floor(Math.random()*indexAtual)
+            indexAtual--;
+    
+            [this.cartas[randomIndex], this.cartas[indexAtual]] = [this.cartas[indexAtual], this.cartas[randomIndex]]
         }
+    }
 }
 // Abaixo temos uma maneira de embaralhar um array, porem ele gera um novo array com base no array original. 
 // function embaralha(array){

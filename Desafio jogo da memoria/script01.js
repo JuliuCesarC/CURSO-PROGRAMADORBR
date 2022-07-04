@@ -3,7 +3,6 @@ const BACK = "cartaAtraz"
 const CARD = "carta"
 
 comecaJogo()
-
 function comecaJogo(){
     mostraCartas(game.criandoCartasComTecs());
 }
@@ -67,12 +66,12 @@ function viraCarta(){
         }
     }
 }
-
+    // O botão de resetar que aparece no game over.
 function restart(){
-    game.limpaCartas();
-    comecaJogo()
+    game.limpaCartas(); //Por garantia ativa a função limpaCartas, para limpar qualquer informação do jogo anterior.
+    comecaJogo() //Ativa a função que gera as novas cartas do baralho.
     let gameOver = document.getElementById('gameOver')
-    gameOver.style.display = 'none';
+    gameOver.style.display = 'none'; //Remove a tela de Game Over.
 }
 
 
