@@ -1,2 +1,3 @@
-# CURSO-HTML--CSS-E-JS-PROGRAMADORBR
- 
+# CURSO PROGRAMADORBR 
+
+Pasta com os arquivos dos desafios e aulas feitos durante o curso ProgramadorBR
