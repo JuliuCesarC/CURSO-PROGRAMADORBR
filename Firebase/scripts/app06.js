@@ -51,19 +51,28 @@ authentication.onAuthStateChanged(usuarios=>{
         console.log('Ninguém logado')
     }
 })
+// Os métodos de login não modificam tem como padrão de persistencia para 'Local', ou seja, o usuario pode abrir varias abas no mesmo navegador e continuara logado. Porém podemos alterar isso com o 'setPersistence'.
 function login(){
-    // O método abaixo tem a função de logar o usuario. É preciso do email e da senha.
-    authentication.signInWithEmailAndPassword(Email2, Senha2)
-    .then((users)=>{
-        console.log('Usuario logou')
+    // O 'Persistence' possui 3 opções:
+    //--'LOCAL' que é o padrão, continua logado enquanto no mesmo navegador.
+    //--'SESSION' que é só na aba que foi efetuado o  login.
+    //--'NONE' que é só 1 login, se atualizar a pagina ele desloga.
+    authentication.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    // Então dentro do do 'setPersistence' efetuar o login.
+    .then(()=>{
+        // O método abaixo tem a função de logar o usuario. É preciso do email e da senha.
+        authentication.signInWithEmailAndPassword(Email2, Senha2)
+        .then((users)=>{
+            console.log('Usuario logou')
+        }).catch(erro=>{
+            console.log(erro)
+        })
     }).catch(erro=>{
         console.log(erro)
     })
+
 }
 // login()
-
-
-
 function logout(){
     // O método abaixo tem a função de deslogar o usuario.
     authentication.signOut().then(()=>{
