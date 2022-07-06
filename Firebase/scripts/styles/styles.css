@@ -4,3 +4,16 @@ body{
     color: white;
     
 }
+.botao{
+    text-align: center;
+    border: 5px solid white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 10px;
+    width: 100px;
+    transition: all 0.4s;
+}
+.botao:hover{
+    background-color: white;
+    color: gray;
+}

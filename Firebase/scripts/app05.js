@@ -23,25 +23,34 @@ const analytics = getAnalytics(app);
     // Precisamos inicializar o firebase para posteriormente podermos obter alguma informação do servidor.
 firebase.initializeApp(firebaseConfig)
 
-let dataBase = firebase.firestore();
+var dataBase = firebase.firestore();
 const TURMA = 'turmaA'
 
-// Quando precisamos apagar um documento inteiro, utilizamos o 'delete' após o 'doc' com o identificador desse documento.
-dataBase.collection(TURMA).doc('N8DlBF6Z9YMzg7YgWcyu').delete().then(()=>{
-    console.log('Documento apagado com sucesso')
-}).catch(erro=>{
-    console.log(erro)
-})
 
-// Caso necessarios apagar todos os documentos de uma coleção, precisamos apagar individualmente cada documento.
-dataBase.collection(TURMA).get().then(snapshot=>{
-    snapshot.forEach(doc=>{ //O forEach executa uma função para cada item da coleção, e além disso obtem as informações desse documentos.
-        dataBase.collection(TURMA).doc(doc.id).delete() //Então com o ID do documento e o método 'delete', removemos o documento da coleção.
-        .then(()=>{ //Como o 'delete' também é uma 'promise' podemos utilizar o 'then'.
-            console.log('Documentos deletados.')
-        })
-        .catch(erro=>{
-            console.log(erro)
-        })
-    })
-})
+function nomes(){
+    return parseInt(Math.random()*100000)
+}
+function notas(){
+    return (Math.random()*10).toFixed(1)
+}
+function faltas(){
+    return Math.floor(Math.random()*4)
+}
+
+
+// for(let i=0; i<10; i++){
+//     dataBase.collection(TURMA).add({
+//         Nome: nomes(),
+//         Notas: {Nota1: notas(), Nota2: notas(), Nota3: notas()},
+//         Faltas: faltas()
+//     }).then((docs)=>{
+//         console.log('Os documentos "',docs,'" foram adicionados.')
+//     })
+// }
+
+
+// dataBase.collection(TURMA).get().then(snapshot=>{
+//     snapshot.forEach(docs=>{
+//         dataBase.collection(TURMA).doc(docs.id).delete()
+//     })
+// })
