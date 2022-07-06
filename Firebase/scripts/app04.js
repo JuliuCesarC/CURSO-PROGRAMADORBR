@@ -26,12 +26,22 @@ firebase.initializeApp(firebaseConfig)
 let dataBase = firebase.firestore();
 const TURMA = 'turmaA'
 
-// O 'onSnapshot' é um método que fica observando o servidor, e sempre que houver alguma atualização no banco de dados, ele é ativado. 
-// Porém como vemos abaixo temos um 'where' que esta buscando apenas os alunos com a 'Nota1' maior que 6, ou seja, se houver alguma alteração nas informações de algum aluno com nota abaixo de 6, mesmo o 'onSnapshot' sendo ativado, nada acontece. O 'where' só deixara as funções abaixo serem executadas caso a 'Nota1' desse aluno seja alterada para acima de 6. Se houver alguma alteração nas informações de um aluno com 'Nota1' maior que 6, o 'onSnapshot' também sera ativado.
-dataBase.collection(TURMA).where('Notas.Nota1', '>', 6).onSnapshot((snapshot) => {
-    // O 'onSnapshot' não é uma promise, por isso que utilizamos um callback para executar as funções abaixo.
-    snapshot.forEach(doc=>{
-        console.log(doc.data())
+// Quando precisamos apagar um documento inteiro, utilizamos o 'delete' após o 'doc' com o identificador desse documento.
+dataBase.collection(TURMA).doc('N8DlBF6Z9YMzg7YgWcyu').delete().then(()=>{
+    console.log('Documento apagado com sucesso')
+}).catch(erro=>{
+    console.log(erro)
+})
+
+// Caso necessarios apagar todos os documentos de uma coleção, precisamos apagar individualmente cada documento.
+dataBase.collection(TURMA).get().then(snapshot=>{
+    snapshot.forEach(doc=>{ //O forEach executa uma função para cada item da coleção, e além disso obtem as informações desse documentos.
+        dataBase.collection(TURMA).doc(doc.id).delete() //Utilizando o método 'delete', todos os documentos seram removidos.
+        .then(()=>{ //Como o 'delete' também é uma 'promise' podemos utilizar o 'then'.
+            console.log('Documentos deletados.')
+        })
+        .catch(erro=>{
+            console.log(erro)
+        })
     })
-    console.log('----------/----------')
 })

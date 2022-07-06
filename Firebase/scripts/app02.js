@@ -27,47 +27,49 @@ let dataBase = firebase.firestore();
 const TURMA = 'turmaA'
 
 // O método 'add' serve para adicionar um documento à coleção. O add é uma 'promise' e recebe um objeto como parametro.
-// dataBase.collection(TURMA).add({
+dataBase.collection(TURMA).add({
     // Quando utilizamos o add, o nome do documento/ID é gerado aleatoriamente.
-//     Nome: {Nome: "Marco",Sobrenome: "da Rosa"},
-//     Notas: {Nota1: 7.5, Nota2: 6.8}
-// }).then(doc=>{ //O add tambem retorna uma promise com o objeto do documento adicionado.
-//     console.log(`O documento foi adicionado com sucesso:`, doc)
-// }).catch(erro=>{
-//     console.log(erro)
-// })
+    Nome: {Nome: "Marco",Sobrenome: "da Rosa"},
+    Notas: {Nota1: 7.5, Nota2: 6.8}
+}).then(doc=>{ //O 'add' tambem retorna para a 'promise' o objeto do documento adicionado.
+    console.log(`O documento foi adicionado com sucesso:`, doc)
+}).catch(erro=>{
+    console.log(erro)
+})
 
 // O método 'set' em conjunto com o 'doc' possibilita adicionar ou alterar as informações do documento. Dentro do 'doc' é colocado o nome desejado do documento a ser criado ou alterado, e o 'set' coloca essas informações no Firestore.
-// dataBase.collection(TURMA).doc('Aluno numero 8').set({
-    // IMPORTANTE, o set sobrescreve os dados do documento, então caso seja necessario só alterar alguma informação, utilizar o método 'update'.
-//     Nome: {Nome: "Juiliana",Sobrenome: "Felisbertina"},
-//     Notas: {Nota1: 7, Nota2: 7}
-// }).then(()=>{ //Diferente do add, o set não retorna para a promise o objeto adicionado.
-//     console.log('Documento inserido com sucesso')
-// }).catch(erro=>{
-//     console.log(erro)
-// })
+dataBase.collection(TURMA).doc('Aluno numero 8').set({
+    // IMPORTANTE, o set sobrescreve os dados do documento inteiro, então caso seja necessario alterar só algum campo, utilizar o método 'update'.
+    Nome: {Nome: "Juiliana",Sobrenome: "Felisbertina"},
+    Notas: {Nota1: 7, Nota2: 7}
+}).then(()=>{ //Diferente do add, o 'set' não retorna para a 'promise' o objeto que foi adicionado.
+    console.log('Documento inserido com sucesso')
+}).catch(erro=>{
+    console.log(erro)
+})
 
-// O método 'update' como o nome sugere, serve para atualizar informações no documento, diferente do 'set' que sobrescreveria e removeria os outros dados.
-// dataBase.collection(TURMA).doc('Aluno numero 8').update({
-//     'Nome.Sobrenome': 'Fragnhani',
-//     // Como as informações do 'Nome' no documento estão dentro de um objeto, é possivel por exemplo alterar apenas o 'sobrenome' com as aspas e o ponto como foi feito acima.
-//     'Notas.Nota1': 7.5,
-//     // Podemos adicionar novos campos dentro do documento com o update também.
-//     Faltas: 4,
-//     ProvasFeitas: ['Prova 1 feita', 'Prova 2 feita']
-// }).then(()=>{
-//     console.log('Documento atualizado com sucesso')
-// }).catch(erro=>{
-//     console.log(erro)
-// })
+// O método 'update' como o nome sugere, serve para atualizar informações no documento, diferente do 'set' que sobrescreve e remove os outros dados.
+dataBase.collection(TURMA).doc('Aluno numero 8').update({
+    'Nome.Sobrenome': 'Fragnhani',
+    // Acima temos um exemplo de como alterar uma informação que esta dentro de um objeto. É preciso utilizar as Aspas'' e o Ponto.
+    'Notas.Nota1': 7.5,
+    // Podemos adicionar novos campos dentro do documento com o update também.
+    Faltas: 4,
+    ProvasFeitas: ['Prova 1 feita', 'Prova 2 feita']
+}).then(()=>{
+    console.log('Documento atualizado com sucesso')
+}).catch(erro=>{
+    console.log(erro)
+})
 
-// dataBase.collection(TURMA).doc('Aluno numero 8').update({
-//     // Caso necessario adicionar informações em um array, é preciso utilizar as funções abaixo. O 'FieldValue' com o 'arrayUnion' adiciona a informação no array, com o 'arrayRemove' remove a informação do array, com o 'increment' incrementa o numero no campo selecionado, por exemplo abaixo no campo da 'Nota1'.
-//     ProvasFeitas: firebase.firestore.FieldValue.arrayUnion('Prova 3 feita'),
-//     'Notas.Nota1': firebase.firestore.FieldValue.increment(2)
-// }).then(()=>{
-//     console.log('Documento atualizado com sucesso')
-// }).catch(()=>{
-//     console.log(erro)
-// })
+dataBase.collection(TURMA).doc('Aluno numero 8').update({
+    // Caso necessario adicionar informações em um array, é preciso utilizar as funções abaixo. O 'FieldValue' com o 'arrayUnion' adiciona a informação no array, com o 'arrayRemove' remove a informação do array, com o 'increment' incrementa o numero no campo selecionado, por exemplo abaixo no campo da 'Nota1'.
+    ProvasFeitas: firebase.firestore.FieldValue.arrayUnion('Prova 3 feita'),
+    'Notas.Nota1': firebase.firestore.FieldValue.increment(2)
+    // Podemos também utilizar o 'FieldValue.delete()' para remover um campo.
+    //Faltas: firebase.firestore.FieldValue.delete()
+}).then(()=>{
+    console.log('Documento atualizado com sucesso')
+}).catch(()=>{
+    console.log(erro)
+})

@@ -31,8 +31,8 @@ dataBase.collection('turmaA').get().then((snapshot) => {
     // Geralmente é utilizado como NOME do parametro da arrow function do 'then' o nome 'snapshot'. 
     snapshot.forEach((doc)=>{ 
     // Como a coleção é mais ou menos como um "array", então podemos utilizar um 'forEach' para executar uma função com cada item desta coleção. O elemento 'doc' que utilizamos acima será um JSON.
-        //console.log(doc.data()) //O '.data()' é um método que retorna os dados dessa coleção.
-        //console.log(doc.data().Nome)//Imprime os nomes que foram setados nos dados da coleção.
+        console.log(doc.data()) //O '.data()' é um método que retorna os dados dessa coleção.
+        console.log(doc.data().Nome)//Imprime os nomes que foram setados nos dados da coleção.
     })
 })
 
@@ -41,7 +41,8 @@ let db = dataBase.collection('turmaA').doc('Jpuxf8VDFeLfWJJecras')
 db.get().then((doc)=>{
     // console.log(doc.data())
 })
-// Com o método 'where' é possivel buscar as informações desejadas com outra maneira além do ID. Por exemplo abaixo, buscamos todos os alunos que tenham o sobrenome 'Silva'. Lembrando que depois do where é preciso em get, e o get pega o documento inteiro, não apenas o sobrenome que procuramos com o where.
+
+// Com o método 'where' é possivel buscar as informações desejadas com outra maneira além do ID. Por exemplo abaixo, buscamos todos os alunos que tenham o sobrenome 'Silva'. Lembrando que depois do where é preciso um 'get', que pega o documento inteiro, não apenas o sobrenome que procuramos com o where.
 dataBase.collection('turmaA')
 .where('Nome.Sobrenome', '==', 'Silva')
 .get()
