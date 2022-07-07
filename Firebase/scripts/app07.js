@@ -22,7 +22,46 @@ const analytics = getAnalytics(app);
     // Precisamos inicializar o firebase para posteriormente podermos obter alguma informação do servidor.
 firebase.initializeApp(firebaseConfig)
 
-const TURMA = 'turmaA'
+const ITENS = 'itens'
 let dataBase = firebase.firestore();
 let authentication = firebase.auth();
+let email = 'email@testando.com'
+let senha = 'lkjhgfdsa'
 
+authentication.onAuthStateChanged(usuarios=>{
+    if(usuarios){
+        console.log('Usuario que esta logado',usuarios)
+    }else{
+        console.log('Ninguem logado')
+    }
+})
+function logar(){
+    authentication.signInWithEmailAndPassword(email, senha)
+    .then(()=>{
+        console.log('Usuario logou')
+    }).catch(erro=>{
+        console.log(erro)
+    })
+}
+// logar()
+
+function adicionaItem(){
+    dataBase.collection(ITENS).add({
+        valor: Math.floor(Math.random()*1000)
+    }).then(doc=>{
+        console.log('Documento adicionado com sucesso.')
+    }).catch(erro=>{
+        console.log(erro)
+    })
+}
+// adicionaItem()
+
+function adicionaUsuario(){
+    authentication.createUserWithEmailAndPassword(email, senha)
+    .then(user=>{
+        console.log('Usuario criado ',user)
+    }).catch(erro=>{
+        console.log(erro)
+    })
+}
+// adicionaUsuario()

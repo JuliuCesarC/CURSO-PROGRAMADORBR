@@ -22,19 +22,14 @@ const analytics = getAnalytics(app);
     // Precisamos inicializar o firebase para posteriormente podermos obter alguma informação do servidor.
 firebase.initializeApp(firebaseConfig)
 
-const TURMA = 'turmaA'
+const TURMA = 'tumaA'
 let dataBase = firebase.firestore();
 let authentication = firebase.auth();
-
-let Email = 'Emailteste@testando.com'
-let Senha = '12345abc'
-let Email2 = 'email2teste@testando.com'
-let Senha2 = 'cba54321'
 
 
 function criaUsuario(){
     // O método abaixo tem a função de criar um novo usuario, os métodos podem ser encontrados em Ajuda e Documentos de autenticação.
-    authentication.createUserWithEmailAndPassword(Email2, Senha2)
+    authentication.createUserWithEmailAndPassword('Email@testando.com', '12345abc')
     .then(usuario=>{
         console.log(usuario)
     }).catch(erro=>{
@@ -58,7 +53,7 @@ function login(){
     //--'SESSION' que é só na aba que foi efetuado o  login.
     //--'NONE' que é só 1 login, se atualizar a pagina ele desloga.
     authentication.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-    // Então dentro do do 'setPersistence' efetuar o login.
+    // Então dentro do do 'setPersistence' é efetuado o login.
     .then(()=>{
         // O método abaixo tem a função de logar o usuario. É preciso do email e da senha.
         authentication.signInWithEmailAndPassword(Email2, Senha2)
