@@ -1,0 +1,28 @@
+body{
+    background-color: gray;
+    color: white;
+    font-size: 18pt;
+}#principal{
+    width: 1000px;
+    margin: auto;
+}.box{
+    background-color: white;
+    color: black;
+    padding: 15px;
+    border-radius: 20px;
+    text-align: justify;
+}p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}button{
+    padding: 15px;
+    margin: 10px;
+    width: 150px;
+    font-size: 18pt;
+    border-radius: 15px;
+    position: absolute;
+}#botao{
+    top: 380px;
+}#btstop{
+    top: 480px;
+}
