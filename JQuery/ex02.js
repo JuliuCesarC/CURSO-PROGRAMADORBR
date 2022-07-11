@@ -1,7 +1,7 @@
 let i=0;
 $('#clicar').click(()=>{
     if(i==0){
-        // Abaixo utilizando um callback que executa uma função após o termino da animação do hide.
+        // O método 'hide' adiciona um 'display:none' no elemento selecionado, dessa forma escondendo o item. Dentro do 'hide' podemos adicionar uma animação pré definida, e também uma função anônina ou uma arrow function que sera executada após o termino da animação do 'hide'.
         $('#verde').hide('easing', function (){
             $('#vermelho').show(2000)
         })
@@ -15,7 +15,7 @@ $('#clicar').click(()=>{
 })
 
 // ----------/ IMPORTANTE /----------
-// Quando se inicia o JQuery é criado uma instancia dele que possibilita executar as funções, e a grande maioria dos métodos retornão essa instancia, ou seja, podemos executar outra função no final da execução da primeira. Isso se chama Encadeamento ou 'Chain'.
+// Quando chamamos o JQuery com o '$' é criado uma instância dele que nos possibilita executar as funções, e a grande maioria dos métodos retornão essa instancia, ou seja, podemos executar outra função no final da execução da primeira. Isso se chama Encadeamento ou 'Chain'.
 $('#clicar2').click(()=>{
     // Abaixo temos um exemplo de encadeamento ou 'chain', onde uma função é executada após a outra.
     $('#verde').hide(2000).show(2000)
