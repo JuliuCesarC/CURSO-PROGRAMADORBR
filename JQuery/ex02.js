@@ -14,7 +14,9 @@ $('#clicar').click(()=>{
     }
 })
 
+// ----------/ IMPORTANTE /----------
+// Quando se inicia o JQuery é criado uma instancia dele que possibilita executar as funções, e a grande maioria dos métodos retornão essa instancia, ou seja, podemos executar outra função no final da execução da primeira. Isso se chama Encadeamento ou 'Chain'.
 $('#clicar2').click(()=>{
-    // Abaixo utilizamos um encadeamento ou 'chain' para executar uma função após a outra.
+    // Abaixo temos um exemplo de encadeamento ou 'chain', onde uma função é executada após a outra.
     $('#verde').hide(2000).show(2000)
 })
