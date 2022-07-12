@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        div{
+        .quad{
             width: 200px;
             height: 200px;
             position: absolute;
@@ -17,18 +17,31 @@
         }#verde{
             background-color: green;
         }#clicar{
-            top: 300px;
+            top: 25px;
+            left: 300px;
         }#clicar2{
-            top: 380px;            
+            top: 110px;            
+            left: 300px;
+        }#dim{
+            background-color: white;
+            color: black;
+            width: 600px;
+            padding: 10px;
+            border: 5.008px solid black;
+            margin: 10px;
         }
+
     </style>
 </head>
 <body>
-    <div id="vermelho"></div>
-    <div id="verde"></div>
+    <div class="quad" id="vermelho"></div>
+    <div class="quad" id="verde"></div>
 
     <button id="clicar">Click</button>
     <button id="clicar2">Click2</button>
+
+    <h1 style="position: absolute; top: 200px;">Dimenções</h1>
+    <div style="position: absolute; top: 300px;" id="dim"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="ex02.js"></script>

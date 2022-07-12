@@ -20,7 +20,15 @@ function AL(){
 // })
 
 $('h2').click(item=>{
-    $(item.target).css('text-transform', 'uppercase')
+    // Podemos adicionar varias configurações css utilizando um objeto como parametro do método 'css'.
+    $(item.target).css({
+        'text-transform':'uppercase', 
+        'border': '5px solid black',
+        'padding': '5px',
+        'width': '300px',
+        'text-align': 'center',
+        'border-radius': '10px'
+    })
 }) 
 
 $('#botao').click(()=>{
