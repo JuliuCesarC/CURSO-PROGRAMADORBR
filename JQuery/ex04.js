@@ -18,4 +18,4 @@ $('li').attr('name', (numArray, oldValue)=>{return oldValue + numArray})
 // Quando é adicionado uma função dentro do attr, o primeiro parâmetro dessa função será o indice do array contendo os itens selecionados pelo jquery, por exemplo, dentro do nosso HTML temos 7 'li', ou seja, a função sera executada 7 vezes com o 'numArray' sendo de 0 a 6. O segundo parâmetro sera o valor antigo dentro do atributo. O resultado é cada elemento tando um nome diferente, 'item0; item1; item2; ...'.
 
 $('#tx2').attr('maxlength', 6).attr('type', 'password')
-.attr('placeholder', 'Senha').css('text-align', 'right')
+        .attr('placeholder', 'Senha').css('text-align', 'right')
