@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <!--                    GRID                    -->
+    <!-- O Bootstrap trabalha com 12 colunas, ou seja, se em uma linha houver 2 colunas, cada elemento recebera 6/12 partes da linha, porém se setar um desses elementos como 'col-3', isso fara com que a segunda coluna fique com 9/12 partes, e se houver 3 colunas, a primeira ficara com 3/12 e as outas 2 colunas com 4,5/12 partes. -->
+    <div class="container">
+        <!-- O Grid do Bootstrap foi feito em cima do flex box, então todas as configurações que temos no Flex Box, temos para o Grid também. -->
+        <div class="row justify-content-md-between">
+            <div class="bg-info col-md-3">Col</div>
+            <div class="bg-success col-md-3">Col</div>
+        </div>
+        <div class="row">
+            <div class="bg-warning col">Col</div>
+            <div class="bg-danger col-4">Col</div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
