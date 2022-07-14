@@ -5,44 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOTSTRAP</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- O Bootstrap altera a grande maioria dos estilos padrão de css, tipografia, tamanho, margens, etc. -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- O Bootstrap utiliza o Jquery. -->
 </head>
 <body>
     <!-- NO SITE DA BOOTSTRAP EXISTE A DOCUMENTAÇÃO, QUALQUER DUVIDA PESQUISA LÁ -->
 
-    <!--                    TITULO E DISPLAY-1                    -->
-    <h2>Titulo <span class="badge badge-secondary">H2</span></h2>
-    <!-- As tags de titulo tem sentido semantico, porém podemos copiar o estilo delas com o Bootstrap ao utilizar a class 'h2'. -->
-    <p class="h2">Titulo <span class="badge badge-secondary">H2</span> com <span class="text-info">Bootstrap</span></p>
-    <!-- A classe display deixa o elemento em grande destaque, ela vai de display-1 a 4. -->
-    <div class="display-4">Outdoor</div>
+    <header class="bg-dark text-light display-4 text-center p-2 mb-4" >BOOTSTRAP</header>
 
     <!--                    CORES                    -->
-    <!-- O Bootstrap possui algumas cores padrões, abaixo temos alguns exemplos. -->
-    <p class="text-success">Texto com a cor Success</p>
-    <!-- Para mudar a cor do texto utilizar o 'text' antes do nome da cor -->
-    <p class="bg-danger">Fundo com a cor Danger</p>
-    <!-- Para mudar a cor de fundo utilizar o 'bg' antes do nome da cor -->
-    
+    <h3>Cores</h3>
+    <div class="container list-group mb-4">
+        <!-- O Bootstrap possui algumas cores padrões, abaixo temos alguns exemplos. -->
+        <div class="list-group-item bg-danger text-light fw-bold">Cor Danger</div>
+        <!-- Para mudar a cor do texto utilizar o 'text' antes do nome da cor -->
+        <div class="list-group-item bg-success text-light fw-bold">Cor Success</div>
+        <!-- Para mudar a cor de fundo utilizar o 'bg' antes do nome da cor -->
+        <div class="list-group-item bg-primary text-light fw-bold">Cor Primary</div>
+        <div class="list-group-item bg-dark text-light fw-bold">Cor Dark</div>
+        <div class="list-group-item bg-warning fw-bold">Cor Warning</div>
+        <div class="list-group-item bg-info fw-bold">Cor Info</div>
+        <div class="list-group-item bg-secondary text-light fw-bold">Cor Secondary</div>
+    </div>
+
+    <!--                    TITULO E DISPLAY-1                    -->
+    <h3>Titulo e Display-1</h3>
+    <div class="container">
+        <h2>Titulo com <span class="badge bg-secondary">H2</span></h2>
+        <!-- As tags de titulo tem sentido semantico, porém podemos copiar o estilo delas com o Bootstrap ao utilizar a class 'h2'. -->
+        <p class="h2">Titulo <span class="badge bg-secondary">H2</span> com <span class="text-info">Bootstrap</span></p>
+        <!-- A classe display deixa o elemento em grande destaque, ela vai de display-1 a 4. -->
+        <div class="display-4">Outdoor</div>
+    </div>
+
     <!--                    MARGIN E PADDING                    -->
     <!-- Para alterar a margin e o padding podemos adicionar as classes:
-        p-3 : o 'p' indica o padding, ele vai de 0 a 5. 
-        m-2 : o 'm' indica o margin, ele vai de 0 a 5.
-        Temos as 2 classes acima para apenas direções especificas, como mt-4(margin-top), pr-1(padding-top), tudo esta na documentação. -->
-        <h2>Margin e Padding</h2>
-        <div class="bg-info p-2 mx-3">Div Exemplo</div>
+    p-3 : o 'p' indica o padding, ele vai de 0 a 5. 
+    m-2 : o 'm' indica o margin, ele vai de 0 a 5.
+    Temos as 2 classes acima para apenas direções especificas, como mt-4(margin-top), pr-1(padding-top), tudo esta na documentação. -->
+    <h3>Margin e Padding</h3>
+    <div class="container">
+        <div class="bg-info p-2 px-3 m-3 rounded-pill fw-bold">Padding 2, Margin 3</div>
+    </div>
         
     <!--                    CONTAINER                    --> 
     <!-- A classe container serve para organizar as margens do elemento, tornando ele mais legivel. Já possui responsividade com o tamanho da tela do usuario. -->
+    <h3>Container</h3>
     <div class="container">
-        <h2>Container</h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, hic saepe? Unde voluptatem aperiam quidem asperiores magni explicabo commodi, illo enim totam excepturi soluta nostrum harum esse quibusdam, iste voluptatum.</p>
     </div>
     
-    <!--                    DISPLAY                    --> 
+    <!--                    DISPLAY/RESPONSIVIDADE                    --> 
     <!-- O Bootstrap foi pensado para ser responsivo, e para isso temos algumas classes que que alteram a configuração do elemento de acordo com o tamanho da tale do usuario: 
     sm (small) >= 576px -> desativa para telas menores ou igual a 576 pixels.
     md (medium) >= 768px
@@ -51,26 +66,30 @@
     -->
     <h3>Display e responsividade</h3>
     <!-- Para alterar o display do elemento podemos utilizar a classe 'd' -->
-    <img class="d-sm-block" src="./bootstrap.png" alt="">
-    <!-- As imagens por padrão permitem que outras imagens fiquem lado a lado, mas com o display-block, somente uma imagem pode ficar na mesma linha. -->
-    <img class="float-md-left" src="./bootstrap.png" alt="">
-    <!-- Com o float-left, permite que o texto fique ao lado da imagem. -->
-    <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis ducimus beatae dicta quisquam alias facilis ipsum ipsam in corporis aliquam expedita suscipit enim cumque, quod magni voluptates dignissimos ullam maxime. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, perferendis, minus recusandae eos voluptate quod alias modi, voluptates sunt inventore laborum cum temporibus ratione unde?</p>
+    <div class="container">
+        <img class="d-sm-block" src="./bootstrap.png" alt="">
+        <!-- As imagens por padrão permitem que outras imagens fiquem lado a lado, mas com o display-block, somente uma imagem pode ficar na mesma linha. -->
+        <img class="float-md-start" src="./bootstrap.png" alt="">
+        <!-- Com o float-start, permite que o texto fique ao lado da imagem. -->
+        <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis ducimus beatae dicta quisquam alias facilis ipsum ipsam in corporis aliquam expedita suscipit enim cumque, quod magni voluptates dignissimos ullam maxime. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
     
     <!--                    TEXT / TIPOGRAFIA                    --> 
     <!-- Temos algumas maneiras rapidas de alterar a tipografia de um texto, na documentação pesquisar por 'text'. Algumas classes são:
     text-uppercase
-    text-justify
-    font-weight-bold
-    font-italic
+    text-justify = Removido nas versões mais atuais.
+    fw-bold = font weight bold
+    fst-italic = font style italic
     -->
+    <h3 class="mt-5">Tipografia</h3>
     <div class="container">
-        <h2 class="text-center">Tipografia</h2>
-        <p class="font-weight-bold font-italic text-justify mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium numquam incidunt doloremque ducimus quae nobis consectetur eos tenetur pariatur libero maiores laboriosam, placeat, beatae a, quod deserunt odio sequi eum!</p>
-        <ul class="list-unstyled">
+        <h2>Lorem ipsum dolor</h2>
+        <p class="fw-bold fst-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium numquam incidunt doloremque ducimus quae nobis consectetur eos tenetur pariatur libero maiores laboriosam, placeat, beatae a, quod deserunt odio sequi eum! Voluptas deleniti aliquid, soluta cupiditate culpa dolores fugiat dolore recusandae, nihil fugit consectetur sequi alias suscipit atque? Harum temporibus vero assumenda dolorem.</p>
+        <ul class="list-unstyled mb-0">
             <li>Item 1</li>
             <li>Item 2</li>
         </ul>
+        <li class="mt-0">Item Out</li>
     </div>
 
     <!--                    IMAGENS                    --> 
@@ -87,40 +106,42 @@
     <!--                    TABELA                    --> 
     <!-- Apenas utilizando a classe 'table' ja temos um resultado muito diferente do padrão html. Na documentação temos muitas outras configurações de tabela. -->
     <h3>Tabela</h3>
-    <table class="table table-striped table-hover table-dark table-sm">
-        <thead> <tr>
-                <th>Nome aluno</th>
-                <th>Média</th>
-                <th>Resultado</th>
+    <div class="container">
+        <table class="table table-striped table-hover table-dark table-sm">
+            <thead> <tr>
+                    <th>Nome aluno</th>
+                    <th>Média</th>
+                    <th>Resultado</th>
+                    </tr>
+            </thead>
+            <tbody> <tr>
+                    <th>Jão da Silva</th>
+                    <th>7,5</th>
+                    <th>Aprovado</th>
+                    </tr>
+                <tr>
+                    <th>Jhenfiner Origami</th>
+                    <th>8</th>
+                    <th>Aprovado</th>
                 </tr>
-        </thead>
-        <tbody> <tr>
-                <th>Jão da Silva</th>
-                <th>7,5</th>
-                <th>Aprovado</th>
+                <tr>
+                    <th>Lusca Setembrino</th>
+                    <th>6,5</th>
+                    <th>Reprovado</th>
                 </tr>
-            <tr>
-                <th>Jhenfiner Origami</th>
-                <th>8</th>
-                <th>Aprovado</th>
-            </tr>
-            <tr>
-                <th>Lusca Setembrino</th>
-                <th>6,5</th>
-                <th>Reprovado</th>
-            </tr>
-            <tr>
-                <th>Marco Lisma</th>
-                <th>7</th>
-                <th>Aprovado</th>
-                </tr>
-        </tbody>
-        <tfoot> <tr>
-                <th colspan="2">POCENTAGEM DE APROVAÇÃO</th>
-                <th>75%</th>
-                </tr>
-        </tfoot>
-    </table>
+                <tr>
+                    <th>Marco Lisma</th>
+                    <th>7</th>
+                    <th>Aprovado</th>
+                    </tr>
+            </tbody>
+            <tfoot> <tr>
+                    <th colspan="2">POCENTAGEM DE APROVAÇÃO</th>
+                    <th>75%</th>
+                    </tr>
+            </tfoot>
+        </table>
+    </div>
 
     <!--                    ALERT                    -->
     <h3>Alert</h3>
@@ -148,42 +169,55 @@
     <!--                    BOTÃO                    -->
     <!-- A documentação possui todos os timpos de botões -->
     <h3>Tipos de Botões</h3>
-    <button class="btn">None</button>
-    <button class="btn btn-secondary btn-lg">Secondary large</button>
-    <button class="btn btn-outline-success">Success Outline</button>
-    <input type="button" class="btn btn-dark btn-sm" value="Dark small">
-    <input type="button" class="btn btn-info disabled" value="Info Desabilitado">
-    <!-- Grupo de botões -->
-    <div class="btn-group" >
-        <button class="btn btn-primary">Botão 1</button>
-        <button class="btn btn-primary">Botão 2</button>
-        <button class="btn btn-primary">Botão 3</button>
-    </div>
-    <!-- Grupo de checkbox na vertical. -->
-    <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-            <input type="radio" name="" id="rad1"> Radio 1
-        </label>
-        <label class="btn btn-secondary active">
-            <input type="radio" name="" id="rad1"> Radio 2
-        </label>
-        <label class="btn btn-secondary active">
-            <input type="radio" name="" id="rad1"> Radio 3
-        </label>
-    </div>
-    <div class="container mt-2 mb-4">
-        <button class="btn btn-outline-danger btn-block">Danger Outline</button>
-        <button class="btn btn-warning btn-block">Warning</button>
+    <div class="container">
+        <button class="btn">None</button>
+        <button class="btn btn-secondary btn-lg">Secondary large</button>
+        <button class="btn btn-outline-success">Success Outline</button>
+        <input type="button" class="btn btn-dark btn-sm" value="Dark small">
+        <input type="button" class="btn btn-info disabled" value="Info Desabilitado">
+        <!-- Grupo de botões -->
+        <div class="btn-group" >
+            <button class="btn btn-primary">Botão 1</button>
+            <button class="btn btn-primary">Botão 2</button>
+            <button class="btn btn-primary">Botão 3</button>
+        </div>
+        <!-- Grupo de checkbox na vertical. -->
+        <fieldset class="btn-group-vertical">                
+            <label class="form-check-label btn btn-secondary" for="rad1">
+                <input type="radio" class="form-check-input" name="Radios" id="rad1">Radio 1
+            </label>
+            <label class="form-check-label btn btn-secondary" for="rad2">
+                <input type="radio" class="form-check-input" name="Radios" id="rad2"> Radio 2
+            </label>
+            <label class="form-check-label btn btn-secondary" for="rad3">
+                <input type="radio" class="form-check-input" name="Radios" id="rad3" checked> Radio 3
+            </label>
+        </fieldset>
+        <div>
+            <input type="checkbox" name="" id="Check">
+            <label for="Check">CheckBox default</label>
+        </div>
+        <!-- Para criar a checkbox no formato switch, é preciso uma div com a classe      'form-switch' e a classe 'form-check-input' na tag input. -->
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="" id="Switch" role="switch" checked>
+            <label for="Switch">CheckBox Switch mode</label>
+        </div>
+        <div class="d-grid gap-2 mt-2">
+            <button class="btn btn-outline-danger btn-block">Danger Outline</button>
+            <button class="btn btn-warning btn-block">Warning</button>
+        </div>
     </div>
     
     <!--                    COLLAPSE                    -->
     <!-- O collapse alterna a visibilidade do elemento. -->
     <h3>Collapse</h3>
-    <button class="btn btn-success d-block mb-2" data-toggle="collapse" data-target="#coll">Mostrar/Esconder</button>
-    <img id="coll" class="collapse" src="./bootstrap.png" alt="">
-    <button class="btn btn-dark d-block" data-toggle="collapse" data-target="#coll2">Texto</button>
     <div class="container">
-        <p id="coll2" class="collapse show">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi temporibus, ducimus molestiae repellat culpa accusantium fuga quibusdam recusandae rem, unde odit ratione eveniet harum necessitatibus explicabo rerum. Itaque, voluptatum quibusdam?</p>
+        <button class="btn btn-success d-block mb-2" data-bs-toggle="collapse" href="#coll">Mostrar/Esconder</button>
+        <img id="coll" class="collapse" src="./bootstrap.png" alt="">
+        <button class="btn btn-dark d-block" data-bs-toggle="collapse" href="#coll2">Texto</button>
+        <div class="container">
+            <p id="coll2" class="collapse show">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi temporibus, ducimus molestiae repellat culpa accusantium fuga quibusdam recusandae rem, unde odit ratione eveniet harum necessitatibus explicabo rerum. Itaque, voluptatum quibusdam?</p>
+        </div>
     </div>
 
     <!--                    DROPDOWN                    -->
@@ -191,7 +225,7 @@
     <h3>DropDown</h3>
     <div class="container">
         <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Documentação para Programadores</button>
+            <button class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">Documentação para Programadores</button>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">Links</div>
                 <a class="dropdown-item" href="">JavaScript</a>
@@ -225,29 +259,29 @@
      -->
     <h3>Accordion</h3>
     <div class="container">
-        <div id="accordion" class="mt-4">
+        <div id="accordion" class="accordion mt-4">
             <h4>Perguntas frequentes</h4>
             <div class="card text-white bg-primary">
-                <div class="card-header btn text-left font-weight-bold" href="#resp1" data-toggle="collapse">
+                <div class="card-header btn text-left font-weight-bold" href="#resp1" data-bs-toggle="collapse">
                     Como cadastrar uma conta?
                 </div>
-                <div id="resp1" class="collapse" data-parent="#accordion">
+                <div id="resp1" class="collapse" data-bs-parent="#accordion">
                     <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio magni iste quos consequuntur placeat.</div>
                 </div>
             </div>
             <div class="card text-white bg-primary">
-                <div class="card-header btn text-left font-weight-bold" href="#resp2" data-toggle="collapse">
+                <div class="card-header btn text-left font-weight-bold" href="#resp2" data-bs-toggle="collapse">
                     Como funciona a verificação de email.
                 </div>
-                <div id="resp2" class="collapse" data-parent="#accordion">
+                <div id="resp2" class="collapse" data-bs-parent="#accordion">
                     <div class="card-body">Quis hic nam excepturi unde odio quam. Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
                 </div>
             </div>
             <div class="card text-white bg-primary">
-                <div class="card-header btn text-left font-weight-bold" href="#resp3" data-toggle="collapse">
+                <div class="card-header btn text-left font-weight-bold" href="#resp3" data-bs-toggle="collapse">
                     Autenticação de dois fatores.
                 </div>
-                <div id="resp3" class="collapse" data-parent="#accordion">
+                <div id="resp3" class="collapse" data-bs-parent="#accordion">
                     <div class="card-body">Id nisi saepe iusto sequi facere incidunt commodi quia quas non repudiandae officia ab quam corrupti.</div>
                 </div>
             </div>
@@ -289,8 +323,28 @@
         </div>
     </div>
 
+    <!--                    SPINNER                    -->
+    <!-- É uma animação de carregando. -->
+    <h3>Spinner</h3>
+    <div class="container">
+        <div class="spinner-border" role="status"></div>
+        <div class="spinner-border text-danger" role="status"></div>
+        <div class="spinner-border text-success" role="status"></div>
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="spinner-border text-warning" role="status"></div>
+    </div>
+    
+    <!--                    LISTA AGRUPADA                    -->
 
-
+    <h3>Lista Agrupada</h3>
+    <div class="container">
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item list-group-item-action">Item 1</li>
+            <li class="list-group-item list-group-item-action">Item 2</li>
+            <button class="list-group-item list-group-item-action list-group-item-success">Item 3</button>
+            <a class="list-group-item list-group-item-action list-group-item-info" href="">Item 4</a>
+        </ul>
+    </div>
 
 
 
@@ -298,7 +352,8 @@
     
     <footer class="bg-dark text-light p-4 mt-4">Rodapé pagina</footer>
     
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
