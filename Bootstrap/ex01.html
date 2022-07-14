@@ -254,6 +254,42 @@
         </div>
     </div>
     
+    <!--                    PROGRESS BAR                    -->
+    <!-- Como o nome sugere, é uma barra de progreço, podemos utilizar javascript para alterar o progreço de acordo com alguma informação. -->
+    <h3>Progress Bar</h3>
+    <div class="container mt-4">
+        <h4>Download</h4>
+        <div class="progress bg-secondary progress-bar-striped progress-bar-animated" 
+        style="height: 20px;">
+            <div class="progress-bar bg-success" style="width: 0%; height: 20px;">0%</div>
+        </div>
+        <button class="btn btn-success mt-2" onclick="download()">Baixar</button>
+    </div>
+    <script>
+        function download(){
+            let bar = $('.progress-bar')[0]
+            let progress = 0;
+            let loop = setInterval(() => {
+                if(progress <= 100){
+                    bar.style.width = progress +'%';
+                    bar.innerHTML = progress + '%';
+                    progress++
+                }else{clearInterval(loop)}
+            }, 120);
+        }
+        </script>
+    <div class="container mt-4">
+        <h4>Armazenamento</h4>
+        <div class="progress bg-secondary" 
+        style="height: 35px;">
+            <div class="progress-bar bg-success font-weight-bold" style="width: 19%; height: 35px;">Sistema</div>
+            <div class="progress-bar bg-info text-dark font-weight-bold" style="width: 12%; height: 35px;">Documentos</div>
+            <div class="progress-bar bg-danger font-weight-bold" style="width: 8%; height: 35px;">Imagens</div>
+            <div class="progress-bar bg-warning text-dark font-weight-bold" style="width: 35%; height: 35px;">Apps e dados</div>
+        </div>
+    </div>
+
+
 
 
 
