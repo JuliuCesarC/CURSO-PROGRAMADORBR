@@ -13,19 +13,19 @@
 <body>
     <!-- NO SITE DA BOOTSTRAP EXISTE A DOCUMENTAÇÃO, QUALQUER DUVIDA PESQUISA LÁ -->
 
-    <!--                    CORES                    -->
-    <!-- O btt possui algumas cores padrões, abaixo temos alguns exemplos. -->
-    <p class="text-success">Texto com a cor Success</p>
-    <!-- Para mudar a cor do texto utilizar o 'text' antes do nome da cor -->
-    <p class="bg-danger">Fundo com a cor Danger</p>
-    <!-- Para mudar a cor de fundo utilizar o 'bg' antes do nome da cor -->
-    
     <!--                    TITULO E DISPLAY-1                    -->
     <h2>Titulo <span class="badge badge-secondary">H2</span></h2>
     <!-- As tags de titulo tem sentido semantico, porém podemos copiar o estilo delas com o Bootstrap ao utilizar a class 'h2'. -->
     <p class="h2">Titulo <span class="badge badge-secondary">H2</span> com <span class="text-info">Bootstrap</span></p>
     <!-- A classe display deixa o elemento em grande destaque, ela vai de display-1 a 4. -->
     <div class="display-4">Outdoor</div>
+
+    <!--                    CORES                    -->
+    <!-- O Bootstrap possui algumas cores padrões, abaixo temos alguns exemplos. -->
+    <p class="text-success">Texto com a cor Success</p>
+    <!-- Para mudar a cor do texto utilizar o 'text' antes do nome da cor -->
+    <p class="bg-danger">Fundo com a cor Danger</p>
+    <!-- Para mudar a cor de fundo utilizar o 'bg' antes do nome da cor -->
     
     <!--                    MARGIN E PADDING                    -->
     <!-- Para alterar a margin e o padding podemos adicionar as classes:
@@ -201,6 +201,60 @@
             </div>
         </div>
     </div>
+    
+    <!--                    CARD                    -->
+    <!-- Cria um card onde podemos adicionar informações. -->
+    <h3>Card</h3>
+    <div class="card mt-4" style="width: 300px;">
+        <img class="card-img-top" src="./BackGround 500px.jpg" alt="">
+        <div class="card-header">
+            <h4 class="card-title">Card Exemplo</h4>
+        </div>
+        <div class="card-body">
+            <div class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima quae explicabo atque sequi quisquam esse at qui.</div>
+        </div>
+        <div class="card-footer">
+            <a href="" class="card-link">Link aqui.</a>
+        </div>
+    </div>
+    
+    <!--                    ACCORDION                    -->
+    <!-- O accordion é uma junção de Card e Collapse, que cria cards clicaveis e que abrem alguma informação que esta encondida pelo collapse.
+    data-parent="#accordion" = ao colocar essa classe no elemento collapse, faz com que apenas 1 dos accordion posso ser aberto por vez, ao clicar em outro fecha o primeiro.
+    data-toggle="collapse" = Alterna entre aberto e fechado o texto do collapse.
+     -->
+    <h3>Accordion</h3>
+    <div class="container">
+        <div id="accordion" class="mt-4">
+            <h4>Perguntas frequentes</h4>
+            <div class="card text-white bg-primary">
+                <div class="card-header btn text-left font-weight-bold" href="#resp1" data-toggle="collapse">
+                    Como cadastrar uma conta?
+                </div>
+                <div id="resp1" class="collapse" data-parent="#accordion">
+                    <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio magni iste quos consequuntur placeat.</div>
+                </div>
+            </div>
+            <div class="card text-white bg-primary">
+                <div class="card-header btn text-left font-weight-bold" href="#resp2" data-toggle="collapse">
+                    Como funciona a verificação de email.
+                </div>
+                <div id="resp2" class="collapse" data-parent="#accordion">
+                    <div class="card-body">Quis hic nam excepturi unde odio quam. Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                </div>
+            </div>
+            <div class="card text-white bg-primary">
+                <div class="card-header btn text-left font-weight-bold" href="#resp3" data-toggle="collapse">
+                    Autenticação de dois fatores.
+                </div>
+                <div id="resp3" class="collapse" data-parent="#accordion">
+                    <div class="card-body">Id nisi saepe iusto sequi facere incidunt commodi quia quas non repudiandae officia ab quam corrupti.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
 
 
 
