@@ -421,7 +421,6 @@
     </div>
 
     <!--                    CARROCEL                    -->
-
     <h3>Carrocel</h3>
     <div class="container">
         <div class="carousel slide" id="Carousel" data-bs-ride="carousel">
@@ -441,6 +440,42 @@
                 </button>
         </div>
     </div>
+
+    <!--                    MODAL                    -->
+    <!-- Modal é um elemento que ira aparecer por cima dos outros, parecido com um pop up.  Geralmente utilizado para notificar o usuario sobre algo importante. -->
+    <h3 class="mt-4">Modal</h3>
+    <div class="container text-center">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modalbtn">
+            Abrir notificação Modal</button>
+    </div>
+    <div class="modal fade" id="Modalbtn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Tmodal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Tmodal">Titulo Modal</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae placeat minus sequi officia enim delectus est facilis iure ullam laboriosam ducimus, numquam ipsam reprehenderit?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Entendido</button>
+    </div></div></div></div>
+
+    <!--                    TOOLTIP                    -->
+    <!-- O tooltipo é um balão de dialogo que aparece quando o mouse passa por cima do elemento selecionado. -->
+    <h3>TollTip</h3>
+    <div class="container">
+        <h4>Lorem ipsum</h4>
+        <p>Lorem ipsum dolor, sit amet <a href="" data-bs-toggle="tooltip" title="Exemplo TollTip">consectetur</a> adipisicing elit. Repudiandae et magni illo repellendus maiores consequatur quia, dignissimos vero quos iure quae eveniet non aliquid eos dolor recusandae, perferendis <a href="" data-bs-toggle="tooltip" title="Exemplo abrindo para baixo." data-bs-placement="bottom">assumenda</a> eum!</p>
+
+        <button class="btn btn-danger" data-bs-toggle="tooltip" title="Cuidado! Após iniciar o procedimento não podera voltar atrás.">Restaurar</button>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        })
+    </script>
 
     
     <footer class="bg-dark text-light p-4 mt-4">Rodapé pagina</footer>
