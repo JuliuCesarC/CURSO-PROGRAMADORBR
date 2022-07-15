@@ -346,6 +346,61 @@
         </ul>
     </div>
 
+    <!--                    PAGINAMENTO                    -->
+    <!-- Quando o site possui mais de uma pagina e precisa navegar entre elas, utilizamos os elementos de paginação, geralmente no final da pagina. -->
+    <h3>Paginação</h3>
+    <div class="container" id="Pagina">
+        <!-- Muitas das classes do bootstrap são do tipo Flex, então para centralizar o elemento utilizamos o justify-content-center. -->
+        <h4 class="text-center">Pagination</h4>
+        <div class="pagination justify-content-center">
+            <div class="page-item"><a class="page-link" href="#pagina">&lt;</a></div>
+            <div class="page-item active"><a class="page-link" href="#pagina">1</a></div>
+            <div class="page-item"><a class="page-link" href="#pagina">2</a></div>
+            <div class="page-item"><a class="page-link" href="#pagina">3</a></div>
+            <div class="page-item"><a class="page-link" href="#pagina">&gt;</a></div>
+        </div>
+        <h4 class="text-center mt-4">Breadcrumb</h4>
+        <!-- O divisor padrão do breadcrumb é a '/', se for mudar para o '>' é preciso alterar com o atributo style: --bs-breadcrumb-divider: '>'; -->
+        <ul class="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+            <li class="breadcrumb-item"><a href="#pagina">Eletrônicos e Tecnologia</a></li>
+            <li class="breadcrumb-item"><a href="#pagina">Acessórios</a></li>
+            <li class="breadcrumb-item"><a href="#pagina">Cartões de Memória</a></li>
+            <li class="breadcrumb-item"><a href="#pagina">Cartões Micro SD</a></li>        
+        </ul>
+    </div>
+
+    <!--                    NAV BAR                    -->
+    <!-- Abaixo temos um exemplo de barra de navegação utilizando navbar, collapse, dropsown. -->
+    <h3>Barra de Navegação</h3>
+    <div class="container" id="NavMenu">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <label class="navbar-brand" for="btnavbar">Navegação</label>
+                <button class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#itensNav" id="btnavbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="itensNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#NavMenu" class="nav-link active">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#NavMenu" class="nav-link dropdown-toggle" id="navdropdown" role="button" data-bs-toggle="dropdown">Docs</a>
+                            <ul class="dropdown-menu" aria-labelledby="navdropdown">
+                                <li><a href="#NavMenu" class="dropdown-item">JavaScript</a>
+                                </li>
+                                <li><a href="#NavMenu" class="dropdown-item">BootsTrap</a>
+                                </li>
+                                <li><a href="#NavMenu" class="dropdown-item">FireBase</a>
+                                </li>
+                            </ul>                              
+                        </li>
+                        <li class="nav-item">
+                            <a href="#navcont" class="nav-link">Contato</a></li>
+        </ul></div></div></nav>            
+    </div>
+
+
 
 
 
