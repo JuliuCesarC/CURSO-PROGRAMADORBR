@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTSTRAP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- O Bootstrap altera a grande maioria dos estilos padrão de css, tipografia, tamanho, margens, etc. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+    <!--                    PAGINAMENTO                    -->
+    <!-- Quando o site possui mais de uma pagina e precisa navegar entre elas, utilizamos os elementos de paginação, geralmente no final da pagina. -->
+    <h3>Paginação</h3>
+    <div class="container" id="Pagina">
+        <!-- Muitas das classes do bootstrap são do tipo Flex, então para centralizar o elemento utilizamos o justify-content-center. -->
+        <h4 class="text-center">Pagination</h4>
+        <div class="pagination justify-content-center">
+            <div class="page-item"><a class="page-link" href="#pagina">&lt;</a></div>
+            <div class="page-item active"><a class="page-link" href="#pagina">1</a></div>
+            <div class="page-item"><a class="page-link" href="#pagina">2</a></div>
+            <div class="page-item"><a class="page-link" href="#pagina">3</a></div>
+            <div class="page-item"><a class="page-link" href="#pagina">&gt;</a></div>
+        </div>
+        <h4 class="text-center mt-4">Breadcrumb</h4>
+        <!-- O divisor padrão do breadcrumb é a '/', se for mudar para o '>' é preciso alterar com o atributo style: --bs-breadcrumb-divider: '>'; -->
+        <ul class="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+            <li class="breadcrumb-item"><a href="#pagina">Eletrônicos e Tecnologia</a></li>
+            <li class="breadcrumb-item"><a href="#pagina">Acessórios</a></li>
+            <li class="breadcrumb-item"><a href="#pagina">Cartões de Memória</a></li>
+            <li class="breadcrumb-item"><a href="#pagina">Cartões Micro SD</a></li>        
+        </ul>
+    </div>
+
+    <!--                    NAV E TAB                    -->
+    <!-- Abaixo temos um exemplo de menu de navegação utilizando nav, collapse, dropsown. -->
+    <h3>Menu de Navegação</h3>
+    <div class="container" id="NavMenu">
+        <ul class="nav nav-tabs justify-content-end bg-dark rounded">
+            <li class="nav-item"><a href="#NavMenu" class="nav-link text-light">Home</a></li>
+            <li class="nav-item dropdown"><a href="#NavMenu" class="nav-link text-light dropdown-toggle" data-bs-toggle="dropdown">Docs</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#NavMenu" class="dropdown-item">JavaScript</a></li>
+                    <li><a href="#NavMenu" class="dropdown-item">BootsTrap</a></li>
+                    <li><a href="#NavMenu" class="dropdown-item">Jquery</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#NavMenu" class="nav-link text-light">Contato</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--                    NAV BAR                    -->
+    <!-- Abaixo temos um exemplo de barra de navegação utilizando navbar, collapse, dropsown. -->
+    <h3 class="mt-4">Barra de Navegação</h3>
+    <div class="container" id="NavBar">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <label class="navbar-brand" for="btnavbar">Navegação</label>
+                <button class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#itensNav" id="btnavbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="itensNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#NavBar" class="nav-link active">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#NavBar" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Docs</a>
+                            <ul class="dropdown-menu" aria-labelledby="navdropdown">
+                                <li><a href="#NavBar" class="dropdown-item">JavaScript</a>
+                                </li>
+                                <li><a href="#NavBar" class="dropdown-item">BootsTrap</a>
+                                </li>
+                                <li><a href="#NavBar" class="dropdown-item">FireBase</a>
+                                </li>
+                            </ul>                              
+                        </li>
+                        <li class="nav-item">
+                            <a href="#NavBar" class="nav-link">Contato</a></li>
+        </ul></div></div></nav>            
+    </div>
+
+    <!--                    CARD                    -->
+    <!-- Cria um card onde podemos adicionar informações. -->
+    <h3>Card</h3>
+    <div class="container">
+        <div class="card mt-4" style="width: 300px;">
+            <img class="card-img-top" src="./imgs/BackGround 500px.jpg" alt="">
+            <div class="card-header">
+                <h4 class="card-title">Card Exemplo</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima quae explicabo atque sequi quisquam esse at qui.</div>
+            </div>
+            <div class="card-footer">
+                <a href="" class="card-link">Link aqui.</a>
+            </div>
+        </div>
+    </div>
+    
+    <!--                    ACCORDION                    -->
+    <!-- O accordion é uma junção de Card e Collapse, que cria cards clicaveis e que abrem alguma informação que esta encondida pelo collapse.
+    data-parent="#accordion" = ao colocar essa classe no elemento collapse, faz com que apenas 1 dos accordion posso ser aberto por vez, ao clicar em outro fecha o primeiro.
+    data-toggle="collapse" = Alterna entre aberto e fechado o texto do collapse.
+     -->
+    <h3>Accordion</h3>
+    <div class="container">
+        <div id="accordion" class="accordion mt-4">
+            <h4>Perguntas frequentes</h4>
+            <div class="card text-white bg-primary">
+                <div class="card-header btn text-left font-weight-bold" href="#resp1" data-bs-toggle="collapse">
+                    Como cadastrar uma conta?
+                </div>
+                <div id="resp1" class="collapse" data-bs-parent="#accordion">
+                    <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio magni iste quos consequuntur placeat.</div>
+                </div>
+            </div>
+            <div class="card text-white bg-primary">
+                <div class="card-header btn text-left font-weight-bold" href="#resp2" data-bs-toggle="collapse">
+                    Como funciona a verificação de email.
+                </div>
+                <div id="resp2" class="collapse" data-bs-parent="#accordion">
+                    <div class="card-body">Quis hic nam excepturi unde odio quam. Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                </div>
+            </div>
+            <div class="card text-white bg-primary">
+                <div class="card-header btn text-left font-weight-bold" href="#resp3" data-bs-toggle="collapse">
+                    Autenticação de dois fatores.
+                </div>
+                <div id="resp3" class="collapse" data-bs-parent="#accordion">
+                    <div class="card-body">Id nisi saepe iusto sequi facere incidunt commodi quia quas non repudiandae officia ab quam corrupti.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

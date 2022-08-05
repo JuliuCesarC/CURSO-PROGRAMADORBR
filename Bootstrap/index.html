@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTSTRAP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- O Bootstrap altera a grande maioria dos estilos padrão de css, tipografia, tamanho, margens, etc. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- O Bootstrap utiliza o Jquery. -->
+</head>
+<body>
+    <!-- NO SITE DA BOOTSTRAP EXISTE A DOCUMENTAÇÃO, QUALQUER DUVIDA PESQUISA LÁ -->
+
+    <header class="bg-dark text-light p-1 px-5 mb-4">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a href="./index.html" class="navbar-brand text-light fs-3">BOOTSTRAP</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="./index.html" class="nav-link text-light fs-5">Home</a></li>
+
+                    <li id="Cat" class="nav-item dropdown accordion">
+                        <a href="#" class="nav-link dropdown-toggle text-light fs-5" role="button" data-bs-toggle="dropdown">Categoria</a>
+                        <ul class="dropdown-menu">
+                            <li class="card">
+                                <a href="#Teste1" class="dropdown-item card-header focus" data-bs-toggle="collapse" data-bs-parent="#Cat">
+                                    Utilities
+                                </a>
+                                <div id="Teste1" class="collapse navbar-collapse" data-bs-parent="#Cat">Cores</div>
+                            </li>
+                            <li>
+                                <a href="" class="dropdown-item">teste 2</a>
+                            </li>
+                            <li>
+                                <a href="" class="dropdown-item">teste 3</a>
+                            </li>
+                            <li>
+                                <a href="" class="dropdown-item">teste 4</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+
+
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <h2>Pagina construida com Bootstrap.</h2>
+        <p>Esta pagina é um condensado de exercícios utilizando o Bootstrap, porem ainda assim de forma resumida, para total compreensão do conteúdo apresentado, é recomendado pesquisar a documentação do Bootstrap <a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/" target="_blank" >aqui</a>.</p>
+    </div>
+
+
+    <!--                    CORES                    -->
+    <h3>Cores</h3>
+    <div class="container list-group mb-4">
+        <!-- O Bootstrap possui algumas cores padrões, abaixo temos alguns exemplos. -->
+        <div class="list-group-item bg-danger text-light fw-bold">Cor Danger</div>
+        <!-- Para mudar a cor do texto utilizar o 'text' antes do nome da cor -->
+        <div class="list-group-item bg-success text-light fw-bold">Cor Success</div>
+        <!-- Para mudar a cor de fundo utilizar o 'bg' antes do nome da cor -->
+        <div class="list-group-item bg-primary text-light fw-bold">Cor Primary</div>
+        <div class="list-group-item bg-dark text-light fw-bold">Cor Dark</div>
+        <div class="list-group-item bg-warning fw-bold">Cor Warning</div>
+        <div class="list-group-item bg-info fw-bold">Cor Info</div>
+        <div class="list-group-item bg-secondary text-light fw-bold">Cor Secondary</div>
+    </div>
+    
+    <!--                    TEXT / TIPOGRAFIA                    --> 
+    <!-- Temos algumas maneiras rapidas de alterar a tipografia de um texto, na documentação pesquisar por 'text'. Algumas classes são:
+    text-uppercase
+    text-justify = Removido nas versões mais atuais.
+    fw-bold = font weight bold
+    fst-italic = font style italic
+    -->
+    <h3 class="mt-5">Tipografia</h3>
+    <div class="container">
+        <h2>Lorem ipsum dolor</h2>
+        <p class="fw-bold fst-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium numquam incidunt doloremque ducimus quae nobis consectetur eos tenetur pariatur libero maiores laboriosam, placeat, beatae a, quod deserunt odio sequi eum! Voluptas deleniti aliquid, soluta cupiditate culpa dolores fugiat dolore recusandae, nihil fugit consectetur sequi alias suscipit atque? Harum temporibus vero assumenda dolorem.</p>
+        <ul class="list-unstyled mb-0">
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        <li class="mt-0">Item Out</li>
+    </div>
+
+    <!--                    CONTAINER                    --> 
+    <!-- A classe container serve para organizar as margens do elemento, tornando ele mais legivel. Já possui responsividade com o tamanho da tela do usuario. -->
+    <h3>Container</h3>
+    <div class="container bg-secondary">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, hic saepe? Unde voluptatem aperiam quidem asperiores magni explicabo commodi, illo enim totam excepturi soluta nostrum harum esse quibusdam, iste voluptatum.</p>
+    </div>
+
+    <!--                    MARGIN E PADDING                    -->
+    <!-- Para alterar a margin e o padding podemos adicionar as classes:
+    p-3 : o 'p' indica o padding, ele vai de 0 a 5. 
+    m-2 : o 'm' indica o margin, ele vai de 0 a 5.
+    Temos as 2 classes acima para apenas direções especificas, como mt-4(margin-top), pr-1(padding-top), tudo esta na documentação. -->
+    <h3>Margin e Padding</h3>
+    <div class="container">
+        <div class="bg-info p-2 px-3 m-3 rounded-pill fw-bold">Padding 2, Margin 3</div>
+    </div>
+
+    <!--                    TITULO E DISPLAY-1                    -->
+    <h3>Titulo e Display-1</h3>
+    <div class="container">
+        <h2>Titulo com <span class="badge bg-secondary">H2</span></h2>
+        <!-- As tags de titulo tem sentido semantico, porém podemos copiar o estilo delas com o Bootstrap ao utilizar a class 'h2'. -->
+        <p class="h2">Titulo <span class="badge bg-secondary">H2</span> com <span class="text-info">Bootstrap</span></p>
+        <!-- A classe display deixa o elemento em grande destaque, ela vai de display-1 a 4. -->
+        <div class="display-4">Outdoor</div>
+    </div>
+
+    
+
+
+    <footer class="bg-dark text-light p-4 mt-5">Rodapé pagina</footer>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

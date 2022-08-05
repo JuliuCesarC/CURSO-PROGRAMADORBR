@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTSTRAP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- O Bootstrap altera a grande maioria dos estilos padrão de css, tipografia, tamanho, margens, etc. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+    <!--                    BOTÃO                    -->
+    <!-- A documentação possui todos os timpos de botões -->
+    <h3>Tipos de Botões</h3>
+    <div class="container">
+        <button class="btn">None</button>
+        <button class="btn btn-secondary btn-lg">Secondary large</button>
+        <button class="btn btn-outline-success">Success Outline</button>
+        <input type="button" class="btn btn-dark btn-sm" value="Dark small">
+        <input type="button" class="btn btn-info disabled" value="Info Desabilitado">
+        <!-- Grupo de botões -->
+        <div class="btn-group" >
+            <button class="btn btn-primary">Botão 1</button>
+            <button class="btn btn-primary">Botão 2</button>
+            <button class="btn btn-primary">Botão 3</button>
+        </div>
+        <!-- Grupo de checkbox na vertical. -->
+        <div class="btn-group-vertical">              
+            <label class="form-check-label btn btn-secondary" for="rad1">
+                <input type="radio" class="form-check-input" name="Radios" id="rad1">Radio 1
+            </label>
+            <label class="form-check-label btn btn-secondary" for="rad2">
+                <input type="radio" class="form-check-input" name="Radios" id="rad2"> Radio 2
+            </label>
+            <label class="form-check-label btn btn-secondary" for="rad3">
+                <input type="radio" class="form-check-input" name="Radios" id="rad3" checked> Radio 3
+            </label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="Check">
+            <label for="Check">CheckBox default</label>
+        </div>
+        <!-- Para criar a checkbox no formato switch, é preciso uma div com a classe      'form-switch' e a classe 'form-check-input' na tag input. -->
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="" id="Switch" role="switch" checked>
+            <label for="Switch">CheckBox Switch mode</label>
+        </div>
+        <div class="d-grid gap-2 mt-2">
+            <button class="btn btn-outline-danger btn-block">Danger Outline</button>
+            <button class="btn btn-warning btn-block">Warning</button>
+        </div>
+    </div>
+
+    <!--                    COLLAPSE                    -->
+    <!-- O collapse alterna a visibilidade do elemento. -->
+    <h3>Collapse</h3>
+    <div class="container">
+        <button class="btn btn-success d-block mb-2" data-bs-toggle="collapse" href="#coll">Mostrar/Esconder</button>
+        <img id="coll" class="collapse" src="./imgs/bootstrap.png" alt="">
+        <button class="btn btn-dark d-block" data-bs-toggle="collapse" href="#coll2">Texto</button>
+        <div class="container">
+            <p id="coll2" class="collapse show">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi temporibus, ducimus molestiae repellat culpa accusantium fuga quibusdam recusandae rem, unde odit ratione eveniet harum necessitatibus explicabo rerum. Itaque, voluptatum quibusdam?</p>
+        </div>
+    </div>
+
+    <!--                    DROPDOWN                    -->
+    <!-- O dropdown cria um botão que ao clicar nele mostra algumas itens. -->
+    <h3>DropDown</h3>
+    <div class="container">
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">Documentação para Programadores</button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header">Links</div>
+                <a class="dropdown-item" href="">JavaScript</a>
+                <a class="dropdown-item" href="">Bootstrap</a>
+                <a class="dropdown-item" href="">Jquery</a>
+                <a class="dropdown-item" href="">FireBase</a>
+            </div>
+        </div>
+    </div>
+
+     <!--                    PROGRESS BAR                    -->
+    <!-- Como o nome sugere, é uma barra de progreço, podemos utilizar javascript para alterar o progreço de acordo com alguma informação. -->
+    <h3>Progress Bar</h3>
+    <div class="container mt-4">
+        <h4>Download</h4>
+        <div class="progress bg-secondary progress-bar-striped progress-bar-animated" 
+        style="height: 20px;">
+            <div class="progress-bar bg-success" style="width: 0%; height: 20px;">0%</div>
+        </div>
+        <button class="btn btn-success mt-2" onclick="download()">Baixar</button>
+    </div>
+    <script>
+        function download(){
+            let bar = $('.progress-bar')[0]
+            let progress = 0;
+            let loop = setInterval(() => {
+                if(progress <= 100){
+                    bar.style.width = progress +'%';
+                    bar.innerHTML = progress + '%';
+                    progress++
+                }else{clearInterval(loop)}
+            }, 120);
+        }
+        </script>
+    <div class="container mt-4">
+        <h4>Armazenamento</h4>
+        <div class="progress bg-secondary" 
+        style="height: 35px;">
+            <div class="progress-bar bg-success font-weight-bold" style="width: 19%; height: 35px;">Sistema</div>
+            <div class="progress-bar bg-info text-dark font-weight-bold" style="width: 12%; height: 35px;">Documentos</div>
+            <div class="progress-bar bg-danger font-weight-bold" style="width: 8%; height: 35px;">Imagens</div>
+            <div class="progress-bar bg-warning text-dark font-weight-bold" style="width: 35%; height: 35px;">Apps e dados</div>
+        </div>
+    </div>
+
+    <!--                    SPINNER                    -->
+    <!-- É uma animação de carregando. -->
+    <h3>Spinner</h3>
+    <div class="container">
+        <div class="spinner-border" role="status"></div>
+        <div class="spinner-border text-danger" role="status"></div>
+        <div class="spinner-border text-success" role="status"></div>
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="spinner-border text-warning" role="status"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
