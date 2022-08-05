@@ -13,41 +13,38 @@
 <body>
     <!-- NO SITE DA BOOTSTRAP EXISTE A DOCUMENTAÇÃO, QUALQUER DUVIDA PESQUISA LÁ -->
 
-    <header class="bg-dark text-light p-1 px-5 mb-4">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a href="./index.html" class="navbar-brand text-light fs-3">BOOTSTRAP</a>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="./index.html" class="nav-link text-light fs-5">Home</a></li>
-
-                    <li id="Cat" class="nav-item dropdown accordion">
-                        <a href="#" class="nav-link dropdown-toggle text-light fs-5" role="button" data-bs-toggle="dropdown">Categoria</a>
-                        <ul class="dropdown-menu">
-                            <li class="card">
-                                <a href="#Teste1" class="dropdown-item card-header focus" data-bs-toggle="collapse" data-bs-parent="#Cat">
-                                    Utilities
-                                </a>
-                                <div id="Teste1" class="collapse navbar-collapse" data-bs-parent="#Cat">Cores</div>
-                            </li>
-                            <li>
-                                <a href="" class="dropdown-item">teste 2</a>
-                            </li>
-                            <li>
-                                <a href="" class="dropdown-item">teste 3</a>
-                            </li>
-                            <li>
-                                <a href="" class="dropdown-item">teste 4</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                </ul>
-
-
-
-            </div>
-        </nav>
+    <header class="bg-dark text-light p-2 px-5 mb-4" style="height: 65px;">
+        <a href="./index.html" class="text-light display-6 text-decoration-none">BOOTSTRAP
+        </a>
     </header>
+    <nav class="position-absolute" style="top: 2%; left: 80%;">
+        <div class="btn text-light fs-5 dropdown-toggle" data-bs-toggle="collapse" href=".accordion">Categorias</div>
+        <div id="accordion" class="accordion collapse">            
+            <div class="card itensNav">
+                <div class="card-header btn text-left font-weight-bold" href=".utilNav" data-bs-toggle="collapse">
+                    Utilities
+                </div>
+                <div class="collapse utilNav" data-bs-parent="#accordion">
+                    <div class="card-body">Cores</div>
+                </div>
+                <div class="collapse utilNav" data-bs-parent="#accordion">
+                    <div class="card-body">Margin</div>
+                </div>
+            </div>
+            <div class="card itensNav">
+                <div class="card-header btn text-left font-weight-bold" href=".T2" data-bs-toggle="collapse">
+                    Teste
+                </div>
+                <div class="collapse T2" data-bs-parent="#accordion">
+                    <div class="card-body">Cores</div>
+                </div>
+                <div class="collapse T2" data-bs-parent="#accordion">
+                    <div class="card-body">Margin</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
 
 
     <div class="container">
