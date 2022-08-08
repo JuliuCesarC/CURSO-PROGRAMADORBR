@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,27 +8,142 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- O Bootstrap altera a grande maioria dos estilos padrão de css, tipografia, tamanho, margens, etc. -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- O Bootstrap utiliza o Jquery. -->
+    
 </head>
 <body>
+    <!-- NO SITE DA BOOTSTRAP EXISTE A DOCUMENTAÇÃO, QUALQUER DUVIDA PESQUISA LÁ -->
 
-
+    <header class="bg-dark text-light p-2 px-5 mb-4" style="height: 65px;">
+        <a href="./index.html" class="text-light display-6 text-decoration-none">BOOTSTRAP
+        </a>
+    </header>
+    <nav class="position-absolute" style="top: 2%; left: 80%;">
+        <div class="btn text-light fs-5 dropdown-toggle" data-bs-toggle="collapse" href=".accordion">Categorias</div>
+        <div id="accordion" class="accordion collapse">            
+            <div class="card itensNav">
+                <div class="card-header btn text-left font-weight-bold" href=".T1" data-bs-toggle="collapse">
+                    Utilities
+                </div>
+                <div class="collapse T1" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./index.html#Colors">Cores</a>
+                </div>
+                <div class="collapse T1" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./index.html#Margin">Margin e Padding</a>
+                </div>
+                <div class="collapse T1" data-bs-parent="#accordion">
+                    <a class="card-text btn text-start" href="./Page2.html#Display">Display e responsividade</a>
+                </div>
+                <div class="collapse T1" data-bs-parent="#accordion">
+                    <a class="card-text btn text-start" href="./Page6.html#">Flex Box</a>
+                </div>
+            </div>
+            <div class="card itensNav">
+                <div class="card-header btn text-left font-weight-bold" href=".T2" data-bs-toggle="collapse">
+                    Content
+                </div>
+                <div class="collapse T2" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./index.html#typography">Tipografia</a>
+                </div>
+                <div class="collapse T2" data-bs-parent="#accordion">
+                    <a class="card-text btn text-start" href="./Page2.html#Img">Configurações de Imagens</a>
+                </div>
+                <div class="collapse T2" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page2.html#Table">Tabelas</a>
+                </div>
+            </div>
+            <div class="card itensNav">
+                <div class="card-header btn text-left font-weight-bold" href=".T3" data-bs-toggle="collapse">
+                    Layout
+                </div>
+                <div class="collapse T3" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./index.html#Container">Conteiner</a>
+                </div>
+                <div class="collapse T3" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./index.html#Margin">Margin e Padding</a>
+                </div>
+                <div class="collapse T3" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page7.html">Grid</a>
+                </div>
+            </div>
+            <div class="card itensNav">
+                <div class="card-header btn text-left font-weight-bold" href=".T4" data-bs-toggle="collapse">
+                    Components
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./index.html#Title">Titulo e Display-1</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page2.html#List">Lista Agrupada</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page2.html#Alert">Alert</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page3.html#Button">Tipos de Botões</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page3.html#Collapse">Collapse</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page3.html#DropDown">Dropdowns</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page3.html#Progress">Progress Bar</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page3.html#Spinner">Spinners</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page4.html#Page">Paginação</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page4.html#NavTab">Menu de Navegação</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page4.html#NavBar">Barra de Navegação</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page4.html#Card">Cards</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page4.html#Accordion">Accordion</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page5.html#Carousel">Carrocel</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page5.html#Modal">Modal</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page5.html#TollTip">TollTip</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page5.html#PopOver">PopOver</a>
+                </div>
+                <div class="collapse T4" data-bs-parent="#accordion">
+                    <a class="card-text btn" href="./Page5.html#Toast">Toast</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
 <!--                    CARROCEL                    -->
 <h3 id="Carousel">Carrocel</h3>
 <div class="container">
-    <div class="carousel slide" id="Carousel" data-bs-ride="carousel">
-        <div class="carousel-inner" style="max-height: 340px;">
+    <div class="carousel slide" id="Carou" data-bs-ride="carousel" style="width: 80%; margin: auto;">
+        <div class="carousel-inner rounded-3" style="max-height: 340px;">
             <div class="carousel-item active">
-                <img src="./imgs/lake wanaka.jpg" style="height: 450px;"></div>
+                <img src="./imgs/lake wanaka.jpg" style="height: 450px; width: 100%;"></div>
             <div class="carousel-item">
-                <img src="./imgs/465311.jpg" style="height: 450px;"></div>
+                <img src="./imgs/465311.jpg" style="height: 450px; width: 100%"></div>
             <div class="carousel-item">
-                <img src="./imgs/842932.jpg" style="height: 450px;"></div>
+                <img src="./imgs/842932.jpg" style="height: 450px; width: 100%"></div>
         </div>
-        <button class="carousel-control-prev" data-bs-target="#Carousel" data-bs-slide="prev">
+        <button class="carousel-control-prev" data-bs-target="#Carou" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
             </button>
-        <button class="carousel-control-next" data-bs-target="#Carousel" data-bs-slide="next">
+        <button class="carousel-control-next" data-bs-target="#Carou" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
             </button>
     </div>
@@ -57,7 +172,7 @@
 
 <!--                    TOOLTIP                    -->
 <!-- O tooltipo é um balão de dialogo que aparece quando o mouse passa por cima do elemento selecionado. -->
-<h3 id="TollTip">TollTip</h3>
+<h3 id="TollTip" class="mt-4">TollTip</h3>
 <div class="container">
     <h4>Lorem ipsum</h4>
     <p>Lorem ipsum dolor, sit amet <a href="" data-bs-toggle="tooltip" title="Exemplo TollTip">consectetur</a> adipisicing elit. Repudiandae et magni illo repellendus maiores consequatur quia, dignissimos vero quos iure quae eveniet non aliquid eos dolor recusandae, perferendis <a href="" data-bs-toggle="tooltip" title="Exemplo abrindo para baixo." data-bs-placement="bottom">assumenda</a> eum!</p>
@@ -70,9 +185,34 @@
     })
 </script>
 
+<!--                    TOAST                    -->
+<!-- O 'Toast' é muito parecido com o popover, depende de qual tipo de interação com o usuario é desejado. O toast aparece ao clicar no elemento gatilho, e após alguns segundos ele desaparece, se ficar com o mouse em cima do pop up, ele não ira desaparecer. -->
+<h3 id="Toast" class="mt-4">Toast</h3>
+<div class="container">
+    <button class="btn btn-primary" id="showtoast">Mostrar Toast</button>
+    <div class="toast-container">
+        <div class="toast" id="divtoast">
+            <div class="toast-header">
+                <h4>Lorem</h4>
+            </div>
+            <div class="toast-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eos voluptates possimus fugit? Nostrum ex impedit minima neque.</p>
+            </div>
+            <div class="toast-footer ">
+                <button class="btn btn-secondary mx-5 mb-3" id="closetoast">Esta informação foi útil!</button>
+            </div></div></div></div>
+<script>
+    $(document).ready(function(){
+        $('#showtoast').click(()=>{
+            $('.toast').toast('show')})
+        $('#closetoast').click(()=>{
+            $('.toast').toast('hide')})
+    })
+</script>
+
 <!--                    POPOVER                    -->
 <!-- Popover é um pop up mais organizado do que o tooltip acima. Pode ser usado para passar alguma informação importanto sobre aquilo que o usuario esta executando. -->
-<h3 id="PopOver">PopOver</h3>
+<h3 id="PopOver" class="mt-4">PopOver</h3>
 <div class="container">
     <h4>Lorem ipsum</h4>
     <p>Lorem ipsum dolor, sit amet 
@@ -86,32 +226,23 @@
     })
 </script>
 
-<!--                    TOAST                    -->
-<!-- O 'Toast' é muito parecido com o popover, depende de qual tipo de interação com o usuario é desejado. O toast aparece ao clicar no elemento gatilho, e após alguns segundos ele desaparece, se ficar com o mouse em cima do pop up, ele não ira desaparecer. -->
-<h3 id="Toast">Toast</h3>
-<div class="container">
-    <button class="btn btn-primary" id="showtoast">Mostrar Toast</button>
-    <div class="toast-container">
-        <div class="toast" id="divtoast">
-            <div class="toast-header">
-                <h4>Lorem</h4>
-            </div>
-            <div class="toast-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eos voluptates possimus fugit? Nostrum ex impedit minima neque.</p>
-            </div>
-            <div class="toast-footer ">
-                <button class="btn btn-secondary mx-5" id="closetoast">Esta informação foi útil!</button>
-            </div></div></div></div>
-<script>
-    $(document).ready(function(){
-        $('#showtoast').click(()=>{
-            $('.toast').toast('show')})
-        $('#closetoast').click(()=>{
-            $('.toast').toast('hide')})
-    })
-</script>
 
 
+<div class="pagination justify-content-center mt-5">
+    <div class="page-item"><a class="page-link" href="./Page4.html">4</a></div>
+    <div class="page-item active"><a class="page-link" href="#">5</a></div>
+    <div class="page-item"><a class="page-link" href="./Page6.html">6</a></div>
+</div>
+<footer class="bg-dark text-light p-4 mt-3">
+    <div class="d-flex flex-row" style="height: 100%;">
+        <div class="align-self-center">
+            <img class="" src="./imgs/Bootstrap_logo.svg.png" alt="Logo Bootstrap" style="width: 100%; max-width: 60px;">
+        </div>
+        <div class="fs-4 mx-3 align-self-center">Bootstrap</div>
+        <div class="fs-4 mx-3 align-self-center"><a class="text-decoration-none text-info" href="https://getbootstrap.com/docs/5.2/getting-started/introduction/" target="_blank">Documentação</a></div>
+        <div class="fs-4 mx-3 align-self-center"><a class="text-decoration-none text-info" href="https://getbootstrap.com/docs/5.2/examples/" target="_blank">Exemplos</a></div>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
