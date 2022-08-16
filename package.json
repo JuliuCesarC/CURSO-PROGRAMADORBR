@@ -1,0 +1,20 @@
+{
+  "name": "curso-programadorbr",
+  "version": "1.0.0",
+  "description": "Pasta com os arquivos dos desafios e aulas feitos durante o curso ProgramadorBR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliuCesarC/CURSO-PROGRAMADORBR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuliuCesarC/CURSO-PROGRAMADORBR/issues"
+  },
+  "homepage": "https://github.com/JuliuCesarC/CURSO-PROGRAMADORBR#readme"
+}
