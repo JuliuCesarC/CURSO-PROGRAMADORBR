@@ -1,0 +1,8 @@
+File from: [catwheel-redimencionada.jpg]
+
+File to: [catwheel-redimencionada.jpgcatwheel-redimencionada.jpg]
+
+Compression algorithm: [mozjpeg]
+
+Description: Error: Command failed: C:\Users\pugpu\Desktop\Curso Dev\CURSO PROGRAMADORBR\Node\SharpEditor\node_modules\mozjpeg\vendor\cjpeg.exe -quality 60 -outfile catwheel-redimencionada.jpgcatwheel-redimencionada.jpg catwheel-redimencionada.jpg
+C:\Users\pugpu\Desktop\Curso Dev\CURSO PROGRAMADORBR\Node\SharpEditor\node_modules\mozjpeg\vendor\cjpeg.exe: can't open catwheel-redimencionada.jpgcatwheel-redimencionada.jpg

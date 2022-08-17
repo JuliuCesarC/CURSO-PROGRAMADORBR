@@ -1,0 +1,11 @@
+{
+  "name": "pacote-matematico",
+  "version": "1.0.0",
+  "description": "Pacote com funções matematicas",
+  "main": "pacoteMat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
