@@ -36,9 +36,9 @@ dataBase.collection('turmaA').get().then((snapshot) => {
 
 // Porem diferente do get acima que pega todos os dados, com um id do documente por exemplo podemos pegar um informação especifica.
 let db = dataBase.collection('turmaA').doc('Jpuxf8VDFeLfWJJecras')
-db.get().then((doc)=>{
-    // console.log(doc.data())
-})
+// db.get().then((doc)=>{
+//     // console.log(doc.data())
+// })
 
 // Com o método 'where' é possivel buscar as informações desejadas com outra maneira além do ID. Por exemplo abaixo, buscamos todos os alunos que tenham o sobrenome 'Silva'. Lembrando que depois do where é preciso um 'get', que pega o documento inteiro, não apenas o sobrenome que procuramos com o where.
 dataBase.collection('turmaA')
