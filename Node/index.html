@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pagina teste Servidor</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Pagina Principal</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime facere nihil aliquid asperiores, nisi vitae et ipsa, aspernatur illum omnis soluta. Eligendi blanditiis ut perspiciatis quo quis placeat quod doloribus?</p>
-</body>
+    <button onclick="get()">Get</button>
+    <button onclick="post()">Post</button>
+    <button onclick="put()">Put</button>
+    <button onclick="del()">Delete</button>
+
+    <script>
+      const url = "http://localhost:3000/teste";
+
+      function get() {
+        fetch(url, {
+          method: "get",
+          // O método padrão é o 'get'.
+          // O 'Get' é para ler os dados.
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      }
+      function post() {
+        fetch(url, {
+          method: "post",
+          // O 'post' é para mardar os dados para serem gravados.
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      }
+      function put() {
+        fetch(url, {
+          method: "put",
+          // O 'put' para mandar dados para serem atualizados.
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      }
+      function del() {
+        fetch(url, {
+          method: "delete",
+          // O 'delete' para apagar algum dado.
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      }
+    </script>
+  </body>
 </html>

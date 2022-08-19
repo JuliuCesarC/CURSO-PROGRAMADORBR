@@ -26,8 +26,13 @@ function tratandoArq(req, res, callback) {
 }
 
 function tratandoReq(req, res) {
-  // Dentro dessa função podemos adicionar varias tipos de tratamento de dados, abaixo temos apenas 1 simples tipo de tratamento. 
+  // Dentro dessa função podemos adicionar varias tipos de tratamento de dados, abaixo temos apenas 1 simples tipo de tratamento.
   let path = url.parse(req.url).pathname;
+
+  let metodo = req.method;
+  console.log(metodo)
+
+
   if (path == "/teste") {
     res.end("Teste");
     return true;
