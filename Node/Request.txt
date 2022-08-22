@@ -1,2 +1,4 @@
-Documentação para opções que podem ser colocadas no header de um request.
+Documentação para opções que podem ser colocadas no header de um request, e no Response.
 https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html
+Response
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html
