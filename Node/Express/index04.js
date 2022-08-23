@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 const aluno = require("./routes/alunos");
-// Dentro da pasta 'routes' foi criado um arquivo com todas as rotas que vamos utilizar aqui. Para ter acesso a essas rotas, estamos importando esse modulo dentro de 'aluno'.
+// Dentro da pasta 'routes' foi criado um arquivo com todas as rotas que vamos utilizar aqui. Para ter acesso a essas rotas, estamos importando esse modulo para a constante 'aluno'.
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", aluno);
