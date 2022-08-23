@@ -1,0 +1,1 @@
+Arquivo 'alunos.js' é utilizado no script 'index04.js'. Aula referente a separação das rotas do arquivo principal.
