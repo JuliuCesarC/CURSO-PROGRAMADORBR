@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function updataPost() {
-    fetch("http://localhost:5000/api/all")
+    fetch("http://192.168.100.2:5000/api/all")
         .then((res) => {
             return res.json();
         })
@@ -34,7 +34,7 @@ function newPost() {
         headers: new Headers({ "content-type": "application/json" }),
         body: JSON.stringify(post),
     };
-    fetch("http://localhost:5000/api/new", options).then((res) => {
+    fetch("http://192.168.100.2:5000/api/new", options).then((res) => {
         console.log(res);
         updataPost();
         document.getElementById("title").value = "";
