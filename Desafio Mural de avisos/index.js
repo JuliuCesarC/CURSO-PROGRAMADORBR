@@ -1,18 +1,15 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
-const posts = require("./model/posts");
+const path = require("path")
+const apiRoute = require('./routes/api')
 
-app.get("/all", (req, res) => {
-    res.json(JSON.stringify(posts.getAll()));
-});
-app.post("/new", bodyParser.json(), (req, res) => {
-    let title = req.body.title;
-    let description = req.body.description;
+app.use('/api', apiRoute)
+app.use(express.static(path.join(__dirname, "public")))
+// O 'express.static' é utilizado para entregar arquivos estaticos, como imagens, html, javascript, etc.
+// O 'path.join' serve para unir varias strings em uma string normalizada para diretorio. EX: 'path.join("pasta1", "pasta2", "Teste")'. Resultado: '/pasta1/pasta2/Teste'
+// Já o '__dirname' é utilizado para pegar o caminho atual do arquivo em que ele é utilizado.Resultado: 'C:\User\Usuario\Desktop\.....'.
 
-    posts.newPost(title, description);
-    res.send("Post adicionado");
-});
+
 
 const PORT = 5000;
 app.listen(PORT, () => {
