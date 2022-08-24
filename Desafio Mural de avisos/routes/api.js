@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/all", (req, res) => {
     res.json(JSON.stringify(posts.getAll()));
 });
-router.post("/new", bodyParser.json(), (req, res) => {
+router.post("/new", bodyParser.json(), (req, res ) => {
     let title = req.body.title;
     let description = req.body.description;
 

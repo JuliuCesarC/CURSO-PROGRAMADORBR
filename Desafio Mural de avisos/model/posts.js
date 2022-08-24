@@ -1,7 +1,7 @@
 module.exports = {
     posts : [
         {
-            id: "qualquer",
+            id: generateID(),
             title: "Teste do Mural",
             description: "Descrição HardCode",
         },

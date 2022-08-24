@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Meu Mural</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Pagina principal.</h1>
+    <div class="container">
+        <h2>Novo Post</h2>
+        <input type="text" id="title" placeholder="Título">
+        <input type="text" id="desc" placeholder="Descrição">
+        <button class="btn btn-dark" onclick="newPost()">Enviar</button>
+
+        <h2>Mural</h2>
+        <div id="posts">
+            
+        </div>
+    </div>
+
+    <script src="./scripts/script.js"></script>
 </body>
 </html>
