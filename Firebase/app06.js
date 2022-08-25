@@ -46,7 +46,7 @@ authentication.onAuthStateChanged(usuarios=>{
         console.log('Ninguém logado')
     }
 })
-// Os métodos de login não modificam tem como padrão de persistencia para 'Local', ou seja, o usuario pode abrir varias abas no mesmo navegador e continuara logado. Porém podemos alterar isso com o 'setPersistence'.
+// Os métodos de login tem como padrão de persistencia para 'Local', ou seja, o usuario pode abrir varias abas no mesmo navegador e continuara logado. Porém podemos alterar isso com o 'setPersistence'.
 function login(){
     // O 'Persistence' possui 3 opções:
     //--'LOCAL' que é o padrão, continua logado enquanto no mesmo navegador.
