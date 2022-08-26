@@ -3,32 +3,35 @@ const path = require("path");
 const fs = require("fs");
 const app = express();
 
-let article = [
+let users = [
     {
         id: 0,
-        title: "Template Engine EJS",
-        author: "Jão",
+        name: "Jão",
+        phone:"(2324)2343242"
     },
     {
         id: 1,
-        title: "Template Engine EJS",
-        author: "Lusca",
+        name: "Jenfiner",
+        phone:"(2324)8757685678"
     },
     {
         id: 2,
-        title: "Template Engine EJS",
-        author: "Jenfiner",
-    },
-];
-app.set("views", path.join(__dirname, "views"));
+        name: "Lusca",
+        phone:"(2324)45674567"
+    }
+]
+
+app.set("views", path.join(__dirname, 'views'))
 // O primeiro argumento 'views' é para indicar o locar dos arquivos 'views', e o segundo argumento é o caminho desses arquivos.
-app.set("view engine", "ejs");
+app.set("view engine", "ejs")
 // Precisamos tambem indicar para o express/node qual é p template engine que estamos utilizando.
+app.get("/", (req, res)=>{
+    res.render('user', {users:users})
+})
+app.get("/about.ejs", (req, res)=>{
+    res.render('about')
+})
 
-app.get("/", (req, res) => {
-    res.render("user", {author: article});
-});
-
-app.listen(5000, () => {
-    console.log("Servidor rodando na porta 5000");
-});
+app.listen(5000, ()=>{
+    console.log("Servidor rodando na porta 5000")
+})

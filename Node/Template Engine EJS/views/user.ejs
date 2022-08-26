@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
-</head>
-<body>
-    <% for (let user of author){ %> 
-    <h1><%= title EJS %></h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque fugiat quidem doloremque eaque. Reprehenderit temporibus atque qui autem perspiciatis nobis inventore nihil. Vero quibusdam distinctio maiores voluptate, fuga ullam itaque!</p>
-    <footer>
-        <% author %>.
-    </footer>
-    <% } %> 
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Usuario</title>
+    </head>
+    <body>
+        
+        <%- include('partials/navbar')%> 
+
+        <% for (let user of users){ %> <% if(user.id %2==0){ %>
+        <h1><%= user.name %></h1>
+        <h3><%= user.phone %></h3>
+        <% }} %>
+    </body>
 </html>

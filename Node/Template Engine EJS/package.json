@@ -1,7 +1,7 @@
 {
-  "name": "ejs",
+  "name": "template-engine-ejs",
   "version": "1.0.0",
-  "description": "Utilizando template engine ejs",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
