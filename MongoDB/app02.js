@@ -6,9 +6,9 @@ const mongoose = require("mongoose");
 
 const linkSchema = new mongoose.Schema({
     // A variavel 'linkSchema' recebe um 'new' pois é uma nova instancia do mongoose, e como parametro passamos um objeto que sera o "molde" do squema.
-    title: {type:String, require:true},
+    title: {type:String, required:true},
     description: String,
-    url: {type:String, require:true},
+    url: {type:String, required:true},
     click: {type:Number, default:0},
     // Em cada campo do objeto podemos definir apenas o tipo de informação que sera guardado como no 'description', ou se necessario podemos adicionar mais informações como o 'require':obrigatório, 'default':valor padrão.
 });
@@ -17,7 +17,7 @@ const Link = mongoose.model("Link", linkSchema);
 // Geralmente é criado uma variavel 'Link' com L maiusculo para representar/referenciar a coleção.
 let link = new Link({
     // E uma variavel 'link' com l minusculo para se referir ao documento.
-    title: "youtube",
+    
     description: "Link para a pagina do Youtube.",
     url: "https://www.youtube.com/",
 });

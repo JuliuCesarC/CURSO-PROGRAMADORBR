@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+</head>
+<body>
+    <% for(let i=0; i<links.length; i++){ %> 
+        <div id="<%=links[i]._id %>">
+            <h2><%=links[i].title %></h2>
+            <div><%=links[i].description %></div>
+            <div><%=links[i].url %></div>
+            <button onclick="deleteLink('<%=links[i]._id%>')">Delete</button>
+            <!-- Como o formulario so envia os métodos 'GET' e 'POST', criamos uma função para utilziar o 'fetch' com o método 'delete'.  -->
+        </div>
+    <% } %> 
+
+    <script>
+        function deleteLink(id){
+            fetch('/' + id, {method: 'DELETE'}).then(res=>{
+
+                if(res.status == 200 ){
+                    res.text().then(linkId=>{
+                        console.log(linkId)
+                        document.getElementById(linkId).remove()                    
+                    })
+                }else{
+                    res.json().then(err=>{
+                    // No backend estamos enviando um código 404 caso haja algum erro, e a resposta que é enviada é no formato 'json', por isso utilizamos 'res.json' e não 'res.text'.
+                        console.log(err.message)
+                        alert(err.message)
+                    })
+                }
+            })
+        }
+    </script>
+</body>
+</html>
