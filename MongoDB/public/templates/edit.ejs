@@ -5,19 +5,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Redirect</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
         <h1>Adicionar novo Link</h1>
-        <form action="/" method="POST">
+        <form action="/edit/<%= body.id %>" method="POST">
+            <!-- Para editar um documento podemos utilizar o método 'post' ou 'put' -->
             <input class="field" name="title" placeholder="Title" required value="<%= body.title %>" />
             <input class="field" name="description" placeholder="Description" value="<%= body.description %>"/>
             <input class="field" name="url" placeholder="URL" required value="<%= body.url %>"/>
-            <button>Salvar</button>
+            <button>Edit</button>
         </form>
 
-        <% if(error){ %>
-            <!-- Como mais de uma rota renderizam esta pagina, então precisamos garantir que todas enviem a variavel 'error', mas na rota 'get' no arquivo 'linkRouter' não há erros para serem enviados, então passamos o 'error:false' como segundo parametro, desta forma este 'if' não sera executado. -->
         <h3><%= error.message %></h3>
-        <% } %>
+
     </body>
 </html>
