@@ -1,12 +1,16 @@
 const Link = require("../models/Links");
 
-const redirect = async (req, res) => {
+const redirect = async (req, res, next) => {
     let title = req.params.title;
     try {
         let doc = await Link.findOne({ title: title });
-        res.redirect(doc.url);
+        if(doc){
+            res.redirect(doc.url);
+        }else{
+            next()
+        }
     } catch (error) {
-        console.log(error);
+        res.send(error);
     }
 };
 
@@ -15,7 +19,7 @@ const addLink = async (req, res) => {
     // Como vamos pegar as informações atravez do corpo da rerquisição, utilizamos o 'req.body'.
     try {
         let doc = await link.save();
-        res.send("Link adicionado com sucesso!");
+        res.redirect('/')
     } catch (error) {
         res.render("index", { error, body: req.body });
         // Enviamos o 'error' junto com o index, para que no arquivo index.ejs o erro seja mostrado de forma mais apresentavel.
@@ -25,7 +29,7 @@ const addLink = async (req, res) => {
 const allLinks = async (req, res) => {
     try {
         let links = await Link.find({});
-        res.render("all", { links });
+        res.render("all02", { links });
     } catch (error) {
         res.send(error);
     }
@@ -40,7 +44,9 @@ const deleteLink = async (req, res) => {
         // É possivel também utilizar o método abaixo para deletar o documento.
         // await Link.deleteOne({_id:id});
         await Link.findByIdAndDelete(id)
-        res.send(id);
+        // res.send(id);
+        res.redirect('/')
+        // Para o novo método com o 'override' utilizamos o 'redirect'.
     } catch (error) {
         res.status(404).send(error);
         // simulando um erro enviando um 'id' incorreto.

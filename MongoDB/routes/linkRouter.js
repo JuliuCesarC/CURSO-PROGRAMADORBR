@@ -1,12 +1,15 @@
 const express = require("express");
 const linkController = require("../controllers/linkController");
+const methodOverride = require('method-override')
 const router = express.Router();
 
-router.get("/all", linkController.allLinks);
+router.use(methodOverride('_method'))
+
+router.get("/", linkController.allLinks);
 
 router.get("/:title", linkController.redirect);
 
-router.get("/", (req, res) => {
+router.get("/add", (req, res) => {
     res.render("index", { error: false, body: {} });
 });
 
