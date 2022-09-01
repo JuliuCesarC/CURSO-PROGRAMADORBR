@@ -3,8 +3,13 @@ const Link = require("../models/Links");
 const redirect = async (req, res, next) => {
     let title = req.params.title;
     try {
-        let doc = await Link.findOne({ title: title });
+        let doc = await Link.findOneAndUpdate(
+            { title: title },
+            { $inc: { click: 1 } }
+            
+        );
         if (doc) {
+            // Acima temos uma função que procura o documento no banco de dados que esta de acordo com a requisição, e acrecentamos um click. Abaixo pegamos o 'url' desse documento e redirecionamos o usuario para o site em questão.
             res.redirect(`https://${doc.url}`);
         } else {
             next();
@@ -59,6 +64,7 @@ const loadLink = async (req, res) => {
     try {
         let doc = await Link.findById(id);
         res.render("edit", { error: false, body: doc });
+        // Buscamos o documento no banco de dados utilizando o id enviado pela requisição, então renderizamos a pagina 'edit' e enviamos para ela atravez do 'body' o documento encontrado. 
     } catch (error) {
         res.status(404).send(error);
     }
@@ -76,7 +82,7 @@ const editLink = async (req, res) => {
     }
     try {
         // let doc = await Link.findByIdAndUpdate(id, link);
-        // O método abaixo é mais atual para atualizar um documento. 
+        // O método abaixo é mais atual para atualizar um documento.
         let doc = await Link.updateOne({ _id: id }, link);
         res.redirect("/");
     } catch (error) {
