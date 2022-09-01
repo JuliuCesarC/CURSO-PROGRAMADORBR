@@ -5,7 +5,7 @@ const redirect = async (req, res, next) => {
     try {
         let doc = await Link.findOne({ title: title });
         if (doc) {
-            res.redirect(doc.url);
+            res.redirect(`https://${doc.url}`);
         } else {
             next();
         }

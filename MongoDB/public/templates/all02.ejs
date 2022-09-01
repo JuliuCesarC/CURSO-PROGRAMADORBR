@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
-    <div class="container text-center">
-        <h1 class="display-4 my-3">Link tree</h1>
-        <a class="btn btn-outline-dark my-3" href="/add">Adicionar novo Link</a>
+    <div class="container text-center p-1">
+        <h1 class="display-4 my-3"><a class="text-decoration-none text-dark" href="/">Linkt<span style="color: #577D5F;">r</span><span style="color: #46D69E;">e</span>e</a></h1>
+        <a class="btn border border-dark border-2 my-2 mb-4 fw-bold" href="/add">Adicionar novo Link</a>
         <div class="d-grid gap-2">
             <% for(let i=0; i<links.length; i++){ %>
-                <div class="border border-2 rounded-pill p-2 px-4 w-50 mx-auto" id="<%=links[i]._id %>">
+                <div class="border border-2 border-dark rounded-pill p-2 mx-auto cell" id="<%=links[i]._id %>">
                     <form class="d-flex justify-content-between" method="POST" action="/<%=links[i]._id %>?_method=DELETE">
                         <!-- Como visto no arquivo anterior 'all.ejs', um formulario só envia os metodos 'get e post', porém é possivel sobrescrever isso com o módulo 'method-override'. Neste formulario temos as tags e os parametros necessarios para funcionar com o 'override'. -->
                         <!-- <div><%=links[i].description %></div> -->
                         <!-- <div><%=links[i].url %></div> -->
-                        <button class="btn btn-outline-dark btn-sm rounded-pill" type="submit">Delete</button>
-                        <h2 class="mb-1"><%=links[i].title %></h2>
-                        <a class="btn btn-outline-dark btn-sm rounded-pill px-3" href="/edit/<%=links[i]._id %>">Edit</a>
+                        <!-- <button class="btn btn-outline-dark btn-sm rounded-pill" type="submit">Delete</button> -->
+                        <h2 class="mb-1 mx-2"><a class="text-decoration-none text-dark" href="/<%=links[i].title %>"><%=links[i].title %></a></h2>
+                        <a class="small my-1" href="/edit/<%=links[i]._id %>"><img src="../imgs/btt edit.png" alt=""></a>
                     </form>
                 </div>
             <% } %>

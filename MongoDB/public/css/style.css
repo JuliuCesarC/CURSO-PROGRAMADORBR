@@ -1,7 +1,25 @@
 body{
     background-image: linear-gradient(to top, #78c2f3, #c5c5c5);
+    background-image: url("../imgs/BackGround.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     overflow: hidden;
+}
+img{
+    width: 40%;
+    max-width: 37px;
+    min-width: 18px;
+}
+.small{
+    width: 35%;
+    max-width: 80px;
+}
+.cell{
+    width: 70%;
+}
+@media(max-width: 450px){
+    .cell{
+        width: 85%;
+    }
 }
