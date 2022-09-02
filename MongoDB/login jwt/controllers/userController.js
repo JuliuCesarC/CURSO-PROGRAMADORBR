@@ -1,11 +1,16 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 const userController = {
     register: async function (req, res) {
+        const selectedUser = await User.findOne({ email: req.body.email });
+        if (selectedUser)
+            return res.status(400).send("ERROR: Email already exists.");
+
         const user = new User({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password),
         });
         try {
             const saveUser = await user.save();
@@ -14,9 +19,18 @@ const userController = {
             res.status(400).send(error);
         }
     },
-    login: function (req, res) {
-        console.log("login");
-        res.send("login");
+    login: async function (req, res) {
+        const selectedUser = await User.findOne({ email: req.body.email });
+        if (!selectedUser)
+            return res.status(400).send("Email or Password incorrect.");
+        const passwordAndUserMatch = bcrypt.compareSync(
+            req.body.password,
+            selectedUser.password
+        );
+        if (!passwordAndUserMatch)
+            return res.status(400).send("Email or Password incorrect.");
+
+        res.send("User Logged")
     },
 };
 module.exports = userController;
