@@ -1,0 +1,15 @@
+{
+  "name": "login-jwt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app01.js",
+  "scripts": {
+    "start": "node app01.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1"
+  }
+}
