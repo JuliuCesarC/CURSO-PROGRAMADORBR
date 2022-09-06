@@ -1,9 +1,17 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { loginValidade, registerValidade } = require("./validate");
 
 const userController = {
     register: async function (req, res) {
+        const { error } = registerValidade(req.body);
+        // Estamos utilizando o modulo "Joi" para verificar se os dados enviados pelo usuario estão corretos, e o resultado que o joi entrega é um objeto que contem um erro caso exista algum, então utilizamos o '{error}' na hora de declarar a constante.
+        // Abaixo verificamos se houve algum erro.
+        if (error) {
+            return res.status(400).send(error.message);
+        }
+
         const selectedUser = await User.findOne({ email: req.body.email });
         if (selectedUser)
             return res.status(400).send("ERROR: Email already exists.");
@@ -24,6 +32,11 @@ const userController = {
         }
     },
     login: async function (req, res) {
+        const { error } = loginValidade(req.body);
+        if (error) {
+            return res.status(400).send(error.message);
+        }
+
         const selectedUser = await User.findOne({ email: req.body.email });
         if (!selectedUser)
             return res.status(400).send("Email or Password incorrect.");
@@ -40,7 +53,7 @@ const userController = {
 
         // Para o token, utilizamos apenas o id do usuario, mas poderiamos enviar o email também. Após enviar os dados necessarios, passamos o segredo, que esta no arquivo '.env'.
         const token = jwt.sign(
-            { _id: selectedUser._id },
+            { _id: selectedUser._id, admin: selectedUser.admin },
             process.env.TOKEN_SECRET
         );
 
