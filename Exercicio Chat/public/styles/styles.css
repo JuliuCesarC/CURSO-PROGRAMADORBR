@@ -1,0 +1,33 @@
+
+header{
+    text-align: center;
+    background-color: rgb(36, 36, 36);
+    color: rgb(222, 245, 252);
+    height: 8vh;
+}
+
+.Layout{
+    display: grid ;
+    grid-template-columns: 20% auto;
+}
+
+#messages{
+
+    height: 80vh;
+    margin-top: 0px;
+    background-color: gray;
+
+}
+#teste{
+    height: 92vh;
+    max-width: 200px;
+    min-width: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgb(48, 60, 70);
+    color: rgb(221, 221, 221);
+}
+.inB{
+    display: inline-block;
+    
+}
