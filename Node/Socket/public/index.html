@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Socket</title>
+    </head>
+    <body>
+        <div id="main"></div>
+
+        <!-- Para utilizarmos o socket precisamos importar ele, só informamos  o caminho '/socket.io/socket.io.js' que o programa achara os arquivos dentro da pasta node_modules. Isso só é possivel com o Node.  -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io("http://localhost:5000");
+
+            // Como estamos no frontend, o '.on' é responsavel por escutar alguma mensagem vinda do backend.
+            socket.on("hello", (data) => {
+                console.log(data.msg);
+
+                socket.emit("client_response", {
+                    msg: "Mensagem recebida com sucesso.",
+                });
+            });
+        </script>
+    </body>
+</html>
