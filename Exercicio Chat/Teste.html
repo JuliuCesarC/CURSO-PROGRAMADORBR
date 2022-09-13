@@ -10,90 +10,69 @@
         <style>
             body{
                 overflow: auto;
+                background-image: url('./public/imgs/Background-Web.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100.1vh;
+
+                
             }                
             header{
                 text-align: center;
-                background-color: rgb(36, 36, 36);
-                color: rgb(222, 245, 252);
-                height: 8vh;
-            }
-            .GRID{
-                display: grid;
-                grid-template-columns: 30vw auto;
-            }
-            #Server{
 
-                background-color: rgb(48, 60, 70);
-                color: rgb(221, 221, 221);
-                overflow-y: scroll;
-                height: 92vh;
+                
+                color: #CDFDFC;
                 
             }
+            #cont{
+                width: 70vw;
+
+            }
+            
             #messages{
-                
-                background-color: gray;
-                height: 92vh;
+                height: 70vh;
+                border: 5px solid;
+                opacity: .7;
+            }
+            #enviar{
+                width: 100%;
+
 
             }
-            .enviar{
+            #Menu{
                 position: absolute;
-                bottom: 1px;
-                width: ;
-            }    
+                top: 105px;
+                left: 30px;
+                width: 40px;
+            }
+            
 
             @media(min-width: 750px){
-                .GRID{
-                grid-template-columns: 25vw auto;
+                
             }
-            }
-            @media(min-width: 992px){
-                .GRID{
-                grid-template-columns: 18vw auto;
-            }
-            }
-            @media(min-width: 1200px){
-                .GRID{
-                grid-template-columns: 15vw auto;
-            }
-            }
-            @media(min-width: 1500px){
-                .GRID{
-                grid-template-columns: 12vw auto;
-            }
-            }
+            
         </style>
 </head>
 <body>
     <header>
-        <span class="display-4">Home</span>
+        <span class="display-4">FaLa Ai!</span>
     </header>
 
-
-
-        <div class="GRID">
-            <div id="Server" class="inB">
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-                <h5>Testando barra de rolagem</h5>
-            </div>
-            <div id="messages">dfghfghdfg
-                <form class="input-group enviar">
-                    <input type="text" class="form-control" placeholder="Chat...">
-                    <button class="btn btn-secondary" type="submit">Enviar</button>
-                </form>
-            </div>
+    <div class="mx-auto pt-5" id="cont">
+        <div class="rounded p-2 text-white" id="messages">
+            dfghfghdfg
         </div>
+
+
+
+        <form id="enviar" class="input-group mt-1">
+            <input type="text" class="form-control" placeholder="Chat...">
+            <button class="btn btn-secondary" type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <button><img id="Menu" src="./public/imgs/Menu-Web.png"></button>
+    
     
 
         
