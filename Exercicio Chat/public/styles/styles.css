@@ -1,33 +1,106 @@
-
+body{
+overflow: hidden;
+background-image: url('../imgs/Background-Web.png');
+background-repeat: no-repeat;
+background-size: cover;
+height: 100.1vh;                
+}                
 header{
-    text-align: center;
-    background-color: rgb(36, 36, 36);
-    color: rgb(222, 245, 252);
-    height: 8vh;
+text-align: center;
+color: #CDFDFC; 
+margin-bottom: 25px;
 }
-
-.Layout{
-    display: grid ;
-    grid-template-columns: 20% auto;
-}
-
+#cont{
+width: 70vw;
+}            
 #messages{
-
-    height: 80vh;
-    margin-top: 0px;
-    background-color: gray;
-
+height: 80vh;
+border: 5px solid;
+opacity: .9;
 }
-#teste{
-    height: 92vh;
-    max-width: 200px;
-    min-width: 150px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background-color: rgb(48, 60, 70);
-    color: rgb(221, 221, 221);
+#enviar{
+width: 100%;
 }
-.inB{
-    display: inline-block;
-    
+#icoMenu{
+position: absolute;
+top: 105px;
+left: 20px;
+width: 40px;
+background: none;
+border: none;
+margin: 0px;
+padding: 0px;
+}
+.imgMenu{
+width: 100%;
+}
+#MMenu{
+display: none;
+position: absolute;
+top: 0px;
+left: 0px;
+background-color: rgba(0, 0, 0, 0.5);
+width: 100vw;
+height: 100vh;
+z-index: 1000;
+}
+#abamenu{
+background-image: url('../imgs/Background-Menu.png');
+background-repeat: no-repeat;
+background-size: cover;
+width: 300px;
+height: 100vh;
+color: white;
+box-shadow: 2px 0px 7px rgba(0, 0, 0, 0.8);
+padding-left: 50px;
+padding-top: 20px;
+}
+#Close{
+position: absolute;
+top: 15px;
+left: 270px;
+background: none;
+border: none;
+margin: 0px;
+padding: 0px;
+width: 35px;
+opacity: .9;
+}
+.redim{
+width: 100%;
+}
+#MMenu.Open{
+display: block;
+}
+
+@keyframes menu{
+from{
+    transform: translate3d(-300px, 0, 0);                    
+}
+to{
+    transform: translate3d(0, 0, 0);
+}
+}
+.Open #abamenu{
+animation: menu .5s;
+}
+@media(max-width: 500px){  
+#icoMenu{ 
+top: 15px;
+left: 15px;
+width: 40px;
+}
+}
+@media(max-height: 700px){
+#messages{
+    height: 75vh;
+}
+}
+@media(max-height: 510px){
+header{
+    margin-bottom: 10px;
+}
+#messages{
+    height: 67vh;
+}
 }

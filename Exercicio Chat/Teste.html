@@ -9,48 +9,114 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <style>
             body{
-                overflow: auto;
+                overflow: hidden;
                 background-image: url('./public/imgs/Background-Web.png');
                 background-repeat: no-repeat;
                 background-size: cover;
-                height: 100.1vh;
-
-                
+                height: 100.1vh;                
             }                
             header{
                 text-align: center;
-
-                
-                color: #CDFDFC;
-                
+                color: #CDFDFC; 
+                margin-bottom: 25px;
             }
             #cont{
                 width: 70vw;
-
-            }
-            
+            }            
             #messages{
-                height: 70vh;
+                height: 80vh;
                 border: 5px solid;
-                opacity: .7;
+                opacity: .9;
             }
             #enviar{
                 width: 100%;
-
-
             }
-            #Menu{
+            #icoMenu{
                 position: absolute;
                 top: 105px;
-                left: 30px;
+                left: 20px;
                 width: 40px;
+                background: none;
+                border: none;
+                margin: 0px;
+                padding: 0px;
+            }
+            .imgMenu{
+                width: 100%;
             }
             
-
-            @media(min-width: 750px){
+            #MMenu{
+                display: none;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100vw;
+                height: 100vh;
+                z-index: 1000;
+            }
+            #abamenu{
+                background-image: url('./public/imgs/Background-Menu.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 300px;
+                height: 100vh;
+                color: white;
+                box-shadow: 2px 0px 7px rgba(0, 0, 0, 0.8);
+                padding-left: 50px;
+                padding-top: 20px;
+            }
+            #Close{
+                position: absolute;
+                top: 15px;
+                left: 270px;
+                background: none;
+                border: none;
+                margin: 0px;
+                padding: 0px;
+                width: 35px;
+                opacity: .9;
+                
                 
             }
-            
+            .redim{
+                width: 100%;
+            }
+            #MMenu.Open{
+                display: block;
+            }
+
+            @keyframes menu{
+                from{
+                    transform: translate3d(-300px, 0, 0);                    
+                }
+                to{
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            .Open #abamenu{
+                animation: menu .5s;
+            }
+            @media(max-width: 500px){  
+                #icoMenu{ 
+                top: 15px;
+                left: 15px;
+                width: 40px;
+                }
+            }
+            @media(max-height: 700px){
+                #messages{
+                    height: 75vh;
+                }
+            }
+            @media(max-height: 500px){
+                header{
+                    margin-bottom: 10px;
+                }
+                #messages{
+                    height: 68vh;
+                }
+            }
         </style>
 </head>
 <body>
@@ -58,12 +124,10 @@
         <span class="display-4">FaLa Ai!</span>
     </header>
 
-    <div class="mx-auto pt-5" id="cont">
+    <div class="mx-auto" id="cont">
         <div class="rounded p-2 text-white" id="messages">
             dfghfghdfg
         </div>
-
-
 
         <form id="enviar" class="input-group mt-1">
             <input type="text" class="form-control" placeholder="Chat...">
@@ -71,11 +135,27 @@
         </form>
     </div>
 
-    <button><img id="Menu" src="./public/imgs/Menu-Web.png"></button>
+    <button id="icoMenu" onclick="OpenMenu()"><img class="imgMenu" src="./public/imgs/Menu-Web.png"></button>
     
     
-
-        
+    <div id="MMenu">
+        <div id="abamenu">
+            Lorem ipsum dolor.
+            <button id="Close"><img id="imgClose" class="redim" src="./public/imgs/Close-ico.png"></button>
+        </div>
+    </div>
+    <script>
+        function OpenMenu(){
+            const Menu = document.getElementById('MMenu')
+            Menu.classList.add('Open')
+            
+            Menu.addEventListener('click', (e)=>{       
+                if(e.target.id == 'MMenu' || e.target.id == 'imgClose'){
+                    Menu.classList.remove('Open')
+                }
+            })
+        }
+    </script>
         
 
     <script src="./chat.js"></script>
