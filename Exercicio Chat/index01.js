@@ -22,6 +22,6 @@ io.on("connection", (socket) => {
     socket.on("new_message", (data) => {
         messages.push(data);
         io.emit("update_messages", messages);
-        console.log(messages)
+        console.log(messages);
     });
 });

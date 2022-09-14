@@ -1,4 +1,6 @@
-const socket = io("http://localhost:5000");
+const room = window.location.pathname.replace(/\//g, '')
+console.log(room)
+const socket = io(`http://localhost:5000/${room}`);
 let User = null;
 
 socket.on("update_messages", (msgs) => {
