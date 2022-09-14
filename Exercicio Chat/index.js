@@ -7,12 +7,12 @@ const PORT = 5000;
 
 app.use("/", express.static(path.join(__dirname, "public")));
 
-const server = app.listen(PORT, () => {
+const Server = app.listen(PORT, () => {
     console.log("Rodando ", PORT);
 });
 
 const messages = [];
-const io = socketio(server);
+const io = socketio(Server);
 
 io.on("connection", (socket) => {
     socket.emit("update_messages", messages);
@@ -22,5 +22,6 @@ io.on("connection", (socket) => {
     socket.on("new_message", (data) => {
         messages.push(data);
         io.emit("update_messages", messages);
+        console.log(messages)
     });
 });
