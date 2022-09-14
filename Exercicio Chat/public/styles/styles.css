@@ -10,6 +10,31 @@ text-align: center;
 color: #CDFDFC; 
 margin-bottom: 25px;
 }
+li{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#Usuario{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+#ModalUser{
+    border: 5px solid white;
+    border-radius: 7px;
+    padding: 5px 9px 9px 9px;
+}
+#Usuario.hidden{
+    display: none;
+}
+
 #cont{
 width: 70vw;
 }            
@@ -17,10 +42,25 @@ width: 70vw;
 height: 80vh;
 border: 5px solid;
 opacity: .9;
+overflow-y: scroll;
+display: flex;
+flex-direction: column-reverse;
+}
+@media (pointer: fine) {
+    /* O 'pointer' verifica qual meio de navegação principal o aparelho esta usando. O 'fine' é referente ao mouser, e o 'coarse' é referente a uma tela touch. Mesmo para notebooks com tela touch, o sistema aponta para o mouse como meio principal de navegação. */
+    ::-webkit-scrollbar {
+        width: 9px;
+        background: rgba(255, 255, 255);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #6e6e6e;
+        border-radius: 4px;
+    }   
 }
 #enviar{
 width: 100%;
 }
+
 #icoMenu{
 position: absolute;
 top: 105px;
@@ -89,6 +129,9 @@ animation: menu .5s;
 top: 15px;
 left: 15px;
 width: 40px;
+}
+#Usuario{
+    padding: 5px;
 }
 }
 @media(max-height: 700px){

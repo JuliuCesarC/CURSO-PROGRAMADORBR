@@ -13,20 +13,30 @@
     <header>
         <span class="display-4">FaLa Ai!</span>
     </header>
+    <!-- Formulario para definir nome de usuario. -->
+    <div id="Usuario">
+        <div id="ModalUser" class="container">
+            <form id="user_form" class="input-group mt-1" name="user_form_name">
+                <input type="text" class="form-control" id="user" name="user_name" placeholder="Nome de usuario">
+                <button class="btn btn-secondary" type="submit">Definir</button>
+            </form>
+        </div>
+    </div>
+    
 
     <div class="mx-auto" id="cont">
-        <div class="rounded p-2 text-white" id="messages">
-            
+        <!-- Div onde vai as mensagens. -->
+        <div class="rounded p-2 text-white" id="messages">            
         </div>
+        <!-- Formulario para enviar o conteudo da mensagem. -->
         <form id="enviar" class="input-group mt-1" name="Enviar_Name">
             <input type="text" class="form-control" id="msg" name="MSG_Name">
             <button class="btn btn-secondary" type="submit">Enviar</button>
         </form>
     </div>
 
-    <button id="icoMenu" onclick="OpenMenu()"><img class="imgMenu" src="imgs/Menu-Web.png"></button>
-    
-    
+    <!-- Abaixo a parte responsavel pelo menu. -->
+    <button id="icoMenu" onclick="OpenMenu()"><img class="imgMenu" src="imgs/Menu-Web.png"></button>  
     <div id="MMenu">
         <div id="abamenu">
             Lorem ipsum dolor.
