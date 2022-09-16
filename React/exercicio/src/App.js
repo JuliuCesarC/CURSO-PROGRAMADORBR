@@ -1,24 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from './Header'
 
+// A função 'App' esta sendo importada dentro do arquivo index.js, onde os elementos que estamos criando abaixo seram renderizados lá.
 function App() {
+  // Dentro da função 'App' também estamos importando outras funções, como o arquivo 'header.js' que fica responsavel pelo cabeçalho da pagina.
+  // Podemos importar varias funções, cada arquivo funcionando como um módulo, responsavel por 1 ou mais elementos.
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edite o arquivo <code>src/App.js</code> e salve para recarregar.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Header title='React' links = {['Documentação', 'Produtos', 'Contato']}></Header>
   );
 }
 
