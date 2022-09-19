@@ -1,7 +1,14 @@
 import React from "react";
 // Dentro do React temos as 'propriedades' e os 'estados', propriedades são como a configuração inicial do elemento, elas não são alteradas. Quando for necessario alterar algo, utilizaremos o 'estado' do elemento.
+
 // Posteriormente no lugar da classe utilizaremos os Hooks. Mas ainda é importante saber como funciona o react com as classes.
 
+// ----- Métodos de ciclos de vida no React -----
+// O primeiro ciclo de vida de uma classe é o método 'constructor', ele sera o  primeiro a ser executado quando o script chamar a classe.
+// Outro ciclo de vida é o método 'render', ele que renderiza os elementos na tela, caso aconteça alguma alteração no 'estado' e nas 'propriedades', automaticamente ele atualiza os dados na tela. 
+// O terceiro ciclo de vida 'shouldComponentUpdate', permite ou bloqueia a classe de ser atualizada na tela. Case seja setado como false, o método 'render' não ira atualizar as informações na tela.
+// O quarto é o 'componentDidMount', esse método sera executado após os elementos serem renderizados na tela. Por exemplo, caso algum dado na tela seja atualizado de acordo com uma requisição em uma API, isso sera feito dentro deste método.
+// O 'componentWillUnmount' é um método que remove algum elemento da tela.
 class Counter extends React.Component {
     // Sempre que criarmos uma classe dentro do React, precisamos estender ela da classe 'React.Component'.
     constructor(props) {
@@ -15,6 +22,7 @@ class Counter extends React.Component {
         this.add = this.add.bind(this);
         // O método 'add' não tem acesso à variavel 'count', para resolver isso utilizamos o 'bind(this)', ou seja, dentro do método 'add' o this irá se referenciar à classe 'Counter'.
     }
+    
     add() {
         // this.setState({ count: this.state.count + 1 });
         // Como estamos utilizando o proprio 'state' para atualizar o estado atual do elemento, pode ocorrer um erro quando for necessario atualizar rapidamente e muitas vezes o estado. Utilizando o projeto atual, o erro seria que o script receba uma requisição para atualizar o estado antes da requisição anterior terminar, dessa forma  teriamos 2 requisições com o mesmo estado.
