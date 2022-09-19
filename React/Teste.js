@@ -1,4 +1,5 @@
 class Ferramenta {
+    // Por convenção se utiliza a primeira letra de uma classe em Maiuscula.
     constructor(name, brand, price) {
         this.name = name;
         this.brand = brand;
