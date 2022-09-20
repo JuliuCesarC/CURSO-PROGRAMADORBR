@@ -22,7 +22,9 @@ class Counter extends React.Component {
         this.add = this.add.bind(this);
         // O método 'add' não tem acesso à variavel 'count', para resolver isso utilizamos o 'bind(this)', ou seja, dentro do método 'add' o this irá se referenciar à classe 'Counter'.
     }
-    
+    // componentDidUpdate(){}
+    // componentDidMount(){}
+    // componentWillUnmount(){}
     add() {
         // this.setState({ count: this.state.count + 1 });
         // Como estamos utilizando o proprio 'state' para atualizar o estado atual do elemento, pode ocorrer um erro quando for necessario atualizar rapidamente e muitas vezes o estado. Utilizando o projeto atual, o erro seria que o script receba uma requisição para atualizar o estado antes da requisição anterior terminar, dessa forma  teriamos 2 requisições com o mesmo estado.
