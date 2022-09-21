@@ -7,7 +7,11 @@ class Home extends React.Component {
         super(props);
 
         // ESTADO
-        this.state = { guestName: "", guestCard: [] };
+        this.state = {
+            guestName: "",
+            guestCard: [],
+            Host: { name: "", avatar: "" },
+        };
         this.addGuest = this.addGuest.bind(this);
     }
 
@@ -31,8 +35,17 @@ class Home extends React.Component {
             return { guestCard: newArray };
         });
     }
-    componentDidMount(){
-
+    // CICLOS DE VIDA
+    componentDidMount() {
+        fetch("https://api.github.com/users/JuliuCesarC")
+            .then((response) => response.json())
+            .then((data) => {
+                this.setState((state) => {
+                    return {
+                        Host: { name: data.name, avatar: data.avatar_url },
+                    };
+                });
+            });
     }
     // RENDERIZAÇÃO
     render() {
@@ -41,9 +54,9 @@ class Home extends React.Component {
                 <header>
                     <h1>Lista de Presença</h1>
                     <div>
-                        <strong>Juliu Cesar</strong>
+                        <strong>{this.state.Host.name}</strong>
                         <img
-                            src="https://github.com/JuliuCesarC.png"
+                            src={this.state.Host.avatar}
                             alt="Foto de perfil"
                         />
                     </div>
