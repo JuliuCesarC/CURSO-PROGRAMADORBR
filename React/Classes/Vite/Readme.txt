@@ -1,0 +1,1 @@
+Projeto criado com Vite e React, retirado do curso Discover da RocketSeat.
