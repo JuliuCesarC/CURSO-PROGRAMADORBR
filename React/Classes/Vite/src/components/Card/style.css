@@ -1,0 +1,16 @@
+.card{
+    width: 60%;
+    padding: 20px 10px 20px 10px;
+    margin-bottom: 10px;
+    background-color: #40b0dd;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    color: rgb(255, 255, 255);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 8px;
+    outline: 2px solid white;
+    outline-offset: -5px;
+}
