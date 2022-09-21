@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <React.Suspense>
     <Home />
-  </React.StrictMode>
+  </React.Suspense>
 )
