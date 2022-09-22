@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    updataPost();
+    updatePost();
 });
 
-function updataPost() {
+function updatePost() {
     fetch("http://192.168.100.2:5000/api/all")
         .then((res) => {
             return res.json();
@@ -36,7 +36,7 @@ function newPost() {
     };
     fetch("http://192.168.100.2:5000/api/new", options).then((res) => {
         console.log(res);
-        updataPost();
+        updatePost();
         document.getElementById("title").value = "";
         document.getElementById("desc").value = "";
     });

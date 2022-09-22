@@ -14,3 +14,9 @@
     outline: 2px solid white;
     outline-offset: -5px;
 }
+.cardName img{
+    width: 25px;
+    margin-left: 7px;
+    opacity: .85;
+    cursor: pointer;
+}

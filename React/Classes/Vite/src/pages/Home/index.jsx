@@ -75,7 +75,7 @@ class Home extends React.Component {
                 </button>
 
                 {this.state.guestCard.map((guest, index) => (
-                    <Card key={index} name={guest.name} time={guest.time} />
+                    <Card key={index} id={index} name={guest.name} time={guest.time} del={"imgs/icone-edit-web.png"} edit={'imgs/icone-delete-web.png'} />
                 ))}
             </div>
         );
