@@ -1,5 +1,5 @@
 .card{
-    width: 60%;
+    width: 100%;
     padding: 20px 10px 20px 10px;
     margin-bottom: 10px;
     background-color: #40b0dd;
@@ -19,4 +19,7 @@
     margin-left: 7px;
     opacity: .85;
     cursor: pointer;
+}
+.cardImg input{
+    width: 40vw;
 }

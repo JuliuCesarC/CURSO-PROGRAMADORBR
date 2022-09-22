@@ -14,17 +14,15 @@ class Home extends React.Component {
         };
         this.addGuest = this.addGuest.bind(this);
         this.removeCard = this.removeCard.bind(this);
+        this.editCard = this.editCard.bind(this);
     }
 
     // FUNÇÃO
     addGuest() {
         const newGuest = {
             name: this.state.guestName,
-            time: new Date().toLocaleTimeString("pt-br", {
-                hour: "2-digit",
-                minute: "2-digit",
-            }),
-            id: this.randomID()
+            time: this.getHour(),
+            id: this.randomID(),
         };
 
         this.setState((prevState) => {
@@ -37,17 +35,34 @@ class Home extends React.Component {
             return { guestCard: newArray };
         });
     }
+    removeCard(id) {
+        let removeGuestCard = this.state.guestCard.filter(
+            (cards) => cards.id != id
+        );
+        this.setState(() => {
+            return { guestCard: removeGuestCard };
+        });
+    }
+    editCard(name, id) {
+        let newName = this.state.guestCard;
+        let nIndex = newName.findIndex((element) => element.id == id);
+        newName[nIndex].name = name;
+        this.setState(() => {
+            return { guestCard: newName };
+        });
+    }
+    getHour() {
+        return new Date().toLocaleTimeString("pt-br", {
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    }
     randomID() {
         return Math.random().toString(36).substring(2, 9);
-    }
-    removeCard(id){
-        let newGuestCard = this.state.guestCard.filter(cards=>cards.id!=id)
-        this.setState(()=>{return {guestCard: newGuestCard}})
     }
 
     // CICLOS DE VIDA
     componentDidMount() {
-        
         fetch("https://api.github.com/users/JuliuCesarC")
             .then((response) => response.json())
             .then((data) => {
@@ -95,7 +110,7 @@ class Home extends React.Component {
                         del={"imgs/icone-edit-web.png"}
                         onDeletedCard={this.removeCard}
                         edit={"imgs/icone-delete-web.png"}
-
+                        onEditCard={this.editCard}
                     />
                 ))}
             </div>
