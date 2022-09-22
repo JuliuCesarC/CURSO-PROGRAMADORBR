@@ -13,6 +13,7 @@ class Home extends React.Component {
             Host: { name: "", avatar: "", id: "" },
         };
         this.addGuest = this.addGuest.bind(this);
+        this.removeCard = this.removeCard.bind(this);
     }
 
     // FUNÇÃO
@@ -39,11 +40,9 @@ class Home extends React.Component {
     randomID() {
         return Math.random().toString(36).substring(2, 9);
     }
-    removeCard(){
-        console.log('remove card')
-        // this.setState((state)=>{
-        //     state.guestCard.map
-        // })
+    removeCard(id){
+        let newGuestCard = this.state.guestCard.filter(cards=>cards.id!=id)
+        this.setState(()=>{return {guestCard: newGuestCard}})
     }
 
     // CICLOS DE VIDA
@@ -59,15 +58,11 @@ class Home extends React.Component {
                 });
             });
     }
-    componentWillUnmount(){
-        console.log('teste')
-    }
 
     // RENDERIZAÇÃO
     render() {
         return (
             <div className="container">
-                <button onClick={this.removeCard}>Remove</button>
                 <header>
                     <h1>Lista de Presença</h1>
                     <div>
@@ -91,18 +86,18 @@ class Home extends React.Component {
                     Adicionar
                 </button>
 
-                
+                {this.state.guestCard.map((guest, index) => (
                     <Card
-                        guestCard={this.state.guestCard}
-                        // key={index}
-                        // id={guest.id}
-                        // name={guest.name}
-                        // time={guest.time}
+                        key={index}
+                        id={guest.id}
+                        name={guest.name}
+                        time={guest.time}
                         del={"imgs/icone-edit-web.png"}
-                        onCardDeleted={this.removeCard}
+                        onDeletedCard={this.removeCard}
                         edit={"imgs/icone-delete-web.png"}
+
                     />
-                
+                ))}
             </div>
         );
     }
