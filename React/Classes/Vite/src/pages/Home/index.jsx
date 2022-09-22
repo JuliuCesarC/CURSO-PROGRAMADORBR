@@ -10,7 +10,7 @@ class Home extends React.Component {
         this.state = {
             guestName: "",
             guestCard: [],
-            Host: { name: "", avatar: "" },
+            Host: { name: "", avatar: "", id: "" },
         };
         this.addGuest = this.addGuest.bind(this);
     }
@@ -23,6 +23,7 @@ class Home extends React.Component {
                 hour: "2-digit",
                 minute: "2-digit",
             }),
+            id: this.randomID()
         };
 
         this.setState((prevState) => {
@@ -35,22 +36,38 @@ class Home extends React.Component {
             return { guestCard: newArray };
         });
     }
+    randomID() {
+        return Math.random().toString(36).substring(2, 9);
+    }
+    removeCard(){
+        console.log('remove card')
+        // this.setState((state)=>{
+        //     state.guestCard.map
+        // })
+    }
+
     // CICLOS DE VIDA
     componentDidMount() {
+        
         fetch("https://api.github.com/users/JuliuCesarC")
             .then((response) => response.json())
             .then((data) => {
-                this.setState((state) => {
+                this.setState(() => {
                     return {
                         Host: { name: data.name, avatar: data.avatar_url },
                     };
                 });
             });
     }
+    componentWillUnmount(){
+        console.log('teste')
+    }
+
     // RENDERIZAÇÃO
     render() {
         return (
             <div className="container">
+                <button onClick={this.removeCard}>Remove</button>
                 <header>
                     <h1>Lista de Presença</h1>
                     <div>
@@ -74,9 +91,18 @@ class Home extends React.Component {
                     Adicionar
                 </button>
 
-                {this.state.guestCard.map((guest, index) => (
-                    <Card key={index} id={index} name={guest.name} time={guest.time} del={"imgs/icone-edit-web.png"} edit={'imgs/icone-delete-web.png'} />
-                ))}
+                
+                    <Card
+                        guestCard={this.state.guestCard}
+                        // key={index}
+                        // id={guest.id}
+                        // name={guest.name}
+                        // time={guest.time}
+                        del={"imgs/icone-edit-web.png"}
+                        onCardDeleted={this.removeCard}
+                        edit={"imgs/icone-delete-web.png"}
+                    />
+                
             </div>
         );
     }
