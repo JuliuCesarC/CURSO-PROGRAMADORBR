@@ -107,9 +107,9 @@ class Home extends React.Component {
                         id={guest.id}
                         name={guest.name}
                         time={guest.time}
-                        del={"imgs/icone-edit-web.png"}
+                        del={"img/icone-edit-web.png"}
                         onDeletedCard={this.removeCard}
-                        edit={"imgs/icone-delete-web.png"}
+                        edit={"img/icone-delete-web.png"}
                         onEditCard={this.editCard}
                     />
                 ))}

@@ -1,0 +1,10 @@
+.Card{
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+#numTask{
+    font-weight: 400;
+    margin-right: 10px;
+}

@@ -62,7 +62,7 @@ class Card extends React.Component {
                     )}
                     {this.state.editMode && (
                         <img
-                            src="imgs/icone-check-web.png"
+                            src="img/icone-check-web.png"
                             onClick={(e) => {
                                 this.updateName(
                                     e.target.parentNode.parentNode.id
