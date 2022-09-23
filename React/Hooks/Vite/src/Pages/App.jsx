@@ -4,18 +4,28 @@ import "./App.css";
 
 function App() {
     const [nameTask, setNameTask] = useState('');
-    const [taskGroup, setTaskGroup] = useState([{Name:'Teste'},{Name:'segundo'}])
+    const [taskGroup, setTaskGroup] = useState([])
+    
     function addTask() {
       const task = {
         name: nameTask,
         checked: false,
-        id: "",
+        id: randomID(),
       }
-      setTaskGroup((prevTask)=>{
-        return{...prevTask, }
-      })
-      console.log(taskGroup)
+      setTaskGroup(prevTask=>[...prevTask, task])
+      document.getElementById('clearInput').value = ''
     }
+    function randomID() {
+      return Math.random().toString(36).substring(2, 9);
+    }
+    function removeTask(id) {
+      let newTask = taskGroup.filter(task=> task.id !=id)
+      setTaskGroup(newTask)
+    }
+    function completeTask(id){
+      console.log(id)
+    }
+
     return (
         <div className="container">
             <header>
@@ -25,7 +35,7 @@ function App() {
                 <input
                     type="text"
                     name=""
-                    id=""
+                    id="clearInput"
                     placeholder="Tarefas..."
                     onChange={(e) => {
                         setNameTask(e.target.value);
@@ -34,7 +44,17 @@ function App() {
                 <button type="submit" onClick={addTask}>Adicionar</button>
             </div>
             <div className="cards">
-                <Card></Card>
+              {taskGroup.map((ts, index)=>(
+                <Card 
+                  key={index}
+                  name= {ts.name}
+                  id={ts.id}
+                  check={ts.checked}
+                  index={index}
+                  onRemoveTask={removeTask}
+                  onCompleteTask={completeTask}
+                />
+              ))}
             </div>
         </div>
     );

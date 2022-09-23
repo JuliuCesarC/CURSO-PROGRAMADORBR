@@ -1,16 +1,30 @@
-import './card.css'
+import "./card.css";
 
-function Card(){
-    
-    return(
-        <div className="Card">
+function Card(props) {
+    return (
+        <div className="Card" id={props.id}>
             <h3>
-                <span id='numTask'>index.</span>
-                Tarefa à ser executada.
+                <span id="numTask">{props.index + 1}</span>
+                {props.name}
             </h3>
-            <div>Check: false</div>
+            <div>
+                <div
+                    onClick={e=>props.onCompleteTask(
+                        e.target.parentNode.parentNode.id
+                    )}
+                >
+                    {!props.check ? 'Check: F' : 'Check: T'}
+                </div>
+                <div
+                    onClick={(e) => {
+                        props.onRemoveTask(e.target.parentNode.parentNode.id);
+                    }}
+                >
+                    Remove
+                </div>
+            </div>
         </div>
-    )
+    );
 }
 
-export default Card
+export default Card;
