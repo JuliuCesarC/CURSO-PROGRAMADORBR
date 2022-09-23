@@ -5,19 +5,39 @@ import "./App.css";
 function App() {
     const [nameTask, setNameTask] = useState('');
     const [taskGroup, setTaskGroup] = useState([])
+    const [daysMonth, setDaysMonth] = useState(1)
     
+    
+
+    function numberOfDaysInAMonth(month, year) {
+      if (month && year) {
+          return new Date(year, month, 0).getDate();
+      } else {
+          return new Date(
+              new Date().getFullYear(),
+              new Date().getMonth() + 1,
+              0
+          ).getDate();
+      }
+    }
+    function randomID() {
+      return Math.random().toString(36).substring(2, 9);
+    }
+
+    function daysToCard(){
+      setDaysMonth(numberOfDaysInAMonth())
+    }
+
     function addTask() {
       const task = {
-        name: nameTask,
+        name: '',
         checked: false,
         id: randomID(),
       }
       setTaskGroup(prevTask=>[...prevTask, task])
       document.getElementById('clearInput').value = ''
     }
-    function randomID() {
-      return Math.random().toString(36).substring(2, 9);
-    }
+    
     function removeTask(id) {
       let newTask = taskGroup.filter(task=> task.id !=id)
       setTaskGroup(newTask)
@@ -25,7 +45,11 @@ function App() {
     function completeTask(id){
       console.log(id)
     }
-
+    function loop(){
+      for(let i=0; i<numberOfDaysInAMonth(); i++){
+        addTask()
+      }
+    }
     return (
         <div className="container">
             <header>
@@ -41,7 +65,7 @@ function App() {
                         setNameTask(e.target.value);
                     }}
                 />
-                <button type="submit" onClick={addTask}>Adicionar</button>
+                <button type="submit" onClick={loop}>Adicionar</button>
             </div>
             <div className="cards">
               {taskGroup.map((ts, index)=>(
