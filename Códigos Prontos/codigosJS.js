@@ -6,7 +6,7 @@ function randomID() {
 // Seleciona a data atual.
 const currentDate = {
     fullDate: new Date(),
-    currentDay: function () {
+    dayOfTheMonth: function () {
         return this.fullDate.getDate();
     },
     currentMonth: function () {
@@ -51,4 +51,4 @@ function converterColor(color) {
         return rgb;
     }
 }
-console.log(converter(["120", "32", "54"]));
+console.log(new Date(2022, 9, 0).getDay());
