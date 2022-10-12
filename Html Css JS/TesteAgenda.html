@@ -79,6 +79,18 @@
                     "dezembro",
                 ];
                 const Days = document.getElementById("days");
+                function teste(target) {
+                    target.classList.add("task");
+                }
+                let SaveLocalS = {
+                    month: 9,
+                    year: 2022,
+                    day: 10,
+                    task: [
+                        "Lorem ipsum dolor sit",
+                        "Amet consectetur adipisicing elit.",
+                    ],
+                };
 
                 // LIMPA A TABELA QUANDO MUDA O MÊS
                 function clearTable() {
@@ -108,7 +120,9 @@
 
                         let td = document.createElement("td");
                         td.innerHTML = indexDay.getDate();
-
+                        td.addEventListener("click", (e) => {
+                            teste(e.target);
+                        });
                         if (
                             indexDay.getFullYear() == Now.getFullYear() &&
                             indexDay.getMonth() == Now.getMonth() &&
