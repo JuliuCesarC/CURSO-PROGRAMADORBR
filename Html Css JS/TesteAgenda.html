@@ -5,9 +5,104 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendário</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+        </style>
     <link rel="stylesheet" href="TesteAgenda.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="Table">
+            <header class="Header">
+                <button class="btn-prev">&lt;</button>
+                <h2 id="month">Outubro</h2>
+                <button class="btn-next">&gt;</button>
+            </header>
+            <table>
+                <thead>
+                    <tr>
+                        <td>D</td>
+                        <td>S</td>
+                        <td>T</td>
+                        <td>Q</td>
+                        <td>Q</td>
+                        <td>S</td>
+                        <td>S</td>
+                    </tr>
+                </thead>
+                <tbody id="days">
+                    <tr>
+                        <td class="prev-month">1</td>
+                        <td class="prev-month">2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td class="current-day task">4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td class="task">3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td class="next-month">5</td>
+                        <td class="next-month">6</td>
+                        <td class="next-month">7</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="7" id="year">2022</td></tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <div class="Cont">
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ut nisi error laborum tenetur officia quod labore incidunt quisquam animi molestias quis quidem, impedit qui illo fugit, totam, eligendi magni.</div>
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ut nisi error laborum tenetur officia quod labore incidunt quisquam animi molestias quis quidem, impedit qui illo fugit, totam, eligendi magni.</div>
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ut nisi error laborum tenetur officia quod labore incidunt quisquam animi molestias quis quidem, impedit qui illo fugit, totam, eligendi magni.</div>
+        </div>
+    </div>
+
+
+    <script>
+        
+    </script>
 </body>
 </html>
