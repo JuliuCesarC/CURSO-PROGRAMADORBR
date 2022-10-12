@@ -5,51 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TESTES</title>
-    <style>
-        body{
-            background-color: gray;
-        }
-        h1{
-            background-color: rgb(163, 163, 163);
-            width: 150px;
-            padding: 10px;
-            text-align: center;
-        }
-        #rgb{
-            width: 500px;
-            height: 500px;
-            background-color: black;
-            border-radius: 20px;
-            transition: 3s;
-        }
-    </style>
 </head>
 <body>
-    <h1 onclick="iniciar()">Iniciar</h1>
-    <h1 onclick="parar()">Parar</h1>
+    <header><h1>Testando</h1></header>
+    <table id="tabela">
 
-    <h2 id="t1">Testando</h2>
-    <h2 id="t2">Testando2</h2>
+    </table>
 
 <div id="rgb"></div>
 
-    <script>
-        var intervalo;
-        function mudar(){
-            let muda = document.getElementById("rgb")
-            var a = 255 * Math.random()
-            var b = 255 * Math.random()
-            var c = 255 * Math.random()
-            muda.style.backgroundColor = `rgb(${a}, ${b}, ${c})`
-            refresh(parseInt(a), parseInt(b), parseInt(c))
-        }
-        function iniciar(){
-        intervalo = setInterval(mudar, 2500)
-        }
-        function parar(){
-            clearInterval(intervalo)
-        }
-        
-    </script>
+<script src="Testes em geral.js"></script>
 </body>
 </html>

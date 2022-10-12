@@ -31,62 +31,7 @@
                             <td>S</td>
                         </tr>
                     </thead>
-                    <tbody id="days">
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="days"></tbody>
                     <tfoot>
                         <tr>
                             <td colspan="7" id="year">2022</td>
@@ -135,66 +80,77 @@
                 ];
                 const Days = document.getElementById("days");
 
+                // LIMPA A TABELA QUANDO MUDA O MÊS
+                function clearTable() {
+                    let allTr = Array.from(document.querySelectorAll("tr"));
+                    allTr.slice(1, -1).forEach((el) => {
+                        Days.removeChild(el);
+                    });
+                }
+                // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
                 function showDays(month, year) {
+                    // CONFIGURA O MÊS E O ANO NA TABELA
                     document.getElementById("month").innerHTML = months[month];
-                    document.getElementById('year').innerHTML = year
+                    document.getElementById("year").innerHTML = year;
 
                     let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
+                    // É preciso colocar o -1 no final do 'fistDayOfWeek' pois durante o loop ele ira passar pelo valor 0, e como o valor 0 também é considerado, então teríamos 8 dias na semana.
                     let totalDaysInMonth = new Date(
                         year,
                         month + 1,
                         0
                     ).getDate();
-
-                    for (
-                        var i = -fistDayOfWeek, index = 0;
-                        1 < 42 - fistDayOfWeek && index <= 41;
-                        i++, index++
-                    ) {
+                    let i = -fistDayOfWeek;
+                    let tr = document.createElement("tr");
+                    for (index = 1; index <= 42; i++, index++) {
                         let indexDay = new Date(year, month, i);
                         let Now = new Date();
-                        let dayTable = Days.getElementsByTagName("td")[index];
-                        dayTable.innerHTML = indexDay.getDate();
-                        dayTable.classList.remove("prev-month");
-                        dayTable.classList.remove("next-month");
-                        dayTable.classList.remove("current-day");
+
+                        let td = document.createElement("td");
+                        td.innerHTML = indexDay.getDate();
 
                         if (
                             indexDay.getFullYear() == Now.getFullYear() &&
                             indexDay.getMonth() == Now.getMonth() &&
                             indexDay.getDate() == Now.getDate()
-                        ){
-                            dayTable.classList.add('current-day')
+                        ) {
+                            td.classList.add("current-day");
                         }
-                            if (i < 1) {
-                                dayTable.classList.add("prev-month");
-                            }
+                        if (i < 1) {
+                            td.classList.add("prev-month");
+                        }
                         if (i > totalDaysInMonth) {
-                            dayTable.classList.add("next-month");
+                            td.classList.add("next-month");
+                        }
+                        tr.appendChild(td);
+                        if (index % 7 === 0 && index < 40) {
+                            Days.appendChild(tr);
+                            tr = document.createElement("tr");
                         }
                     }
+                    Days.appendChild(tr);
                 }
                 let Now = new Date();
                 let month = Now.getMonth();
                 let year = Now.getFullYear();
                 showDays(month, year);
 
-                const btnPrevMonth = document.getElementById("Btn-Prev");
-                const btnNextMonth = document.getElementById("Btn-Next");
-                btnNextMonth.onclick = function () {
+                document.getElementById("Btn-Next").onclick = function () {
                     month++;
-                    if(month > 11){
-                        month = 0
-                        year++
+                    if (month > 11) {
+                        month = 0;
+                        year++;
                     }
+                    clearTable();
                     showDays(month, year);
                 };
-                btnPrevMonth.onclick = function () {
+                document.getElementById("Btn-Prev").onclick = function () {
                     month--;
-                    if(month<0){
+                    if (month < 0) {
                         month = 11;
-                        year--
+                        year--;
                     }
+                    clearTable();
                     showDays(month, year);
                 };
             });
