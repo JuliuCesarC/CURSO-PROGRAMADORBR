@@ -1,86 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Agenda</title>
-        <link rel="stylesheet" href="TesteAgenda.css" />
-    </head>
-    <body>
-        <header>
-            <h1>Agenda</h1>
-        </header>
-        <div class="Container" id="Cont">
-            <table>
-                <tr id="linha1"></tr>
-                <tr id="linha2"></tr>
-                <tr id="linha3"></tr>
-                <tr id="linha4"></tr>
-                <tr id="linha5"></tr>
-            </table>
-
-            <div id="todolist">
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, suscipit cumque! Saepe cumque, ad natus voluptatum recusandae expedita veniam porro consequatur optio minus! Dolorum delectus quisquam atque saepe magni eligendi?</div>
-            </div>
-        </div>
-        <img src="" alt="" />
-        <script>
-            const currentDate = {
-                fullDate: new Date(),
-                currentMonth: function () {
-                    return this.fullDate.getMonth();
-                },
-                currentYear: function () {
-                    return this.fullDate.getFullYear();
-                },
-                totalDaysOfTheMonth: function (year, month) {
-                    return new Date(year, month, 0).getDate();
-                },
-                dayOfTheMonth: function () {
-                    return this.fullDate.getDate();
-                },
-                dayOfTheWeek: function () {
-                    return this.fullDate.getDay() + 1;
-                },
-            };
-            function getE(id) {
-                return document.getElementById(`linha${id}`);
-            }
-            for (
-                let i = 1;
-                i <=
-                currentDate.totalDaysOfTheMonth(
-                    currentDate.currentYear(),
-                    currentDate.currentMonth() + 1
-                );
-                i++
-            ) {
-                if (i <= 7) {
-                    getE(
-                        1
-                    ).innerHTML += `<td>${i}</td>`;
-                }
-                if (i > 7 && i <= 14) {
-                    getE(2).innerHTML += `<td>${i}</td>`;
-                }
-                if (i > 14 && i <= 21) {
-                    getE(3).innerHTML += `<td>${i}</td>`;
-                }
-                if (i > 21 && i <= 28) {
-                    getE(4).innerHTML += `<td>${i}</td>`;
-                }
-                if (i > 28) {
-                    getE(5).innerHTML += `<td>${i}</td>`;
-                }
-            }
-        </script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+    <link rel="stylesheet" href="TesteAgenda.css">
+</head>
+<body>
+    
+</body>
 </html>

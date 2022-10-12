@@ -6,19 +6,24 @@ function randomID() {
 // Seleciona a data atual.
 const currentDate = {
     fullDate: new Date(),
-    dayOfTheMonth: function () {
-        return this.fullDate.getDate();
-    },
     currentMonth: function () {
-        return this.fullDate.getMonth() + 1;
+        return this.fullDate.getMonth();
     },
     currentYear: function () {
         return this.fullDate.getFullYear();
+    },
+    totalDaysOfTheMonth: function (year, month) {
+        return new Date(year, month, 0).getDate();
+    },
+    dayOfTheMonth: function () {
+        return this.fullDate.getDate();
     },
     dayOfTheWeek: function () {
         return this.fullDate.getDay() + 1;
     },
 };
+let teste = new Date(2022, 9, 1).getDay()
+console.log(teste);
 
 // Seleciona o numero de dias do mês atual, ou de um mês informado.
 function numberOfDaysInAMonth(month, year) {
@@ -51,4 +56,3 @@ function converterColor(color) {
         return rgb;
     }
 }
-console.log(new Date(2022, 9, 0).getDay());
