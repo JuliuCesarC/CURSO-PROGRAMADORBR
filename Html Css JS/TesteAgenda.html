@@ -40,25 +40,14 @@
                 </table>
             </div>
 
-            <div class="Cont">
+            <div class="Cont" id="ToDo">
+                <header>
+                    <h2>ToDo List</h2>
+                </header>
                 <div>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis ut nisi error laborum tenetur officia quod labore
-                    incidunt quisquam animi molestias quis quidem, impedit qui
-                    illo fugit, totam, eligendi magni.
                 </div>
-                <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis ut nisi error laborum tenetur officia quod labore
-                    incidunt quisquam animi molestias quis quidem, impedit qui
-                    illo fugit, totam, eligendi magni.
-                </div>
-                <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis ut nisi error laborum tenetur officia quod labore
-                    incidunt quisquam animi molestias quis quidem, impedit qui
-                    illo fugit, totam, eligendi magni.
-                </div>
+
             </div>
         </div>
         <script>
@@ -123,6 +112,22 @@
                         Days.removeChild(el);
                     });
                 }
+                function clearTasks() {
+                    let allTk = Array.from(
+                        document
+                            .getElementById("ToDo")
+                            .getElementsByTagName("div")
+                    );
+                    allTk.forEach((el) => {
+                        document.getElementById("ToDo").removeChild(el);
+                    });
+                }
+                clearTasks();
+
+                function showTasks() {
+                    
+                }
+
                 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
                 function showDays(month, year) {
                     // CONFIGURA O MÊS E O ANO NA TABELA
