@@ -64,45 +64,55 @@
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const months = [
-                    "janeiro",
-                    "fevereiro",
-                    "março",
-                    "abril",
-                    "maio",
-                    "junho",
-                    "julho",
-                    "agosto",
-                    "setembro",
-                    "outubro",
-                    "novembro",
-                    "dezembro",
+                    { month: "janeiro" },
+                    { month: "fevereiro" },
+                    { month: "março" },
+                    { month: "abril" },
+                    { month: "maio" },
+                    { month: "junho" },
+                    { month: "julho" },
+                    { month: "agosto" },
+                    { month: "setembro" },
+                    { month: "outubro" },
+                    { month: "novembro" },
+                    { month: "dezembro" },
                 ];
+                if (!localStorage.getItem("ToDoList")) {
+                    localStorage.setItem("ToDoList", JSON.stringify(months));
+                }
+                const LS = JSON.parse(localStorage.getItem("ToDoList"));
                 const Days = document.getElementById("days");
-                function teste(target) {
-                    let Tbody = target.parentNode.parentNode;
-                    let ToDoList = {
-                        month: Tbody.dataset.month,
-                        year: Tbody.dataset.year,
+
+                function inputTask(target) {
+                    let Tbody = target.parentNode.parentNode.dataset;
+                    let TaskList = {
+                        month: Tbody.month,
+                        year: Tbody.year,
                         day: target.innerHTML,
                         tasks: [
                             "Lorem ipsum dolor sit",
                             "Amet consectetur adipisicing elit.",
                         ],
                     };
+                    let taskLS = JSON.parse(localStorage.getItem("ToDoList"))[
+                        Tbody.month
+                    ];
+                    if (!taskLS.taskList) {
+                        taskLS.taskList = [];
+                    }
+                    taskLS.taskList.push(TaskList);
+                    console.log(taskLS);
+
+                    LS[Tbody.month] = taskLS;
+                    localStorage.setItem("ToDoList", JSON.stringify(LS));
+                    // console.log(taskLS);
                     if (!target.classList[0]) {
                         target.classList.add("task");
-                        localStorage.setItem(
-                            "dia " + target.innerHTML,
-                            JSON.stringify(ToDoList)
-                        );
                     } else {
                         target.classList.remove("task");
-                        localStorage.removeItem(
-                            randomID(),
-                            target.innerHTML
-                        );
                     }
                 }
+
                 function randomID() {
                     return Math.random().toString(36).substring(2, 9);
                 }
@@ -116,9 +126,10 @@
                 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
                 function showDays(month, year) {
                     // CONFIGURA O MÊS E O ANO NA TABELA
-                    document.getElementById("month").innerHTML = months[month];
+                    document.getElementById("month").innerHTML =
+                        months[month].month;
                     document.getElementById("year").innerHTML = year;
-                    Days.dataset.month = months[month];
+                    Days.dataset.month = month;
                     Days.dataset.year = year;
 
                     let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
@@ -137,7 +148,7 @@
                         let td = document.createElement("td");
                         td.innerHTML = indexDay.getDate();
                         td.addEventListener("click", (e) => {
-                            teste(e.target);
+                            inputTask(e.target);
                         });
                         if (
                             indexDay.getFullYear() == Now.getFullYear() &&
