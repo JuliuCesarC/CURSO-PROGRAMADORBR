@@ -1,0 +1,27 @@
+tbody td:hover{
+	outline: 2px solid var(--bg-hover);
+}
+.current-day{
+	background-color: var(--bg-hover);
+	color: var(--text-color-hover);
+}
+.current-day:hover{
+	background-color: #6cbffa;
+}
+.task{
+	position: relative;
+}
+.task::after{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 6px;
+	height: 6px;
+	left: 19.5px;
+	bottom: -1px;
+	background-color: var(--bg-hover);
+	border-radius: 50%;
+}
+.task.current-day::after{
+	background-color: white;
+}

@@ -61,7 +61,6 @@
                 </div>
             </div>
         </div>
-
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const months = [
@@ -80,18 +79,33 @@
                 ];
                 const Days = document.getElementById("days");
                 function teste(target) {
-                    target.classList.add("task");
+                    let Tbody = target.parentNode.parentNode;
+                    let ToDoList = {
+                        month: Tbody.dataset.month,
+                        year: Tbody.dataset.year,
+                        day: target.innerHTML,
+                        tasks: [
+                            "Lorem ipsum dolor sit",
+                            "Amet consectetur adipisicing elit.",
+                        ],
+                    };
+                    if (!target.classList[0]) {
+                        target.classList.add("task");
+                        localStorage.setItem(
+                            "dia " + target.innerHTML,
+                            JSON.stringify(ToDoList)
+                        );
+                    } else {
+                        target.classList.remove("task");
+                        localStorage.removeItem(
+                            randomID(),
+                            target.innerHTML
+                        );
+                    }
                 }
-                let SaveLocalS = {
-                    month: 9,
-                    year: 2022,
-                    day: 10,
-                    task: [
-                        "Lorem ipsum dolor sit",
-                        "Amet consectetur adipisicing elit.",
-                    ],
-                };
-
+                function randomID() {
+                    return Math.random().toString(36).substring(2, 9);
+                }
                 // LIMPA A TABELA QUANDO MUDA O MÊS
                 function clearTable() {
                     let allTr = Array.from(document.querySelectorAll("tr"));
@@ -104,6 +118,8 @@
                     // CONFIGURA O MÊS E O ANO NA TABELA
                     document.getElementById("month").innerHTML = months[month];
                     document.getElementById("year").innerHTML = year;
+                    Days.dataset.month = months[month];
+                    Days.dataset.year = year;
 
                     let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
                     // É preciso colocar o -1 no final do 'fistDayOfWeek' pois durante o loop ele ira passar pelo valor 0, e como o valor 0 também é considerado, então teríamos 8 dias na semana.
