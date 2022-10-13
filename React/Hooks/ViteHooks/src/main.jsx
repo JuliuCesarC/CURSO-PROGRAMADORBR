@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './Pages/App'
-import './style/index.css'
+import App from './App'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.Suspense>
+  <React.StrictMode>
     <App />
-  </React.Suspense>
+  </React.StrictMode>
 )
