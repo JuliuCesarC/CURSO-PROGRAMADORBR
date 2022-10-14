@@ -92,10 +92,13 @@ tbody td:hover{
     background-color: white;
 }
 #ToDo{
-    min-width: 400px;
+    width: 420px;
 }
 #ToDo header{
     position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
 }
 #ToDo header img{
     width: 112%;
@@ -104,9 +107,50 @@ tbody td:hover{
     top: -50px;
     z-index: -1;
 }
-#Teste{
+#ToDo div{
     text-align: justify;
-    width: 100%;
-    border-bottom: 2px solid #21212188;
+    width: 92%;
+    border-bottom: 2px solid #3d350e94;
     display: block;
+    position: relative;
+    padding-left: 30px;
+    padding-top: 10px;
+    word-break: break-all;
+}
+.empty{
+    color: #322a1379;
+}
+#ToDo .check{
+    background-image: url('../React/Hooks/ViteHooks/public/img/iconeCheck.png');
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: 0px;
+}
+#ToDo .working{
+    background-image: url('../React/Hooks/ViteHooks/public/img/workingProgress.png');
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: 0px;
+}
+#ToDo input{
+    font-size: 16px;
+}
+.inputTx{
+    border: none;
+    outline: none;
+    width: 70%;
+}
+.inputBtn{
+    border: 1px solid #43aaef;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    left: 80%;
+    top: -5px;
+    transition: all 0.1s;
+}
+.inputBtn:hover{
+    background-color: #43aaef;
+    color: white;
 }

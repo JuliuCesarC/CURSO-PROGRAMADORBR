@@ -42,18 +42,22 @@
 
             <div class="Cont" id="ToDo">
                 <header>
-                    <img src="../React/Hooks/ViteHooks/public/img/Caderno.png" alt="">
+                    <img
+                        src="../React/Hooks/ViteHooks/public/img/Caderno.png"
+                        alt=""
+                    />
                     <h2>ToDo List</h2>
                 </header>
-                <ul>
-                    <li>
-                        <div id="Teste">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magnam rem harum optio blanditiis ut id excepturi, tempore sapiente enim fugit maxime cupiditate ab nisi iste aliquam cum fugiat vero.</div>
-                    </li>
-                </ul>
-                <div>
+                <div id="Teste" class="working">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maiores magnam rem harum optio blanditiis ut id excepturi,
+                    tempore sapiente enim fugit maxime cupiditate ab nisi iste
+                    aliquam cum fugiat vero.
+                </div>
+                <div class="check">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </div>
-
             </div>
         </div>
         <script>
@@ -100,7 +104,6 @@
 
                     LS[Tbody.month] = taskLS;
                     localStorage.setItem("ToDoList", JSON.stringify(LS));
-                    // console.log(taskLS);
                     if (!target.classList[0]) {
                         target.classList.add("task");
                     } else {
@@ -128,11 +131,63 @@
                         document.getElementById("ToDo").removeChild(el);
                     });
                 }
-                // clearTasks();
+                clearTasks();
 
                 function showTasks() {
-                    let 
+                    let divCont = document.getElementById("ToDo");
+
+                    if (divCont.children.length <= 1) {
+                        let emptyDiv = document.createElement("div");
+                        emptyDiv.classList.add("empty");
+                        emptyDiv.innerHTML =
+                            "Clique duas vezes para adicionar uma tarefa...";
+                        emptyDiv.addEventListener("dblclick", openEditMode);
+                        divCont.appendChild(emptyDiv);
+                    }
+
+                    function openEditMode(e) {
+                        let elem = e.target;
+                        if (elem.classList == "empty") {
+                            elem.innerHTML = "";
+                        }
+                        let elemText = elem.innerHTML;
+                        elem.innerHTML = "";
+                        elem.classList.remove("empty");
+                        let inputTx = document.createElement("input");
+                        let inputBtn = document.createElement("input");
+                        inputTx.setAttribute("type", "text");
+                        inputTx.setAttribute("maxlength", "100");
+                        inputTx.setAttribute("value", elemText);
+                        inputTx.id = "inputText";
+                        inputTx.classList.add("inputTx");
+                        inputBtn.classList.add("inputBtn");
+                        inputBtn.setAttribute("type", "submit");
+                        inputBtn.addEventListener("click", addNewTask);
+                        elem.appendChild(inputTx);
+                        elem.appendChild(inputBtn);
+                        inputTx.focus();
+                        elem.removeEventListener('click')//////////
+
+                        function addNewTask(inp) {
+                            let Text = document.getElementById("inputText");
+                            if (!Text.value == "") {
+                                elem.innerHTML = Text.value;
+                                elem.classList.add("working");
+                                elem.addEventListener("click", (e) => {
+                                    if(e.target.classList == 'working'){
+                                        e.target.classList.remove('working')
+                                        e.target.classList.add('check')
+                                    }else{
+                                        e.target.classList.add('working')
+                                        e.target.classList.remove('check')
+                                    }
+                                });
+                            }
+                            return;
+                        }
+                    }
                 }
+                showTasks();
 
                 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
                 function showDays(month, year) {
