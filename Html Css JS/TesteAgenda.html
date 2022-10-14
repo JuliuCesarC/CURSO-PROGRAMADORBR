@@ -42,8 +42,14 @@
 
             <div class="Cont" id="ToDo">
                 <header>
+                    <img src="../React/Hooks/ViteHooks/public/img/Caderno.png" alt="">
                     <h2>ToDo List</h2>
                 </header>
+                <ul>
+                    <li>
+                        <div id="Teste">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magnam rem harum optio blanditiis ut id excepturi, tempore sapiente enim fugit maxime cupiditate ab nisi iste aliquam cum fugiat vero.</div>
+                    </li>
+                </ul>
                 <div>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </div>
@@ -122,10 +128,10 @@
                         document.getElementById("ToDo").removeChild(el);
                     });
                 }
-                clearTasks();
+                // clearTasks();
 
                 function showTasks() {
-                    
+                    let 
                 }
 
                 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
@@ -153,7 +159,7 @@
                         let td = document.createElement("td");
                         td.innerHTML = indexDay.getDate();
                         td.addEventListener("click", (e) => {
-                            inputTask(e.target);
+                            showTasks(e.target);
                         });
                         if (
                             indexDay.getFullYear() == Now.getFullYear() &&

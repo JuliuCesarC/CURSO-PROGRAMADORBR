@@ -7,6 +7,7 @@
     width: 90vw;
     margin: auto;
     margin-top: 20px;
+    max-width: 900px;
     display: grid;
     grid-template-columns: auto auto;
 }
@@ -15,13 +16,16 @@
     border-radius: 15px;
     padding: 10px;
     margin-right: 50px;
-    width: 320px;
-    height: 450px;
+    margin-left: -20px;
+    width: 260px;
+    height: 400px;
 }
 h2{
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     margin: 0px 7px 0px 7px;
+    padding-top: 30px;
+    text-align: end;
 }
 .Header{
     display: flex;
@@ -52,8 +56,8 @@ thead td{
 td{
     border: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 40px;
 }
 tbody td:hover{
     outline: 2px solid #43aaef;
@@ -86,4 +90,23 @@ tbody td:hover{
 }
 .task.current-day::after{
     background-color: white;
+}
+#ToDo{
+    min-width: 400px;
+}
+#ToDo header{
+    position: relative;
+}
+#ToDo header img{
+    width: 112%;
+    position: absolute;
+    left: -6%;
+    top: -50px;
+    z-index: -1;
+}
+#Teste{
+    text-align: justify;
+    width: 100%;
+    border-bottom: 2px solid #21212188;
+    display: block;
 }
