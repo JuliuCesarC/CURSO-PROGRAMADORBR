@@ -100,8 +100,6 @@
                         taskLS.taskList = [];
                     }
                     taskLS.taskList.push(TaskList);
-                    console.log(taskLS);
-
                     LS[Tbody.month] = taskLS;
                     localStorage.setItem("ToDoList", JSON.stringify(LS));
                     if (!target.classList[0]) {
@@ -153,6 +151,7 @@
                         let elemText = elem.innerHTML;
                         elem.innerHTML = "";
                         elem.classList.remove("empty");
+                        
                         let inputTx = document.createElement("input");
                         let inputBtn = document.createElement("input");
                         inputTx.setAttribute("type", "text");
@@ -166,24 +165,26 @@
                         elem.appendChild(inputTx);
                         elem.appendChild(inputBtn);
                         inputTx.focus();
-                        elem.removeEventListener('click')//////////
-
+                        elem.removeEventListener(switchCheck);
+                        
                         function addNewTask(inp) {
                             let Text = document.getElementById("inputText");
                             if (!Text.value == "") {
                                 elem.innerHTML = Text.value;
                                 elem.classList.add("working");
-                                elem.addEventListener("click", (e) => {
-                                    if(e.target.classList == 'working'){
-                                        e.target.classList.remove('working')
-                                        e.target.classList.add('check')
-                                    }else{
-                                        e.target.classList.add('working')
-                                        e.target.classList.remove('check')
-                                    }
-                                });
+                                elem.addEventListener("click", switchCheck);
                             }
                             return;
+                        }
+                        function switchCheck(e) {
+                            console.log(e);
+                            if (e.target.classList == "working") {
+                                e.target.classList.remove("working");
+                                e.target.classList.add("check");
+                            } else {
+                                e.target.classList.add("working");
+                                e.target.classList.remove("check");
+                            }
                         }
                     }
                 }

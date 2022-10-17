@@ -7,13 +7,42 @@
     <title>TESTES</title>
 </head>
 <body>
-    <header><h1>Testando</h1></header>
-    <table id="tabela">
+    <div class="container" style="max-width: 500px;">
+        <div id="teste">
+            
+        </div>
 
-    </table>
+        <h2 id="cont"></h2>
+    </div>
 
-<div id="rgb"></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let divT = document.getElementById('teste')
+        let newDiv = document.createElement('div')
 
-<script src="Testes em geral.js"></script>
+        newDiv.innerHTML = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nesciunt neque dolores! Architecto suscipit impedit quibusdam aliquid vitae. Eaque, possimus blanditiis voluptate veritatis molestias autem quaerat quos culpa odio praesentium?'
+
+        let cont = document.getElementById('cont')
+        newDiv.addEventListener('click', adiciona)
+        function adiciona(){
+            cont.innerHTML += '1'
+        }
+        
+        let inputB = document.createElement('input')
+        inputB.setAttribute('type', 'button')
+        inputB.setAttribute('value', 'Parar')
+        inputB.addEventListener('click', ()=>{
+            console.log('entrou1');
+            newDiv.removeEventListener('click', adiciona)
+        })
+        divT.appendChild(newDiv)
+        cont.appendChild(inputB)
+
+
+
+    })
+</script>
+
+<!-- <script src="Testes em geral.js"></script> -->
 </body>
 </html>
