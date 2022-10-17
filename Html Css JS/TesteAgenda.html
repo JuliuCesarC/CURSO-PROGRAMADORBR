@@ -48,16 +48,9 @@
                     />
                     <h2>ToDo List</h2>
                 </header>
-                <div id="Teste" class="working">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maiores magnam rem harum optio blanditiis ut id excepturi,
-                    tempore sapiente enim fugit maxime cupiditate ab nisi iste
-                    aliquam cum fugiat vero.
-                </div>
-                <div class="check">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
+                <table id="taskTable">
+                    
+                </table>
             </div>
         </div>
         <script>
@@ -81,6 +74,8 @@
                 }
                 const LS = JSON.parse(localStorage.getItem("ToDoList"));
                 const Days = document.getElementById("days");
+                const imgWorking = '../React/Hooks/ViteHooks/public/img/workingProgress.png'
+                const imgCheck = '../React/Hooks/ViteHooks/public/img/iconeCheck.png'
 
                 function inputTask(target) {
                     let Tbody = target.parentNode.parentNode.dataset;
@@ -132,28 +127,24 @@
                 clearTasks();
 
                 function showTasks() {
-                    let divCont = document.getElementById("ToDo");
+                    let taskTable = document.getElementById("taskTable");
 
-                    if (divCont.children.length <= 1) {
-                        let emptyDiv = document.createElement("div");
-                        emptyDiv.classList.add("empty");
-                        emptyDiv.innerHTML =
-                            "Clique duas vezes para adicionar uma tarefa...";
-                        emptyDiv.addEventListener("dblclick", openEditMode);
-                        divCont.appendChild(emptyDiv);
+                    if (taskTable.children.length <= 1) {
+                        addEmptyTr()
                     }
 
                     function openEditMode(e) {
                         let elem = e.target;
-                        if (elem.classList == "empty") {
+                        if (elem.parentNode.classList == "empty") {
                             elem.innerHTML = "";
+                            elem.parentNode.classList.remove("empty");
                         }
                         let elemText = elem.innerHTML;
                         elem.innerHTML = "";
-                        elem.classList.remove("empty");
-                        
+
                         let inputTx = document.createElement("input");
                         let inputBtn = document.createElement("input");
+                        
                         inputTx.setAttribute("type", "text");
                         inputTx.setAttribute("maxlength", "100");
                         inputTx.setAttribute("value", elemText);
@@ -162,30 +153,52 @@
                         inputBtn.classList.add("inputBtn");
                         inputBtn.setAttribute("type", "submit");
                         inputBtn.addEventListener("click", addNewTask);
+                       
                         elem.appendChild(inputTx);
                         elem.appendChild(inputBtn);
                         inputTx.focus();
-                        elem.removeEventListener(switchCheck);
-                        
-                        function addNewTask(inp) {
+
+                        function addNewTask() {
                             let Text = document.getElementById("inputText");
                             if (!Text.value == "") {
                                 elem.innerHTML = Text.value;
-                                elem.classList.add("working");
-                                elem.addEventListener("click", switchCheck);
+                                addEmptyTr()
                             }
                             return;
                         }
-                        function switchCheck(e) {
-                            console.log(e);
-                            if (e.target.classList == "working") {
-                                e.target.classList.remove("working");
-                                e.target.classList.add("check");
-                            } else {
-                                e.target.classList.add("working");
-                                e.target.classList.remove("check");
-                            }
+                    }
+                    function switchCheck(e) {
+                        let eC = e.target
+                        if (eC.classList == "working") {
+                            eC.classList.remove("working");
+                            eC.classList.add("check");
+                            eC.setAttribute('src', imgCheck)
+                        } else {
+                            eC.classList.add("working");
+                            eC.classList.remove("check");
+                            eC.setAttribute('src', imgWorking)
                         }
+                    }
+                    function addEmptyTr(){
+                        let emptyTr = document.createElement("tr");
+                        let workingTd = document.createElement('td')
+                        let workingImg = document.createElement('img')
+                        let taskCont = document.createElement('td')
+
+                        workingImg.setAttribute('src', imgWorking)
+                        workingImg.classList.add('working')
+                        workingImg.addEventListener('click', switchCheck)
+                        workingTd.classList.add('workingTd')
+                        taskCont.innerHTML =
+                            "Clique duas vezes para adicionar uma tarefa...";
+                        taskCont.addEventListener("dblclick", openEditMode);
+                        taskCont.classList.add('content')
+                        emptyTr.classList.add('empty')
+
+                        workingTd.appendChild(workingImg)
+                        emptyTr.appendChild(workingTd)
+                        emptyTr.appendChild(taskCont)
+                        taskTable.appendChild(emptyTr)
                     }
                 }
                 showTasks();
