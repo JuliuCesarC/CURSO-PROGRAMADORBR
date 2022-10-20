@@ -1,8 +1,9 @@
 let Days = document.getElementById("days");
+let once = false;
 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
-function showDays(month, year, months) {
+function showDays(month, year, monthsOfYear) {
 	// CONFIGURA O MÊS E O ANO NA TABELA
-	document.getElementById("month").innerHTML = months[month].month;
+	document.getElementById("month").innerHTML = monthsOfYear[month].month;
 	document.getElementById("Header").classList.add(month)
 	document.getElementById("year").innerHTML = year;
 	Days.dataset.month = month;
@@ -21,7 +22,7 @@ function showDays(month, year, months) {
 		td.innerHTML = indexDay.getDate();
 		td.classList.add('c'+indexDay.getDate())
 		td.addEventListener("click", (e) => {
-			showTasks(e.target);
+			showTasks(null, null, e.target);
 		});
 		if (
 			indexDay.getFullYear() == Now.getFullYear() &&
@@ -29,6 +30,9 @@ function showDays(month, year, months) {
 			indexDay.getDate() == Now.getDate()
 		) {
 			td.id = "current-day";
+			if(!once){
+				showTasks(month, year, indexDay.getDate())
+			}
 		}
 		if (i < 1) {
 			td.classList.add("prev-month");
@@ -44,8 +48,8 @@ function showDays(month, year, months) {
 	}
 	Days.appendChild(tr);
 
-	if(months[month].listOfAllTasks){
-		months[month].listOfAllTasks.forEach(tk=>{
+	if(monthsOfYear[month].listOfAllTasks){
+		monthsOfYear[month].listOfAllTasks.forEach(tk=>{
 			if(tk.year==year){
 				let element = document.querySelector(`.c${tk.day}`)
 				if(element.classList.length < 2){

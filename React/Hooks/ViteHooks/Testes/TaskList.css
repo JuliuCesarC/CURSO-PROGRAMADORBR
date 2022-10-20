@@ -1,0 +1,62 @@
+#ToDo{
+	width: 420px;
+}
+#ToDo header{
+	position: relative;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+#ToDo header img{
+	width: 112%;
+	position: absolute;
+	left: -6%;
+	top: -50px;
+	z-index: -1;
+}
+#Day{
+	padding-top: 10px;
+}
+#taskTable {
+	text-align: justify;
+	position: relative;
+	padding-top: 10px;
+	width: 100%;
+}
+#taskTable .content{
+	border-bottom: 2px solid #21212188;
+	padding: 2px;
+}
+.empty{
+	color: #322a1379;
+}
+.workingTd{
+	width: 30px;
+}
+.check, .working{
+width: 30px;
+padding-right: 10px;
+}
+#taskTable input{
+	font-size: 16px;
+}
+.inputTx{
+	border: none;
+	outline: none;
+	width: 70%;
+}
+.inputBtn{
+	border: 1px solid #43aaef;
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px;
+	position: absolute;
+	left: 80%;
+	top: -5px;
+	transition: all 0.1s;
+}
+.inputBtn:hover{
+	background-color: #43aaef;
+	color: white;
+}

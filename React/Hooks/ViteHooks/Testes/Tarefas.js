@@ -11,47 +11,32 @@ function clearTasks() {
 }
 clearTasks();
 
-function showTasks() {
-	let taskTable = document.getElementById("taskTable");
-
-	if (taskTable.children.length <= 1) {
-		addEmptyTr();
+function showTasks(month, year, day) {
+	clearTasks();
+	if(month == null && year == null){
+		month = Number(document.getElementById('Header').classList[0]);
+		year = Number(document.getElementById('year').innerHTML)
+		day = Number(day.innerHTML)
 	}
 
-	function openEditMode(e) {
-		let elem = e.target;
-		if (elem.parentNode.classList == "empty") {
-			elem.innerHTML = "";
-			elem.parentNode.classList.remove("empty");
-		}
-		let elemText = elem.innerHTML;
-		elem.innerHTML = "";
-
-		let inputTx = document.createElement("input");
-		let inputBtn = document.createElement("input");
-
-		inputTx.setAttribute("type", "text");
-		inputTx.setAttribute("maxlength", "100");
-		inputTx.setAttribute("value", elemText);
-		inputTx.id = "inputText";
-		inputTx.classList.add("inputTx");
-		inputBtn.classList.add("inputBtn");
-		inputBtn.setAttribute("type", "submit");
-		inputBtn.addEventListener("click", addNewTask);
-
-		elem.appendChild(inputTx);
-		elem.appendChild(inputBtn);
-		inputTx.focus();
-
-		function addNewTask() {
-			let Text = document.getElementById("inputText");
-			if (!Text.value == "") {
-				elem.innerHTML = Text.value;
-				addEmptyTr();
+	document.getElementById("Day").innerHTML = "Dia " + day + "/" + (month + 1);
+	let monthsOfYear = JSON.parse(localStorage.getItem("ToDoList"))[month]
+		.listOfAllTasks;
+	
+	if(monthsOfYear){
+		monthsOfYear.forEach(e=>{
+			if(e.day == day){
+				e.tasks.forEach(tk=>{
+					addTask(tk)
+				})
 			}
-			return;
-		}
+		})
 	}
+
+	function addTask(tk) {
+		console.log(tk);
+	}
+
 	function switchCheck(e) {
 		let eC = e.target;
 		if (eC.classList == "working") {
@@ -85,4 +70,3 @@ function showTasks() {
 		taskTable.appendChild(emptyTr);
 	}
 }
-showTasks();
