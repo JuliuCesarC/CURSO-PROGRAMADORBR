@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calendário</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
+			@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+		</style>
+		<link rel="stylesheet" href="TesteAgenda.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="Table">
+				<header class="Header">
+					<button class="btn-prev" id="Btn-Prev">&lt;</button>
+					<h2 id="month">Setembro</h2>
+					<button class="btn-next" id="Btn-Next">&gt;</button>
+				</header>
+				<table>
+					<thead>
+						<tr id="daysOfWeek">
+							<td>D</td>
+							<td>S</td>
+							<td>T</td>
+							<td>Q</td>
+							<td>Q</td>
+							<td>S</td>
+							<td>S</td>
+						</tr>
+					</thead>
+					<tbody id="days"></tbody>
+					<tfoot>
+						<tr>
+							<td colspan="7" id="year">2022</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+			<div class="Cont" id="ToDo">
+				<header>
+					<img src="../public/img/Caderno.png" alt="" />
+					<h2>ToDo List</h2>
+				</header>
+				<table id="taskTable"></table>
+			</div>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const months = [
+					{ month: "janeiro" },
+					{ month: "fevereiro" },
+					{ month: "março" },
+					{ month: "abril" },
+					{ month: "maio" },
+					{ month: "junho" },
+					{ month: "julho" },
+					{ month: "agosto" },
+					{ month: "setembro" },
+					{ month: "outubro" },
+					{ month: "novembro" },
+					{ month: "dezembro" },
+				];
+				if (!localStorage.getItem("ToDoList")) {
+					localStorage.setItem("ToDoList", JSON.stringify(months));
+				}else{
+					months.forEach((e, i) => {
+						months[i]=JSON.parse(localStorage.getItem("ToDoList"))[i]
+					});
+				}
+				const LS = JSON.parse(localStorage.getItem("ToDoList"));
+				const Days = document.getElementById("days");
+				
+
+				function inputTask(target) {
+					let Tbody = target.parentNode.parentNode.dataset;
+					let TaskList = {
+						month: Tbody.month,
+						year: Tbody.year,
+						day: target.innerHTML,
+						tasks: [
+							"Lorem ipsum dolor sit",
+							"Amet consectetur adipisicing elit.",
+						],
+					};
+					let taskLS = JSON.parse(localStorage.getItem("ToDoList"))[
+						Tbody.month
+					];
+					if (!taskLS.taskList) {
+						taskLS.taskList = [];
+					}
+					taskLS.taskList.push(TaskList);
+					LS[Tbody.month] = taskLS;
+					localStorage.setItem("ToDoList", JSON.stringify(LS));
+					if (!target.classList[0]) {
+						target.classList.add("task");
+					} else {
+						target.classList.remove("task");
+					}
+				}
+				
+				
+				let Now = new Date();
+				let month = Now.getMonth();
+				let year = Now.getFullYear();
+				showDays(month, year, months);
+			});
+		</script>
+		<script src="Calendario.js"></script>
+		<script src="Tarefas.js"></script>
+	</body>
+</html>
