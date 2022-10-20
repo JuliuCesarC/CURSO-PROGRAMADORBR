@@ -27,7 +27,7 @@ h2{
     padding-top: 30px;
     text-align: end;
 }
-.Header{
+#Header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,11 +66,11 @@ tbody td:hover{
 .prev-month, .next-month{
     color: #21212133;
 }
-.current-day{
+#current-day{
     background-color: #43aaef;
     color: white;
 }
-.current-day:hover{
+#current-day:hover{
     background-color: rgb(108, 191, 250);
 }
 .task{
@@ -80,15 +80,15 @@ tbody td:hover{
     content: '';
     width: 6px;
     height: 6px;
-    left: 19.5px;
-    bottom: -1px;
+    left: 15px;
+    bottom: -4px;
     margin: 5px 0px;
     background-color: #43aaef;
     display: block;
     position: absolute;
     border-radius: 50%;
 }
-.task.current-day::after{
+.task#current-day::after{
     background-color: white;
 }
 #ToDo{

@@ -14,7 +14,7 @@
 	<body>
 		<div class="container">
 			<div class="Table">
-				<header class="Header">
+				<header id="Header">
 					<button class="btn-prev" id="Btn-Prev">&lt;</button>
 					<h2 id="month">Setembro</h2>
 					<button class="btn-next" id="Btn-Next">&gt;</button>
@@ -51,7 +51,19 @@
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const months = [
-					{ month: "janeiro" },
+					{
+						month: "janeiro",
+						listOfAllTasks: [
+							{
+								year: 2023,
+								day: 10,
+								tasks: [
+									"Lorem ipsum dolor sit",
+									"Amet consectetur adipisicing elit.",
+								],
+							},
+						],
+					},
 					{ month: "fevereiro" },
 					{ month: "março" },
 					{ month: "abril" },
@@ -60,20 +72,54 @@
 					{ month: "julho" },
 					{ month: "agosto" },
 					{ month: "setembro" },
-					{ month: "outubro" },
+					{
+						month: "outubro",
+						listOfAllTasks: [
+							{
+								year: 2022,
+								day: 22,
+								tasks: [
+									"Lorem ipsum dolor sit",
+									"Amet consectetur adipisicing elit.",
+								],
+							},
+							{
+								year: 2022,
+								day: 1,
+								tasks: [
+									"Lorem ipsum dolor sit",
+									"Amet consectetur adipisicing elit.",
+								],
+							},
+							{
+								year: 2022,
+								day: 27,
+								tasks: [
+									"Lorem ipsum dolor sit",
+									"Amet consectetur adipisicing elit.",
+								],
+							},{
+								year: 2022,
+								day: 20,
+								tasks: [
+									"Lorem ipsum dolor sit",
+									"Amet consectetur adipisicing elit.",
+								],
+							}
+						],
+					},
 					{ month: "novembro" },
 					{ month: "dezembro" },
 				];
 				if (!localStorage.getItem("ToDoList")) {
 					localStorage.setItem("ToDoList", JSON.stringify(months));
-				}else{
+				} else {
 					months.forEach((e, i) => {
-						months[i]=JSON.parse(localStorage.getItem("ToDoList"))[i]
+						months[i] = JSON.parse(localStorage.getItem("ToDoList"))[i];
 					});
 				}
 				const LS = JSON.parse(localStorage.getItem("ToDoList"));
 				const Days = document.getElementById("days");
-				
 
 				function inputTask(target) {
 					let Tbody = target.parentNode.parentNode.dataset;
@@ -101,8 +147,7 @@
 						target.classList.remove("task");
 					}
 				}
-				
-				
+
 				let Now = new Date();
 				let month = Now.getMonth();
 				let year = Now.getFullYear();
