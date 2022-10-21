@@ -23,6 +23,7 @@
 	position: relative;
 	padding-top: 10px;
 	width: 100%;
+	word-break: break-all;
 }
 #taskTable td{
 	padding-top: 5px;
@@ -61,19 +62,5 @@
 .inputTx{
 	border: none;
 	outline: none;
-	width: 80%;
-}
-.inputBtn{
-	border: 1px solid #43aaef;
-	background-color: white;
-	border-radius: 5px;
-	padding: 3px;
-	position: absolute;
-	left: 85%;
-	top: 0px;
-	transition: all 0.1s;
-}
-.inputBtn:hover{
-	background-color: #43aaef;
-	color: white;
+	width: 100%;
 }
