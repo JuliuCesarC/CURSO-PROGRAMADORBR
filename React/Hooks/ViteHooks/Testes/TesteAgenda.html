@@ -50,6 +50,7 @@
 				<table id="taskTable"></table>
 			</div>
 		</div>
+
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const months = [
@@ -81,33 +82,34 @@
 								year: 2022,
 								day: 22,
 								tasks: [
-									"Lorem ipsum dolor sit",
-									"Amet consectetur adipisicing elit.",
+									{ cont: "Lorem ipsum dolor sit", check: 'working' },
+									{ cont: "Amet consectetur adipisicing elit.", check: 'working' },
 								],
 							},
 							{
 								year: 2022,
 								day: 1,
 								tasks: [
-									"Lorem ipsum dolor sit",
-									"Amet consectetur adipisicing elit.",
+									{ cont: "Lorem ipsum dolor sit", check: 'check' },
+									{ cont: "Amet consectetur adipisicing elit.", check: 'check' },
 								],
 							},
 							{
 								year: 2022,
 								day: 27,
 								tasks: [
-									"Lorem ipsum dolor sit",
-									"Amet consectetur adipisicing elit.",
+									{ cont: "Lorem ipsum dolor sit", check: 'working' },
+									{ cont: "Amet consectetur adipisicing elit.", check: 'working' },
 								],
-							},{
+							},
+							{
 								year: 2022,
-								day: 20,
+								day: 21,
 								tasks: [
-									"Lorem ipsum dolor sit",
-									"Amet consectetur adipisicing elit.",
+									{ cont: "Lorem ipsum dolor sit", check: 'check' },
+									{ cont: "Amet consectetur adipisicing elit.", check: 'working' },
 								],
-							}
+							},
 						],
 					},
 					{ month: "novembro" },

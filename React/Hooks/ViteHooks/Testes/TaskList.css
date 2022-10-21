@@ -24,36 +24,47 @@
 	padding-top: 10px;
 	width: 100%;
 }
+#taskTable td{
+	padding-top: 5px;
+}
 #taskTable .content{
 	border-bottom: 2px solid #21212188;
 	padding: 2px;
+	font-family: 'Fredoka One', cursive;
+}
+#taskTable tr{
+	position: relative;
 }
 .empty{
 	color: #322a1379;
 }
 .workingTd{
-	width: 30px;
+	width: 20px;
+}
+.workingTd img{
+	width: 25px;
 }
 .check, .working{
-width: 30px;
-padding-right: 10px;
+	width: 30px;
+	padding-right: 5px;
 }
 #taskTable input{
+	font-family: 'Fredoka One', cursive;
 	font-size: 16px;
 }
 .inputTx{
 	border: none;
 	outline: none;
-	width: 70%;
+	width: 80%;
 }
 .inputBtn{
 	border: 1px solid #43aaef;
 	background-color: white;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 3px;
 	position: absolute;
-	left: 80%;
-	top: -5px;
+	left: 85%;
+	top: 0px;
 	transition: all 0.1s;
 }
 .inputBtn:hover{
