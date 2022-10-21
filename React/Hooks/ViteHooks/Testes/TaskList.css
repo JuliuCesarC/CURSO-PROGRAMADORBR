@@ -35,11 +35,17 @@
 #taskTable tr{
 	position: relative;
 }
+.editImg{
+	text-align: end;
+}
+.editImg img{
+	width: 30px;
+}
 .empty{
 	color: #322a1379;
 }
 .workingTd{
-	width: 20px;
+	width: 30px;
 }
 .workingTd img{
 	width: 25px;

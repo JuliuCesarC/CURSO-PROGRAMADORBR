@@ -37,7 +37,9 @@ function showTasks(month, year, day) {
 		let Tr = document.createElement("tr");
 		let workingTd = document.createElement("td");
 		let workingImg = document.createElement("img");
-		let taskCont = document.createElement("td");
+		let taskContent = document.createElement("td");
+		let editTd = document.createElement('td')
+		let editImg = document.createElement('img')
 
 		if (tk.check == "check") {
 			workingImg.setAttribute("src", imgCheck);
@@ -47,16 +49,45 @@ function showTasks(month, year, day) {
 		workingImg.classList.add(tk.check);
 		workingImg.addEventListener("click", switchCheck);
 		workingTd.classList.add("workingTd");
-		taskCont.innerHTML = tk.cont;
-		taskCont.addEventListener("dblclick", openEditMode);
-		taskCont.classList.add("content");
+		taskContent.innerHTML = tk.cont;
+		taskContent.classList.add("content");
+		editImg.setAttribute('src', '../public/img/btt edit.png')
+		editTd.classList.add('editImg')
+		editImg.addEventListener('click', e=>{
+			openEditMode(taskContent, editTd)
+		})
 
 		workingTd.appendChild(workingImg);
+		editTd.appendChild(editImg)
 		Tr.appendChild(workingTd);
-		Tr.appendChild(taskCont);
+		Tr.appendChild(taskContent);
+		Tr.appendChild(editTd);
 		taskTable.appendChild(Tr);
 	}
+	
+	function openEditMode(taskContent, editTd) {
+		let contentTx = taskContent.innerHTML
+		taskContent.innerHTML=''
 
+		let inputTx = document.createElement('input')
+		let inputBtn = document.createElement('input')
+		inputTx.setAttribute('type', 'text')
+		inputBtn.setAttribute('type', 'button')
+		inputTx.classList.add('inputTx')
+		inputBtn.classList.add('inputBtn')
+		inputTx.value = contentTx
+		inputBtn.value = 'Enviar'
+		inputBtn.addEventListener('click', updateTask(taskContent))
+		
+		taskContent.appendChild(inputTx)
+		editTd.innerHTML = ''
+		editTd.appendChild(inputBtn)
+		inputTx.focus()
+		
+	}
+	function updateTask(taskContent){
+		console.log('entrou', taskContent);
+	}
 	function switchCheck(e) {
 		let eC = e.target;
 		if (eC.classList == "working") {
@@ -68,29 +99,6 @@ function showTasks(month, year, day) {
 			eC.classList.remove("check");
 			eC.setAttribute("src", imgWorking);
 		}
-	}
-	function openEditMode(tkx) {
-		let contTask = tkx.target.innerHTML
-		tkx.target.innerHTML =''
-
-		inputTx = document.createElement('input')
-		inputBtn = document.createElement('input')
-		inputTx.setAttribute('type', 'text')
-		inputBtn.setAttribute('type', 'button')
-		inputTx.classList.add('inputTx')
-		inputBtn.classList.add('inputBtn')
-		inputTx.value = contTask
-		inputBtn.value = 'Enviar'
-		inputBtn.addEventListener('click', updateTask(tkx))
-		
-		tkx.target.appendChild(inputTx)
-		tkx.target.appendChild(inputBtn)
-		inputTx.focus()
-
-	}
-	function updateTask(tkx){
-		console.log('entrou', tkx.target);
-		return;
 	}
 
 	function addEmptyTr() {
