@@ -2,9 +2,12 @@ let Days = document.getElementById("days");
 let once = false;
 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
 function showDays(month, year, monthsOfYear) {
+	if(!document.getElementById('days').children.length < 1){
+		clearTable()
+	}
 	// CONFIGURA O MÊS E O ANO NA TABELA
 	document.getElementById("month").innerHTML = monthsOfYear[month].month;
-	document.getElementById("Header").classList.add(month)
+	document.getElementById("Header").classList.add(month);
 	document.getElementById("year").innerHTML = year;
 	Days.dataset.month = month;
 	Days.dataset.year = year;
@@ -20,9 +23,9 @@ function showDays(month, year, monthsOfYear) {
 
 		let td = document.createElement("td");
 		td.innerHTML = indexDay.getDate();
-		td.classList.add('c'+indexDay.getDate())
+		td.classList.add("c" + indexDay.getDate());
 		td.addEventListener("click", (e) => {
-			showTasks(null, null, e.target);
+			showTasks(null, null, e.target, monthsOfYear);
 		});
 		if (
 			indexDay.getFullYear() == Now.getFullYear() &&
@@ -31,7 +34,8 @@ function showDays(month, year, monthsOfYear) {
 		) {
 			td.id = "current-day";
 			if(!once){
-				showTasks(month, year, indexDay.getDate())
+				showTasks(month, year, indexDay.getDate(), monthsOfYear);
+				once = true;
 			}
 		}
 		if (i < 1) {
@@ -40,6 +44,7 @@ function showDays(month, year, monthsOfYear) {
 		if (i > totalDaysInMonth) {
 			td.classList.add("next-month");
 		}
+
 		tr.appendChild(td);
 		if (index % 7 === 0 && index < 40) {
 			Days.appendChild(tr);
@@ -48,38 +53,25 @@ function showDays(month, year, monthsOfYear) {
 	}
 	Days.appendChild(tr);
 
-	if(monthsOfYear[month].listOfAllTasks){
-		monthsOfYear[month].listOfAllTasks.forEach(tk=>{
-			if(tk.year==year){
-				let element = document.querySelector(`.c${tk.day}`)
-				if(element.classList.length < 2){
-					element.classList.add('task');
-				}else{
-					document.querySelectorAll(`.c${tk.day}`)[1].classList.add('task')
-				}
-			}
-		})
-	}
-	
 }
-	let Now = new Date();
-	let month = Now.getMonth();
-	let year = Now.getFullYear();
-	
-	document.getElementById("Btn-Next").onclick = function () {
-		clearTable();
-		month++;
-		if (month > 11) {
-			month = 0;
-			year++;
-		}
-		showDays(month, year, JSON.parse(localStorage.getItem("ToDoList")));
-	};
-	document.getElementById("Btn-Prev").onclick = function () {
-		clearTable();
-		month--;
-		if (month < 0) {
-			month = 11;
+let Now = new Date();
+let month = Now.getMonth();
+let year = Now.getFullYear();
+
+document.getElementById("Btn-Next").onclick = function () {
+	clearTable();
+	month++;
+	if (month > 11) {
+		month = 0;
+		year++;
+	}
+	showDays(month, year, JSON.parse(localStorage.getItem("ToDoList")));
+};
+document.getElementById("Btn-Prev").onclick = function () {
+	clearTable();
+	month--;
+	if (month < 0) {
+		month = 11;
 		year--;
 	}
 	showDays(month, year, JSON.parse(localStorage.getItem("ToDoList")));
@@ -87,7 +79,7 @@ function showDays(month, year, monthsOfYear) {
 // LIMPA A TABELA QUANDO MUDA O MÊS
 function clearTable() {
 	let allTr = Array.from(document.querySelectorAll("tr"));
-	document.getElementById("Header").classList.remove(month)
+	document.getElementById("Header").classList.remove(month);
 	allTr.slice(1, 7).forEach((el) => {
 		Days.removeChild(el);
 	});

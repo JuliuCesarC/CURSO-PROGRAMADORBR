@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="Table">
+			<div id="Table">
 				<header id="Header">
 					<button class="btn-prev" id="Btn-Prev">&lt;</button>
 					<h2 id="month">Setembro</h2>
@@ -53,111 +53,10 @@
 		
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
-				const months = [
-					{
-						month: "janeiro",
-						listOfAllTasks: [
-							{
-								year: 2023,
-								day: 10,
-								tasks: [
-									"Lorem ipsum dolor sit",
-									"Amet consectetur adipisicing elit.",
-								],
-							},
-						],
-					},
-					{ month: "fevereiro" },
-					{ month: "março" },
-					{ month: "abril" },
-					{ month: "maio" },
-					{ month: "junho" },
-					{ month: "julho" },
-					{ month: "agosto" },
-					{ month: "setembro" },
-					{
-						month: "outubro",
-						listOfAllTasks: [
-							{
-								year: 2022,
-								day: 22,
-								tasks: [
-									{ cont: "Lorem ipsum dolor sit", check: 'working' },
-									{ cont: "Amet consectetur adipisicing elit.", check: 'working' },
-								],
-							},
-							{
-								year: 2022,
-								day: 1,
-								tasks: [
-									{ cont: "Lorem ipsum dolor sit", check: 'check' },
-									{ cont: "Amet consectetur adipisicing elit.", check: 'check' },
-								],
-							},
-							{
-								year: 2022,
-								day: 27,
-								tasks: [
-									{ cont: "Lorem ipsum dolor sit", check: 'working' },
-									{ cont: "Amet consectetur adipisicing elit.", check: 'working' },
-								],
-							},
-							{
-								year: 2022,
-								day: 21,
-								tasks: [
-									{ cont: "Lorem ipsum dolor sit", check: 'check' },
-									{ cont: "Amet consectetur adipisicing elit.", check: 'working' },
-								],
-							},
-						],
-					},
-					{ month: "novembro" },
-					{ month: "dezembro" },
-				];
-				if (!localStorage.getItem("ToDoList")) {
-					localStorage.setItem("ToDoList", JSON.stringify(months));
-				} else {
-					months.forEach((e, i) => {
-						months[i] = JSON.parse(localStorage.getItem("ToDoList"))[i];
-					});
-				}
-				const LS = JSON.parse(localStorage.getItem("ToDoList"));
-				const Days = document.getElementById("days");
-
-				function inputTask(target) {
-					let Tbody = target.parentNode.parentNode.dataset;
-					let TaskList = {
-						month: Tbody.month,
-						year: Tbody.year,
-						day: target.innerHTML,
-						tasks: [
-							"Lorem ipsum dolor sit",
-							"Amet consectetur adipisicing elit.",
-						],
-					};
-					let taskLS = JSON.parse(localStorage.getItem("ToDoList"))[
-						Tbody.month
-					];
-					if (!taskLS.taskList) {
-						taskLS.taskList = [];
-					}
-					taskLS.taskList.push(TaskList);
-					LS[Tbody.month] = taskLS;
-					localStorage.setItem("ToDoList", JSON.stringify(LS));
-					if (!target.classList[0]) {
-						target.classList.add("task");
-					} else {
-						target.classList.remove("task");
-					}
-				}
-
-				let Now = new Date();
-				let month = Now.getMonth();
-				let year = Now.getFullYear();
-				showDays(month, year, months);
+				startTodo()
 			});
 		</script>
+		<script src="LocalStorage.js"></script>
 		<script src="Calendario.js"></script>
 		<script src="Tarefas.js"></script>
 	</body>

@@ -11,7 +11,7 @@
 	display: grid;
 	grid-template-columns: auto auto;
 }
-.Table{
+#Table{
 	background-color: rgba(71, 64, 11, 0.1);
 	border-radius: 15px;
 	padding: 10px;
@@ -44,13 +44,13 @@
 	background-color: #43aaef;
 	color: white;
 }
-.Table table{
+#Table table{
 	border-collapse: collapse;
 }
 #daysOfWeek td{
 	border-bottom: 3px solid rgb(255, 0, 0, 0.7);
 }
-.Table td{
+#Table td{
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	text-align: center;
 	height: 35px;
