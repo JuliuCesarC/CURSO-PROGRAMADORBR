@@ -22,16 +22,23 @@ function showTasks(month, year, day, LS) {
 
 	let monthsOfYear = LS[month].listOfAllTasks;
 	if (monthsOfYear) {
-		let dayWithTask = monthsOfYear.filter((e) => e.day == day)[0];
+		let dayWithTask = monthsOfYear.filter(
+			(e) => e.day == day && e.year == year
+		)[0];
 		if (dayWithTask) {
+			let num = 0;
 			dayWithTask.tasks.forEach((e) => {
 				addTask(e);
+				num++;
 			});
+			if (num < 9) {
+				addEmptyTr();
+			}
 		} else {
 			addEmptyTr();
 		}
-	}else{
-		addEmptyTr()
+	} else {
+		addEmptyTr();
 	}
 
 	function addTask(tk) {
@@ -49,7 +56,9 @@ function showTasks(month, year, day, LS) {
 			workingImg.setAttribute("src", imgWorking);
 		}
 		workingImg.classList.add(tk.check);
-		workingImg.addEventListener("click", switchCheck);
+		workingImg.addEventListener("click", (e) => {
+			switchCheck(e, tk.id);
+		});
 		workingTd.classList.add("workingTd");
 		taskContent.innerHTML = tk.cont;
 		taskContent.classList.add("content");
@@ -72,7 +81,6 @@ function showTasks(month, year, day, LS) {
 		let contentTx = contentTD.innerHTML;
 		let Target = eEdit.target.parentNode;
 
-		
 		let inputTx = document.createElement("input");
 		let inputImg = document.createElement("img");
 		inputTx.setAttribute("type", "text");
@@ -83,26 +91,14 @@ function showTasks(month, year, day, LS) {
 		inputImg.addEventListener("click", (e) => {
 			updateTaskLS(month, year, day, ID, inputTx.value);
 		});
-		
+
 		contentTD.innerHTML = "";
 		Target.innerHTML = "";
 		contentTD.appendChild(inputTx);
 		Target.appendChild(inputImg);
 		inputTx.focus();
 	}
-	
-	function switchCheck(e) {
-		let eC = e.target;
-		if (eC.classList == "working") {
-			eC.classList.remove("working");
-			eC.classList.add("check");
-			eC.setAttribute("src", imgCheck);
-		} else {
-			eC.classList.add("working");
-			eC.classList.remove("check");
-			eC.setAttribute("src", imgWorking);
-		}
-	}
+
 	function addEmptyTr() {
 		let emptyTr = document.createElement("tr");
 		let workingTd = document.createElement("td");
@@ -112,7 +108,6 @@ function showTasks(month, year, day, LS) {
 
 		workingImg.setAttribute("src", imgWorking);
 		workingImg.classList.add("working");
-		workingImg.addEventListener("click", switchCheck);
 		workingTd.classList.add("workingTd");
 		placeHolder.innerHTML = "Clique duas vezes para adicionar uma tarefa...";
 		placeHolder.addEventListener("dblclick", (e) => {
@@ -137,12 +132,14 @@ function showTasks(month, year, day, LS) {
 		let inputTx = document.createElement("input");
 		let inputImg = document.createElement("img");
 		inputTx.setAttribute("type", "text");
-		inputTx.setAttribute("maxlength", "125");
+		inputTx.setAttribute("maxlength", "80");
 		inputImg.setAttribute("src", "../public/img/btt edit.png");
 		inputTx.classList.add("inputTx");
 		inputTx.value = contentTx;
 		inputImg.addEventListener("click", (e) => {
-			newTask(e);
+			if (!inputTx.value.trim() == "") {
+				addNewTaskLS(month, year, day, inputTx.value);
+			}
 		});
 
 		contentTD.innerHTML = "";
@@ -151,19 +148,19 @@ function showTasks(month, year, day, LS) {
 		Target.appendChild(inputImg);
 		inputTx.focus();
 	}
-	function newTask(eNew) {
-		let contentInput = eNew.target.parentNode.parentNode.children[1];
-		let contentTx = contentInput.children[0].value;
 
-		// contentInput.innerHTML = contentTx;
-		// let updateImg = document.createElement("img");
-		// updateImg.setAttribute("src", "../public/img/btt edit.png");
-		// updateImg.addEventListener("click", (e) => {
-		// 	openEditMode(e);
-		// });
-		// let Target = eNew.target.parentNode;
-		// Target.innerHTML = "";
-		// Target.appendChild(updateImg);
-		addNewTaskLS(month, year, day, contentTx);
+	function switchCheck(e, ID) {
+		let eC = e.target;
+		if (eC.classList == "working") {
+			eC.classList.remove("working");
+			eC.classList.add("check");
+			eC.setAttribute("src", imgCheck);
+			switchCheckLS(month, year, day, ID)
+		} else {
+			eC.classList.add("working");
+			eC.classList.remove("check");
+			eC.setAttribute("src", imgWorking);
+			switchCheckLS(month, year, day, ID)
+		}
 	}
 }

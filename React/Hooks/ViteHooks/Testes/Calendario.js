@@ -9,8 +9,6 @@ function showDays(month, year, monthsOfYear) {
 	document.getElementById("month").innerHTML = monthsOfYear[month].month;
 	document.getElementById("Header").classList.add(month);
 	document.getElementById("year").innerHTML = year;
-	Days.dataset.month = month;
-	Days.dataset.year = year;
 
 	let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
 	// É preciso colocar o -1 no final do 'fistDayOfWeek' pois durante o loop ele ira passar pelo valor 0, e como o valor 0 também é considerado, então teríamos 8 dias na semana.
@@ -64,33 +62,33 @@ function showDays(month, year, monthsOfYear) {
 	Days.appendChild(tr);
 }
 
-let Now = new Date();
-let month = Now.getMonth();
-let year = Now.getFullYear();
+	let Now = new Date();
+	let monthNow = Now.getMonth();
+	let yearNow = Now.getFullYear();
 
-document.getElementById("Btn-Next").onclick = function () {
-	clearTable();
-	month++;
-	if (month > 11) {
-		month = 0;
-		year++;
+	document.getElementById("Btn-Next").onclick = function () {
+		clearTable();
+		monthNow++;
+		if (month > 11) {
+			monthNow = 0;
+			yearNow++;
+		}
+		showDays(monthNow, yearNow, monthsOfYear);
+	};
+	document.getElementById("Btn-Prev").onclick = function () {
+		clearTable();
+		monthNow--;
+		if (month < 0) {
+			monthNow = 11;
+			yearNow--;
+		}
+		showDays(monthNow, yearNow, monthsOfYear);
+	};
+	// LIMPA A TABELA QUANDO MUDA O MÊS
+	function clearTable() {
+		let allTr = Array.from(document.querySelectorAll("tr"));
+		document.getElementById("Header").classList.remove(month);
+		allTr.slice(1, 7).forEach((el) => {
+			Days.removeChild(el);
+		});
 	}
-	showDays(month, year, JSON.parse(localStorage.getItem("ToDoList")));
-};
-document.getElementById("Btn-Prev").onclick = function () {
-	clearTable();
-	month--;
-	if (month < 0) {
-		month = 11;
-		year--;
-	}
-	showDays(month, year, JSON.parse(localStorage.getItem("ToDoList")));
-};
-// LIMPA A TABELA QUANDO MUDA O MÊS
-function clearTable() {
-	let allTr = Array.from(document.querySelectorAll("tr"));
-	document.getElementById("Header").classList.remove(month);
-	allTr.slice(1, 7).forEach((el) => {
-		Days.removeChild(el);
-	});
-}

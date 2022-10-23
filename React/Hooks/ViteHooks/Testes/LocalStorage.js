@@ -54,15 +54,26 @@ function addNewTaskLS(month, year, day, TX) {
 	startTodo();
 	showTasks(month, year, day, fullLS)
 }
-updateTaskLS(9, 2022, 23, 'l15wpq6', 'Update Nova tarefa')
 function updateTaskLS(month, year, day, ID, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
 	let LSMonth = fullLS[month].listOfAllTasks;
 	let LSDay = LSMonth.filter((e) => e.year == year && e.day == day)[0].tasks;
-	let LSTask = LSDay.filter(e=>e.id == ID)
+	let LSTask = LSDay.filter(e=>e.id == ID)[0]
 	LSTask.cont = TX;
-	console.log(LSTask);
-	console.log(LSDay);
+
+	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
+	startTodo();
+	showTasks(month, year, day, fullLS)
+}
+function switchCheckLS(month, year, day, ID){
+	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
+	let task = fullLS[month].listOfAllTasks.filter(e=>e.year == year && e.day == day)[0].tasks.filter(e=>e.id==ID)[0]
+	if(task.check == 'working'){
+		task.check = 'check'
+	}else{
+		task.check = 'working'
+	}
+	localStorage.setItem('ToDoList', JSON.stringify(fullLS))
 }
 function randomID() {
 	return Math.random().toString(36).substring(2, 9);
