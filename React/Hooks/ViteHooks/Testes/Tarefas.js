@@ -78,24 +78,33 @@ function showTasks(month, year, day, LS) {
 
 	function openEditMode(eEdit, ID) {
 		let contentTD = eEdit.target.parentNode.parentNode.children[1];
+		let delTd = eEdit.target.parentNode.parentNode.children[0]
 		let contentTx = contentTD.innerHTML;
 		let Target = eEdit.target.parentNode;
 
 		let inputTx = document.createElement("input");
 		let inputImg = document.createElement("img");
+		let delImg = document.createElement('img')
 		inputTx.setAttribute("type", "text");
 		inputTx.setAttribute("maxlength", "125");
 		inputImg.setAttribute("src", "../public/img/btt edit.png");
+		delImg.setAttribute('src', '../public/img/delete.png')
+		delTd.classList.add('delImg')
 		inputTx.classList.add("inputTx");
 		inputTx.value = contentTx;
 		inputImg.addEventListener("click", (e) => {
 			updateTaskLS(month, year, day, ID, inputTx.value);
 		});
+		delImg.addEventListener('click', e=>{
+			deleteTaskLS(month, year, day, ID)
+		})
 
 		contentTD.innerHTML = "";
 		Target.innerHTML = "";
+		delTd.innerHTML = ''
 		contentTD.appendChild(inputTx);
 		Target.appendChild(inputImg);
+		delTd.appendChild(delImg)
 		inputTx.focus();
 	}
 
@@ -133,7 +142,7 @@ function showTasks(month, year, day, LS) {
 		let inputImg = document.createElement("img");
 		inputTx.setAttribute("type", "text");
 		inputTx.setAttribute("maxlength", "80");
-		inputImg.setAttribute("src", "../public/img/btt edit.png");
+		inputImg.setAttribute("src", "../public/img/add.png");
 		inputTx.classList.add("inputTx");
 		inputTx.value = contentTx;
 		inputImg.addEventListener("click", (e) => {

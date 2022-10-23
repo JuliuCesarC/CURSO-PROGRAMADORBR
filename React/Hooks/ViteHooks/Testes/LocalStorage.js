@@ -52,29 +52,54 @@ function addNewTaskLS(month, year, day, TX) {
 	}
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
 	startTodo();
-	showTasks(month, year, day, fullLS)
+	showTasks(month, year, day, fullLS);
 }
 function updateTaskLS(month, year, day, ID, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
 	let LSMonth = fullLS[month].listOfAllTasks;
 	let LSDay = LSMonth.filter((e) => e.year == year && e.day == day)[0].tasks;
-	let LSTask = LSDay.filter(e=>e.id == ID)[0]
+	let LSTask = LSDay.filter((e) => e.id == ID)[0];
 	LSTask.cont = TX;
 
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
 	startTodo();
-	showTasks(month, year, day, fullLS)
+	showTasks(month, year, day, fullLS);
 }
-function switchCheckLS(month, year, day, ID){
+function switchCheckLS(month, year, day, ID) {
+	// let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
+	// let task = fullLS[month].listOfAllTasks
+	// 	.filter((e) => e.year == year && e.day == day)[0]
+	// 	.tasks.filter((e) => e.id == ID)[0];
+	// if (task.check == "working") {
+	// 	task.check = "check";
+	// } else {
+	// 	task.check = "working";
+	// }
+	// localStorage.setItem("ToDoList", JSON.stringify(fullLS));
+}
+function deleteTaskLS(month, year, day, ID) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
-	let task = fullLS[month].listOfAllTasks.filter(e=>e.year == year && e.day == day)[0].tasks.filter(e=>e.id==ID)[0]
-	if(task.check == 'working'){
-		task.check = 'check'
-	}else{
-		task.check = 'working'
-	}
+	let fullLSWithoutDelTask = fullLS[month].listOfAllTasks
+		.filter((e) => e.year == year && e.day == day)[0]
+		.tasks.filter((e) => e.id != ID);
+
+	fullLS[month].listOfAllTasks.filter(
+		(e) => e.year == year && e.day == day
+	)[0].tasks = fullLSWithoutDelTask;
+
+	if(fullLS[month].listOfAllTasks
+		.filter((e) => e.year == year && e.day == day)[0]
+		.tasks.length < 1){
+			let delTaskDay = fullLS[month].listOfAllTasks
+		.filter((e) => e.year != year || e.day != day);
+		fullLS[month].listOfAllTasks = delTaskDay
+		}
 	localStorage.setItem('ToDoList', JSON.stringify(fullLS))
+	startTodo();
+	showTasks(month, year, day, fullLS);
 }
 function randomID() {
 	return Math.random().toString(36).substring(2, 9);
 }
+
+

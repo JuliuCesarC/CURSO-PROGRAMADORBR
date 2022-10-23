@@ -1,10 +1,12 @@
 let Days = document.getElementById("days");
 let once = false;
+let monthsOfYearLS;
 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
 function showDays(month, year, monthsOfYear) {
 	if (!document.getElementById("days").children.length < 1) {
 		clearTable();
 	}
+	monthsOfYearLS = monthsOfYear;
 	// CONFIGURA O MÊS E O ANO NA TABELA
 	document.getElementById("month").innerHTML = monthsOfYear[month].month;
 	document.getElementById("Header").classList.add(month);
@@ -61,34 +63,30 @@ function showDays(month, year, monthsOfYear) {
 	}
 	Days.appendChild(tr);
 }
+let Now = new Date();
+let monthNow = Now.getMonth();
+let yearNow = Now.getFullYear();
 
-	let Now = new Date();
-	let monthNow = Now.getMonth();
-	let yearNow = Now.getFullYear();
-
-	document.getElementById("Btn-Next").onclick = function () {
-		clearTable();
-		monthNow++;
-		if (month > 11) {
-			monthNow = 0;
-			yearNow++;
-		}
-		showDays(monthNow, yearNow, monthsOfYear);
-	};
-	document.getElementById("Btn-Prev").onclick = function () {
-		clearTable();
-		monthNow--;
-		if (month < 0) {
-			monthNow = 11;
-			yearNow--;
-		}
-		showDays(monthNow, yearNow, monthsOfYear);
-	};
-	// LIMPA A TABELA QUANDO MUDA O MÊS
-	function clearTable() {
-		let allTr = Array.from(document.querySelectorAll("tr"));
-		document.getElementById("Header").classList.remove(month);
-		allTr.slice(1, 7).forEach((el) => {
-			Days.removeChild(el);
-		});
+document.getElementById("Btn-Next").onclick = function () {
+	clearTable();
+	monthNow++;
+	if (monthNow > 11) {
+		monthNow = 0;
+		yearNow++;
 	}
+	showDays(monthNow, yearNow, monthsOfYearLS);
+};
+document.getElementById("Btn-Prev").onclick = function () {
+	clearTable();
+	monthNow--;
+	if (monthNow < 0) {
+		monthNow = 11;
+		yearNow--;
+	}
+	showDays(monthNow, yearNow, monthsOfYearLS);
+};
+// LIMPA A TABELA QUANDO MUDA O MÊS
+function clearTable() {
+	document.getElementById('days').innerHTML=''
+}
+
