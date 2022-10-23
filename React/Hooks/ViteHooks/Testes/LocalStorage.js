@@ -35,18 +35,34 @@ function addNewTaskLS(month, year, day, TX) {
 		day: day,
 		tasks: [],
 	};
-	newTask.tasks.push({ id: randomID(), cont: TX, check: "working" });
 	if (!LSMonth.listOfAllTasks) {
 		LSMonth.listOfAllTasks = [];
 	}
-	LSMonth.listOfAllTasks.push(newTask);
+	if (
+		!LSMonth.listOfAllTasks.filter((e) => e.year == year && e.day == day)
+			.length < 1
+	) {
+		newTask = LSMonth.listOfAllTasks.filter(
+			(e) => e.year == year && e.day == day
+		)[0];
+		newTask.tasks.push({ id: randomID(), cont: TX, check: "working" });
+	} else {
+		newTask.tasks.push({ id: randomID(), cont: TX, check: "working" });
+		LSMonth.listOfAllTasks.push(newTask);
+	}
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
-	startTodo()
+	startTodo();
+	showTasks(month, year, day, fullLS)
 }
-function updateTaskLS(month, ID, TX) {
-	// console.log(TX);
-	// let fullLS = JSON.parse(localStorage.getItem('ToDoList'))[month]
-	// console.log(fullLS);
+updateTaskLS(9, 2022, 23, 'l15wpq6', 'Update Nova tarefa')
+function updateTaskLS(month, year, day, ID, TX) {
+	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
+	let LSMonth = fullLS[month].listOfAllTasks;
+	let LSDay = LSMonth.filter((e) => e.year == year && e.day == day)[0].tasks;
+	let LSTask = LSDay.filter(e=>e.id == ID)
+	LSTask.cont = TX;
+	console.log(LSTask);
+	console.log(LSDay);
 }
 function randomID() {
 	return Math.random().toString(36).substring(2, 9);

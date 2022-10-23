@@ -81,7 +81,7 @@ function showTasks(month, year, day, LS) {
 		inputTx.classList.add("inputTx");
 		inputTx.value = contentTx;
 		inputImg.addEventListener("click", (e) => {
-			updateTaskText(e, ID);
+			updateTaskLS(month, year, day, ID, inputTx.value);
 		});
 		
 		contentTD.innerHTML = "";
@@ -90,21 +90,7 @@ function showTasks(month, year, day, LS) {
 		Target.appendChild(inputImg);
 		inputTx.focus();
 	}
-	function updateTaskText(eUpdate, ID) {
-		let contentInput = eUpdate.target.parentNode.parentNode.children[1];
-		let contentTx = contentInput.children[0].value;
-
-		contentInput.innerHTML = contentTx;
-		let updateImg = document.createElement("img");
-		updateImg.setAttribute("src", "../public/img/btt edit.png");
-		updateImg.addEventListener("click", (e) => {
-			openEditMode(e);
-		});
-		let Target = eUpdate.target.parentNode;
-		Target.innerHTML = "";
-		Target.appendChild(updateImg);
-		updateTaskLS(month, ID, contentTx);
-	}
+	
 	function switchCheck(e) {
 		let eC = e.target;
 		if (eC.classList == "working") {
