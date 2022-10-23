@@ -2,8 +2,8 @@ let Days = document.getElementById("days");
 let once = false;
 // FUNÇÃO PARA INSERIR OS DIAS NA TABELA
 function showDays(month, year, monthsOfYear) {
-	if(!document.getElementById('days').children.length < 1){
-		clearTable()
+	if (!document.getElementById("days").children.length < 1) {
+		clearTable();
 	}
 	// CONFIGURA O MÊS E O ANO NA TABELA
 	document.getElementById("month").innerHTML = monthsOfYear[month].month;
@@ -23,20 +23,22 @@ function showDays(month, year, monthsOfYear) {
 
 		let td = document.createElement("td");
 		td.innerHTML = indexDay.getDate();
-		td.classList.add("c" + indexDay.getDate());
-		td.addEventListener("click", (e) => {
-			showTasks(null, null, e.target, monthsOfYear);
-		});
 		if (
 			indexDay.getFullYear() == Now.getFullYear() &&
 			indexDay.getMonth() == Now.getMonth() &&
 			indexDay.getDate() == Now.getDate()
 		) {
 			td.id = "current-day";
-			if(!once){
+			if (!once) {
 				showTasks(month, year, indexDay.getDate(), monthsOfYear);
 				once = true;
 			}
+		}
+
+		if (i >= 1 && i <= totalDaysInMonth) {
+			td.addEventListener("click", (e) => {
+				showTasks(null, null, e.target, monthsOfYear);
+			});
 		}
 		if (i < 1) {
 			td.classList.add("prev-month");
@@ -44,7 +46,15 @@ function showDays(month, year, monthsOfYear) {
 		if (i > totalDaysInMonth) {
 			td.classList.add("next-month");
 		}
-
+		if (monthsOfYear[month].listOfAllTasks) {
+			if (
+				monthsOfYear[month].listOfAllTasks.filter(
+					(e) => e.year == year && e.day == indexDay.getDate()
+				).length >= 1
+			) {
+				td.classList.add("task");
+			}
+		}
 		tr.appendChild(td);
 		if (index % 7 === 0 && index < 40) {
 			Days.appendChild(tr);
@@ -52,8 +62,8 @@ function showDays(month, year, monthsOfYear) {
 		}
 	}
 	Days.appendChild(tr);
-
 }
+
 let Now = new Date();
 let month = Now.getMonth();
 let year = Now.getFullYear();
