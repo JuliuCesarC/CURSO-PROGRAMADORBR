@@ -37,7 +37,7 @@ function showDays(month, year, monthsOfYear) {
 
 		if (i >= 1 && i <= totalDaysInMonth) {
 			td.addEventListener("click", (e) => {
-				showTasks(null, null, e.target, monthsOfYear);
+				showTasksLS(e.target);
 			});
 		}
 		if (i < 1) {
@@ -50,7 +50,8 @@ function showDays(month, year, monthsOfYear) {
 			if (
 				monthsOfYear[month].listOfAllTasks.filter(
 					(e) => e.year == year && e.day == indexDay.getDate()
-				).length >= 1
+				).length >= 1 &&
+				td.classList.length < 1
 			) {
 				td.classList.add("task");
 			}
@@ -87,6 +88,5 @@ document.getElementById("Btn-Prev").onclick = function () {
 };
 // LIMPA A TABELA QUANDO MUDA O MÊS
 function clearTable() {
-	document.getElementById('days').innerHTML=''
+	document.getElementById("days").innerHTML = "";
 }
-

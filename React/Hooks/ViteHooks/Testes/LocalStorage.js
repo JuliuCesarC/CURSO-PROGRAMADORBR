@@ -27,6 +27,10 @@ function startTodo() {
 	let year = Now.getFullYear();
 	showDays(month, year, months);
 }
+function showTasksLS(eTask){
+	let fullLS = JSON.parse(localStorage.getItem('ToDoList'))
+	showTasks(null, null, eTask, fullLS)
+}
 function addNewTaskLS(month, year, day, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
 	let LSMonth = fullLS[month];
@@ -66,16 +70,16 @@ function updateTaskLS(month, year, day, ID, TX) {
 	showTasks(month, year, day, fullLS);
 }
 function switchCheckLS(month, year, day, ID) {
-	// let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
-	// let task = fullLS[month].listOfAllTasks
-	// 	.filter((e) => e.year == year && e.day == day)[0]
-	// 	.tasks.filter((e) => e.id == ID)[0];
-	// if (task.check == "working") {
-	// 	task.check = "check";
-	// } else {
-	// 	task.check = "working";
-	// }
-	// localStorage.setItem("ToDoList", JSON.stringify(fullLS));
+	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
+	let task = fullLS[month].listOfAllTasks
+		.filter((e) => e.year == year && e.day == day)[0]
+		.tasks.filter((e) => e.id == ID)[0];
+	if (task.check == "working") {
+		task.check = "check";
+	} else {
+		task.check = "working";
+	}
+	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
 }
 function deleteTaskLS(month, year, day, ID) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
