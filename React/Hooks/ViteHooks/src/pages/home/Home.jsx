@@ -1,5 +1,14 @@
 import "./Home.css";
 import Days from "../../components/calendar/Days";
+import Tasks from "../../components/TodoList/Tasks";
+import {
+	LocalS,
+	addNewTaskLS,
+	updateTaskLS,
+	switchCheckLS,
+	deleteTaskLS,
+	showTasksLS,
+} from "../../components/localStorage/LocalStorage";
 
 function App() {
 	return (
@@ -26,7 +35,7 @@ function App() {
 							<td>S</td>
 						</tr>
 					</thead>
-					<Days />
+					<Days ls={LocalS()} />
 					<tfoot>
 						<tr>
 							<td colSpan={7} id="year">
@@ -36,8 +45,8 @@ function App() {
 					</tfoot>
 				</table>
 			</div>
-			<div className="task">
-				<h2>Tarefas</h2>
+			<div className="task" id="toDoList">
+				<Tasks />
 			</div>
 		</div>
 	);

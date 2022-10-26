@@ -1,0 +1,13 @@
+#toDoList header{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 30px;
+}
+header img{
+	position: absolute;
+	width: 112%;
+	top: -50px;
+	left: -6%;
+	z-index: -1;
+}
