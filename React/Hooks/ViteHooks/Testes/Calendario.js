@@ -13,7 +13,7 @@ function showDays(month, year, monthsOfYear) {
 	document.getElementById("year").innerHTML = year;
 
 	let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
-	// É preciso colocar o -1 no final do 'fistDayOfWeek' pois durante o loop ele ira passar pelo valor 0, e como o valor 0 também é considerado, então teríamos 8 dias na semana.
+	// É preciso colocar o -1 no final do 'fistDayOfWeek' pois durante o loop ele ira passar pelo valor 0, e como o valor 0 também é considerado, logo, teríamos uma semana com 8 dias.
 	let totalDaysInMonth = new Date(year, month + 1, 0).getDate();
 	let i = -fistDayOfWeek;
 	let tr = document.createElement("tr");

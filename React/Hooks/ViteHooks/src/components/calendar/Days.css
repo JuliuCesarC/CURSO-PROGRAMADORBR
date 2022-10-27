@@ -3,10 +3,9 @@
 	background-color: var(--bg-calendar);
 	border-radius: 15px;
 	padding: 10px;
-	margin-right: 50px;
-	margin-left: -20px;
 	width: 260px;
 	height: 360px;
+	min-width: 260px;
 }
 #month {
 	text-transform: uppercase;
@@ -50,15 +49,15 @@
 tbody td:hover {
 	outline: 2px solid var(--bg-hover);
 }
-.prev-month,
-.next-month {
+.prevMonth,
+.nextMonth {
 	color: var(--border-color);
 }
-#current-day {
+#currentDay {
 	background-color: var(--bg-hover);
 	color: var(--text-color-hover);
 }
-#current-day:hover {
+#currentDay:hover {
 	background-color: rgb(108, 191, 250);
 }
 .task {
@@ -76,6 +75,6 @@ tbody td:hover {
 	position: absolute;
 	border-radius: 50%;
 }
-.task#current-day::after {
+.task#currentDay::after {
 	background-color: var(--text-color-hover);
 }

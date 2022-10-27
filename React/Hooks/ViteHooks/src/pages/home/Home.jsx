@@ -1,25 +1,45 @@
+import { useState } from "react";
 import "./Home.css";
 import Days from "../../components/calendar/Days";
 import Tasks from "../../components/TodoList/Tasks";
 import {
 	LocalS,
+	prevNextMonth,
+	selectedDay,
 	addNewTaskLS,
 	updateTaskLS,
 	switchCheckLS,
 	deleteTaskLS,
-	showTasksLS,
 } from "../../components/localStorage/LocalStorage";
+import { useEffect } from "react";
 
 function App() {
+	const [LS, setLS] = useState(LocalS());
+	const [Month, setMonth] = useState(LS[2][LS[0]].month);
+	const [Year, setYear] = useState(LocalS()[1]);
+	const [taskDay, setTaskDay] = useState([LS[3], Year, LS[0] + 1]);
+
+	function PrevNext(e) {
+		prevNextMonth(e);
+		setLS(LocalS());
+		setMonth(LS[2][LocalS()[0]].month);
+		setYear(LocalS()[1]);
+	}
+
+	function updateDay(e) {
+		selectedDay(LS[0], Year, e.target.innerHTML);
+		setTaskDay([LocalS()[3], Year, LS[0] + 1]);
+	}
+
 	return (
 		<div className="container">
 			<div id="Table">
 				<header id="Header">
-					<button className="btn-prev" id="Btn-Prev">
+					<button className="btn-prev" id="Btn-Prev" onClick={PrevNext}>
 						&lt;
 					</button>
-					<h2 id="month">Outubro</h2>
-					<button className="btn-next" id="Btn-Next">
+					<h2 id="month">{Month}</h2>
+					<button className="btn-next" id="Btn-Next" onClick={PrevNext}>
 						&gt;
 					</button>
 				</header>
@@ -35,17 +55,24 @@ function App() {
 							<td>S</td>
 						</tr>
 					</thead>
-					<Days ls={LocalS()} />
+					<Days ls={LS} selectedDay={updateDay}  />
 					<tfoot>
 						<tr>
 							<td colSpan={7} id="year">
-								2022
+								{Year}
 							</td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 			<div id="toDoList">
+				<header>
+					<img src="./img/Caderno.png" alt="" />
+					<h3 id="Day">
+						{taskDay[0]}/{taskDay[2]}
+					</h3>
+					<h2>ToDo List</h2>
+				</header>
 				<Tasks />
 			</div>
 		</div>

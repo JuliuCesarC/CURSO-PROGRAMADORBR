@@ -1,4 +1,6 @@
-function LocalS(){
+import Days from "../calendar/Days";
+
+function LocalS() {
 	const months = [
 		{ month: "janeiro" },
 		{ month: "fevereiro" },
@@ -21,16 +23,45 @@ function LocalS(){
 			months[i] = JSON.parse(localStorage.getItem("ToDoList"))[i];
 		});
 	}
-
-	let Now = new Date();
-	let month = Now.getMonth();
-	let year = Now.getFullYear();
-
-	return [month, year, months]
+	let currentMYD;
+	if (!localStorage.getItem("currentMYD")) {
+		currentMYD = {
+			month: new Date().getMonth(),
+			year: new Date().getFullYear(),
+			day: new Date().getDate()
+		};
+		localStorage.setItem('currentMYD', JSON.stringify(currentMYD))
+	} else {
+		currentMYD = JSON.parse(localStorage.getItem("currentMYD"));
+	}
+	return [currentMYD.month, currentMYD.year, months, currentMYD.day];
 }
-function showTasksLS(eTask){
-	let fullLS = JSON.parse(localStorage.getItem('ToDoList'))
-	// return [null, null, eTask, fullLS]
+function prevNextMonth(e) {
+	let crrMonthYear = JSON.parse(localStorage.getItem("currentMYD"));
+	if (e.target.className == "btn-next") {
+		if (crrMonthYear.month == 11) {
+			crrMonthYear.month = 0;
+			crrMonthYear.year += 1;
+		} else {
+			crrMonthYear.month += 1;
+		}
+		localStorage.setItem("currentMYD", JSON.stringify(crrMonthYear));
+	} else {
+		if (crrMonthYear.month == 0) {
+			crrMonthYear.month = 11;
+			crrMonthYear.year -= 1;
+		} else {
+			crrMonthYear.month -= 1;
+		}
+		localStorage.setItem("currentMYD", JSON.stringify(crrMonthYear));
+	}
+}
+function selectedDay(month, year, day){
+	let crrMYD = JSON.parse(localStorage.getItem("currentMYD"));
+	crrMYD.month = month
+	crrMYD.year = year
+	crrMYD.day = day
+	localStorage.setItem('currentMYD', JSON.stringify(crrMYD))
 }
 function addNewTaskLS(month, year, day, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
@@ -92,14 +123,17 @@ function deleteTaskLS(month, year, day, ID) {
 		(e) => e.year == year && e.day == day
 	)[0].tasks = fullLSWithoutDelTask;
 
-	if(fullLS[month].listOfAllTasks
-		.filter((e) => e.year == year && e.day == day)[0]
-		.tasks.length < 1){
-			let delTaskDay = fullLS[month].listOfAllTasks
-		.filter((e) => e.year != year || e.day != day);
-		fullLS[month].listOfAllTasks = delTaskDay
-		}
-	localStorage.setItem('ToDoList', JSON.stringify(fullLS))
+	if (
+		fullLS[month].listOfAllTasks.filter(
+			(e) => e.year == year && e.day == day
+		)[0].tasks.length < 1
+	) {
+		let delTaskDay = fullLS[month].listOfAllTasks.filter(
+			(e) => e.year != year || e.day != day
+		);
+		fullLS[month].listOfAllTasks = delTaskDay;
+	}
+	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
 	// startTodo();
 	// showTasks(month, year, day, fullLS);
 }
@@ -107,4 +141,12 @@ function randomID() {
 	return Math.random().toString(36).substring(2, 9);
 }
 
-export {LocalS, addNewTaskLS, updateTaskLS, switchCheckLS, deleteTaskLS, showTasksLS}
+export {
+	LocalS,
+	prevNextMonth,
+	selectedDay,
+	addNewTaskLS,
+	updateTaskLS,
+	switchCheckLS,
+	deleteTaskLS,
+};

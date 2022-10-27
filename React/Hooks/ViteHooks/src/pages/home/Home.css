@@ -11,7 +11,11 @@
 	margin: auto;
 	margin-top: 20px;
 	max-width: 900px;
-	display: grid;
-	grid-template-columns: auto auto;
+	display: flex;
+	justify-content: space-around;
 }
 
+#toDoList{
+	width: 420px;
+	min-width: 420px;
+}

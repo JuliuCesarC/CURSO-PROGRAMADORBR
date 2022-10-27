@@ -1,92 +1,89 @@
-import React, { useState } from "react";
-import "./Days.css"
+import React, { useEffect, useState } from "react";
+import "./Days.css";
 
-const months = [
-	"janeiro",
-	"fevereiro",
-	"março",
-	"abril",
-	"maio",
-	"junho",
-	"julho",
-	"agosto",
-	"setembro",
-	"outubro",
-	"novembro",
-	"dezembro",
-];
 let once = true;
 function Days(props) {
-	
-	let newArray = []
-	for(let i = 1; i<6; i++){
-		let tx = <td onClick={mostra}>{i}</td>
-		newArray.push(tx)
+	const [trState, setTrState] = useState([]);
+
+	let month = props.ls[0];
+	let year = props.ls[1];
+	let MONTHS = props.ls[2];
+
+	let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
+	let totalDaysInMonth = new Date(year, month + 1, 0).getDate();
+	let fullMonth = -fistDayOfWeek;
+	let allTDs = [];
+	let allTRs = [];
+	let jNum = 0;
+
+	for (let index = 1; index <= 42; index++, fullMonth++) {
+		let indexDate = new Date(year, month, fullMonth);
+		let Now = new Date();
+
+		let tdInnerHTML = indexDate.getDate();
+		let tdID = "";
+		let tdClass = "";
+
+		if (
+			indexDate.getFullYear() == Now.getFullYear() &&
+			indexDate.getMonth() == Now.getMonth() &&
+			indexDate.getDate() == Now.getDate()
+		) {
+			tdID = "currentDay";
+		}
+		if (fullMonth < 1) {
+			tdClass = "prevMonth";
+		}
+		if (fullMonth > totalDaysInMonth) {
+			tdClass = "nextMonth";
+		}
+		if (MONTHS[month].listOfAllTasks) {
+			if (
+				MONTHS[month].listOfAllTasks.filter(
+					(e) => e.year == year && e.day == indexDate.getDate()
+				).length >= 1 &&
+				tdClass == ""
+			) {
+				tdClass = "task";
+			}
+		}
+		let TD;
+		if (tdClass == "") {
+			TD = (
+				<td id={tdID} className={tdClass} onClick={props.selectedDay}>
+					{tdInnerHTML}
+				</td>
+			);
+		} else {
+			TD = (
+				<td id={tdID} className={tdClass}>
+					{tdInnerHTML}
+				</td>
+			);
+		}
+		allTDs.push(TD);
+
+		if (index % 7 === 0 && index <= 42) {
+			let TR = (
+				<tr key={jNum}>
+					{allTDs[0 + jNum]}
+					{allTDs[1 + jNum]}
+					{allTDs[2 + jNum]}
+					{allTDs[3 + jNum]}
+					{allTDs[4 + jNum]}
+					{allTDs[5 + jNum]}
+					{allTDs[6 + jNum]}
+				</tr>
+			);
+			allTRs.push(TR);
+			jNum += 7;
+		}
 	}
-		
-	let final = <tr>{newArray[0]}{newArray[1]}{newArray[2]}{newArray[3]} </tr>
-	
-	let outroArray = [<tr>{newArray[0]}{newArray[1]}{newArray[2]}{newArray[3]} </tr>,<tr>{newArray[0]}{newArray[1]}{newArray[2]}{newArray[3]} </tr>]
+	useEffect(() => {
+		setTrState(allTRs);
+	}, [month]);
 
-	function mostra(){
-		console.log('Testando');
-	}
-	
-	// let month = props.ls[0];
-	// let year = props.ls[1];
-	// let months = props.ls[2];
-// 	let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
-// 	let totalDaysInMonth = new Date(year, month + 1, 0).getDate();
-// 	let i = -fistDayOfWeek;
-// 	let tr = document.createElement("tr");
-// 	for (let index = 1; index <= 42; i++, index++) {
-// 		let indexDay = new Date(year, month, i);
-// 		let Now = new Date();
-
-// 		let td = document.createElement("td");
-// 		td.innerHTML = indexDay.getDate();
-// 		if (
-// 			indexDay.getFullYear() == Now.getFullYear() &&
-// 			indexDay.getMonth() == Now.getMonth() &&
-// 			indexDay.getDate() == Now.getDate()
-// 		) {
-// 			td.id = "current-day";
-// 			if (!once) {
-// 				showTasks(month, year, indexDay.getDate(), monthsOfYear);
-// 				once = true;
-// 			}
-// 		}
-
-// 		if (i >= 1 && i <= totalDaysInMonth) {
-// 			td.addEventListener("click", (e) => {
-// 				showTasksLS(e.target);
-// 			});
-// 		}
-// 		if (i < 1) {
-// 			td.classList.add("prev-month");
-// 		}
-// 		if (i > totalDaysInMonth) {
-// 			td.classList.add("next-month");
-// 		}
-// 		if (monthsOfYear[month].listOfAllTasks) {
-// 			if (
-// 				monthsOfYear[month].listOfAllTasks.filter(
-// 					(e) => e.year == year && e.day == indexDay.getDate()
-// 				).length >= 1 &&
-// 				td.classList.length < 1
-// 			) {
-// 				td.classList.add("task");
-// 			}
-// 		}
-// 		tr.appendChild(td);
-// 		if (index % 7 === 0 && index < 40) {
-// 			Days.appendChild(tr);
-// 			tr = document.createElement("tr");
-// 		}
-// 	}
-// 	Days.appendChild(tr);
-
-	return <tbody id="days">{outroArray}</tbody>;
+	return <tbody id="days">{trState}</tbody>;
 }
 
 export default Days;
