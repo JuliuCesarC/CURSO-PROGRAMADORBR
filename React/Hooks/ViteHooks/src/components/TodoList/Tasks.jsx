@@ -5,7 +5,7 @@ function Tasks(){
 		<header>
 			<img src="./img/Caderno.png" alt=""/>
 			<h3 id="Day">dia 99/99</h3>
-			<h2>ToDO List</h2>
+			<h2>ToDo List</h2>
 		</header>
 	)
 }

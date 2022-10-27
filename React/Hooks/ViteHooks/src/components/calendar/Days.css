@@ -1,27 +1,81 @@
-tbody td:hover{
-	outline: 2px solid var(--bg-hover);
+
+#Table {
+	background-color: var(--bg-calendar);
+	border-radius: 15px;
+	padding: 10px;
+	margin-right: 50px;
+	margin-left: -20px;
+	width: 260px;
+	height: 360px;
 }
-.current-day{
+#month {
+	text-transform: uppercase;
+	margin: 0px 7px 0px 7px;
+}
+#Header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	margin-bottom: 20px;
+}
+.btn-next,
+.btn-prev {
+	border: 1px solid var(--border-color);
+	border-radius: 50%;
+	font-size: larger;
+	background-color: unset;
+	width: 45px;
+	height: 45px;
+	font-family: "Fredoka One", cursive;
+}
+.btn-next:hover,
+.btn-prev:hover {
 	background-color: var(--bg-hover);
 	color: var(--text-color-hover);
 }
-.current-day:hover{
-	background-color: #6cbffa;
+#Table table {
+	border-collapse: collapse;
 }
-.task{
+#Table td {
+	border: 1px solid var(--border-color);
+	text-align: center;
+	height: 35px;
+	width: 40px;
+	font-family: "Fredoka One", cursive;
+}
+#daysOfWeek td {
+	border-bottom: 2px solid var(--border-days-week);
+}
+tbody td:hover {
+	outline: 2px solid var(--bg-hover);
+}
+.prev-month,
+.next-month {
+	color: var(--border-color);
+}
+#current-day {
+	background-color: var(--bg-hover);
+	color: var(--text-color-hover);
+}
+#current-day:hover {
+	background-color: rgb(108, 191, 250);
+}
+.task {
 	position: relative;
 }
-.task::after{
-	content: '';
-	position: absolute;
-	display: block;
+.task::after {
+	content: "";
 	width: 6px;
 	height: 6px;
-	left: 19.5px;
-	bottom: -1px;
+	left: 15px;
+	bottom: -4px;
+	margin: 5px 0px;
 	background-color: var(--bg-hover);
+	display: block;
+	position: absolute;
 	border-radius: 50%;
 }
-.task.current-day::after{
-	background-color: white;
+.task#current-day::after {
+	background-color: var(--text-color-hover);
 }

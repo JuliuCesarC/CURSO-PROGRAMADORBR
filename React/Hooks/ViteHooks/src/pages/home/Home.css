@@ -14,45 +14,4 @@
 	display: grid;
 	grid-template-columns: auto auto;
 }
-.Table{
-	background-color: var(--bg-calendar);
-	border-radius: 15px;
-	padding: 10px;
-	margin-right: 50px;
-	width: 320px;
-	height: 450px;
-}
-.Table header{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 20px;
-	text-transform: uppercase;
-}
-.btn-next, .btn-prev{
-	border: 1px solid var(--border-color);
-	border-radius: 50%;
-	font-size: larger;
-	background-color: unset;
-	width: 45px;
-	height: 45px;
-}
-.btn-next:hover, .btn-prev:hover{
-	background-color: var(--bg-hover);
-	color: var(--text-color-hover);
-}
-table{
-	border-collapse: collapse;
-}
-.Table thead td{
-	border-bottom: 3px solid var(--border-days-week);
-}
-.Table td{
-	border: 1px solid var(--border-color);
-	text-align: center;
-	height: 45px;
-	width: 45px;
-}
-#toDoList{
-	width: 420px;
-}
+

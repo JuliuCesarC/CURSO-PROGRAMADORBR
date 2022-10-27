@@ -13,8 +13,8 @@ import {
 function App() {
 	return (
 		<div className="container">
-			<div className="Table">
-				<header>
+			<div id="Table">
+				<header id="Header">
 					<button className="btn-prev" id="Btn-Prev">
 						&lt;
 					</button>
@@ -25,7 +25,7 @@ function App() {
 				</header>
 				<table>
 					<thead>
-						<tr>
+						<tr id="daysOfWeek">
 							<td>D</td>
 							<td>S</td>
 							<td>T</td>
@@ -45,7 +45,7 @@ function App() {
 					</tfoot>
 				</table>
 			</div>
-			<div className="task" id="toDoList">
+			<div id="toDoList">
 				<Tasks />
 			</div>
 		</div>
