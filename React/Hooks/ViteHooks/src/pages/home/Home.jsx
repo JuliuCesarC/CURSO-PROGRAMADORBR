@@ -11,13 +11,12 @@ import {
 	switchCheckLS,
 	deleteTaskLS,
 } from "../../components/localStorage/LocalStorage";
-import { useEffect } from "react";
 
 function App() {
 	const [LS, setLS] = useState(LocalS());
 	const [Month, setMonth] = useState(LS[2][LS[0]].month);
-	const [Year, setYear] = useState(LocalS()[1]);
-	const [taskDay, setTaskDay] = useState([LS[3], Year, LS[0] + 1]);
+	const [Year, setYear] = useState(LS[1]);
+	const [taskDay, setTaskDay] = useState([LS[3], Year, LS[0]]);
 
 	function PrevNext(e) {
 		prevNextMonth(e);
@@ -27,8 +26,8 @@ function App() {
 	}
 
 	function updateDay(e) {
-		selectedDay(LS[0], Year, e.target.innerHTML);
-		setTaskDay([LocalS()[3], Year, LS[0] + 1]);
+		selectedDay(LS[0], Year, e);
+		setTaskDay([LocalS()[3], Year, LS[0]]);
 	}
 
 	return (
@@ -55,7 +54,7 @@ function App() {
 							<td>S</td>
 						</tr>
 					</thead>
-					<Days ls={LS} selectedDay={updateDay}  />
+					<Days ls={LS} selectedDay={updateDay} />
 					<tfoot>
 						<tr>
 							<td colSpan={7} id="year">
@@ -69,11 +68,11 @@ function App() {
 				<header>
 					<img src="./img/Caderno.png" alt="" />
 					<h3 id="Day">
-						{taskDay[0]}/{taskDay[2]}
+						{taskDay[0]}/{taskDay[2]+1}
 					</h3>
 					<h2>ToDo List</h2>
 				</header>
-				<Tasks />
+				<Tasks ls={LS} taskDay={taskDay} add={addNewTaskLS} />
 			</div>
 		</div>
 	);

@@ -28,9 +28,9 @@ function LocalS() {
 		currentMYD = {
 			month: new Date().getMonth(),
 			year: new Date().getFullYear(),
-			day: new Date().getDate()
+			day: new Date().getDate(),
 		};
-		localStorage.setItem('currentMYD', JSON.stringify(currentMYD))
+		localStorage.setItem("currentMYD", JSON.stringify(currentMYD));
 	} else {
 		currentMYD = JSON.parse(localStorage.getItem("currentMYD"));
 	}
@@ -56,12 +56,12 @@ function prevNextMonth(e) {
 		localStorage.setItem("currentMYD", JSON.stringify(crrMonthYear));
 	}
 }
-function selectedDay(month, year, day){
+function selectedDay(month, year, day) {
 	let crrMYD = JSON.parse(localStorage.getItem("currentMYD"));
-	crrMYD.month = month
-	crrMYD.year = year
-	crrMYD.day = day
-	localStorage.setItem('currentMYD', JSON.stringify(crrMYD))
+	crrMYD.month = month;
+	crrMYD.year = year;
+	crrMYD.day = day;
+	localStorage.setItem("currentMYD", JSON.stringify(crrMYD));
 }
 function addNewTaskLS(month, year, day, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));

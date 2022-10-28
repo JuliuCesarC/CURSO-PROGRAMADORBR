@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Days.css";
-
 let once = true;
+let crrDay;
+
 function Days(props) {
 	const [trState, setTrState] = useState([]);
 
@@ -27,9 +28,10 @@ function Days(props) {
 		if (
 			indexDate.getFullYear() == Now.getFullYear() &&
 			indexDate.getMonth() == Now.getMonth() &&
-			indexDate.getDate() == Now.getDate()
+			indexDate.getDate() == Now.getDate() && once
 		) {
 			tdID = "currentDay";
+			crrDay = (indexDate.getDate()).toString()
 		}
 		if (fullMonth < 1) {
 			tdClass = "prevMonth";
@@ -50,7 +52,7 @@ function Days(props) {
 		let TD;
 		if (tdClass == "") {
 			TD = (
-				<td id={tdID} className={tdClass} onClick={props.selectedDay}>
+				<td id={tdID} className={tdClass} onClick={e=>props.selectedDay(e.target.innerHTML)}>
 					{tdInnerHTML}
 				</td>
 			);
@@ -82,6 +84,13 @@ function Days(props) {
 	useEffect(() => {
 		setTrState(allTRs);
 	}, [month]);
+
+	if (once) {
+		once = false
+		setTimeout(() => {
+			props.selectedDay(crrDay)
+		}, 1);
+	}
 
 	return <tbody id="days">{trState}</tbody>;
 }
