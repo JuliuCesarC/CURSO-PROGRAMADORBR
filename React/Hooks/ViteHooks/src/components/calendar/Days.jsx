@@ -28,7 +28,7 @@ function Days(props) {
 		if (
 			indexDate.getFullYear() == Now.getFullYear() &&
 			indexDate.getMonth() == Now.getMonth() &&
-			indexDate.getDate() == Now.getDate() && once
+			indexDate.getDate() == Now.getDate()
 		) {
 			tdID = "currentDay";
 			crrDay = (indexDate.getDate()).toString()
@@ -50,7 +50,7 @@ function Days(props) {
 			}
 		}
 		let TD;
-		if (tdClass == "") {
+		if (tdClass == "" || tdClass == 'task') {
 			TD = (
 				<td id={tdID} className={tdClass} onClick={e=>props.selectedDay(e.target.innerHTML)}>
 					{tdInnerHTML}

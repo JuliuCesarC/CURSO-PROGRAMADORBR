@@ -27,7 +27,7 @@ function App() {
 
 	function updateDay(e) {
 		selectedDay(LS[0], Year, e);
-		setTaskDay([LocalS()[3], Year, LS[0]]);
+		setTaskDay([LocalS()[3], Year, LocalS[0]]);
 	}
 
 	return (
@@ -65,14 +65,7 @@ function App() {
 				</table>
 			</div>
 			<div id="toDoList">
-				<header>
-					<img src="./img/Caderno.png" alt="" />
-					<h3 id="Day">
-						{taskDay[0]}/{taskDay[2]+1}
-					</h3>
-					<h2>ToDo List</h2>
-				</header>
-				<Tasks ls={LS} taskDay={taskDay} add={addNewTaskLS} />
+				<Tasks ls={LS} taskDay={taskDay} add={addNewTaskLS} Switch={switchCheckLS} />
 			</div>
 		</div>
 	);

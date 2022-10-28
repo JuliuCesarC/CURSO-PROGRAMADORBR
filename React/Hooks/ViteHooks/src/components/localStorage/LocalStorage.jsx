@@ -102,6 +102,7 @@ function updateTaskLS(month, year, day, ID, TX) {
 	// showTasks(month, year, day, fullLS);
 }
 function switchCheckLS(month, year, day, ID) {
+	console.log(ID);
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
 	let task = fullLS[month].listOfAllTasks
 		.filter((e) => e.year == year && e.day == day)[0]

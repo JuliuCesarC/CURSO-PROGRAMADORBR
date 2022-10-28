@@ -46,7 +46,7 @@
 #daysOfWeek td {
 	border-bottom: 2px solid var(--border-days-week);
 }
-tbody td:hover {
+#days td:hover {
 	outline: 2px solid var(--bg-hover);
 }
 .prevMonth,
