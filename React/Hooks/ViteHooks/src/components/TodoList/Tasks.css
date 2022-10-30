@@ -66,3 +66,13 @@
 	border-bottom: 1px solid var(--bg-hover);
 	width: 80%;
 }
+.editInput{
+	background-color: var(--bg-input);
+	border: none;
+	font-size: 16px;
+	width: 100%;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 2px;
+	border-radius: 5px;
+}

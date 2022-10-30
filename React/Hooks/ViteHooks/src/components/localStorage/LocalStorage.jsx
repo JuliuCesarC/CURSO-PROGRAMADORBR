@@ -97,8 +97,6 @@ function updateTaskLS(month, year, day, ID, TX) {
 	LSTask.cont = TX;
 
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
-	// startTodo();
-	// showTasks(month, year, day, fullLS);
 }
 function switchCheckLS(month, year, day, ID) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));

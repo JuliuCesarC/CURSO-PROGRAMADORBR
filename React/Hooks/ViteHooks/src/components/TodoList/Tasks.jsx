@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Tasks.css";
 
 function Tasks(props) {
-	const [allTasksDay, setAllTasksDay] = useState([]);
+	const [allTasksDay, setAllTasksDay] = useState();
+	const [editTasks, setEditTasks] = useState();
 	const [showMonth, setShowMonth] = useState(props.ls()[0] + 1);
 	let content = [];
 
@@ -46,7 +47,6 @@ function Tasks(props) {
 								)[0]
 								.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
 						) {
-							console.log('img virou check');
 							e.target.src = "img/check.png";
 						} else {
 							e.target.src = "img/working.png";
@@ -84,11 +84,64 @@ function Tasks(props) {
 	}, [day]);
 
 	function openEditMenu(e, ID) {
-		let fullTr = e.target.parentNode.parentNode
-		let tdContent = fullTr.children[1]
-		let tx = fullTr.children[1].innerHTML
-		tdContent.innerHTML = ''
-		console.log(content);
+		let editFullTr = e.target.parentNode.parentNode;
+		let tdContent = editFullTr.children[1];
+		let editTx = editFullTr.children[1].innerHTML;
+		// tdContent.innerHTML = "";
+
+		let Delete = React.createElement(
+			"td",
+			{ className: "check", key: randomID() },
+			React.createElement("img", {
+				src: "img/delete.png",
+				onClick: (e) => deleteTask(e, ID),
+			})
+		);
+		let editInput = React.createElement(
+			"td",
+			{ className: "content", key: randomID() },
+			React.createElement("input", {
+				type: "text",
+				className: "editInput",
+				defaultValue: editTx,
+			})
+		);
+		let editBtn = React.createElement(
+			"td",
+			{ className: "edit", key: randomID() },
+			React.createElement("img", {
+				onClick: (e) => updateTask(e, ID),
+				src: "img/editBtn.png",
+			})
+		);
+
+		let editTr = React.createElement("tr", { key: ID }, [
+			Delete,
+			editInput,
+			editBtn,
+		]);
+
+		let indexTr = content.findIndex((e) => e.key == ID);
+		content[indexTr] = editTr;
+		setAllTasksDay(undefined);
+		setEditTasks(content);
+	}
+	function updateTask(eEdit, ID) {
+		let updateFullTr = eEdit.target.parentNode.parentNode;
+		let updateTx = updateFullTr.children[1].children[0].value;
+
+		props.update(month, year, day, ID, updateTx);
+		content = [];
+		showTasks(props.ls()[2][month].listOfAllTasks);
+		setAllTasksDay(content);
+		setEditTasks(undefined);
+	}
+	function deleteTask(eDelete, ID) {
+		props.delete(month, year, day, ID);
+		content = [];
+		showTasks(props.ls()[2][month].listOfAllTasks);
+		setAllTasksDay(content);
+		setEditTasks(undefined);
 	}
 
 	function addNewTask(e) {
@@ -130,7 +183,7 @@ function Tasks(props) {
 				</div>
 			</header>
 			<table id="tasks">
-				<tbody>{allTasksDay}</tbody>
+				<tbody>{allTasksDay ? allTasksDay : editTasks}</tbody>
 			</table>
 			<img src="img/empty.png" id="emptyImg" />
 		</>
