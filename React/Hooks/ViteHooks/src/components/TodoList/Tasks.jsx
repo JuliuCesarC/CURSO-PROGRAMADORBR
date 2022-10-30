@@ -3,6 +3,7 @@ import "./Tasks.css";
 
 function Tasks(props) {
 	const [allTasksDay, setAllTasksDay] = useState([]);
+	const [showMonth, setShowMonth] = useState(props.ls()[0] + 1);
 	let content = [];
 
 	let month = props.ls()[0];
@@ -22,9 +23,8 @@ function Tasks(props) {
 			return;
 		}
 
-		let Src = "img/working.png";
-		let index = 0;
 		for (let tasks of listOfAll.tasks) {
+			let Src = "img/working.png";
 			if (tasks.check == "check") {
 				Src = "img/check.png";
 			}
@@ -36,7 +36,22 @@ function Tasks(props) {
 				},
 				React.createElement("img", {
 					src: Src,
-					/*onClick: props.Switch(month, year, day, tasks.id),*/
+					onClick: (e) => {
+						props.Switch(month, year, day, tasks.id);
+						if (
+							props
+								.ls()[2]
+								[month].listOfAllTasks.filter(
+									(e) => e.year == year && e.day == day
+								)[0]
+								.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
+						) {
+							console.log('img virou check');
+							e.target.src = "img/check.png";
+						} else {
+							e.target.src = "img/working.png";
+						}
+					},
 				})
 			);
 			let contentTd = React.createElement(
@@ -51,35 +66,42 @@ function Tasks(props) {
 				"td",
 				{ className: "edit", key: randomID() },
 				React.createElement("img", {
-					src: "img/editBtn.png" /*onClick: openEditMenu(tasks.id)*/,
+					src: "img/editBtn.png",
+					onClick: (e) => openEditMenu(e, tasks.id),
 				})
 			);
-			let tr = React.createElement("tr", { key: randomID() }, [
+			let tr = React.createElement("tr", { key: tasks.id }, [
 				workingTd,
 				contentTd,
 				editTd,
 			]);
 			content.push(tr);
-			index++;
 		}
 	}
 	useEffect(() => {
 		setAllTasksDay(content);
+		setShowMonth(props.ls()[0] + 1);
 	}, [day]);
-	function openEditMenu(ID) {
-		console.log("Menu", ID);
+
+	function openEditMenu(e, ID) {
+		let fullTr = e.target.parentNode.parentNode
+		let tdContent = fullTr.children[1]
+		let tx = fullTr.children[1].innerHTML
+		tdContent.innerHTML = ''
+		console.log(content);
 	}
-	
+
 	function addNewTask(e) {
 		let inputTx = e.target.parentNode.children[0];
 		props.add(month, year, day, inputTx.value);
 		inputTx.value = "";
 		inputTx.focus();
-		content = []
+		content = [];
 		showTasks(props.ls()[2][month].listOfAllTasks);
 		setAllTasksDay(content);
-		props.tAdd(allTasksDay)
+		props.tAdd(allTasksDay);
 	}
+
 	function randomID() {
 		return Math.random().toString(36).substring(2, 9);
 	}
@@ -90,7 +112,7 @@ function Tasks(props) {
 				<div id="divTop">
 					<img src="./img/Caderno.png" alt="" />
 					<h3 id="Day">
-						{day}/{month + 1}
+						{day}/{showMonth}
 					</h3>
 					<h2>ToDo List</h2>
 				</div>

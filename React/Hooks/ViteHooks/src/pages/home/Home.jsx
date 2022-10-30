@@ -17,6 +17,7 @@ function App() {
 	const [Month, setMonth] = useState(LS[2][LS[0]].month);
 	const [Year, setYear] = useState(LS[1]);
 	const [taskDay, setTaskDay] = useState([LS[3], Year, LS[0]]);
+	const [updateTaskClass, setUpdateTaskClass] = useState([])
 
 	function PrevNext(e) {
 		prevNextMonth(e);
@@ -29,12 +30,8 @@ function App() {
 		selectedDay(LS[0], Year, e);
 		setTaskDay([LocalS()[3], Year, LocalS[0]]);
 	}
-	let state;
 	function testaAdd(e){
-		state = e
-	}
-	function qualquerCoisa(){
-		return state
+		setUpdateTaskClass(e)
 	}
 
 	return (
@@ -61,8 +58,8 @@ function App() {
 							<td>S</td>
 						</tr>
 					</thead>
-					<Days ls={LocalS} selectedDay={updateDay} qual={qualquerCoisa} />
-					<tfoot>
+					<Days ls={LocalS} selectedDay={updateDay} upClass={updateTaskClass} />
+					<tfoot> 
 						<tr>
 							<td colSpan={7} id="year">
 								{Year}

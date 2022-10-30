@@ -9,14 +9,13 @@ function Days(props) {
 	let month = props.ls()[0];
 	let year = props.ls()[1];
 	let MONTHS = props.ls()[2];
+	let upClassTask = props.upClass;
 	let allTDs = [];
 	let allTRs = [];
-	let jNum = 0;
 
-	
 	function createDays() {
-		allTDs = []
-		allTRs = []
+		allTDs = [];
+		allTRs = [];
 		month = props.ls()[0];
 		year = props.ls()[1];
 		MONTHS = props.ls()[2];
@@ -59,53 +58,41 @@ function Days(props) {
 			}
 			let TD;
 			if (tdClass == "" || tdClass == "task") {
-				TD = (
-					<td
-						id={tdID}
-						className={tdClass}
-						onClick={(e) => props.selectedDay(e.target.innerHTML)}
-					>
-						{tdInnerHTML}
-					</td>
+				TD = React.createElement(
+					"td",
+					{
+						id: tdID,
+						key: index,
+						className: tdClass,
+						onClick: (e) => props.selectedDay(e.target.innerHTML),
+					},
+					tdInnerHTML
 				);
 			} else {
-				TD = (
-					<td id={tdID} className={tdClass}>
-						{tdInnerHTML}
-					</td>
+				TD = React.createElement(
+					"td",
+					{ id: tdID, key: index, className: tdClass },
+					tdInnerHTML
 				);
 			}
 			allTDs.push(TD);
 
 			if (index % 7 === 0 && index <= 42) {
-				let TR = (
-					<tr key={jNum}>
-						{allTDs[0 + jNum]}
-						{allTDs[1 + jNum]}
-						{allTDs[2 + jNum]}
-						{allTDs[3 + jNum]}
-						{allTDs[4 + jNum]}
-						{allTDs[5 + jNum]}
-						{allTDs[6 + jNum]}
-					</tr>
-				);
+				let TR = React.createElement("tr", { key: index }, allTDs);
+				allTDs = []
 				allTRs.push(TR);
-				jNum += 7;
-				console.log(allTRs);
 			}
 		}
 	}
-	createDays()
+	// createDays();
 
-	useEffect(()=>{
-		console.log('useEffect');
-		createDays()
-	}, [props.qual()])
+	// useEffect(()=>{
+	// }, [upClassTask])
 	
 	useEffect(() => {
-		console.log(allTRs,'allTr');
+		createDays()
 		setTrState(allTRs);
-	}, [month, props.qual()]);
+	}, [month, upClassTask]);
 
 	if (once) {
 		once = false;
