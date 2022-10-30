@@ -87,8 +87,7 @@ function addNewTaskLS(month, year, day, TX) {
 		LSMonth.listOfAllTasks.push(newTask);
 	}
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
-	// startTodo();
-	// showTasks(month, year, day, fullLS);
+	return LocalS
 }
 function updateTaskLS(month, year, day, ID, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));

@@ -29,6 +29,13 @@ function App() {
 		selectedDay(LS[0], Year, e);
 		setTaskDay([LocalS()[3], Year, LocalS[0]]);
 	}
+	let state;
+	function testaAdd(e){
+		state = e
+	}
+	function qualquerCoisa(){
+		return state
+	}
 
 	return (
 		<div className="container">
@@ -54,7 +61,7 @@ function App() {
 							<td>S</td>
 						</tr>
 					</thead>
-					<Days ls={LS} selectedDay={updateDay} />
+					<Days ls={LocalS} selectedDay={updateDay} qual={qualquerCoisa} />
 					<tfoot>
 						<tr>
 							<td colSpan={7} id="year">
@@ -65,7 +72,7 @@ function App() {
 				</table>
 			</div>
 			<div id="toDoList">
-				<Tasks ls={LS} taskDay={taskDay} add={addNewTaskLS} Switch={switchCheckLS} />
+				<Tasks ls={LocalS} taskDay={taskDay} add={addNewTaskLS} Switch={switchCheckLS} tAdd={testaAdd}/>
 			</div>
 		</div>
 	);
