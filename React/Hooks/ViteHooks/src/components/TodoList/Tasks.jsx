@@ -25,9 +25,9 @@ function Tasks(props) {
 		}
 
 		for (let tasks of listOfAll.tasks) {
-			let Src = "img/working.png";
+			let Src = "img/checkBox.png";
 			if (tasks.check == "check") {
-				Src = "img/check.png";
+				Src = "img/checkBoxPin.png";
 			}
 			let workingTd = React.createElement(
 				"td",
@@ -47,9 +47,9 @@ function Tasks(props) {
 								)[0]
 								.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
 						) {
-							e.target.src = "img/check.png";
+							e.target.src = "img/checkBoxPin.png";
 						} else {
-							e.target.src = "img/working.png";
+							e.target.src = "img/checkBox.png";
 						}
 					},
 				})
@@ -85,9 +85,7 @@ function Tasks(props) {
 
 	function openEditMenu(e, ID) {
 		let editFullTr = e.target.parentNode.parentNode;
-		let tdContent = editFullTr.children[1];
 		let editTx = editFullTr.children[1].innerHTML;
-		// tdContent.innerHTML = "";
 
 		let Delete = React.createElement(
 			"td",
@@ -99,11 +97,12 @@ function Tasks(props) {
 		);
 		let editInput = React.createElement(
 			"td",
-			{ className: "content", key: randomID() },
+			{ className: "content", key: randomID()},
 			React.createElement("input", {
 				type: "text",
 				className: "editInput",
 				defaultValue: editTx,
+				maxLength: 90
 			})
 		);
 		let editBtn = React.createElement(
@@ -176,8 +175,8 @@ function Tasks(props) {
 							id="addTask"
 							placeholder="Adicionar nova tarefa..."
 						/>
-						<button onClick={addNewTask}>
-							Add <img src="" />
+						<button id="AddBtn" onClick={addNewTask}>
+							Add <img src="img/add.png" />
 						</button>
 					</div>
 				</div>

@@ -5,6 +5,8 @@
 	--text-color-hover: white;
 	--border-days-week: #ff0000b3;
 	--bg-input: #43aaef40;
+	--font-title: 'Lobster', cursive;
+	--font-text: 'Varela Round', sans-serif;
 }
 
 .container{
@@ -19,4 +21,7 @@
 	width: 480px;
 	min-width: 480px;
 	position: relative;
+}
+header h2,h3{
+	font-family: var(--font-title);
 }

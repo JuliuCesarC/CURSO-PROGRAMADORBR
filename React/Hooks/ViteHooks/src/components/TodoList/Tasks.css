@@ -24,18 +24,23 @@
 	font-size: 16px;
 }
 #Form input{
-	width: 80%;
+	width: 75%;
 	border: none;
 	border-bottom: 3px solid black;
 	border-end-start-radius: 5px;
 }
 #Form button{
-	width: 15%;
+	font-family: var(--font-title);
+	font-size: 17px;
+	width: 20%;
 	border: none;
 	background-color: white;
 	border-bottom: 3px solid green;
 	border-end-end-radius: 5px;
 	cursor: pointer;
+}
+#Form button img{
+	width: 15px;
 }
 #emptyImg{
 	position: absolute;
@@ -46,10 +51,10 @@
 	z-index: -1;
 }
 .check img{
-	width: 30px;
+	width: 35px;
 }
 .edit img{
-	width: 30px;
+	width: 35px;
 }
 #tasks{
 	width: 90%;
@@ -57,14 +62,18 @@
 	margin-top: 20px;
 }
 #tasks td{
-	padding-top: 5px;
+	padding-top: 7px;
+}
+#tasks tr{
+	position: relative;
 }
 .check,.edit{
 	text-align: center;
 }
 .content{
-	border-bottom: 1px solid var(--bg-hover);
+	border-bottom: 2px solid var(--bg-hover);
 	width: 80%;
+	word-break: break-all;
 }
 .editInput{
 	background-color: var(--bg-input);
@@ -75,4 +84,7 @@
 	padding-bottom: 7px;
 	padding-left: 2px;
 	border-radius: 5px;
+}
+#AddBtn{
+
 }
