@@ -1,54 +1,68 @@
-#toDoList header{
+#toDoList{
+	width: 480px;
+	min-width: 480px;
+	height: 600px;
+	padding-bottom: 5px;
 	position: relative;
-	padding-top: 30px;
+	overflow-y: scroll;
+	border: 2px solid var(--bg-hover);
+	border-radius: 10px;
+	color: var(--text-color-tasks);
+
 }
-#divTop img{
-	position: absolute;
-	width: 100%;
-	top: -50px;
-	left: 0px;
-	z-index: -5;
+#toDoList header{
+	padding-top: 10px;
 }
 #divTop{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+#menuBtn{
+	width: 35px;
+	display: none;
 }
 #divInput{
-	width: 90%;
+	width: 95%;
 	margin: auto;
 }
 #Form input, button{
 	padding: 5px;
 	font-size: 16px;
+	color: var(--text-color-tasks);
+}
+#Form input::placeholder{
+	color: var(--text-color-tasks);
 }
 #Form input{
 	width: 75%;
 	border: none;
 	border-bottom: 3px solid black;
+	border-top: 3px solid black;
+	border-left: 3px solid black;
 	border-end-start-radius: 5px;
+	border-start-start-radius: 5px;
+	background-color: unset;
 }
 #Form button{
 	font-family: var(--font-title);
 	font-size: 17px;
 	width: 20%;
+	padding-top: 2px;
 	border: none;
 	background-color: white;
 	border-bottom: 3px solid green;
+	border-top: 3px solid green;
+	border-right: 3px solid green;
 	border-end-end-radius: 5px;
+	border-start-end-radius: 5px;
 	cursor: pointer;
+	background-color: unset;
 }
 #Form button img{
 	width: 15px;
-}
-#emptyImg{
-	position: absolute;
-	width: 60%;
-	top: 180px;
-	left: 120px;
-	opacity: 0.9;
-	z-index: -1;
+	margin-left: 5px;
 }
 .check img{
 	width: 35px;
@@ -57,7 +71,7 @@
 	width: 35px;
 }
 #tasks{
-	width: 90%;
+	width: 95%;
 	margin: auto;
 	margin-top: 20px;
 }
@@ -85,6 +99,22 @@
 	padding-left: 2px;
 	border-radius: 5px;
 }
-#AddBtn{
-
+header h3{
+	text-decoration: underline;
+}
+@media (pointer: fine) {
+	#toDoList::-webkit-scrollbar {
+			width: 5px;
+			background: unset;
+		}
+		#toDoList::-webkit-scrollbar-thumb {
+			background: var(--text-color-tasks);
+			border-radius: 4px;
+		}   
+		#toDoList::-webkit-scrollbar-track {
+			background-color: #ffffff30;
+			border-radius: 4px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+	}   
 }

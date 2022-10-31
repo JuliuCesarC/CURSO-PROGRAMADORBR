@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Tasks.css";
+import "./mediaTasks.css";
 
 function Tasks(props) {
-	const [allTasksDay, setAllTasksDay] = useState();
-	const [editTasks, setEditTasks] = useState();
-	const [showMonth, setShowMonth] = useState(props.ls()[0] + 1);
+	const [allTasksDay, setAllTasksDay] = useState([]);
+	const [editTasks, setEditTasks] = useState([]);
+	const [showMonthYear, setShowMonthYear] = useState([
+		props.ls()[0] + 1,
+		props.ls()[1],
+	]);
 	let content = [];
 
 	let month = props.ls()[0];
@@ -80,7 +84,7 @@ function Tasks(props) {
 	}
 	useEffect(() => {
 		setAllTasksDay(content);
-		setShowMonth(props.ls()[0] + 1);
+		setShowMonthYear([props.ls()[0] + 1, props.ls()[1]]);
 	}, [day]);
 
 	function openEditMenu(e, ID) {
@@ -97,12 +101,12 @@ function Tasks(props) {
 		);
 		let editInput = React.createElement(
 			"td",
-			{ className: "content", key: randomID()},
+			{ className: "content", key: randomID() },
 			React.createElement("input", {
 				type: "text",
 				className: "editInput",
 				defaultValue: editTx,
-				maxLength: 90
+				maxLength: 79,
 			})
 		);
 		let editBtn = React.createElement(
@@ -145,6 +149,9 @@ function Tasks(props) {
 
 	function addNewTask(e) {
 		let inputTx = e.target.parentNode.children[0];
+		if (allTasksDay.length > 14 || inputTx.value.trim() == "") {
+			return;
+		}
 		props.add(month, year, day, inputTx.value);
 		inputTx.value = "";
 		inputTx.focus();
@@ -162,18 +169,19 @@ function Tasks(props) {
 		<>
 			<header>
 				<div id="divTop">
-					<img src="./img/Caderno.png" alt="" />
+					<img src="img/menuBtn.png" alt="Botão Menu" id="menuBtn" />
 					<h3 id="Day">
-						{day}/{showMonth}
+						{day}/{showMonthYear[0]}/{showMonthYear[1]}
 					</h3>
-					<h2>ToDo List</h2>
+					<h1>ToDo List</h1>
 				</div>
 				<div id="divInput">
 					<div id="Form">
 						<input
 							type="text"
 							id="addTask"
-							placeholder="Adicionar nova tarefa..."
+							placeholder="Nova tarefa..."
+							maxLength={79}
 						/>
 						<button id="AddBtn" onClick={addNewTask}>
 							Add <img src="img/add.png" />
@@ -184,7 +192,6 @@ function Tasks(props) {
 			<table id="tasks">
 				<tbody>{allTasksDay ? allTasksDay : editTasks}</tbody>
 			</table>
-			<img src="img/empty.png" id="emptyImg" />
 		</>
 	);
 }

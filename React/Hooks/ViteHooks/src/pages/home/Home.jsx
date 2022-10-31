@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Home.css";
+import "./mediaHome.css";
 import Days from "../../components/calendar/Days";
 import Tasks from "../../components/TodoList/Tasks";
 import {

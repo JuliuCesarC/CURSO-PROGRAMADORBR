@@ -1,14 +1,18 @@
 :root{
 	--border-color: #21212133;
-	--bg-calendar: #46410a1a;
+	--bg-calendar: #e8e8e3;
 	--bg-hover: #43aaef;
-	--text-color-hover: white;
+	--text-color-white: white;
+	--text-color-tasks: #fcf6dd;
 	--border-days-week: #ff0000b3;
 	--bg-input: #43aaef40;
 	--font-title: 'Lobster', cursive;
 	--font-text: 'Varela Round', sans-serif;
 }
-
+body{
+	background-color: #24292c;
+	background-size: cover;
+}
 .container{
 	width: 95vw;
 	margin: auto;
@@ -17,11 +21,6 @@
 	display: flex;
 	justify-content: space-around;
 }
-#toDoList{
-	width: 480px;
-	min-width: 480px;
-	position: relative;
-}
-header h2,h3{
+header h1,h2,h3{
 	font-family: var(--font-title);
 }

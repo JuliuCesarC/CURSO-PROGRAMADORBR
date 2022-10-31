@@ -1,0 +1,7 @@
+@media (max-width: 820px){
+	#Table{
+		position: absolute;
+		z-index: 1;
+		display: none;
+	}
+}

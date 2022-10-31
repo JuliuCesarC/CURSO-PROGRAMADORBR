@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Days.css";
+import "./mediaDays.css";
 let once = true;
 let crrDay;
 
