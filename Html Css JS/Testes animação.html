@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Animation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			:root {
+				--bg-pageColor: rgb(36, 41, 49);
+				--primary-color: rgb(137, 170, 164);
+				--secondary-color: rgb(255, 217, 0);
+				--text-color: rgb(231, 228, 216);
+			}
+			body {
+				background-color: var(--bg-pageColor);
+				color: var(--text-color);
+			}
+			.container {
+				width: 90vw;
+				max-width: 900px;
+				margin: auto;
+			}
+			.content {
+				position: relative;
+			}
+			table {
+				border-collapse: collapse;
+				text-align: center;
+				width: 50%;
+				min-width: 350px;
+				height: 300px;
+				margin: auto;
+				margin-top: 30px;
+			}
+			td {
+				border: 2px solid var(--primary-color);
+				padding: 5px;
+				font-family: "Lucida Sans", "Lucida Sans Regular";
+				transition-property: all;
+				transition-duration: 0.1s;
+			}
+			td:hover {
+				outline: 2px solid var(--secondary-color);
+				outline-offset: -5px;
+				border-bottom-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+			.menuBtn {
+				position: absolute;
+				cursor: pointer;
+				text-align: center;
+				width: 40px;
+				height: 40px;
+				border: 2px solid var(--primary-color);
+				border-radius: 50%;
+				top: auto;
+				left: 15%;
+				padding: 3px;
+				transition: all 0.08s;
+			}
+			.menuBtn img {
+				position: relative;
+				width: 65%;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.menuBtn:hover {
+				outline: 2px solid var(--secondary-color);
+				border-radius: 50%;
+				outline-offset: -6px;
+			}
+			.menu {
+				background-color: var(--primary-color);
+				text-transform: uppercase;
+				width: 200px;
+				padding: 20px;
+				border-bottom-left-radius: 7px;
+				border-top-right-radius: 7px;
+				position: absolute;
+				top: 25px;
+				left: -250px;
+				transition: left 0.5s;
+				transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+			}
+			.showMenu {
+				left: 10px;
+			}		
+			.menu nav {
+				display: flex;
+				justify-content: space-between;
+			}
+			nav h4 {
+				transition: all 0.1s;
+			}
+			nav h4:hover {
+				outline: 2px solid var(--secondary-color);
+				outline-offset: 2px;
+				border-bottom-left-radius: 5px;
+				border-top-right-radius: 5px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="content">
+				<div class="menuBtn" onclick="showMenu() ">
+					<img src="./menuBtn.png" />
+				</div>
+				<table>
+					<tbody>
+						<tr>
+							<td>lorem</td>
+							<td>lorem</td>
+						</tr>
+						<tr>
+							<td>lorem</td>
+							<td>lorem</td>
+						</tr>
+						<tr>
+							<td>lorem</td>
+							<td>lorem</td>
+						</tr>
+						<tr>
+							<td>lorem</td>
+							<td>lorem</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="menu" id="MENU">
+				<nav>
+					<h4>Home</h4>
+					<h4>Docs</h4>
+					<h4>About</h4>
+				</nav>
+			</div>
+		</div>
+		<script>
+			function showMenu() {
+				let Menu = document.querySelector("#MENU");
+				window.addEventListener("click", (e) => {
+					if (
+						e.target.classList[1] != "showMenu" &&
+						Menu.classList.length > 1
+					) {
+						Menu.classList.remove("showMenu");
+					}
+				});
+				setTimeout(() => {
+					Menu.classList.add("showMenu");
+				}, 10);
+			}
+		</script>
+	</body>
+</html>
