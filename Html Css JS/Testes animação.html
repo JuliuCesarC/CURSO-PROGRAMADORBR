@@ -58,10 +58,11 @@
 				height: 40px;
 				border: 2px solid var(--primary-color);
 				border-radius: 50%;
-				top: auto;
+				top: 1px;
 				left: 15%;
 				padding: 3px;
-				transition: all 0.08s;
+				transition: opacity 0.5s;
+				transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 			}
 			.menuBtn img {
 				position: relative;
@@ -70,9 +71,15 @@
 				transform: translateY(-50%);
 			}
 			.menuBtn:hover {
+				transition: outline 0.1s;
 				outline: 2px solid var(--secondary-color);
-				border-radius: 50%;
 				outline-offset: -6px;
+				border-radius: 50%;
+				transition: opacity 0.5s;
+				transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+			}
+			.hiddenBtn{
+				opacity: 0;
 			}
 			.menu {
 				background-color: var(--primary-color);
@@ -86,14 +93,17 @@
 				left: -250px;
 				transition: left 0.5s;
 				transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+				animation: hiddenMenu 1s;
+				animation-fill-mode: backwards;
 			}
-			.showMenu {
-				left: 10px;
-			}		
 			.menu nav {
 				display: flex;
 				justify-content: space-between;
 			}
+			.showMenu {
+				left: 10px;
+				
+			}		
 			nav h4 {
 				transition: all 0.1s;
 			}
@@ -104,6 +114,7 @@
 				border-top-right-radius: 5px;
 				cursor: pointer;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -150,10 +161,12 @@
 						Menu.classList.length > 1
 					) {
 						Menu.classList.remove("showMenu");
+						document.querySelector('.menuBtn').classList.remove('hiddenBtn')
 					}
 				});
 				setTimeout(() => {
 					Menu.classList.add("showMenu");
+					document.querySelector('.menuBtn').classList.add('hiddenBtn')
 				}, 10);
 			}
 		</script>
