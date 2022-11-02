@@ -32,7 +32,7 @@ function App() {
 		setLS(LocalS())
 		setTaskDay([LocalS()[3], Year, month]);
 	}
-	function testaAdd(e){
+	function updateAdd(e){
 		setUpdateTaskClass(e)
 	}
 	return (
@@ -71,7 +71,7 @@ function App() {
 				
 			</div>
 			<div id="toDoList">
-				<Tasks ls={LocalS} taskDay={taskDay} add={addNewTaskLS} Switch={switchCheckLS} tAdd={testaAdd} update={updateTaskLS} delete={deleteTaskLS} />
+				<Tasks ls={LocalS} taskDay={taskDay} add={addNewTaskLS} Switch={switchCheckLS} tAdd={updateAdd} update={updateTaskLS} delete={deleteTaskLS} />
 			</div>
 			<div id="shadow"></div>
 		</div>

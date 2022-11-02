@@ -45,7 +45,7 @@
 	text-align: center;
 	height: 35px;
 	width: 40px;
-	transition: outline 0.2s;
+	transition: outline 0.15s;
 }
 #days td:hover {
 	border-bottom-left-radius: 10px;

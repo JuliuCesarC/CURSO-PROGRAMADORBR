@@ -46,10 +46,8 @@ function Tasks(props) {
 							)[0]
 							.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
 					) {
-						console.log(e.target.className);
 						e.target.classList.add("checkPin");
 					} else {
-						console.log(e.target);
 						e.target.classList.remove("checkPin");
 					}
 				},
@@ -93,7 +91,7 @@ function Tasks(props) {
 			{ className: "delete", key: randomID() },
 			React.createElement("img", {
 				src: "img/delete.png",
-				onClick: (e) => deleteTask(e, ID),
+				onClick: () => deleteTask(ID),
 			})
 		);
 		let editInput = React.createElement(
@@ -103,7 +101,7 @@ function Tasks(props) {
 				type: "text",
 				className: "editInput",
 				defaultValue: editTx,
-				maxLength: 79,
+				maxLength: 79,				
 			})
 		);
 		let editBtn = React.createElement(
@@ -137,12 +135,13 @@ function Tasks(props) {
 		setEditTasks(undefined);
 	}
 	// ----- // ------ //
-	function deleteTask(eDelete, ID) {
+	function deleteTask(ID) {
 		props.delete(month, year, day, ID);
 		content = [];
 		showTasks(props.ls()[2][month].listOfAllTasks);
 		setAllTasksDay(content);
 		setEditTasks(undefined);
+		props.tAdd(undefined);
 	}
 	// ----- // ------ //
 	function addNewTask(e) {
@@ -191,6 +190,7 @@ function Tasks(props) {
 						id="addTask"
 						placeholder="Nova tarefa..."
 						maxLength={79}
+						autoComplete='off'
 					/>
 					<button id="AddBtn" onClick={addNewTask}>
 						Add <img src="img/add.png" />
