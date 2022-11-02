@@ -169,24 +169,24 @@ function Tasks(props) {
 		<>
 			<header>
 				<div id="divTop">
-					<img src="img/menuBtn.png" alt="Botão Menu" id="menuBtn" />
+					<div id="menuBtn">
+						<img src="img/menuBtn.png" alt="Botão Menu" />
+					</div>
 					<h3 id="Day">
 						{day}/{showMonthYear[0]}/{showMonthYear[1]}
 					</h3>
 					<h1>ToDo List</h1>
 				</div>
 				<div id="divInput">
-					<div id="Form">
-						<input
-							type="text"
-							id="addTask"
-							placeholder="Nova tarefa..."
-							maxLength={79}
-						/>
-						<button id="AddBtn" onClick={addNewTask}>
-							Add <img src="img/add.png" />
-						</button>
-					</div>
+					<input
+						type="text"
+						id="addTask"
+						placeholder="Nova tarefa..."
+						maxLength={79}
+					/>
+					<button id="AddBtn" onClick={addNewTask}>
+						Add <img src="img/add.png" />
+					</button>
 				</div>
 			</header>
 			<table id="tasks">

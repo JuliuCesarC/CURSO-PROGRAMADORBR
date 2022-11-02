@@ -65,7 +65,7 @@ function Days(props) {
 						id: tdID,
 						key: index,
 						className: tdClass,
-						onClick: (e) => props.selectedDay(e.target.innerHTML),
+						onClick: (e) => props.selectedDay(month, e.target.innerHTML),
 					},
 					tdInnerHTML
 				);
@@ -85,10 +85,6 @@ function Days(props) {
 			}
 		}
 	}
-	// createDays();
-
-	// useEffect(()=>{
-	// }, [upClassTask])
 	
 	useEffect(() => {
 		createDays()
@@ -98,7 +94,7 @@ function Days(props) {
 	if (once) {
 		once = false;
 		setTimeout(() => {
-			props.selectedDay(crrDay);
+			props.selectedDay(new Date().getMonth(), crrDay);
 		}, 1);
 	}
 

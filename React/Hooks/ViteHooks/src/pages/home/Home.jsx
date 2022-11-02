@@ -27,14 +27,14 @@ function App() {
 		setYear(LocalS()[1]);
 	}
 
-	function updateDay(e) {
-		selectedDay(LS[0], Year, e);
-		setTaskDay([LocalS()[3], Year, LocalS[0]]);
+	function updateDay(month, eDay) {
+		selectedDay(month, Year, eDay);
+		setLS(LocalS())
+		setTaskDay([LocalS()[3], Year, month]);
 	}
 	function testaAdd(e){
 		setUpdateTaskClass(e)
 	}
-
 	return (
 		<div className="container">
 			<div id="Table">
