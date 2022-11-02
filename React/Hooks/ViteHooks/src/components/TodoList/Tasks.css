@@ -28,7 +28,7 @@
 	padding: 1px;
 	padding-top: 5px;
 	cursor: pointer;
-	transition: outline 0.1s;
+	transition: outline 0.08s;
 }
 #menuBtn img{
 	width: 70%;
@@ -40,7 +40,8 @@
 #divInput{
 	width: 95%;
 	margin: auto;
-	background-color: rgba(0, 255, 255, 0.315);
+	display: flex;
+	justify-content: space-around;
 }
 #divInput input, button{
 	padding: 5px;
@@ -51,50 +52,89 @@
 	color: var(--text-color);
 }
 #divInput input{
-	width: 75%;
+	width: 70%;
 	border: none;
-	border-bottom: 3px solid black;
-	border-top: 3px solid black;
-	border-left: 3px solid black;
-	border-end-start-radius: 5px;
-	border-start-start-radius: 5px;
-	background-color: unset;
+	border-bottom: 2px solid var(--primary-color);
+	border-bottom-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: var(--bg-input);
 }
 #divInput button{
 	font-family: var(--font-title);
-	font-size: 17px;
+	font-size: 18px;
 	width: 20%;
 	padding-top: 2px;
-	border: none;
-	background-color: white;
-	border-bottom: 3px solid green;
-	border-top: 3px solid green;
-	border-right: 3px solid green;
-	border-end-end-radius: 5px;
-	border-start-end-radius: 5px;
-	cursor: pointer;
 	background-color: unset;
+	border: 2px solid var(--primary-color);
+	border-bottom-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background-color 0.15s;
 }
 #divInput button img{
-	width: 15px;
-	margin-left: 5px;
+	width: 16px;
+	margin-left: 7px;
 }
-.check img{
-	width: 35px;
+#divInput button:hover{
+	background-color: var(--primary-color);
 }
-.edit img{
-	width: 35px;
-}
-#tasks{
+#tasksTable{
 	width: 95%;
 	margin: auto;
 	margin-top: 20px;
 }
-#tasks td{
-	padding-top: 7px;
+.line{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
 }
-#tasks tr{
-	position: relative;
+.check{
+	border: 2px solid var(--primary-color);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	animation: hidePin .2s;
+	animation-fill-mode: forwards;
+}
+.checkPin{
+	animation: showPin .2s;
+	animation-fill-mode: forwards;
+	/* background-image: url('img/checkPin.png');
+	background-size: cover; */
+	
+}
+@keyframes showPin{
+	0%{
+		transform: scale(0.8);
+		background-image: url('img/checkPin.png');
+		background-size: cover;
+	}
+	100%{
+		transform: scale(1);
+		background-image: url('img/checkPin.png');
+		background-size: cover;
+	}
+}
+@keyframes hidePin{
+	0%{
+		transform: scale(1);
+		/* background-image: url('img/checkPin.png');
+		background-size: cover; */
+	}
+	50%{
+		transform: scale(.8);
+		/* background-image: url('img/checkPin.png');
+		background-size: cover; */
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+.edit img{
+	width: 35px;
 }
 .check,.edit{
 	text-align: center;

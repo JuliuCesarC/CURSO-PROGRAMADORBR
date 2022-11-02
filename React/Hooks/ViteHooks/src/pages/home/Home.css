@@ -1,11 +1,11 @@
 :root{
 	--bg-pageColor: rgb(36, 41, 49);
 	--primary-color: rgb(137, 170, 164);
-	--secondary-color: rgb(255, 217, 0);
+	--secondary-color: #ffd900;
 	--text-color: #fcf6dd;
 	--text-color-opacity: #fcf6dd60;
 	--border-days-week: #ff0000b3;
-	--bg-input: rgba(137, 170, 164, 0.325);
+	--bg-input: rgba(137, 170, 164, 0.226);
 
 	--font-title: 'Lobster', cursive;
 	--font-text: 'Varela Round', sans-serif;

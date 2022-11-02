@@ -29,18 +29,15 @@ function Tasks(props) {
 		}
 
 		for (let tasks of listOfAll.tasks) {
-			let Src = "img/checkBox.png";
+			let workingClass = "";
 			if (tasks.check == "check") {
-				Src = "img/checkBoxPin.png";
+				workingClass = "checkPin";
 			}
-			let workingTd = React.createElement(
-				"td",
+			let working = React.createElement(
+				"div",
 				{
-					className: "check",
+					className: `check ${workingClass}`,
 					key: randomID(),
-				},
-				React.createElement("img", {
-					src: Src,
 					onClick: (e) => {
 						props.Switch(month, year, day, tasks.id);
 						if (
@@ -51,35 +48,36 @@ function Tasks(props) {
 								)[0]
 								.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
 						) {
-							e.target.src = "img/checkBoxPin.png";
+							console.log(e.target.className);
+							e.target.classList.add('checkPin')
 						} else {
-							e.target.src = "img/checkBox.png";
+							console.log(e.target);
+							e.target.classList.remove('checkPin')
 						}
 					},
-				})
-			);
-			let contentTd = React.createElement(
-				"td",
+				});
+			let contentTx = React.createElement(
+				"div",
 				{
 					className: "content",
 					key: randomID(),
 				},
 				tasks.cont
 			);
-			let editTd = React.createElement(
-				"td",
+			let edit = React.createElement(
+				"div",
 				{ className: "edit", key: randomID() },
 				React.createElement("img", {
 					src: "img/editBtn.png",
 					onClick: (e) => openEditMenu(e, tasks.id),
 				})
 			);
-			let tr = React.createElement("tr", { key: tasks.id }, [
-				workingTd,
-				contentTd,
-				editTd,
+			let line = React.createElement("div", { key: tasks.id, className: 'line' }, [
+				working,
+				contentTx,
+				edit,
 			]);
-			content.push(tr);
+			content.push(line);
 		}
 	}
 	useEffect(() => {
@@ -92,7 +90,7 @@ function Tasks(props) {
 		let editTx = editFullTr.children[1].innerHTML;
 
 		let Delete = React.createElement(
-			"td",
+			"div",
 			{ className: "check", key: randomID() },
 			React.createElement("img", {
 				src: "img/delete.png",
@@ -100,7 +98,7 @@ function Tasks(props) {
 			})
 		);
 		let editInput = React.createElement(
-			"td",
+			"div",
 			{ className: "content", key: randomID() },
 			React.createElement("input", {
 				type: "text",
@@ -110,7 +108,7 @@ function Tasks(props) {
 			})
 		);
 		let editBtn = React.createElement(
-			"td",
+			"div",
 			{ className: "edit", key: randomID() },
 			React.createElement("img", {
 				onClick: (e) => updateTask(e, ID),
@@ -118,7 +116,7 @@ function Tasks(props) {
 			})
 		);
 
-		let editTr = React.createElement("tr", { key: ID }, [
+		let editTr = React.createElement("div", { key: ID }, [
 			Delete,
 			editInput,
 			editBtn,
@@ -189,9 +187,9 @@ function Tasks(props) {
 					</button>
 				</div>
 			</header>
-			<table id="tasks">
-				<tbody>{allTasksDay ? allTasksDay : editTasks}</tbody>
-			</table>
+			<div id="tasksTable">
+				{allTasksDay ? allTasksDay : editTasks}
+			</div>
 		</>
 	);
 }
