@@ -1,16 +1,12 @@
 @media (max-width: 820px){
 	#toDoList{
 		margin: auto;
+		margin-top: 10px;
 		width: 80%;
-		height: 94%;
+		height: 94vh;
 		min-width: unset;
-		outline: 2px solid var(--text-color-tasks);
-		outline-offset: 4px;
 	}
-	.check{
-	}
-	.edit{
-	}
+
 	#menuBtn{
 		display: block;
 	}

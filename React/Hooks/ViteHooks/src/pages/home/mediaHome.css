@@ -1,11 +1,9 @@
 @media (max-width: 820px){
 	.container{
 		width: 95vw;
-		height: 98vh;
+		height: 96vh;
 		margin: auto;
-		margin-top: unset;
 		padding-top: 10px;
-		display: block;
+		display: unset;
 	}
-
 }

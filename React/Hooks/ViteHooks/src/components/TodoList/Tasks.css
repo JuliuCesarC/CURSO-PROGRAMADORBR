@@ -28,14 +28,13 @@
 	padding: 1px;
 	padding-top: 5px;
 	cursor: pointer;
-	transition: outline 0.08s;
+	transition: background-color 0.15s;
 }
 #menuBtn img{
 	width: 70%;
 }
 #menuBtn:hover{
-	outline: 2px solid var(--secondary-color);
-	outline-offset: -6px;
+background-color: var(--primary-color);
 }
 #divInput{
 	width: 95%;
@@ -89,6 +88,7 @@
 .line{
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-top: 10px;
 }
 .check{
@@ -97,14 +97,77 @@
 	height: 40px;
 	cursor: pointer;
 	animation: hidePin .2s;
-	animation-fill-mode: forwards;
 }
 .checkPin{
 	animation: showPin .2s;
 	animation-fill-mode: forwards;
-	/* background-image: url('img/checkPin.png');
-	background-size: cover; */
-	
+}
+.edit{
+	border-bottom-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: background-color 0.15s;
+	padding-left: 1px;
+}
+.edit img{
+	width: 30px;
+}
+.edit:hover{
+	background-color: var(--primary-color);
+}
+.content{
+	border-bottom: 2px solid var(--primary-color);
+	word-break: break-all;
+	width: 80%;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-left: 4px;
+	margin-right: 2px;
+}
+.editInput{
+	background-color: var(--bg-input);
+	border: none;
+	font-size: 16px;
+	width: 100%;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 2px;
+	border-radius: 5px;
+}
+.delete{
+	border: 2px solid var(--primary-color);
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.delete img{
+	width: 30px;
+}
+header h3{
+	text-decoration: underline;
+}
+@media (pointer: fine) {
+	#toDoList::-webkit-scrollbar {
+			width: 5px;
+			background: unset;
+		}
+		#toDoList::-webkit-scrollbar-thumb {
+			background: var(--text-color);
+			border-radius: 4px;
+		}   
+		#toDoList::-webkit-scrollbar-track {
+			background-color: #ffffff30;
+			border-radius: 4px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+	}   
 }
 @keyframes showPin{
 	0%{
@@ -121,55 +184,11 @@
 @keyframes hidePin{
 	0%{
 		transform: scale(1);
-		/* background-image: url('img/checkPin.png');
-		background-size: cover; */
 	}
 	50%{
 		transform: scale(.8);
-		/* background-image: url('img/checkPin.png');
-		background-size: cover; */
 	}
 	100%{
 		transform: scale(1);
 	}
-}
-.edit img{
-	width: 35px;
-}
-.check,.edit{
-	text-align: center;
-}
-.content{
-	border-bottom: 2px solid var(--primary-color);
-	width: 80%;
-	word-break: break-all;
-}
-.editInput{
-	background-color: var(--bg-input);
-	border: none;
-	font-size: 16px;
-	width: 100%;
-	padding-top: 7px;
-	padding-bottom: 7px;
-	padding-left: 2px;
-	border-radius: 5px;
-}
-header h3{
-	text-decoration: underline;
-}
-@media (pointer: fine) {
-	#toDoList::-webkit-scrollbar {
-			width: 5px;
-			background: unset;
-		}
-		#toDoList::-webkit-scrollbar-thumb {
-			background: var(--text-color-tasks);
-			border-radius: 4px;
-		}   
-		#toDoList::-webkit-scrollbar-track {
-			background-color: #ffffff30;
-			border-radius: 4px;
-			margin-top: 10px;
-			margin-bottom: 10px;
-	}   
 }

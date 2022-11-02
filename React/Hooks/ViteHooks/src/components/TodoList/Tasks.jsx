@@ -21,7 +21,7 @@ function Tasks(props) {
 	} else {
 		showTasks([]);
 	}
-
+	// ----- // ------ //
 	function showTasks(LOfAT) {
 		let listOfAll = LOfAT.filter((e) => e.year == year && e.day == day)[0];
 		if (!listOfAll) {
@@ -33,29 +33,27 @@ function Tasks(props) {
 			if (tasks.check == "check") {
 				workingClass = "checkPin";
 			}
-			let working = React.createElement(
-				"div",
-				{
-					className: `check ${workingClass}`,
-					key: randomID(),
-					onClick: (e) => {
-						props.Switch(month, year, day, tasks.id);
-						if (
-							props
-								.ls()[2]
-								[month].listOfAllTasks.filter(
-									(e) => e.year == year && e.day == day
-								)[0]
-								.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
-						) {
-							console.log(e.target.className);
-							e.target.classList.add('checkPin')
-						} else {
-							console.log(e.target);
-							e.target.classList.remove('checkPin')
-						}
-					},
-				});
+			let working = React.createElement("div", {
+				className: `check ${workingClass}`,
+				key: randomID(),
+				onClick: (e) => {
+					props.Switch(month, year, day, tasks.id);
+					if (
+						props
+							.ls()[2]
+							[month].listOfAllTasks.filter(
+								(e) => e.year == year && e.day == day
+							)[0]
+							.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
+					) {
+						console.log(e.target.className);
+						e.target.classList.add("checkPin");
+					} else {
+						console.log(e.target);
+						e.target.classList.remove("checkPin");
+					}
+				},
+			});
 			let contentTx = React.createElement(
 				"div",
 				{
@@ -72,26 +70,27 @@ function Tasks(props) {
 					onClick: (e) => openEditMenu(e, tasks.id),
 				})
 			);
-			let line = React.createElement("div", { key: tasks.id, className: 'line' }, [
-				working,
-				contentTx,
-				edit,
-			]);
+			let line = React.createElement(
+				"div",
+				{ key: tasks.id, className: "line" },
+				[working, contentTx, edit]
+			);
 			content.push(line);
 		}
 	}
+	// ----- // ------ //
 	useEffect(() => {
 		setAllTasksDay(content);
 		setShowMonthYear([props.ls()[0] + 1, props.ls()[1]]);
 	}, [day]);
-
+	// ----- // ------ //
 	function openEditMenu(e, ID) {
 		let editFullTr = e.target.parentNode.parentNode;
 		let editTx = editFullTr.children[1].innerHTML;
 
 		let Delete = React.createElement(
 			"div",
-			{ className: "check", key: randomID() },
+			{ className: "delete", key: randomID() },
 			React.createElement("img", {
 				src: "img/delete.png",
 				onClick: (e) => deleteTask(e, ID),
@@ -115,18 +114,18 @@ function Tasks(props) {
 				src: "img/editBtn.png",
 			})
 		);
-
-		let editTr = React.createElement("div", { key: ID }, [
+		let editLine = React.createElement("div", { key: ID, className: 'line' }, [
 			Delete,
 			editInput,
 			editBtn,
 		]);
 
 		let indexTr = content.findIndex((e) => e.key == ID);
-		content[indexTr] = editTr;
+		content[indexTr] = editLine;
 		setAllTasksDay(undefined);
 		setEditTasks(content);
 	}
+	// ----- // ------ //
 	function updateTask(eEdit, ID) {
 		let updateFullTr = eEdit.target.parentNode.parentNode;
 		let updateTx = updateFullTr.children[1].children[0].value;
@@ -137,6 +136,7 @@ function Tasks(props) {
 		setAllTasksDay(content);
 		setEditTasks(undefined);
 	}
+	// ----- // ------ //
 	function deleteTask(eDelete, ID) {
 		props.delete(month, year, day, ID);
 		content = [];
@@ -144,7 +144,7 @@ function Tasks(props) {
 		setAllTasksDay(content);
 		setEditTasks(undefined);
 	}
-
+	// ----- // ------ //
 	function addNewTask(e) {
 		let inputTx = e.target.parentNode.children[0];
 		if (allTasksDay.length > 14 || inputTx.value.trim() == "") {
@@ -158,7 +158,17 @@ function Tasks(props) {
 		setAllTasksDay(content);
 		props.tAdd(allTasksDay);
 	}
-
+	// ----- // ------ //
+	function showMenu(){
+		let Table = document.getElementById('Table')
+		let Shadow = document.getElementById('shadow')
+		Table.classList.add('show')
+		Shadow.classList.add('show')
+		Shadow.addEventListener('click', e=>{
+			Table.classList.remove('show')
+			Shadow.classList.remove('show')
+		})
+	}
 	function randomID() {
 		return Math.random().toString(36).substring(2, 9);
 	}
@@ -168,7 +178,7 @@ function Tasks(props) {
 			<header>
 				<div id="divTop">
 					<div id="menuBtn">
-						<img src="img/menuBtn.png" alt="Botão Menu" />
+						<img src="img/menuBtn.png" alt="Botão Menu" onClick={showMenu}/>
 					</div>
 					<h3 id="Day">
 						{day}/{showMonthYear[0]}/{showMonthYear[1]}
@@ -187,9 +197,7 @@ function Tasks(props) {
 					</button>
 				</div>
 			</header>
-			<div id="tasksTable">
-				{allTasksDay ? allTasksDay : editTasks}
-			</div>
+			<div id="tasksTable">{allTasksDay ? allTasksDay : editTasks}</div>
 		</>
 	);
 }

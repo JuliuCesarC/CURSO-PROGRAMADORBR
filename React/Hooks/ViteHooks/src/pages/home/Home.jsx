@@ -68,10 +68,12 @@ function App() {
 						</tr>
 					</tfoot>
 				</table>
+				
 			</div>
 			<div id="toDoList">
 				<Tasks ls={LocalS} taskDay={taskDay} add={addNewTaskLS} Switch={switchCheckLS} tAdd={testaAdd} update={updateTaskLS} delete={deleteTaskLS} />
 			</div>
+			<div id="shadow"></div>
 		</div>
 	);
 }
