@@ -56,8 +56,7 @@
 #daysOfWeek td {
 	border-bottom: 2px solid var(--border-days-week);
 }
-.prevMonth,
-.nextMonth {
+.prevNextMonth {
 	color: var(--text-color-opacity);
 }
 #currentDay {

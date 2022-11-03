@@ -6,7 +6,7 @@ let crrDay;
 
 function Days(props) {
 	const [trState, setTrState] = useState([]);
-	
+
 	let month = props.ls()[0];
 	let year = props.ls()[1];
 	let MONTHS = props.ls()[2];
@@ -38,27 +38,27 @@ function Days(props) {
 				indexDate.getMonth() == Now.getMonth() &&
 				indexDate.getDate() == Now.getDate()
 			) {
+				//Checks if the day is the current day.
 				tdID = "currentDay";
 				crrDay = indexDate.getDate().toString();
 			}
-			if (fullMonth < 1) {
-				tdClass = "prevMonth";
+			if (fullMonth < 1 || fullMonth > totalDaysInMonth) {
+				//Whether the day belongs to the last month or the next month
+				tdClass = "prevNextMonth";
 			}
-			if (fullMonth > totalDaysInMonth) {
-				tdClass = "nextMonth";
-			}
-			if (MONTHS[month].listOfAllTasks) {
-				if (
-					MONTHS[month].listOfAllTasks.filter(
-						(e) => e.year == year && e.day == indexDate.getDate()
-					).length >= 1 &&
-					tdClass == ""
-				) {
-					tdClass = "task";
-				}
+			if (
+				MONTHS[month].listOfAllTasks &&
+				MONTHS[month].listOfAllTasks.filter(
+					(e) => e.year == year && e.day == indexDate.getDate()
+				).length >= 1 &&
+				tdClass == ""
+			) {
+				//Checks if the selected day has tasks.
+				tdClass = "task";
 			}
 			let TD;
 			if (tdClass == "" || tdClass == "task") {
+				//Ensures that the day of the previous or next month cannot be selected.
 				TD = React.createElement(
 					"td",
 					{
@@ -79,19 +79,21 @@ function Days(props) {
 			allTDs.push(TD);
 
 			if (index % 7 === 0 && index <= 42) {
+				//Every week a new line with the TDs is created.
 				let TR = React.createElement("tr", { key: index }, allTDs);
-				allTDs = []
+				allTDs = [];
 				allTRs.push(TR);
 			}
 		}
 	}
-	
+
 	useEffect(() => {
-		createDays()
+		createDays();
 		setTrState(allTRs);
 	}, [month, upClassTask]);
 
 	if (once) {
+		//The first time the site is opened, the current day is selected.
 		once = false;
 		setTimeout(() => {
 			props.selectedDay(new Date().getMonth(), crrDay);

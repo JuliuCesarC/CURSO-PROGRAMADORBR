@@ -1,5 +1,3 @@
-import Days from "../calendar/Days";
-
 function LocalS() {
 	const months = [
 		{ month: "janeiro" },
@@ -87,7 +85,7 @@ function addNewTaskLS(month, year, day, TX) {
 		LSMonth.listOfAllTasks.push(newTask);
 	}
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
-	return LocalS
+	return LocalS;
 }
 function updateTaskLS(month, year, day, ID, TX) {
 	let fullLS = JSON.parse(localStorage.getItem("ToDoList"));
@@ -131,13 +129,10 @@ function deleteTaskLS(month, year, day, ID) {
 		fullLS[month].listOfAllTasks = delTaskDay;
 	}
 	localStorage.setItem("ToDoList", JSON.stringify(fullLS));
-	// startTodo();
-	// showTasks(month, year, day, fullLS);
 }
 function randomID() {
 	return Math.random().toString(36).substring(2, 9);
 }
-
 export {
 	LocalS,
 	prevNextMonth,
