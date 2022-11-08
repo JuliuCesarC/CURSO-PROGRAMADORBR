@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledMenu = styled.header`
+const StyledMenu = styled.nav`
 	display: flex;
 	flex-direction: row;
 	height: 56px;

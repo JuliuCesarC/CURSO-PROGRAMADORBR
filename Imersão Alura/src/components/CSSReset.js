@@ -20,10 +20,11 @@ export const CSSReset = createGlobalStyle`
     display: flex;
     flex: 1;
   }
-  /* #__next {
-    display: flex;
-    flex: 1;
-  } */
+  #__next {
+    /* display: flex; */
+    /* flex: 1; */
+		width: 100%;
+  }
   /* Globals */
   button,
   a {

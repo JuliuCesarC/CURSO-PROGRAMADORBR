@@ -1,10 +1,5 @@
-import styled from "styled-components";
 import config from "../../config.json";
 import { StyledTimeline } from "../../src/components/Timeline";
-
-const CardList = styled.div`
-
-`;
 
 function Timeline(props) {
 	const Config = config.playlists;
