@@ -1,6 +1,6 @@
 {
 	"name": "Julio Cesar",
-	"job": "junior frontend developer",
+	"job": "Junior frontend developer",
 	"github": "JuliuCesarC",
 	"playlists": {
 		"jogos": [
@@ -130,5 +130,17 @@
 				"thumb": "https://img.youtube.com/vi/0JWMVc1CqpA/hqdefault.jpg"
 			}
 		]
-	}
+	},
+	"aluratube": [
+		{
+			"name": "@aluraonline",
+			"img": "https://github.com/alura.png",
+			"link": "https://www.instagram.com/aluraonline/"
+		},
+		{
+			"name": "@devsoutinho",
+			"img": "https://github.com/omariosouto.png",
+			"link": "https://www.instagram.com/devsoutinho/"
+		}
+	]
 }

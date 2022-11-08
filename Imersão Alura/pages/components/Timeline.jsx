@@ -13,7 +13,7 @@ function Timeline(props) {
 			{playlistName.map((listName) => {
 				const videos = Config[listName];
 				return (
-					<section key={randomID()}>
+					<section className="Tags" key={randomID()}>
 						<h2>{listName}</h2>
 						<div>
 							{videos.map((video) => {

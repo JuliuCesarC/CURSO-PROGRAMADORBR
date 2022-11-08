@@ -1,8 +1,9 @@
 import config from "../config.json";
 import { CSSReset } from "../src/components/CSSReset";
-import Menu from "../src/components/Menu";
+import Menu from "./components/Menu";
 import Header from "./components/Header";
 import Timeline from "./components/Timeline";
+import FavoriteYouTube from "./components/Favorites";
 
 function Home() {
 	return (
@@ -11,6 +12,7 @@ function Home() {
 			<Menu/>
 			<Header />
 			<Timeline />
+			<FavoriteYouTube/>
 		</>
 	);
 }

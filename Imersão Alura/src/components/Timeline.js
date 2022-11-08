@@ -23,6 +23,9 @@ export const StyledTimeline = styled.div`
     padding: 0;
     overflow: hidden;
     padding: 16px;
+		border-top: 1px solid rgb(200,200,200);
+		border-bottom: 1px solid rgb(200,200,200);
+		margin-bottom: 15px;
     div {
 			
       width: calc(100vw - 16px * 4);
