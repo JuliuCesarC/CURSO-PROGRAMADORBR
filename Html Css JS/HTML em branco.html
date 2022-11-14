@@ -14,21 +14,17 @@
     </style>
 </head>
 <body>
+		<form onsubmit='onSubmit'>
+			<input type="text" id="text">
+			<button type="submit">Enviar</button>
+		</form>
 
+		<script>
+			function onSubmit(e){
+				e.target.preventDefault()
+				console.log(e);
+			}
+		</script>
 
-
-
-
-
-
-    
-    <!-- <form>   Exercicio 26     
-        <h1><label for="vreal">Conversor de Real para Dollar</label></h1>
-        <p><input type="number" name="" id="vreal" style="font-size: 15pt;"></p>
-        <p><input type="button" value="Enviar" style="font-size: 15pt;" onclick="converte()"></p>
-    </form>
-    <div id="resp" style="font-size: 18pt;"></div> -->
-
-    <script src="ex27 Try catch.js"></script>
 </body>
 </html>
