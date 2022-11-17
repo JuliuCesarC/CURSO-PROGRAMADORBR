@@ -1,8 +1,7 @@
 import React from "react";
-import { useEffect } from "react";
 import { GameRulesContext } from "../GameRules";
 
-export default function DeckOfCards() {
+export default function DeckOfCards(props) {
 	const cardContext = React.useContext(GameRulesContext);
 
 	function randomID() {
@@ -18,6 +17,7 @@ export default function DeckOfCards() {
 						key={randomID()}
 						onClick={(e) => {
 							cardContext.flipCard(e.target, card);
+							props.startTimer()
 						}}
 					>
 						<div className="frontCard">

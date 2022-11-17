@@ -4,9 +4,7 @@ import { NameOfCards } from "../NameOfCards";
 export const GameRulesContext = React.createContext({
 	Cards: [],
 	gameOver: false,
-	closeModal: () => {
-		alert("closeModal ainda não configurado.");
-	},
+	closeModal: false,
 	shuffleCards: () => {
 		alert("shuffleCards ainda não configurado.");
 	},
@@ -14,29 +12,10 @@ export const GameRulesContext = React.createContext({
 		alert("flipCard ainda não configurado.");
 	},
 });
-export const TIMER = React.createContext({
-	Seconds: '',
-	Minutes: ''
-})
 
 export default function GameRules(props) {
 	const [Cards, setCards] = React.useState(NameOfCards);
 	const [gameOver, setGameOver] = React.useState(false);
-	const [timer, setTimer] = React.useState({ Seconds: "00", Minutes: "00" })
-
-	// function tempo() {
-	// 	setInterval(() => {
-	// 		let newTimer = {Seconds: timer.Seconds, Minutes: timer.Minutes}
-	// 		newTimer.Seconds++;
-	// 		newTimer.Seconds < 10 ? (newTimer.Seconds = "0" + newTimer.Seconds) : null;
-	// 		if (newTimer.Seconds == 60) {
-	// 			newTimer.Seconds = "00";
-	// 			newTimer.Minutes++;
-	// 			newTimer.Minutes < 10 ? (newTimer.Minutes = "0" + newTimer.Minutes) : null;
-	// 		}
-	// 		setTimer(newTimer)
-	// 	}, 5000);
-	// }	AFETANDO O CONTEXT DAS CARTAS -----------
 
 	function shuffleCards() {
 		let newCards = [...Cards];
@@ -54,9 +33,6 @@ export default function GameRules(props) {
 	let twoCards = 0;
 	let lastPair = 0;
 	function flipCard(eFlip, cardData) {
-		if (!firstCard) {
-			tempo();
-		}
 		if (eFlip.closest(".Card").dataset.pair == "pair" || blockEvent) {
 			return;
 		}
@@ -99,7 +75,7 @@ export default function GameRules(props) {
 		if (lastPair == 15) {
 			setTimeout(() => {
 				setGameOver(true);
-			}, 1000);
+			}, 500);
 		}
 	}
 	function closeModal() {
@@ -111,14 +87,12 @@ export default function GameRules(props) {
 			value={{
 				Cards: Cards,
 				gameOver: gameOver,
-				closeModal: closeModal,
 				shuffleCards: shuffleCards,
 				flipCard: flipCard,
+				closeModal: closeModal,
 			}}
 		>
-			<TIMER.Provider value={{Seconds: timer.Seconds, Minutes: timer.Minutes}}>
 			{props.children}
-			</TIMER.Provider>
 		</GameRulesContext.Provider>
 	);
 }

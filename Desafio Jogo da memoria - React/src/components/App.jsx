@@ -4,10 +4,9 @@ import GameRules from "./GameRules";
 import HomePage from "./Homepage";
 
 export default function App() {
-
 	return (
 		<GameRules>
-			<HomePage/>
+			<HomePage />
 		</GameRules>
 	);
 }
