@@ -14,7 +14,7 @@ export default function DeckOfCards() {
 			{cardContext.Cards.map((card) => {
 				return (
 					<div
-						className="Card"
+						className={`Card ${card.flip ? "flip" : ""}`}
 						key={randomID()}
 						onClick={(e) => {
 							cardContext.flipCard(e.target, card);
@@ -32,4 +32,3 @@ export default function DeckOfCards() {
 		</div>
 	);
 }
-

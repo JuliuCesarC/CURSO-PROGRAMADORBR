@@ -14,12 +14,30 @@ export const GameRulesContext = React.createContext({
 		alert("flipCard ainda não configurado.");
 	},
 });
-
+export const TIMER = React.createContext({
+	Seconds: '',
+	Minutes: ''
+})
 
 export default function GameRules(props) {
 	const [Cards, setCards] = React.useState(NameOfCards);
-	const [gameOver, setGameOver] = React.useState(false)
-	
+	const [gameOver, setGameOver] = React.useState(false);
+	const [timer, setTimer] = React.useState({ Seconds: "00", Minutes: "00" })
+
+	// function tempo() {
+	// 	setInterval(() => {
+	// 		let newTimer = {Seconds: timer.Seconds, Minutes: timer.Minutes}
+	// 		newTimer.Seconds++;
+	// 		newTimer.Seconds < 10 ? (newTimer.Seconds = "0" + newTimer.Seconds) : null;
+	// 		if (newTimer.Seconds == 60) {
+	// 			newTimer.Seconds = "00";
+	// 			newTimer.Minutes++;
+	// 			newTimer.Minutes < 10 ? (newTimer.Minutes = "0" + newTimer.Minutes) : null;
+	// 		}
+	// 		setTimer(newTimer)
+	// 	}, 5000);
+	// }	AFETANDO O CONTEXT DAS CARTAS -----------
+
 	function shuffleCards() {
 		let newCards = [...Cards];
 		for (let i = 0; i < 30; i++) {
@@ -30,17 +48,20 @@ export default function GameRules(props) {
 		}
 		setCards(newCards);
 	}
-	
+
 	let blockEvent = false;
 	let firstCard;
 	let twoCards = 0;
 	let lastPair = 0;
 	function flipCard(eFlip, cardData) {
+		if (!firstCard) {
+			tempo();
+		}
 		if (eFlip.closest(".Card").dataset.pair == "pair" || blockEvent) {
 			return;
 		}
 		if (twoCards < 1) {
-			firstCard = { cardElement: eFlip.closest(".Card"), id: cardData.id };
+			firstCard = { cardElement: eFlip.closest(".Card"), card: cardData };
 			eFlip.closest(".Card").classList.add("flip");
 			twoCards++;
 		} else {
@@ -54,9 +75,11 @@ export default function GameRules(props) {
 		}
 	}
 	function checkPair(eCheck, cardData) {
-		if (firstCard.id == cardData.id) {
+		if (firstCard.card.id == cardData.id) {
 			firstCard.cardElement.dataset.pair = "pair";
+			firstCard.card.flip = true;
 			eCheck.dataset.pair = "pair";
+			cardData.flip = true;
 			setTimeout(() => {
 				twoCards = 0;
 				blockEvent = false;
@@ -74,10 +97,12 @@ export default function GameRules(props) {
 	}
 	function checkGameOver() {
 		if (lastPair == 15) {
-			setGameOver(true);
+			setTimeout(() => {
+				setGameOver(true);
+			}, 1000);
 		}
 	}
-	function closeModal(){
+	function closeModal() {
 		setGameOver(false);
 	}
 
@@ -91,8 +116,9 @@ export default function GameRules(props) {
 				flipCard: flipCard,
 			}}
 		>
+			<TIMER.Provider value={{Seconds: timer.Seconds, Minutes: timer.Minutes}}>
 			{props.children}
+			</TIMER.Provider>
 		</GameRulesContext.Provider>
 	);
 }
-
