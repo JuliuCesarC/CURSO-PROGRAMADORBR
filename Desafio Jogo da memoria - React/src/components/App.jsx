@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 
 const nameOfCards = [
@@ -33,6 +34,50 @@ function randomID() {
 }
 
 export default function App() {
+
+	let blockEvent = false
+	let firstCard;
+	let twoCards = 0
+	function flipCard(eFlip, cardData){
+		if(eFlip.closest('.Card').dataset.pair == 'pair'){
+			return;
+		}
+		if(twoCards < 1){
+			firstCard = {cardElement: eFlip.closest('.Card'), id:cardData.id}
+			eFlip.closest('.Card').classList.add("flip")
+			twoCards++
+		}else{
+			blockEvent = true
+			if(firstCard.cardElement == eFlip.closest('.Card')){
+				blockEvent = false
+				return;
+			}
+			eFlip.closest('.Card').classList.add("flip")
+			checkPair(eFlip.closest('.Card'), cardData)
+		}
+	}
+	function checkPair(eCheck, cardData){
+		if(firstCard.id == cardData.id){
+			firstCard.cardElement.dataset.pair = 'pair';
+			console.log(eCheck.dataset);
+			eCheck.dataset.pair = 'pair'
+			setTimeout(() => {
+				twoCards = 0
+				blockEvent = false
+			}, 500);
+			return;
+		}
+		setTimeout(() => {
+			firstCard.cardElement.classList.remove('flip')
+			eCheck.classList.remove('flip')
+				twoCards = 0
+				blockEvent = false
+		}, 1500);
+	}
+	function gameFinish(){
+
+	}
+
 	return (
 		<div className="container">
 			<h1>Hello World!</h1>
@@ -43,9 +88,7 @@ export default function App() {
 							className="Card"
 							key={randomID()}
 							onClick={(e) => {
-								e.target.parentNode.classList.length > 1
-								?e.target.parentNode.classList.remove("flip")
-								:e.target.parentNode.classList.add("flip")
+								blockEvent?null:flipCard(e.target, card)
 							}}
 						>
 							<div className="frontCard">
