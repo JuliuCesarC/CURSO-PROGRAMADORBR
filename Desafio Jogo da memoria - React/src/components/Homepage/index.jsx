@@ -1,43 +1,17 @@
 import React from "react";
-import { GameRulesContext } from "../GameRules";
+import { GameRulesContext } from "../GameRulesProvider";
 import DeckOfCards from "../DeckOfCards";
+import Timer from "../Timer/Timer";
 import "./HomePage.css";
 
 export default function HomePage(props) {
-	const [timer, setTimer] = React.useState({Seconds: '00', Minutes: '00'})
 	const cardContext = React.useContext(GameRulesContext);
-	let timerInterval;
-
-	function startTimer() {
-		timerInterval = setInterval(count, 1000);
-	}
-	function count() {
-		let newTimer = { Seconds: timer.Seconds, Minutes: timer.Minutes };
-		newTimer.Seconds++;
-		newTimer.Seconds < 10 ? (newTimer.Seconds = "0" + newTimer.Seconds) : null;
-		if (newTimer.Seconds == 60) {
-			newTimer.Seconds = "00";
-			newTimer.Minutes++;
-			newTimer.Minutes < 10
-				? (newTimer.Minutes = "0" + newTimer.Minutes)
-				: null;
-		}
-		console.log("Dentro do contador o newTimer:", newTimer);
-		setTimer(newTimer);
-	}
-React.useEffect(()=>{
-		clearInterval(timerInterval);
-		timerInterval = null;
-},[])
-	
 
 	return (
 		<div className="container">
 			<div className="navGame">
 				<h2>Jogo da Memória</h2>
-				<h4>
-					{`${timer.Minutes}:${timer.Seconds}`}
-				</h4>
+				<Timer/>
 				<button type="button" onClick={cardContext.shuffleCards}>
 					Embaralhar cartas.
 				</button>
@@ -61,7 +35,8 @@ React.useEffect(()=>{
 					</div>
 				</div>
 			)}
-			<DeckOfCards startTimer={startTimer}/>
+			<DeckOfCards 
+			/>
 		</div>
 	);
 }

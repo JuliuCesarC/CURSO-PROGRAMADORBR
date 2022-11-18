@@ -1,5 +1,6 @@
 import React from "react";
-import { GameRulesContext } from "../GameRules";
+import { InfoContext } from "../GameInfoProvider";
+import { GameRulesContext } from "../GameRulesProvider";
 
 export default function DeckOfCards(props) {
 	const cardContext = React.useContext(GameRulesContext);
@@ -17,7 +18,6 @@ export default function DeckOfCards(props) {
 						key={randomID()}
 						onClick={(e) => {
 							cardContext.flipCard(e.target, card);
-							props.startTimer()
 						}}
 					>
 						<div className="frontCard">

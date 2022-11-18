@@ -1,4 +1,5 @@
 import React from "react";
+import { InfoContext } from "../GameInfoProvider";
 import { NameOfCards } from "../NameOfCards";
 
 export const GameRulesContext = React.createContext({
@@ -13,9 +14,10 @@ export const GameRulesContext = React.createContext({
 	},
 });
 
-export default function GameRules(props) {
+export default function GameRulesProvider(props) {
 	const [Cards, setCards] = React.useState(NameOfCards);
 	const [gameOver, setGameOver] = React.useState(false);
+	const timerContext = React.useContext(InfoContext)
 
 	function shuffleCards() {
 		let newCards = [...Cards];
@@ -33,6 +35,9 @@ export default function GameRules(props) {
 	let twoCards = 0;
 	let lastPair = 0;
 	function flipCard(eFlip, cardData) {
+		if(!firstCard){
+			timerContext.startTimer()
+		}
 		if (eFlip.closest(".Card").dataset.pair == "pair" || blockEvent) {
 			return;
 		}
