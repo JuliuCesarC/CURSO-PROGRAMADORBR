@@ -39,7 +39,7 @@
 	outline-offset: -5px;
 	position: relative;
 }
-.backCard::after{
+/* .backCard::after{
 	content: "";
 	position: absolute;
 	top: 32%;
@@ -50,7 +50,7 @@
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
-}
+} */
 .flip{
 	transform: rotateY(180deg);
 }

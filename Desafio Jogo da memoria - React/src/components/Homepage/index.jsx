@@ -1,21 +1,16 @@
 import React from "react";
 import { GameRulesContext } from "../GameRulesProvider";
 import DeckOfCards from "../DeckOfCards";
-import Timer from "../Timer/Timer";
+import Timer from "../GameInfo";
 import "./HomePage.css";
+import GameInfo from "../GameInfo";
 
 export default function HomePage(props) {
 	const cardContext = React.useContext(GameRulesContext);
 
 	return (
 		<div className="container">
-			<div className="navGame">
-				<h2>Jogo da Memória</h2>
-				<Timer/>
-				<button type="button" onClick={cardContext.shuffleCards}>
-					Embaralhar cartas.
-				</button>
-			</div>
+			<GameInfo />
 			{cardContext.gameOver && (
 				<div className="gameOver">
 					<div className="modal">

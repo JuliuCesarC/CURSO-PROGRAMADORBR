@@ -16,11 +16,18 @@ const Name = [
 	{ name: "vue", },
 ];
 function configCards() {
-	for(let i of Name){
+	let newName = []
+	for(let i = 0 ; i<= Name.length; i++){
 		let ID = Math.random().toString(36).substring(2, 9);
-		i.id = ID
-		i.flip = false
+		console.log(configCards(newName));
+		// newName[i].id = ID
+		// newName[i].flip = false
 	}
-	return Name
+	return newName
 }
+console.log(configCards());
+setTimeout(() => {
+	console.log(configCards());
+	
+}, 10000);
 export const NameOfCards = [configCards(), configCards()].flat();

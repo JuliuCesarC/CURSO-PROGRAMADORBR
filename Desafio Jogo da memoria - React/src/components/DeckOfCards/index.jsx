@@ -1,5 +1,4 @@
 import React from "react";
-import { InfoContext } from "../GameInfoProvider";
 import { GameRulesContext } from "../GameRulesProvider";
 
 export default function DeckOfCards(props) {
@@ -24,7 +23,8 @@ export default function DeckOfCards(props) {
 							<img src={`img/${card.name}.png`} alt="" />
 						</div>
 						<div className="backCard">
-							<img src="img/progBR.png" alt="" />
+							{card.id}
+							{/* <img src="img/progBR.png" alt="" /> */}
 						</div>
 					</div>
 				);
