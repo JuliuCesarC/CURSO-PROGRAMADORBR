@@ -3,38 +3,44 @@ import { useState } from "react";
 import { GameRulesContext } from "../GameRulesProvider";
 
 export default function GameInfo() {
-	const cardContext = React.useContext(GameRulesContext)
-	const [startTimer, setStartTimer] = React.useState(cardContext.startTimer)
-
-	React.useEffect(()=>{
-		setStartTimer(cardContext.startTimer)
-		console.log('entrou no useEffect', cardContext.startTimer);
-	}, [cardContext.startTimer])
+	const cardContext = React.useContext(GameRulesContext);
 
 	return (
 		<div className="navGame">
 			<h2>Jogo da Memória</h2>
-			{startTimer ? <Timer />: '00:00'}
+			<Timer start={cardContext.startTimer} />
 		</div>
 	);
 }
 
-function Timer() {
+function Timer({ start }) {
 	const [seconds, setSeconds] = React.useState(0);
 	const [minutes, setMinutes] = React.useState(0);
+	const count = React.useRef({Sec:0, Min:0})
+	let interval;
 
 	React.useEffect(() => {
-		setTimeout(() => {
-			setSeconds(seconds + 1);
-			if (seconds == 59) {
-				setSeconds(0);
-				setMinutes(minutes + 1);
-				if (minutes == 59) {
-					setMinutes(0);
+		if (start && !interval) {
+			interval = setInterval(() => {
+				count.current.Sec++
+				setSeconds(count.current.Sec);
+				if (count.current.Sec == 60) {
+					count.current.Sec = 0
+					count.current.Min++
+					setSeconds(count.current.Sec);
+					setMinutes(count.current.Min);
+					if (count.current.Min == 59) {
+						count.current.Min = 0
+						setMinutes(count.current.Min);
+					}
 				}
-			}
-		}, 1000);
-	}, [seconds]);
+			}, 1000);
+		} 
+		if(start) {
+			clearInterval(interval);
+			interval = null;
+		}
+	}, [start]);
 
 	return (
 		<h4>

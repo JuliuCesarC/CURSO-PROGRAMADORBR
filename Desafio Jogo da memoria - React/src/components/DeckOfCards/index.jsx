@@ -5,16 +5,15 @@ import "./DeckOfCards.css"
 export default function DeckOfCards(props) {
 	const cardContext = React.useContext(GameRulesContext);
 
-
 	function randomID() {
 		return Math.random().toString(36).substring(2, 9);
 	}
 
 	return (
 		<div className="deckOfCards">
-			<div className="modalStartGame">
+			{!cardContext.startTimer && <div className="modalStartGame">
 				<button onClick={cardContext.setTimer}>Start</button>
-			</div>
+			</div>}
 			{cardContext.Cards.map((card) => {
 				return (
 					<div
