@@ -6,9 +6,13 @@ export const GameRulesContext = React.createContext({
 	startTimer: false,
 	gameOver: false,
 	closeModal: false,
+	setTimer: () => {
+		alert("setTimer ainda não configurado.");
+	},
 	shuffleCards: () => {
 		alert("shuffleCards ainda não configurado.");
 	},
+	
 	flipCard: () => {
 		alert("flipCard ainda não configurado.");
 	},
@@ -17,12 +21,13 @@ export const GameRulesContext = React.createContext({
 export default function GameRulesProvider(props) {
 	const [Cards, setCards] = React.useState(NameOfCards);
 	const [gameOver, setGameOver] = React.useState(false);
-	const [startTimer, setStartTimer] = React.useState(false);
+	const [startTimer, setStartTimer] = React.useState(false)
 
-	function startCounter() {
-		setStartTimer(true);
+	function setTimer(){
+		setStartTimer(true)
+		shuffleCards()
 	}
-
+	
 	function shuffleCards() {
 		let newCards = [...Cards];
 		for (let i = 0; i < 30; i++) {
@@ -39,11 +44,8 @@ export default function GameRulesProvider(props) {
 	let twoCards = 0;
 	let lastPair = 0;
 	function flipCard(eFlip, cardData) {
-		if(!firstCard){
-			startCounter()
-			console.log('GameRules inicia contador');
-		}
-		if (cardData.flip || blockEvent) {return;}
+		if (cardData.flip || blockEvent || !startTimer) {return;}
+		console.log('passou do cardData');
 		if (twoCards < 1) {
 			firstCard = { cardElement: eFlip.closest(".Card"), card: cardData };
 			eFlip.closest(".Card").classList.add("flip");
@@ -97,6 +99,7 @@ export default function GameRulesProvider(props) {
 				Cards: Cards,
 				startTimer: startTimer,
 				gameOver: gameOver,
+				setTimer: setTimer,
 				shuffleCards: shuffleCards,
 				flipCard: flipCard,
 				closeModal: closeModal,

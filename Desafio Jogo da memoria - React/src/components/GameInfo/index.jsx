@@ -1,16 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import { GameRulesContext } from "../GameRulesProvider";
 
 export default function GameInfo() {
 	const cardContext = React.useContext(GameRulesContext)
+	const [startTimer, setStartTimer] = React.useState(cardContext.startTimer)
+
+	React.useEffect(()=>{
+		setStartTimer(cardContext.startTimer)
+		console.log('entrou no useEffect', cardContext.startTimer);
+	}, [cardContext.startTimer])
 
 	return (
 		<div className="navGame">
 			<h2>Jogo da Memória</h2>
-			{cardContext.startTimer ? <Timer />: '00:00'}
-			<button type="button" onClick={cardContext.shuffleCards}>
-				Embaralhar cartas.
-			</button>
+			{startTimer ? <Timer />: '00:00'}
 		</div>
 	);
 }

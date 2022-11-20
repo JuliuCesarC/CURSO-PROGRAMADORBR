@@ -1,8 +1,10 @@
 import React from "react";
 import { GameRulesContext } from "../GameRulesProvider";
+import "./DeckOfCards.css"
 
 export default function DeckOfCards(props) {
 	const cardContext = React.useContext(GameRulesContext);
+
 
 	function randomID() {
 		return Math.random().toString(36).substring(2, 9);
@@ -10,6 +12,9 @@ export default function DeckOfCards(props) {
 
 	return (
 		<div className="deckOfCards">
+			<div className="modalStartGame">
+				<button onClick={cardContext.setTimer}>Start</button>
+			</div>
 			{cardContext.Cards.map((card) => {
 				return (
 					<div
@@ -23,8 +28,7 @@ export default function DeckOfCards(props) {
 							<img src={`img/${card.name}.png`} alt="" />
 						</div>
 						<div className="backCard">
-							{card.id}
-							{/* <img src="img/progBR.png" alt="" /> */}
+							<img src="img/progBR.png" alt="" />
 						</div>
 					</div>
 				);
