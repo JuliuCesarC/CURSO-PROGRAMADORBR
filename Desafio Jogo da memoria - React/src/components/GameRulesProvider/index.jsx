@@ -39,16 +39,15 @@ export default function GameRulesProvider(props) {
 	let twoCards = 0;
 	let lastPair = 0;
 	function flipCard(eFlip, cardData) {
-		// if(!firstCard){
-		// 	startCounter()
-		// 	console.log('GameRules inicia contador');
-		// }
+		if(!firstCard){
+			startCounter()
+			console.log('GameRules inicia contador');
+		}
 		if (cardData.flip || blockEvent) {return;}
 		if (twoCards < 1) {
 			firstCard = { cardElement: eFlip.closest(".Card"), card: cardData };
-			// eFlip.closest(".Card").classList.add("flip");
+			eFlip.closest(".Card").classList.add("flip");
 			cardData.flip = true;
-			console.log(cardData);
 			twoCards++;
 		} else {
 			blockEvent = true;
@@ -57,12 +56,12 @@ export default function GameRulesProvider(props) {
 				return;
 			}
 			eFlip.closest(".Card").classList.add("flip");
+			cardData.flip = true;
 			checkPair(eFlip.closest(".Card"), cardData);
 		}
 	}
 	function checkPair(eCheck, cardData) {
-		if (firstCard.card.id == cardData.id) {
-			firstCard.card.flip = true;
+		if (firstCard.card.name == cardData.name) {
 			setTimeout(() => {
 				twoCards = 0;
 				blockEvent = false;
@@ -73,7 +72,9 @@ export default function GameRulesProvider(props) {
 		}
 		setTimeout(() => {
 			firstCard.cardElement.classList.remove("flip");
+			firstCard.card.flip = false
 			eCheck.classList.remove("flip");
+			cardData.flip = false
 			twoCards = 0;
 			blockEvent = false;
 		}, 1000);
