@@ -41,7 +41,7 @@ export default function GameRulesProvider(props) {
 			newCards[i] = newCards[random];
 			newCards[random] = removedCard;
 		}
-		for(c of newCards){
+		for(let c of newCards){
 			c.flip = false
 		}
 		setCards(newCards);
@@ -90,11 +90,11 @@ export default function GameRulesProvider(props) {
 	}
 	function checkGameOver() {
 		if (lastPair == Cards.length/2) {
+			setTimeout(() => {
 			setStartTimer(false);
 			setGameOver(true);
-			setTimeout(() => {
 				setModalGameOver(true)
-			}, 1000);
+			}, 500);
 		}
 	}
 	function closeModal() {
