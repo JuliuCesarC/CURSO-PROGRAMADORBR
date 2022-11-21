@@ -5,6 +5,7 @@
 	justify-content: center;
 	gap: 7px;
 }
+
 .modalStartGame{
 	position: absolute;
 	background-color: var(--background-color2);
@@ -97,4 +98,10 @@ img{
 	100%{
 		background-color: rgb(230, 95, 217);
 	}
+}
+@media (max-width: 600px) {
+	.deckOfCards{
+		grid-template: repeat(10, auto) / repeat(3, auto);
+	}
+
 }
