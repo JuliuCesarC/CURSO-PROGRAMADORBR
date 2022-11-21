@@ -11,7 +11,7 @@ export default function DeckOfCards(props) {
 
 	return (
 		<div className="deckOfCards">
-			{!cardContext.startTimer && <div className="modalStartGame">
+			{!cardContext.gameOver && !cardContext.startTimer && <div className="modalStartGame">
 				<button onClick={cardContext.setTimer}>Start</button>
 			</div>}
 			{cardContext.Cards.map((card) => {

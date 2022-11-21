@@ -1,7 +1,6 @@
 import React from "react";
 import { GameRulesContext } from "../GameRulesProvider";
 import DeckOfCards from "../DeckOfCards";
-import Timer from "../GameInfo";
 import "./HomePage.css";
 import GameInfo from "../GameInfo";
 
@@ -11,7 +10,7 @@ export default function HomePage(props) {
 	return (
 		<div className="container">
 			<GameInfo />
-			{cardContext.gameOver && (
+			{cardContext.modalGameOver && (
 				<div className="gameOver">
 					<div className="modal">
 						<h3>Fim de jogo</h3>

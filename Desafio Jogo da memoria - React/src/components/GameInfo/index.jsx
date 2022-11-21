@@ -36,9 +36,10 @@ function Timer({ start }) {
 				}
 			}, 1000);
 		} 
-		if(start) {
+		if(!start) {
 			clearInterval(interval);
-			interval = null;
+			interval = 0;
+			console.log('Limpou o interval', interval);
 		}
 	}, [start]);
 

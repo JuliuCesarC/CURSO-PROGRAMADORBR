@@ -72,7 +72,7 @@
 	content: "";
 	position: absolute;
 	top: 32%;
-	width: 42%;
+	width: 45%;
 	height: 40%;
 	transform: rotate(-10deg);
 	animation-name: backgroundMove;

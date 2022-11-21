@@ -6,6 +6,7 @@ export const GameRulesContext = React.createContext({
 	startTimer: false,
 	gameOver: false,
 	closeModal: false,
+	modalGameOver: false,
 	setTimer: () => {
 		alert("setTimer ainda não configurado.");
 	},
@@ -22,6 +23,7 @@ export default function GameRulesProvider(props) {
 	const [Cards, setCards] = React.useState(NameOfCards);
 	const [gameOver, setGameOver] = React.useState(false);
 	const [startTimer, setStartTimer] = React.useState(false)
+	const [modalGameOver, setModalGameOver] = React.useState(false)
 
 	function setTimer(){
 		setStartTimer(true)
@@ -30,8 +32,8 @@ export default function GameRulesProvider(props) {
 	
 	function shuffleCards() {
 		let newCards = [...Cards];
-		for (let i = 0; i < 30; i++) {
-			let random = Math.floor(Math.random() * 15);
+		for (let i = 0; i < Cards.length; i++) {
+			let random = Math.floor(Math.random() * Cards.length);
 			let removedCard = newCards[i];
 			newCards[i] = newCards[random];
 			newCards[random] = removedCard;
@@ -45,7 +47,6 @@ export default function GameRulesProvider(props) {
 	let lastPair = 0;
 	function flipCard(eFlip, cardData) {
 		if (cardData.flip || blockEvent || !startTimer) {return;}
-		console.log('passou do cardData');
 		if (twoCards < 1) {
 			firstCard = { cardElement: eFlip.closest(".Card"), card: cardData };
 			eFlip.closest(".Card").classList.add("flip");
@@ -82,14 +83,16 @@ export default function GameRulesProvider(props) {
 		}, 1000);
 	}
 	function checkGameOver() {
-		if (lastPair == 15) {
+		if (lastPair == Cards.length/2) {
+			setStartTimer(false);
+			setGameOver(true);
 			setTimeout(() => {
-				setGameOver(true);
-				setStartTimer(false);
-			}, 500);
+				setModalGameOver(true)
+			}, 1000);
 		}
 	}
 	function closeModal() {
+		setModalGameOver(false)
 		setGameOver(false);
 	}
 
@@ -99,6 +102,7 @@ export default function GameRulesProvider(props) {
 				Cards: Cards,
 				startTimer: startTimer,
 				gameOver: gameOver,
+				modalGameOver,
 				setTimer: setTimer,
 				shuffleCards: shuffleCards,
 				flipCard: flipCard,
