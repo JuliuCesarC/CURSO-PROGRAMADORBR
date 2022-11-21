@@ -1,1 +1,17 @@
-
+:root {
+	--background-color0: #181818;
+	--background-color1: #1f1f1f;
+	--background-color2: #303030;
+	--color-base1: #108b57;
+	--color-base2: #0B3926;
+	--text-color1: #efefef;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: 'Nerko One', cursive;
+	font-size: 20px;
+	text-transform: uppercase;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { GameRulesContext } from "../GameRulesProvider";
+import "./GameInfo.css"
 
 export default function GameInfo() {
 	const cardContext = React.useContext(GameRulesContext);
@@ -36,5 +37,5 @@ function Timer({ start, reset }) {
 			.padStart(2, "0")}`;
 	}
 
-	return <h4>{format()}</h4>;
+	return <h3>{format()}</h3>;
 }

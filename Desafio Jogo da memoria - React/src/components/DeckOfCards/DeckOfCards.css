@@ -1,28 +1,29 @@
 .deckOfCards{
 	position: relative;
-	width: 100%;
 	display: grid;
 	grid-template: repeat(6, auto) / repeat(5, auto);
 	justify-content: center;
-	gap: 10px;
+	gap: 7px;
 }
 .modalStartGame{
 	position: absolute;
-	background-color: gray;
-	width: 40%;
-	height: 80px;
-	top: calc(50% - 40px);
-	left: calc(50% - 20%);
+	background-color: var(--background-color2);
+	width: 50%;
+	height: 100px;
+	top: calc(50% - 50px);
+	left: calc(50% - 25%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	outline: 3px solid var(--color-base1);
+	outline-offset: -10px;
 	box-shadow: 0px 0px 20px black;
 	border-radius: 10px;
 	z-index: 10;
 }
 .modalStartGame button{
-	background-color: rgb(20, 94, 60);
-	color: white;
+	background-color: var(--color-base1);
+	color: var(--text-color1);
 	font-weight: 700;
 	text-transform: uppercase;
 	width: 80%;
@@ -32,13 +33,13 @@
 	transition: all .2s;
 }
 .modalStartGame button:hover{
-	box-shadow: 0 0 8px rgb(20, 94, 60);
+	box-shadow: 0 0 8px var(--color-base1);
 	transform: scaleX(1.05);
 }
 .Card{
 	position: relative;
-	width: 15vw;
-	height: 15vw;
+	width: 16vw;
+	height: 16vw;
 	max-width: 100px;
 	max-height: 100px;
 	box-shadow: 1px 1px 10px black;
@@ -58,12 +59,13 @@
 	backface-visibility: hidden;
 }
 .frontCard{
-	background-color: rgb(6, 40, 70);
+	background-color: #909090;
 	transform: rotateY(180deg);
 	width: 100%;
 }
 .backCard{
-	background-color: rgb(13, 24, 36);
+	background-image: url("img/backgroundCard.png");
+	background-size: cover;
 	outline: 5px solid black;
 	outline-offset: -5px;
 	position: relative;

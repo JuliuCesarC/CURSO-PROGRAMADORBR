@@ -1,21 +1,11 @@
 .container{
-	background-color: #404040;
-	border-radius: 10px;
-	padding: 5px 10px;
-	max-width: 800px;
+	background-color: var(--background-color2);
 	width: 90%;
+	max-width: 800px;
+	padding: 20px 0px;
 	margin: auto;
 }
-.navGame{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	margin-bottom: 20px;
-}
-.navGame button{
-	height: 40px;
-}
+
 .gameOver{
 	position: fixed;
 	width: 100%;
@@ -29,8 +19,46 @@
 	align-items: center;
 }
 .modal{
-	width: 320px;
-	height: 400px;
-	background-color: #404040;
+	position: relative;
+	background-color: var(--background-color2);
+	width: 40%;
+	padding: 20px;
 	text-align: center;
+	border-radius: 10px;
+	outline: 3px solid var(--color-base1);
+	outline-offset: -10px;
+}
+.closeModal{
+	position: absolute;
+	background-color: var(--color-base1);
+	color: var(--text-color1);
+	width: 40px;
+	height: 40px;
+	top: -5px;
+	right: -5px;
+	font-size: 18px;
+
+	border: unset;
+	border-radius: 50%;
+	transition: all .2s;
+}
+.closeModal:hover{
+	transform: scale(1.08);
+	box-shadow: 0 0 5px var(--color-base1);
+}
+.restart{
+	background-color: var(--color-base1);
+	color: var(--text-color1);
+	width: 80%;
+	height: 40px;
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: unset;
+	border-radius: 2px;
+	transition: all .2s;
+}
+.restart:hover{
+	transform: scale(1.05);
+	box-shadow: 0 0 5px var(--color-base1);
 }

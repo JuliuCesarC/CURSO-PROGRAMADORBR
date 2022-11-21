@@ -2,18 +2,16 @@ import React from "react";
 import { GameRulesContext } from "../GameRulesProvider";
 import DeckOfCards from "../DeckOfCards";
 import "./HomePage.css";
-import GameInfo from "../GameInfo";
 
 export default function HomePage(props) {
 	const cardContext = React.useContext(GameRulesContext);
 
 	return (
 		<div className="container">
-			<GameInfo />
 			{cardContext.modalGameOver && (
 				<div className="gameOver">
 					<div className="modal">
-						<h3>Fim de jogo</h3>
+						<h2>Fim de jogo</h2>
 						<button className="closeModal" onClick={cardContext.closeModal}>
 							✖
 						</button>
