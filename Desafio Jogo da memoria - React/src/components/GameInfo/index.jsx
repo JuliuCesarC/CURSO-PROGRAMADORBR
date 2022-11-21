@@ -8,46 +8,33 @@ export default function GameInfo() {
 	return (
 		<div className="navGame">
 			<h2>Jogo da Memória</h2>
-			<Timer start={cardContext.startTimer} />
+			<Timer start={cardContext.startTimer} reset={cardContext.reset} />
 		</div>
 	);
 }
 
-function Timer({ start }) {
-	const [seconds, setSeconds] = React.useState(0);
-	const [minutes, setMinutes] = React.useState(0);
-	const count = React.useRef({Sec:0, Min:0})
-	let interval;
+function Timer({ start, reset }) {
+	const [timer, setTimer] = React.useState(12000);
 
 	React.useEffect(() => {
-		if (start && !interval) {
-			interval = setInterval(() => {
-				count.current.Sec++
-				setSeconds(count.current.Sec);
-				if (count.current.Sec == 60) {
-					count.current.Sec = 0
-					count.current.Min++
-					setSeconds(count.current.Sec);
-					setMinutes(count.current.Min);
-					if (count.current.Min == 59) {
-						count.current.Min = 0
-						setMinutes(count.current.Min);
-					}
-				}
+		if (start) {
+			setTimeout(() => {
+				setTimer(timer + 1000);
 			}, 1000);
-		} 
-		if(!start) {
-			clearInterval(interval);
-			interval = 0;
-			console.log('Limpou o interval', interval);
 		}
-	}, [start]);
+	}, [start, timer]);
 
-	return (
-		<h4>
-			{`${minutes.toString().padStart(2, "0")}:${seconds
-				.toString()
-				.padStart(2, "0")}`}
-		</h4>
-	);
+	React.useEffect(()=>{
+		setTimer(0)
+	},[reset])
+
+	function format() {
+		let sec = (timer / 1000) % 60;
+		let min = Math.floor(timer / 60000);
+		return `${min.toString().padStart(2, "0")}:${sec
+			.toString()
+			.padStart(2, "0")}`;
+	}
+
+	return <h4>{format()}</h4>;
 }

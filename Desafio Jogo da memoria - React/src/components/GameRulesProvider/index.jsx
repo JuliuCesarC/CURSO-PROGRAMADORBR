@@ -7,6 +7,7 @@ export const GameRulesContext = React.createContext({
 	gameOver: false,
 	closeModal: false,
 	modalGameOver: false,
+	reset: false,
 	setTimer: () => {
 		alert("setTimer ainda não configurado.");
 	},
@@ -24,9 +25,11 @@ export default function GameRulesProvider(props) {
 	const [gameOver, setGameOver] = React.useState(false);
 	const [startTimer, setStartTimer] = React.useState(false)
 	const [modalGameOver, setModalGameOver] = React.useState(false)
+	const [reset, setReset] = React.useState(false)
 
 	function setTimer(){
 		setStartTimer(true)
+		setReset((prev)=>!prev)
 		shuffleCards()
 	}
 	
@@ -37,6 +40,9 @@ export default function GameRulesProvider(props) {
 			let removedCard = newCards[i];
 			newCards[i] = newCards[random];
 			newCards[random] = removedCard;
+		}
+		for(c of newCards){
+			c.flip = false
 		}
 		setCards(newCards);
 	}
@@ -102,7 +108,8 @@ export default function GameRulesProvider(props) {
 				Cards: Cards,
 				startTimer: startTimer,
 				gameOver: gameOver,
-				modalGameOver,
+				modalGameOver: modalGameOver,
+				reset: reset,
 				setTimer: setTimer,
 				shuffleCards: shuffleCards,
 				flipCard: flipCard,
