@@ -1,6 +1,4 @@
-const redux = require("redux");
-const createStore = redux.createStore;
-const combineReducer = redux.combineReducers;
+const { configureStore, combineReducers } = require("@reduxjs/toolkit");
 
 // Por convenção é utilizado os reducers a as actions separados, uma pasta para todos os reducers, e outra só para as actions.
 const {
@@ -9,24 +7,26 @@ const {
 } = require("./actions/CounterActions");
 const { addItemAction } = require("./actions/ListActions");
 
-const counterReducer = require('./reducers/CounterReducer')
-const listReducer = require('./reducers/ListReducer')
+const counterSlice = require("./reducers/CounterSlice");
+const listSlice = require("./reducers/ListSlice");
 
-const allReducers = combineReducer({
-	counter: counterReducer,
-	list: listReducer,
+const allReducers = combineReducers({
+	counter: counterSlice.reducer,
+	list: listSlice.reducer,
 });
 
-const store = createStore(allReducers);
+const store = configureStore({
+	reducer: allReducers,
+});
 
-console.log(store.getState());
 store.subscribe(() => {
-	console.log(store.getState().counter);
+	// console.log(store.getState().counter);
 	// Caso for necessário imprimir somente os estados do contador(exemplo acima), então podemos adicionar o nome do reducer apos o 'getState', nesse caso o 'counter', pois esse foi o nome setado dentro do 'combineReducer'.
+	console.log(store.getState());
 });
 
-store.dispatch(addItemAction("Novo Item"));
 store.dispatch(incrementAction(1));
+store.dispatch(addItemAction("Novo Item"));
 store.dispatch(incrementAction());
 store.dispatch(decrementAction(3));
 store.dispatch(incrementAction(5));

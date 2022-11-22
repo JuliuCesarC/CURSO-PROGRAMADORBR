@@ -1,6 +1,6 @@
 
 const addItemAction = (item) => {
-	return { type: "ADD_ITEM", payload: item };
+	return { type: "list/ADD_ITEM", payload: item };
 };
 
 module.exports = {

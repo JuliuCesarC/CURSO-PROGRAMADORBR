@@ -1,6 +1,9 @@
 const redux = require("redux");
 const createStore = redux.createStore;
 // O método createStore é o responsável por criar o encapsulamento onde vai ficar o estado.
+// ---------- // ----------
+// Atualmente o Redux recomenta a utilização do Redux Toolkit, que é mais atual e previne alguns erros básicos. O 'createStore' acima esta como 'deprecated', porém ele ainda funciona.
+// ---------- // ----------
 
 // Uma ação possui um 'tipo' e uma 'carga', o que basicamente é um objeto. Para uma ação simples como incrementar ou decrementar, não é preciso nem da carga, o tipo será suficiente.
 const incrementAction = { type: "INCREMENT" };
@@ -21,7 +24,6 @@ function counterReducer(state = 0, action) {
 	}
 }
 // Para criar o local onde sera armazenado o estado, utilizaremos o 'createStore'.
-// Atualmente o Redux recomenta a utilização do Redux Toolkit, que é mais atual e previne alguns erros básicos. O 'createStore' abaixo esta como 'deprecated', porém ele ainda funciona.
 const store = createStore(counterReducer);
 // O 'createStore' recebe como parâmetro o Reducer.
 
