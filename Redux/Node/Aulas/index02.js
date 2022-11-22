@@ -25,7 +25,7 @@ console.log(store.getState())
 store.subscribe(()=>{console.log(store.getState());})
 
 store.dispatch(incrementAction(1))
-// A forma como passamos a ação para o dispatch também muda.
+// A forma como passamos a ação para o dispatch também muda. Agora como temos uma ação em forma de função, então primeiro precisamos executar ela, passando ou não algum parâmetro.
 store.dispatch(incrementAction())
 store.dispatch(decrementAction(3))
 store.dispatch(incrementAction(5))

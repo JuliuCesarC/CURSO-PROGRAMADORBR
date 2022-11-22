@@ -1,38 +1,32 @@
 const redux = require("redux");
 const createStore = redux.createStore;
-// O método createStore é o responsável por criar o encapsulamento onde vai ficar o estado.
+const combineReducer = redux.combineReducers;
 
-// Uma ação possui um 'tipo' e uma 'carga', o que basicamente é um objeto. Para uma ação simples como incrementar ou decrementar, não é preciso nem da carga, o tipo será suficiente.
-const incrementAction = { type: "INCREMENT" };
-const decrementAction = { type: "DECREMENT" };
+// Por convenção é utilizado os reducers a as actions separados, uma pasta para todos os reducers, e outra só para as actions.
+const {
+	incrementAction,
+	decrementAction,
+} = require("./actions/CounterActions");
+const { addItemAction } = require("./actions/ListActions");
 
-// Uma ação por si só não faz nada, ela precisa do Reducer para executar a ação. E o reducer é uma função.
-function counterReducer(state = 0, action) {
-	// No próprio reducer declaramos o que o estado ira retornar caso não haja nenhuma ação.
-	// O resultado que o Reducer ira entregar, depende do tipo de ação que foi chamada.
+const counterReducer = require('./reducers/CounterReducer')
+const listReducer = require('./reducers/ListReducer')
 
-	switch (action.type) {
-		case "INCREMENT":
-			return state + 1;
-		case "DECREMENT":
-			return state - 1;
-		default:
-			return state;
-	}
-}
-// Para criar o local onde sera armazenado o estado, utilizaremos o 'createStore'.
-// Atualmente o Redux recomenta a utilização do Redux Toolkit, que é mais atual e previne alguns erros básicos. O 'createStore' abaixo esta como 'deprecated', porém ele ainda funciona.
-const store = createStore(counterReducer);
-// O 'createStore' recebe como parâmetro o Reducer.
+const allReducers = combineReducer({
+	counter: counterReducer,
+	list: listReducer,
+});
+
+const store = createStore(allReducers);
 
 console.log(store.getState());
 store.subscribe(() => {
-	console.log(store.getState());
+	console.log(store.getState().counter);
+	// Caso for necessário imprimir somente os estados do contador(exemplo acima), então podemos adicionar o nome do reducer apos o 'getState', nesse caso o 'counter', pois esse foi o nome setado dentro do 'combineReducer'.
 });
-// Toda vez que houver uma alteração no estado, o 'subscribe' ira executar a ação. Porém, ao executar o código nada acontece, pois nenhuma ação foi executada.
 
-// Para levar a ação até o Reducer utilizamos um 'dispatch'.
-store.dispatch(incrementAction);
-store.dispatch(incrementAction);
-store.dispatch(decrementAction);
-store.dispatch(incrementAction);
+store.dispatch(addItemAction("Novo Item"));
+store.dispatch(incrementAction(1));
+store.dispatch(incrementAction());
+store.dispatch(decrementAction(3));
+store.dispatch(incrementAction(5));
