@@ -1,9 +1,10 @@
 const redux = require("redux");
 const createStore = redux.createStore;
 
-// O ação abaixo funciona normalmente, porém o valor do increment esta fixo, e foi definido dentro do Reducer. Para resolver este problema precisamos passar além do tipo de ação, o valor/carga: 'payload'.
+// As actions anteriores funcionavam normalmente, porém o valor do increment esta fixo, e foi definido dentro do Reducer. Para resolver este problema além de passar o tipo de ação, precisamos passar o valor/carga: 'payload'.
+// Dentro do Redux, funções que retornam uma action é chamado de 'action creator', e foi o que utilizamos abaixo.
 const incrementAction = (value)=>{ return {type: 'INCREMENT', payload: value || 1}};
-// A maneira mais fácil é tornar o 'incrementAction' em uma arrow function. Precisamos utilizar o operador logico || para corrigir o erro de que caso não seja passado o valor para a ação, ela ira retornar NaN quando executada no Reducer.
+// Precisamos utilizar o operador logico || para corrigir o erro de que caso não seja passado o valor/carga para o action creator, ela ira retornar NaN quando executada no Reducer.
 const decrementAction = (value)=>{ return {type: 'DECREMENT', payload: value || 1}};
 
 function counterReducer(state = 0, action) {
