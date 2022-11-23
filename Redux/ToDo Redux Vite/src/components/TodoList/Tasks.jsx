@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./Tasks.css";
 import "./mediaTasks.css";
 
 function Tasks(props) {
 	const [allTasksDay, setAllTasksDay] = useState([]);
 	const [editTasks, setEditTasks] = useState([]);
+	// const 
 	const [showMonthYear, setShowMonthYear] = useState([
 		props.ls()[0] + 1,
 		props.ls()[1],
@@ -119,7 +121,7 @@ function Tasks(props) {
 	// ----- // ------ //
 	function updateTask(eUpdate, ID) {
 		let updateTx = eUpdate.children[1].children[0].value;
-
+		////////{month, year, day, ID, TX:updateTx}
 		props.update(month, year, day, ID, updateTx);
 		content = [];
 		showTasks(props.ls()[2][month].listOfAllTasks);
@@ -140,6 +142,8 @@ function Tasks(props) {
 		if (allTasksDay.length > 14 || eAdd.value.trim() == "") {
 			return;
 		}
+		////////{month, year, day, TX: eAdd.value}
+		
 		props.add(month, year, day, eAdd.value);
 		eAdd.value = "";
 		eAdd.focus();

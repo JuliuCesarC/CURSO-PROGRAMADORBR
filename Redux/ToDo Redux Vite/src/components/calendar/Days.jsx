@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./Days.css";
 import "./mediaDays.css";
 let once = true;
 let crrDay;
 
-function Days(props) {
+function Days() {
 	const [trState, setTrState] = useState([]);
+	const taskLS = useSelector((state) => {
+		return state.LocalS.value;
+	});
+	const calendar = useSelector((state) => {
+		return state.calendar.value;
+	});
+	const dispatch = useDispatch();
 
-	let month = props.ls()[0];
-	let year = props.ls()[1];
-	let MONTHS = props.ls()[2];
-	let upClassTask = props.upClass;
+	let monthNumber = calendar.month;
+	let year = calendar.year;
+	let MONTHS = taskLS[2];
 	let allTDs = [];
 	let allTRs = [];
+	let nameMonth = calendar.nameOfMonth;
 
 	function createDays() {
 		allTDs = [];
 		allTRs = [];
-		month = props.ls()[0];
-		year = props.ls()[1];
-		MONTHS = props.ls()[2];
+		monthNumber = calendar.month;
+		year = calendar.year;
+		MONTHS = taskLS[2];
 
-		let fistDayOfWeek = new Date(year, month, 1).getDay() - 1;
-		let totalDaysInMonth = new Date(year, month + 1, 0).getDate();
-		let fullMonth = -fistDayOfWeek;
+		let fistDayOfWeek = new Date(year, monthNumber, 1).getDay() - 1;
+		let totalDaysInMonth = new Date(year, monthNumber + 1, 0).getDate();
+		let daysShown = -fistDayOfWeek;
 
-		for (let index = 1; index <= 42; index++, fullMonth++) {
-			let indexDate = new Date(year, month, fullMonth);
+		for (let index = 1; index <= 42; index++, daysShown++) {
+			let indexDate = new Date(year, monthNumber, daysShown);
 			let Now = new Date();
 
 			let tdInnerHTML = indexDate.getDate();
@@ -42,13 +50,13 @@ function Days(props) {
 				tdID = "currentDay";
 				crrDay = indexDate.getDate().toString();
 			}
-			if (fullMonth < 1 || fullMonth > totalDaysInMonth) {
+			if (daysShown < 1 || daysShown > totalDaysInMonth) {
 				//Whether the day belongs to the last month or the next month
 				tdClass = "prevNextMonth";
 			}
 			if (
-				MONTHS[month].listOfAllTasks &&
-				MONTHS[month].listOfAllTasks.filter(
+				MONTHS[monthNumber].listOfAllTasks &&
+				MONTHS[monthNumber].listOfAllTasks.filter(
 					(e) => e.year == year && e.day == indexDate.getDate()
 				).length >= 1 &&
 				tdClass == ""
@@ -65,7 +73,12 @@ function Days(props) {
 						id: tdID,
 						key: index,
 						className: tdClass,
-						onClick: (e) => props.selectedDay(month, e.target.innerHTML),
+						onClick: (e) => {
+							dispatch({
+								type: "selectedDay/select_day",
+								payload: { month: monthNumber, year, day: e.target.innerHTML },
+							});
+						},
 					},
 					tdInnerHTML
 				);
@@ -90,17 +103,72 @@ function Days(props) {
 	useEffect(() => {
 		createDays();
 		setTrState(allTRs);
-	}, [month, upClassTask]);
+	}, [monthNumber]);
 
 	if (once) {
 		//The first time the site is opened, the current day is selected.
 		once = false;
 		setTimeout(() => {
-			props.selectedDay(new Date().getMonth(), crrDay);
-		}, 1);
+			dispatch({
+				type: "selectedDay/select_day",
+				payload: {
+					month: new Date().getMonth(),
+					year: new Date().getFullYear(),
+					day: crrDay,
+				},
+			});
+			// dispatch({ type: "LocalS/update_ls" });
+		}, 10);
 	}
 
-	return <tbody id="days">{trState}</tbody>;
+	return (
+		<div id="Table">
+			<header id="Header">
+				<button
+					className="btn-prev"
+					id="Btn-Prev"
+					onClick={() => {
+						dispatch({ type: "calendar/prev_month" });
+						// dispatch({ type: "LocalS/update_ls" });
+					}}
+				>
+					&lt;
+				</button>
+				<h2 id="month">{nameMonth}</h2>
+				<button
+					className="btn-next"
+					id="Btn-Next"
+					onClick={() => {
+						dispatch({ type: "calendar/next_month" });
+						// dispatch({ type: "LocalS/update_ls" });
+					}}
+				>
+					&gt;
+				</button>
+			</header>
+			<table>
+				<thead>
+					<tr id="daysOfWeek">
+						<td>D</td>
+						<td>S</td>
+						<td>T</td>
+						<td>Q</td>
+						<td>Q</td>
+						<td>S</td>
+						<td>S</td>
+					</tr>
+				</thead>
+				<tbody id="days">{trState}</tbody>
+				<tfoot>
+					<tr>
+						<td colSpan={7} id="year">
+							{year}
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	);
 }
 
 export default Days;
