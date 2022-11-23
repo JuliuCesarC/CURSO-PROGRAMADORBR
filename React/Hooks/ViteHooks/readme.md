@@ -1,6 +1,6 @@
 # Criando a clássica ToDo list com React.
 
-Para criar o projeto utilizei a ferramenta **Vite**, pois os **create-react-app** adiciona muitos arquivos desnecessarios.
+Para criar o projeto utilizei a ferramenta **Vite**, pois os **create-react-app** adiciona muitos arquivos desnecessários.
 
 Não utilizei nenhuma biblioteca como o **Redux**, pois com esse projeto eu tinha intuito de entender melhor como funciona os **React Hooks**.
 
