@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Days.css";
-import "./mediaDays.css";
+import "./DaysMedia.css";
 let once = true;
 let crrDay;
 

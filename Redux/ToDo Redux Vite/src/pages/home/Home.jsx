@@ -9,7 +9,7 @@ import {
 	tasks,
 } from "../../components/localStorage/LocalStorage";
 import "./Home.css";
-import "./mediaHome.css";
+import "./HomeMedia.css";
 
 function App() {
 	const allReducers = combineReducers({
