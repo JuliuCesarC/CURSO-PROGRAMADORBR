@@ -78,6 +78,9 @@ function Days() {
 								type: "selectedDay/select_day",
 								payload: { month: monthNumber, year, day: e.target.innerHTML },
 							});
+							dispatch({
+								type: "LocalS/update_ls",
+							});
 						},
 					},
 					tdInnerHTML
@@ -103,7 +106,7 @@ function Days() {
 	useEffect(() => {
 		createDays();
 		setTrState(allTRs);
-	}, [monthNumber]);
+	}, [monthNumber, taskLS]);
 
 	if (once) {
 		//The first time the site is opened, the current day is selected.
@@ -114,10 +117,12 @@ function Days() {
 				payload: {
 					month: new Date().getMonth(),
 					year: new Date().getFullYear(),
-					day: crrDay,
+					day: new Date().getDate(),
 				},
 			});
-			// dispatch({ type: "LocalS/update_ls" });
+			dispatch({
+				type: 'calendar/update_calendar'
+			})
 		}, 10);
 	}
 
@@ -129,7 +134,6 @@ function Days() {
 					id="Btn-Prev"
 					onClick={() => {
 						dispatch({ type: "calendar/prev_month" });
-						// dispatch({ type: "LocalS/update_ls" });
 					}}
 				>
 					&lt;
@@ -140,7 +144,6 @@ function Days() {
 					id="Btn-Next"
 					onClick={() => {
 						dispatch({ type: "calendar/next_month" });
-						// dispatch({ type: "LocalS/update_ls" });
 					}}
 				>
 					&gt;

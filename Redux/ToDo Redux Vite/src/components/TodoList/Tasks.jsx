@@ -6,24 +6,37 @@ import "./mediaTasks.css";
 function Tasks(props) {
 	const [allTasksDay, setAllTasksDay] = useState([]);
 	const [editTasks, setEditTasks] = useState([]);
-	// const 
-	const [showMonthYear, setShowMonthYear] = useState([
-		props.ls()[0] + 1,
-		props.ls()[1],
-	]);
+	const taskLS = useSelector((state) => {
+		return state.LocalS.value;
+	});
+	const checkLS = useSelector((state) => {
+		return state.tasks.value;
+	});
+	const selectedDay = useSelector((state) => {
+		return state.selectedDay.value;
+	});
+	const dispatch = useDispatch();
 	let content = [];
 
-	let month = props.ls()[0];
-	let year = props.ls()[1];
-	let day = props.taskDay[0];
-	let MONTHS = props.ls()[2];
+	let monthNumber = selectedDay.month;
+	let year = selectedDay.year;
+	let day = selectedDay.day;
+	let MONTHS = taskLS[2];
 
-	MONTHS[month].listOfAllTasks
-		? showTasks(MONTHS[month].listOfAllTasks)
+	let alternateCheck = checkLS[monthNumber].listOfAllTasks
+		? checkLS[monthNumber].listOfAllTasks.filter(
+				(e) => e.year == year && e.day == day
+		  )[0].tasks
+		: null;
+
+	MONTHS[monthNumber].listOfAllTasks
+		? showTasks(MONTHS[monthNumber].listOfAllTasks)
 		: showTasks([]);
 	// ----- // ------ //
-	function showTasks(LOfAT) {
-		let listOfAll = LOfAT.filter((e) => e.year == year && e.day == day)[0];
+	function showTasks(listOfAllTasks) {
+		let listOfAll = listOfAllTasks.filter(
+			(e) => e.year == year && e.day == day
+		)[0];
 		if (!listOfAll) {
 			return;
 		}
@@ -33,18 +46,16 @@ function Tasks(props) {
 				className: `check ${tasks.check == "check" ? "checkPin" : ""}`,
 				key: randomID(),
 				onClick: (e) => {
-					props.Switch(month, year, day, tasks.id);
+					dispatch({
+						type: "tasks/switch_check",
+						payload: { month: monthNumber, year, day, ID: tasks.id },
+					});
 					if (
-						props
-							.ls()[2]
-							[month].listOfAllTasks.filter(
-								(e) => e.year == year && e.day == day
-							)[0]
-							.tasks.filter((e) => e.id == tasks.id)[0].check == "check"
+						e.target.classList.length > 1
 					) {
-						e.target.classList.add("checkPin");
-					} else {
 						e.target.classList.remove("checkPin");
+					} else {
+						e.target.classList.add("checkPin");
 					}
 				},
 			});
@@ -61,7 +72,8 @@ function Tasks(props) {
 				{ className: "edit", key: randomID() },
 				React.createElement("img", {
 					src: "img/editBtn.png",
-					onClick: (e) => openEditMenu(e.target.parentNode.parentNode, tasks.id),
+					onClick: (e) =>
+						openEditMenu(e.target.parentNode.parentNode, tasks.id),
 				})
 			);
 			let line = React.createElement(
@@ -75,8 +87,7 @@ function Tasks(props) {
 	// ----- // ------ //
 	useEffect(() => {
 		setAllTasksDay(content);
-		setShowMonthYear([props.ls()[0] + 1, props.ls()[1]]);
-	}, [day]);
+	}, [day, taskLS]);
 	// ----- // ------ //
 	function openEditMenu(eEdit, ID) {
 		let editTx = eEdit.children[1].innerHTML;
@@ -122,17 +133,17 @@ function Tasks(props) {
 	function updateTask(eUpdate, ID) {
 		let updateTx = eUpdate.children[1].children[0].value;
 		////////{month, year, day, ID, TX:updateTx}
-		props.update(month, year, day, ID, updateTx);
+		props.update(monthNumber, year, day, ID, updateTx);
 		content = [];
-		showTasks(props.ls()[2][month].listOfAllTasks);
+		showTasks(taskLS[2][monthNumber].listOfAllTasks);
 		setAllTasksDay(content);
 		setEditTasks(undefined);
 	}
 	// ----- // ------ //
 	function deleteTask(ID) {
-		props.delete(month, year, day, ID);
+		props.delete(monthNumber, year, day, ID);
 		content = [];
-		showTasks(props.ls()[2][month].listOfAllTasks);
+		showTasks(taskLS[2][monthNumber].listOfAllTasks);
 		setAllTasksDay(content);
 		setEditTasks(undefined);
 		props.tAdd(undefined);
@@ -142,15 +153,15 @@ function Tasks(props) {
 		if (allTasksDay.length > 14 || eAdd.value.trim() == "") {
 			return;
 		}
-		////////{month, year, day, TX: eAdd.value}
-		
-		props.add(month, year, day, eAdd.value);
+		dispatch({
+			type: "addNewTask/add_new_task",
+			payload: { month: monthNumber, year, day, TX: eAdd.value },
+		});
 		eAdd.value = "";
 		eAdd.focus();
-		content = [];
-		showTasks(props.ls()[2][month].listOfAllTasks);
-		setAllTasksDay(content);
-		props.tAdd(allTasksDay);
+		dispatch({
+			type: "LocalS/update_ls",
+		});
 	}
 	// ----- // ------ //
 	function showMenu() {
@@ -175,7 +186,7 @@ function Tasks(props) {
 						<img src="img/menuBtn.png" alt="Botão Menu" onClick={showMenu} />
 					</div>
 					<h3 id="Day">
-						{day}/{showMonthYear[0]}/{showMonthYear[1]}
+						{day}/{monthNumber + 1}/{year}
 					</h3>
 					<h1>ToDo List</h1>
 				</div>

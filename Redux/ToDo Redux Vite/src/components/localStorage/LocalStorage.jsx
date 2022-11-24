@@ -33,7 +33,7 @@ function updateLS() {
 			month: new Date().getMonth(),
 			year: new Date().getFullYear(),
 			day: new Date().getDate(),
-			nameOfMonth: months[new Date().getMonth()].name
+			nameOfMonth: months[new Date().getMonth()].name,
 		};
 		localStorage.setItem(CURRENT_MYD, JSON.stringify(currentMYD));
 	} else {
@@ -66,9 +66,9 @@ const calendar = createSlice({
 			} else {
 				crrMonthYear.month += 1;
 			}
-			crrMonthYear.nameOfMonth = updateLS()[2][crrMonthYear.month].name
+			crrMonthYear.nameOfMonth = updateLS()[2][crrMonthYear.month].name;
 			localStorage.setItem(CURRENT_MYD, JSON.stringify(crrMonthYear));
-			state.value = crrMonthYear
+			state.value = crrMonthYear;
 		},
 		prev_month: (state) => {
 			let crrMonthYear = JSON.parse(localStorage.getItem(CURRENT_MYD));
@@ -78,9 +78,12 @@ const calendar = createSlice({
 			} else {
 				crrMonthYear.month -= 1;
 			}
-			crrMonthYear.nameOfMonth = updateLS()[2][crrMonthYear.month].name
+			crrMonthYear.nameOfMonth = updateLS()[2][crrMonthYear.month].name;
 			localStorage.setItem(CURRENT_MYD, JSON.stringify(crrMonthYear));
-			state.value = crrMonthYear
+			state.value = crrMonthYear;
+		},
+		update_calendar: (state) => {
+			state.value = JSON.parse(localStorage.getItem(CURRENT_MYD));
 		},
 	},
 });
@@ -91,18 +94,19 @@ const selectedDay = createSlice({
 	},
 	reducers: {
 		select_day: (state, action) => {
-			let { month, year, day} = action.payload;
+			let { month, year, day } = action.payload;
 			let crrMYD = JSON.parse(localStorage.getItem(CURRENT_MYD));
 			crrMYD.month = month;
 			crrMYD.year = year;
 			crrMYD.day = day;
+			crrMYD.nameOfMonth = updateLS()[2][month].name;
 			localStorage.setItem(CURRENT_MYD, JSON.stringify(crrMYD));
-			state.value = crrMYD
+			state.value = crrMYD;
 		},
 	},
 });
-const addNewTask = createSlice({
-	name: "addNewTask",
+const tasks = createSlice({
+	name: "tasks",
 	initialState: {
 		value: JSON.parse(localStorage.getItem(TODO_LS)),
 	},
@@ -134,6 +138,20 @@ const addNewTask = createSlice({
 			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
 			// return LocalS;
 		},
+		switch_check: (state, action) => {
+			let { month, year, day, ID } = action.payload;
+			let fullLS = JSON.parse(localStorage.getItem(TODO_LS));
+			let task = fullLS[month].listOfAllTasks
+				.filter((e) => e.year == year && e.day == day)[0]
+				.tasks.filter((e) => e.id == ID)[0];
+			if (task.check == "working") {
+				task.check = "check";
+			} else {
+				task.check = "working";
+			}
+			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
+			state.value = fullLS
+		},
 	},
 });
 const updateTask = createSlice({
@@ -155,27 +173,6 @@ const updateTask = createSlice({
 		},
 	},
 });
-const switchCheck = createSlice({
-	name: "switchCheck",
-	initialState: {
-		value: JSON.parse(localStorage.getItem(TODO_LS)),
-	},
-	reducers: {
-		switch_check: (state, action) => {
-			let { month, year, day, ID } = action.payload;
-			let fullLS = JSON.parse(localStorage.getItem(TODO_LS));
-			let task = fullLS[month].listOfAllTasks
-				.filter((e) => e.year == year && e.day == day)[0]
-				.tasks.filter((e) => e.id == ID)[0];
-			if (task.check == "working") {
-				task.check = "check";
-			} else {
-				task.check = "working";
-			}
-			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
-		},
-	},
-});
 const deleteTask = createSlice({
 	name: "deleteTask",
 	initialState: {
@@ -183,7 +180,7 @@ const deleteTask = createSlice({
 	},
 	reducers: {
 		delete_task: (state, action) => {
-			let { month, year, day, ID} = action.payload;
+			let { month, year, day, ID } = action.payload;
 			let fullLSWithoutDelTask = fullLS[month].listOfAllTasks
 				.filter((e) => e.year == year && e.day == day)[0]
 				.tasks.filter((e) => e.id != ID);
@@ -214,8 +211,7 @@ export {
 	LocalS,
 	calendar,
 	selectedDay,
-	addNewTask,
+	tasks,
 	updateTask,
-	switchCheck,
 	deleteTask,
 };

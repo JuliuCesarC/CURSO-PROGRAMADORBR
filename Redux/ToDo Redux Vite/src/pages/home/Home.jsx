@@ -7,9 +7,8 @@ import {
 	LocalS,
 	calendar,
 	selectedDay,
-	addNewTask,
+	tasks,
 	updateTask,
-	switchCheck,
 	deleteTask,
 } from "../../components/localStorage/LocalStorage";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
@@ -37,9 +36,8 @@ function App() {
 		LocalS: LocalS.reducer,
 		calendar: calendar.reducer,
 		selectedDay: selectedDay.reducer,
-		addNewTask: addNewTask.reducer,
+		tasks: tasks.reducer,
 		updateTask: updateTask.reducer,
-		switchCheck: switchCheck.reducer,
 		deleteTask: deleteTask.reducer,
 	});
 	const store = configureStore({
@@ -56,15 +54,15 @@ function App() {
 					// Year={Year}
 				/>
 				<div id="toDoList">
-					{/* <Tasks
-						ls={LocalS}
-						taskDay={taskDay}
-						add={addNewTaskLS}
-						Switch={switchCheckLS}
-						tAdd={updateAdd}
-						update={updateTaskLS}
-						delete={deleteTaskLS}
-					/> */}
+					<Tasks
+						// ls={LocalS}
+						// taskDay={taskDay}
+						// add={addNewTaskLS}
+						// Switch={switchCheckLS}
+						// tAdd={updateAdd}
+						// update={updateTaskLS}
+						// delete={deleteTaskLS}
+					/>
 				</div>
 				<div id="shadow"></div>
 			</div>
