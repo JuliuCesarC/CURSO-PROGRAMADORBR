@@ -79,7 +79,7 @@ function Days() {
 								payload: { month: monthNumber, year, day: e.target.innerHTML },
 							});
 							dispatch({
-								type: "LocalS/update_ls",
+								type: "tasks/update_task_state",
 							});
 						},
 					},

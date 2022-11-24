@@ -136,7 +136,7 @@ const tasks = createSlice({
 				LSMonth.listOfAllTasks.push(newTask);
 			}
 			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
-			// return LocalS;
+			state.value = fullLS;
 		},
 		switch_check: (state, action) => {
 			let { month, year, day, ID } = action.payload;
@@ -150,16 +150,8 @@ const tasks = createSlice({
 				task.check = "working";
 			}
 			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
-			state.value = fullLS
+			// state.value = fullLS;
 		},
-	},
-});
-const updateTask = createSlice({
-	name: "updateTask",
-	initialState: {
-		value: JSON.parse(localStorage.getItem(TODO_LS)),
-	},
-	reducers: {
 		update_task: (state, action) => {
 			let { month, year, day, ID, TX } = action.payload;
 			let fullLS = JSON.parse(localStorage.getItem(TODO_LS));
@@ -170,36 +162,34 @@ const updateTask = createSlice({
 			LSTask.cont = TX;
 
 			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
+			state.value = fullLS;
 		},
-	},
-});
-const deleteTask = createSlice({
-	name: "deleteTask",
-	initialState: {
-		value: JSON.parse(localStorage.getItem(TODO_LS)),
-	},
-	reducers: {
 		delete_task: (state, action) => {
 			let { month, year, day, ID } = action.payload;
+			let fullLS = JSON.parse(localStorage.getItem(TODO_LS));
 			let fullLSWithoutDelTask = fullLS[month].listOfAllTasks
-				.filter((e) => e.year == year && e.day == day)[0]
-				.tasks.filter((e) => e.id != ID);
-
+			.filter((e) => e.year == year && e.day == day)[0]
+			.tasks.filter((e) => e.id != ID);
+			
 			fullLS[month].listOfAllTasks.filter(
 				(e) => e.year == year && e.day == day
 			)[0].tasks = fullLSWithoutDelTask;
-
+			
 			if (
 				fullLS[month].listOfAllTasks.filter(
 					(e) => e.year == year && e.day == day
-				)[0].tasks.length < 1
-			) {
-				let delTaskDay = fullLS[month].listOfAllTasks.filter(
-					(e) => e.year != year || e.day != day
-				);
+					)[0].tasks.length < 1
+					) {
+						let delTaskDay = fullLS[month].listOfAllTasks.filter(
+							(e) => e.year != year || e.day != day
+							);
 				fullLS[month].listOfAllTasks = delTaskDay;
 			}
 			localStorage.setItem(TODO_LS, JSON.stringify(fullLS));
+			state.value = fullLS;
+		},
+		update_task_state: (state) => {
+			state.value = JSON.parse(localStorage.getItem(TODO_LS));
 		},
 	},
 });
@@ -207,11 +197,4 @@ const deleteTask = createSlice({
 function randomID() {
 	return Math.random().toString(36).substring(2, 9);
 }
-export {
-	LocalS,
-	calendar,
-	selectedDay,
-	tasks,
-	updateTask,
-	deleteTask,
-};
+export { LocalS, calendar, selectedDay, tasks };
