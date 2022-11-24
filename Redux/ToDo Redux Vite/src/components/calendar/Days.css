@@ -28,6 +28,7 @@
 	width: 45px;
 	height: 45px;
 	font-family: var(--font-text);
+	cursor: pointer;
 	transition-property: background-color;
 	transition-duration: 0.1s;
 }
@@ -48,6 +49,7 @@
 	transition: outline 0.15s;
 }
 #days td:hover {
+	cursor: pointer;
 	border-bottom-left-radius: 10px;
 	border-top-right-radius: 10px;
 	outline: 2px solid var(--secondary-color);

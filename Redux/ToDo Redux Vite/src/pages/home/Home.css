@@ -4,7 +4,7 @@
 	--secondary-color: #ffd900;
 	--text-color: #fcfcdd;
 	--text-color-opacity: #fcfcdd60;
-	--border-days-week: #ff0000b3;
+	--border-days-week: rgba(255, 0, 0, 0.702);
 	--bg-input: rgba(137, 170, 164, 0.226);
 
 	--font-title: 'Lobster', cursive;

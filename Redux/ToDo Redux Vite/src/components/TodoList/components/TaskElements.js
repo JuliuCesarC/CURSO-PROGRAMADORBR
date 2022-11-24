@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
+import React from "react";
 
-export function Working(React ,check, monthNumber, year, day, id){
-	const dispatch = useDispatch();
+// CREATE ELEMENTS TASKS ----------
+export function Working(dispatch, check, monthNumber, year, day, id){
 	let working = React.createElement("div", {
 		className: `check ${check == "check" ? "checkPin" : ""}`,
 		key: randomID(),
@@ -21,7 +21,7 @@ export function Working(React ,check, monthNumber, year, day, id){
 	});
 	return working
 }
-export function ContentTx(React, cont){
+export function ContentTx(cont){
 	let contentTx = React.createElement(
 		"div",
 		{
@@ -32,7 +32,7 @@ export function ContentTx(React, cont){
 	);
 	return contentTx
 }
-export function Edit(React, id, openEditMenu){
+export function Edit(id, openEditMenu){
 	let edit = React.createElement(
 		"div",
 		{ className: "edit", key: randomID() },
@@ -43,6 +43,42 @@ export function Edit(React, id, openEditMenu){
 		})
 	);
 	return edit
+}
+// CREATE ELEMENTS EDIT ----------
+export function DeleteIcon(deleteTask, ID){
+	let deleteIcon = React.createElement(
+		"div",
+		{ className: "delete", key: randomID() },
+		React.createElement("img", {
+			src: "img/delete.png",
+			onClick: () => deleteTask(ID),
+		})
+	);
+	return deleteIcon
+}
+export function EditInput(editTx){
+	let editInput = React.createElement(
+		"div",
+		{ className: "content", key: randomID() },
+		React.createElement("input", {
+			type: "text",
+			className: "editInput",
+			defaultValue: editTx,
+			maxLength: 79,
+		})
+	);
+	return editInput
+}
+export function EditBtn(updateTask, ID){
+	let editBtn = React.createElement(
+		"div",
+		{ className: "edit", key: randomID() },
+		React.createElement("img", {
+			onClick: (e) => updateTask(e.target.parentNode.parentNode, ID),
+			src: "img/editBtn.png",
+		})
+	);
+	return editBtn
 }
 
 function randomID() {
