@@ -2,6 +2,7 @@
   width: 80vw;
   max-width: 910px;
   margin: auto;
+  padding-top: 80px;
 }
 
 .Menu{
@@ -25,8 +26,4 @@
   list-style: none;
   font-size: 1.1rem;
   font-weight: bold;
-}
-
-.HOME{
-  margin-top: 80px;
 }

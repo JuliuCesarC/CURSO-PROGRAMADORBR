@@ -1,11 +1,13 @@
+import aulas from "./Data";
+
 export default function Aulas() {
   return (
     <div>
       <h2>Aulas</h2>
       <ul>
-        <li>Aula de Apresentação.</li>
-        <li>Configurando area de trabalho.</li>
-        <li>Primeiro Projeto.</li>
+        {aulas.map((eAulas) => {
+          return <li key={eAulas.id}>{eAulas.title}</li>;
+        })}
       </ul>
     </div>
   );
