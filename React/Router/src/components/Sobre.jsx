@@ -3,5 +3,5 @@ export default function Sobre() {
     <div>
       <h2>Pagina sobre o projeto.</h2>
     </div>
-  );
+  )
 }

@@ -1,6 +1,32 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App{
+  width: 80vw;
+  max-width: 910px;
+  margin: auto;
+}
+
+.Menu{
+  position: absolute;
+  background-color: rgb(16, 48, 37);
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.Menu h3{
+  margin-left: 15px;
+}
+.NavMenu{
+  display: flex;
+  justify-content: space-between;
+}
+.NavMenu li{
+  margin-right: 15px;
+  list-style: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.HOME{
+  margin-top: 80px;
 }
