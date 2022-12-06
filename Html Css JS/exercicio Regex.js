@@ -9,9 +9,9 @@ const Text = [
 	"Jão-Macedo@cárcara.com.br",
 ];
 
-Text.forEach((text) => {
-	console.log(exe2(text));
-});
+// Text.forEach((text) => {
+// 	console.log(exe2(text));
+// });
 
 // Encontrar todas as palavras que terminam com a letra S.
 function exe1(tx) {
@@ -33,3 +33,8 @@ function exe3(tx) {
 	let regex = /^(\w|\.)+\.?@(\w|\.)+\.com(\.br|\.us)?$/gi;
 	return tx.match(regex) ? "Email Valido" : "Email invalido";
 }
+
+let url = '/aulas/1/'
+
+console.log(url.match(/\//g).length);
+console.log(url.match(/.$/g));

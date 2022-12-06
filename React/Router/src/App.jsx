@@ -6,6 +6,7 @@ import Sobre from "./components/Sobre";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Aula from "./components/Aula";
+import Assistir from "./components/Assistir";
 // O 'as' pode ser usado para dar um apelido a um nome de uma variável que foi importada.
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Nav />
         <Routes> 
           <Route path="/" element={<Home />}/>
+          <Route path="/assistir" element={<Assistir />}/>
           <Route path="/aulas/:id" element={<Aula />}/>
           <Route path="/aulas" element={<Aulas />}/>
           <Route path="/sobre" element={<Sobre />}/>
