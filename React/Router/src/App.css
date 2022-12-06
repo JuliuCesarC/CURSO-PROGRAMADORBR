@@ -27,7 +27,7 @@
   font-size: 1.1rem;
   font-weight: bold;
 }
-.btn_assistir{
+.btnAssistir{
   background-color: gray;
   width: 90px;
   height: 40px;
@@ -38,6 +38,15 @@
   align-items: center;
   transition: box-shadow .2s;
 }
-.btn_assistir:hover{
+.btnAssistir:hover, .btnLogin:hover{
   box-shadow: 0 0 10px gray;
+}
+.btnLogin{
+  width: 60px;
+  height: 25px;
+  font-size: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

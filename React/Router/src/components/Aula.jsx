@@ -15,7 +15,7 @@ export default function Aula() {
     <div className="pageAula">
       <h2>{aula.title}</h2>
       <h4>{aula.desc}</h4>
-      <p className="btn_assistir"><Link to={`/assistir?video=${aula.url}`} >Assistir</Link></p>
+      <p className="btnAssistir"><Link to={`/assistir?video=${aula.url}`} >Assistir</Link></p>
     </div>
   );
 }
