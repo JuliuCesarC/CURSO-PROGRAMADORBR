@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // O 'as' pode ser usado para dar um apelido a um nome de uma variável que foi importada.
 import Aula from "./components/Aula";
 import Assistir from "./components/Assistir";
+import PrivateRoute from "./components/PrivateRoute";
+import AccessDenied from "./components/AccessDenied";
 
 export default function App() {
   const store = configureStore({
@@ -26,7 +28,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/assistir" element={<Assistir />} />
             <Route path="/aulas/:id" element={<Aula />} />
-            <Route path="/aulas" element={<Aulas />} />
+            <Route path="/aulas" element={<PrivateRoute><Aulas /></PrivateRoute>} />
+            <Route path="/negado" element={<AccessDenied />} />
             <Route path="/sobre" element={<Sobre />} />
           </Routes>
         </div>
