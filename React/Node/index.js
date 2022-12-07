@@ -15,7 +15,7 @@ app.get("/api/videos", (req, res) => {
   res.send(videos);
 });
 
-if (process.env.NODE_ENV != "development") {
+// if (process.env.NODE_ENV != "development") {
   app.use(express.static(path.join(__dirname, "client/dist")));
 
   app.get("*", (req, res) => {
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV != "development") {
       })
     );
   });
-}
+// }
 
 app.listen(3000, () => {
   console.log("Running");
