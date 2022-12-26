@@ -38,12 +38,12 @@ function Days(props) {
 				indexDate.getMonth() == Now.getMonth() &&
 				indexDate.getDate() == Now.getDate()
 			) {
-				//Checks if the day is the current day.
+				//Is the INDEX day the current day?
 				tdID = "currentDay";
 				crrDay = indexDate.getDate().toString();
 			}
 			if (fullMonth < 1 || fullMonth > totalDaysInMonth) {
-				//Whether the day belongs to the last month or the next month
+				//Does the day belong to the previous month or the following month?
 				tdClass = "prevNextMonth";
 			}
 			if (
@@ -53,7 +53,7 @@ function Days(props) {
 				).length >= 1 &&
 				tdClass == ""
 			) {
-				//Checks if the selected day has tasks.
+				//checks if the INDEX day has tasks.
 				tdClass = "task";
 			}
 			let TD;
