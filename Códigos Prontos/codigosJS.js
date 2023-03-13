@@ -1,7 +1,8 @@
 // Gera um ID aleatório com letras e números.
 function randomID() {
-    return Math.random().toString(36).substring(2, 9);
+    return Math.random().toString(36).substring(2, 12);
 }
+console.log(randomID());
 
 // Seleciona a data atual.
 const currentDate = {
