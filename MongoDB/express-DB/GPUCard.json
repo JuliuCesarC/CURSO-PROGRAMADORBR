@@ -1,0 +1,203 @@
+{
+  "gpuList": [
+    {
+      "id": "plnubpj8sk",
+      "title": "RTX 4080 16GB first",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 16,
+      "ray": true,
+      "price": 9699.99,
+      "rating": 4.5,
+      "relevance": 8.2
+    },
+    {
+      "id": "zj5u0db7qk",
+      "title": "RTX 4080 16GB founders edition",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 16,
+      "ray": true,
+      "price": 9699.99,
+      "rating": 4.7,
+      "relevance": 8
+    },
+    {
+      "id": "d1rsy3muqm",
+      "title": "GTX 1050 Ti Asus NVIDIA GeForce OC Cerberus, 4GB GDDR5",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 4,
+      "ray": false,
+      "price": 1459.68,
+      "rating": 4.2,
+      "relevance": 7.9
+    },
+    {
+      "id": "o22wwujcaz",
+      "title": "RTX 4080 16GB founders edition",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 16,
+      "ray": true,
+      "price": 9699.99,
+      "rating": 4,
+      "relevance": 7.9
+    },
+    {
+      "id": "ahaqqavpnu",
+      "title": "RX 6900 XT 16GB",
+      "img": "img/amd/rx-6000xt.png",
+      "brand": "amd",
+      "memory": 16,
+      "ray": true,
+      "price": 5598.87,
+      "rating": 4.4,
+      "relevance": 9.2
+    },
+    {
+      "id": "4fmlqbjiuz",
+      "title": "RTX 4080 16GB founders edition",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 16,
+      "ray": true,
+      "price": 9699.99,
+      "rating": 3.9,
+      "relevance": 6
+    },
+    {
+      "id": "ywtlguhtgn",
+      "title": "RTX 3070 MSI Ventus 3X Plus NVIDIA GeForce, 8GB GDDR6",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 8,
+      "ray": true,
+      "price": 4375.49,
+      "rating": 4.2,
+      "relevance": 7.5
+    },
+    {
+      "id": "hqk2in5lh3",
+      "title": "GTX 1080 8GB",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 8,
+      "ray": false,
+      "price": 9699.99,
+      "rating": 4.9,
+      "relevance": 8
+    },
+    {
+      "id": "wfn3nf86f3",
+      "title": "RTX 2080 8 GB GDDR6",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 8,
+      "ray": true,
+      "price": 9699.99,
+      "rating": 4.6,
+      "relevance": 9.2
+    },
+    {
+      "id": "pjtkkbhd3l",
+      "title": "RTX 3080 12GB",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 12,
+      "ray": true,
+      "price": 9699.99,
+      "rating": 4.5,
+      "relevance": 7.8
+    },
+    {
+      "id": "t5jsds4w2k",
+      "title": "RTX 4080 16GB best relevance",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 16,
+      "ray": true,
+      "price": 11379.83,
+      "rating": 4.9,
+      "relevance": 9.8
+    },
+    {
+      "id": "z3w9thi0rp",
+      "title": "RX 6900 XT 16GB",
+      "img": "img/amd/rx-6000xt.png",
+      "brand": "amd",
+      "memory": 16,
+      "ray": true,
+      "price": 5598.9,
+      "rating": 4.1,
+      "relevance": 6.8
+    },
+
+    {
+      "id": "gj4tjydjsm",
+      "title": "GTX 1660 Super Twin Fan Zotac Gaming",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 6,
+      "ray": true,
+      "price": 1699.99,
+      "rating": 3.9,
+      "relevance": 7.8
+    },
+    {
+      "id": "vypo9a3rlk",
+      "title": "RTX 3060 Asus Dual O12G V2 NVIDIA GeForce, 12GB GDDR6",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 12,
+      "ray": true,
+      "price": 2880.39,
+      "rating": 4.6,
+      "relevance": 8.3
+    },
+    {
+      "id": "r2qbxz4p4c",
+      "title": "RTX 2060 Ventus MSI NVIDIA GeForce",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 12,
+      "ray": true,
+      "price": 2505.87,
+      "rating": 4,
+      "relevance": 8
+    },
+    {
+      "id": "a3hl3lx8dv",
+      "title": "RX 580 PowerColor Red Dragon",
+      "img": "img/amd/rx-6000xt.png",
+      "brand": "amd",
+      "memory": 8,
+      "ray": false,
+      "price": 1340.15,
+      "rating": 3.7,
+      "relevance": 7.2
+    },
+    {
+      "id": "873zx46rwj",
+      "title": "G210 PCYes NVIDIA GeForce, 1GB DDR3",
+      "img": "img/nvidia/rtx-4080.png",
+      "brand": "nvidia",
+      "memory": 1,
+      "ray": false,
+      "price": 215.7,
+      "rating": 3.8,
+      "relevance": 7.5
+    },
+    {
+      "id": "51rfrdsm22",
+      "title": "Gigabyte AMD Radeon RX 6700 XT Eagle, 12GB GDDR6",
+      "img": "img/amd/rx-6000xt.png",
+      "brand": "amd",
+      "memory": 12,
+      "ray": true,
+      "price": 3640.08,
+      "rating": 4.1,
+      "relevance": 8.8
+    }
+  ]
+}
