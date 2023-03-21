@@ -1,0 +1,100 @@
+{
+  "plnubpj8sk": {
+    "imgList": [
+      "http://localhost:3000/img/nvidia/rtx-4080.png",
+      "http://localhost:3000/img/nvidia/rtx-4080-2.png",
+      "http://localhost:3000/img/nvidia/rtx-4080.png",
+      "http://localhost:3000/img/nvidia/rtx-4080-2.png",
+      "http://localhost:3000/img/nvidia/rtx-4080.png",
+      "http://localhost:3000/img/nvidia/rtx-4080-2.png",
+      "http://localhost:3000/img/nvidia/rtx-4080.png",
+      "http://localhost:3000/img/nvidia/rtx-4080-2.png"
+    ],
+    "textList": {
+      "title": "RTX 4080 16GB founders edition",
+      "subtitleList": [
+        "NVIDIA Dlss 3",
+        "Ray tracing",
+        "Arquitetura NVIDIA Ada Lovelace",
+        "NVIDIA Studio"
+      ],
+      "price": 9699.99
+    },
+    "description": [
+      {
+        "class": "description_card",
+        "infoTitle": "NVIDIA DLSS 3",
+        "infoSubtitle": "O multiplicador de desempenho, powered by AI.",
+        "text": "O DLSS é um avanço revolucionário nos gráficos com tecnologia fornecida por AI que aumenta imensamente o desempenho. Aprimorado com os novos Tensor Cores de quarta geração e o Optical Flow Accelerator nas placas de vídeo GeForce RTX Série 40, o DLSS 3 usa AI para criar frames adicionais de alta qualidade.",
+        "imgUrl": "http://localhost:3000/img/nvidia/rtx-4080-info-1.png"
+      },
+      {
+        "class": "description_card reverse",
+        "infoTitle": "NVIDIA Studio",
+        "infoSubtitle": "Suas Ideias Aceleradas com AI.",
+        "text": "Eleve seus projetos criativos a outro patamar com o NVIDIA Studio. Com o novo hardware dedicado, a RTX Série 40 desbloqueia desempenho inigualável em renderização 3D, edição de vídeos e design gráfico. Experimente acelerações RTX ricas em recursos nas principais aplicações de criação, drivers NVIDIA Studio de alto nível projetados para oferecer estabilidade máxima e um conjunto de ferramentas exclusivas que aproveitam o poder da RTX para workflows criativos assistidos por AI.",
+        "imgUrl": "http://localhost:3000/img/nvidia/rtx-4080-info-2.png"
+      },
+      {
+        "class": "description_card",
+        "infoTitle": "NVIDIA Encoder",
+        "infoSubtitle": "A stream dos sonhos.",
+        "text": "Seja o centro das atenções com gráficos incríveis e streaming de alta qualidade e sem travamentos. Com a tecnologia do NVIDIA Encoder (NVENC) da 8ª geração, a GeForce RTX Série 40 inaugura uma nova era de transmissão de alta qualidade com suporte à codificação AV1 de última geração, projetada para oferecer mais eficiência do que o H.264, possibilitando lives gloriosas em resoluções mais altas. Além disso, otimizações exclusivas nas suas aplicações populares de livestreaming oferecem o melhor para a sua audiência.",
+        "imgUrl": "http://localhost:3000/img/nvidia/rtx-4080-info-3.png"
+      },
+      {
+        "class": "center_description",
+        "imgUrl": "http://localhost:3000/img/nvidia/rtx-4080-info-4.png"
+      }
+    ],
+    "info_table": [
+      {
+        "th": ["GPU"],
+        "td": ["NVIDIA GeForce RTX 4080"]
+      },
+      {
+        "th": ["NVIDIA CUDA Cores"],
+        "td": ["9728 Unidades"]
+      },
+      {
+        "th": ["Boost Clock (GHz)"],
+        "td": ["2,52"]
+      },
+      {
+        "th": ["Tamanho da Memória"],
+        "td": ["16GB"]
+      },
+      {
+        "th": ["Tipo de Memória"],
+        "td": ["GDDR6X"]
+      },
+      {
+        "th": ["PCI"],
+        "td": ["PCI Express 4.0"]
+      },
+      {
+        "th": ["Resolução Máxima do Monitor"],
+        "td": ["4K a 240Hz ou 8K a 60Hz com DSC"]
+      },
+      {
+        "th": ["Entradas"],
+        "td": ["3 x DisplayPort 1.4a <br> 1 x HDMI 2.1"]
+      },
+      {
+        "th": ["Fonte de alimentação"],
+        "td": ["750W"]
+      },
+      {
+        "th": ["Conectores de Energia"],
+        "td": ["1x 16 pinos"]
+      }
+    ],
+    "package_content": [
+      "1x Placa de Vídeo",
+      "1x Suporte",
+      "1x Cabo de Alimentação",
+      "1x Guia do Usuário"
+    ],
+    "rating": 4.7
+  }
+}

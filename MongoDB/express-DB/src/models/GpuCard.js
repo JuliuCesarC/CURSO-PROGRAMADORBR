@@ -13,6 +13,6 @@ const GpuCardSchema = new mongoose.Schema({
     amount: { type: Number},
 });
 
-const GpuCard = mongoose.model("product-lists", GpuCardSchema)
+const GpuCard = mongoose.model("gpu-cards", GpuCardSchema)
 
 export default GpuCard

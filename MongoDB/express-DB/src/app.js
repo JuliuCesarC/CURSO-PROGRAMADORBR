@@ -9,16 +9,6 @@ db.once("open", () => {
 
 const app = express();
 app.use(express.json());
-
-routes(app)
-
-// app.get("/", async (req, res) => {
-//   try {
-//     const card = await GpuCard.find();
-//     res.send(card);
-//   } catch (err) {
-//       console.log(err);
-//     }
-// });
+routes(app);
 
 export default app;
